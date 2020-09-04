@@ -1,5 +1,4 @@
 :root {
-<<<<<<< HEAD
     --color-background: #c4c4c442;
     --color-header-background: #0C0C0C;
     --color-div-background: #F6F6F6;
@@ -14,15 +13,6 @@
     font-family: 'Archivo';
 }
 
-=======
-    /* --color-background: */
-    --color-header-background: #0C0C0C;
-    --color-text-logo: #F67600;
-    font-size: 70%;
-}
-
-
->>>>>>> 22e8093adba9b0d359d1b5fef2d72be3c7c5a0d9
 * {
     margin: 0;
     padding: 0;
