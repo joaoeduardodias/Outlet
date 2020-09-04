@@ -1,3 +1,11 @@
+:root {
+    /* --color-background: */
+    --color-header-background: #0C0C0C;
+    --color-text-logo: #F67600;
+    font-size: 70%;
+}
+
+
 * {
     margin: 0;
     padding: 0;

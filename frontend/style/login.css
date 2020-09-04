@@ -1,0 +1,13 @@
+header {
+   width: 100vw;
+   height: 10rem;
+   background-color: var(--color-header-background);
+}
+header .logo {
+  
+}
+header .logo h1 {
+   color: var(--color-text-logo);
+   letter-spacing: 9%;
+   font-family: 'Archivo';
+}
