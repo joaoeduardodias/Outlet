@@ -1,3 +1,18 @@
+:root {
+    --color-background: #c4c4c442;
+    --color-header-background: #0C0C0C;
+    --color-div-background: #F6F6F6;
+    --color-primary: #F67600;
+    --color-primary-hover: #ce690a;
+    --color-text-button: #F5F5F5;
+    --color-text-link: #424242e3;
+    --color-text-link-hover: #000000e3;
+    --color-label: #808080;
+    --border-div-color: #C9BDBD;
+    font-size: 70%;
+    font-family: 'Archivo';
+}
+
 * {
     margin: 0;
     padding: 0;
