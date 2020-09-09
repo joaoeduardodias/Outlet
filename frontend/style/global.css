@@ -29,3 +29,15 @@ body {
     width: 100vw;
     background-color: var(--color-background);
 }
+
+@media (min-width: 500px) {
+     :root {
+        font-size: 75%;
+    }
+}
+
+@media (min-width: 600px) {
+     :root {
+        font-size: 80%;
+    }
+}
