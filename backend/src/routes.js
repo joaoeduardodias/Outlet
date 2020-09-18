@@ -1,13 +1,8 @@
 const express = require('express')
 const routes = express.Router()
 
-routes.post('/users', (req, res) => {
-    const data = req.body;
-    console.log(data)
+const UserController = require ('./database/controllers/UserController')
 
-    return res.json({
-        testando: "teste"
-    })
-})
+routes.post('/users', UserController.create)
 
 module.exports = routes;
