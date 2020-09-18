@@ -1,5 +1,4 @@
 const crypto = require("crypto");
-const knex = require("../../database");
 const Connection = require("../../database");
 
 module.exports = {
@@ -79,7 +78,7 @@ module.exports = {
         try {
             const { id } = req.params
             await Connection('Users').where({ id }).del()
-            return res.send()
+            return res.status(204).send()
         } catch (error) {
             next(error)
         }
