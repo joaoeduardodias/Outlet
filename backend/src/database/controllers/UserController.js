@@ -1,35 +1,87 @@
-const express = require('express')
 const crypto = require("crypto");
-const Connection = require("../../database/index")
+const knex = require("../../database");
+const Connection = require("../../database");
 
-async function index(res) {
-   const users = await Connection('Users').select('*')
-   return res.json(users)
-}
+module.exports = {
 
-async function create(req, res) {
-  const {
-    name,
-    email,
-    password,
-    whatsapp,
-    cpf,
-    date_birth,
-    administrador,
-  } = req.body;
-  const id = crypto.randomBytes(6).toString('HEX');
+    async index(next, res) {
+        try {
+            const users = await Connection("Users");
+            return res.json(users)
+        } catch (error) {
+            next(error)
+        }
+    },
 
- await Connection('Users').insert({
-   name,
-   email,
-   password,
-   whatsapp,
-   cpf,
-   date_birth,
-   administrador,
-     
+    async create(req, res, next) {
 
-  })
 
-  return res.status(201).json({id})
+        try {
+            const {
+                name,
+                email,
+                password,
+                whatsapp,
+                cpf,
+                date_birth,
+                administrador,
+            } = req.body;
+            const id = crypto.randomBytes(3).toString("HEX");
+
+            await Connection("Users").insert({
+                id,
+                name,
+                email,
+                password,
+                whatsapp,
+                cpf,
+                date_birth,
+                administrador,
+            });
+
+            return res.status(201).json({ id });
+        } catch (error) {
+            next(error)
+        }
+
+    },
+    async update(req, res, next) {
+        try {
+            const {
+                name,
+                email,
+                password,
+                whatsapp,
+                cpf,
+                date_birth,
+                administrador
+            } = req.body
+            const { id } = req.params
+            await Connection('Users').update({
+                name,
+                email,
+                password,
+                whatsapp,
+                cpf,
+                date_birth,
+                administrador
+            }).where({ id })
+
+            return res.send()
+
+        } catch (error) {
+            next(error)
+        }
+
+    },
+
+    async delete(req, res, next) {
+        try {
+            const { id } = req.params
+            await Connection('Users').where({ id }).del()
+            return res.send()
+        } catch (error) {
+            next(error)
+        }
+    }
 }
