@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 const Connection = require("../../database");
-const bcrypt = require ('bcrypt')
+const bcrypt = require('bcrypt')
 
 module.exports = {
 
@@ -38,7 +38,7 @@ module.exports = {
                 date_birth,
                 administrador,
             });
-            
+
             return res.status(201).send();
         } catch (error) {
             next(error)
