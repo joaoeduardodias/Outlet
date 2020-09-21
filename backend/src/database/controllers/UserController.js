@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 const Connection = require("../../database");
+const bcrypt = require ('bcrypt')
 
 module.exports = {
 
@@ -19,12 +20,12 @@ module.exports = {
             const {
                 name,
                 email,
-                password,
                 whatsapp,
                 cpf,
                 date_birth,
                 administrador,
             } = req.body;
+            const password = await bcrypt.hash(req.body.password, 5);
             const id = crypto.randomBytes(3).toString("HEX");
 
             await Connection("Users").insert({
@@ -37,8 +38,8 @@ module.exports = {
                 date_birth,
                 administrador,
             });
-
-            return res.status(201).json({ id });
+            
+            return res.status(201).send();
         } catch (error) {
             next(error)
         }
