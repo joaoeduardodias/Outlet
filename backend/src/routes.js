@@ -30,7 +30,7 @@ routes.delete('/users/:id', UserController.delete)
 // routes of Login 
 routes.post('/login', AuthController.create)
 routes.post('/forgot', AuthController.forgotPassword)
-routes.get('/reset/:token', AuthController.verifyToken)
+routes.post('/reset/:token', AuthController.verifyToken)
 
 
 

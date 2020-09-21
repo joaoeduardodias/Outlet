@@ -63,7 +63,9 @@ module.exports = {
             //  2- Gerar token com data de expiração
 
             const token = crypto.randomBytes(20).toString("HEX");
-            const token_expired = new Date().valueOf()
+            const now = new Date();
+            now.setHours(now.getHours()+1)
+            const token_expired = now;
             await Connection("Tokens").insert({
                 id,
                 token,
@@ -93,22 +95,23 @@ module.exports = {
             if (!verifyUser) { return res.status(401).json({ message: 'Token Inválido' }) }
 
             //  verify expired
-            const date = verify.token_expired
-            console.log(date)
-            const date2 = new Date().valueOf()
-            console.log(date2)
-            if (date < date2) {
-                return res.json({ message: 'token expired' })
-
+         
+            const now = new Date()
+           
+            if (now > verify.token_expired) {
+                return res.status(401).json({message: 'Token expired'})
             }
-
-
-
-
-
-
-
-
+            
+            const [, hash] = req.headers.authorization.split(" ");
+            const [,pwd] = Buffer.from(hash, "base64")
+                .toString()
+                .split(":");
+                const password = await bcrypt.hash(pwd, 5);
+                await Connection("Users").update({
+                    password
+                }).where('id',verifyUser.id)
+            return res.status(200).send()
+       
 
         } catch (error) {
             next(error)
