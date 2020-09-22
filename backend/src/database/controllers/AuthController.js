@@ -2,6 +2,7 @@ const Connection = require("../../database");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const mailer = require("nodemailer")
 
 module.exports = {
     async create(req, res, next) {
@@ -76,6 +77,16 @@ module.exports = {
 
             const resetLink = `http://${req.headers.host}/reset/${token}`;
             res.json(resetLink);
+            mailer.sendEmail({
+                to: email,
+                from: 'suporte@teste.com',
+                template: '../resources/forgotpassword',
+                context: {token},
+            }, (err) => {
+                if(err) {return res.status(400).send({error: 'Cannot send forgot password, try again'})}
+               return res.send(200)
+                
+            })
         } catch (error) {
             next(error);
         }
