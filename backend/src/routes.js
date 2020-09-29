@@ -21,8 +21,7 @@ const UserController = require('./database/controllers/UserController')
 const AuthController = require('./database/controllers/AuthController')
 
 //  CRUD de usuários
-routes.get('/users', midellwareauth, UserController.index)
-routes.get('/userss', UserController.index)
+routes.get('/users', UserController.index)
 routes.post('/users', UserController.create)
 routes.put('/users/:id', UserController.update)
 routes.delete('/users/:id', UserController.delete)
