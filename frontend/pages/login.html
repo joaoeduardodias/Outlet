@@ -24,17 +24,17 @@
     <main>
         <div class="container">
             <div class="login-container">
-                <form id="form-login" action="createUsers()" method="post">
+                <form id="form-login" method="POST">
                     <div class="input-container">
                         <label for="email">E-mail</label>
-                        <input name="email" type="email" autofocus placeholder="Digite seu e-mail" />
+                        <input name="email" type="email" id="input-email" autofocus placeholder="Digite seu e-mail" />
                     </div>
                     <div class="input-container">
                         <label for="senha">Senha</label>
-                        <input name="senha" type="password" placeholder="Digite sua Senha" />
+                        <input name="senha" type="password" id="input-password" placeholder="Digite sua Senha" />
                     </div>
                     <div class="button-container">
-                        <button name="btn-login" type="submit">Login</button>
+                        <button type="submit" name="btn-login">Login</button>
                     </div>
                 </form>
 
@@ -44,6 +44,7 @@
             </div>
         </div>
     </main>
+    <script src="../js/api.js"></script>
 </body>
 
 
