@@ -11,7 +11,7 @@
     <title>Outlet Multimarcas | Login</title>
 </head>
 
-<body>
+<body id="body-modal"  >
     <header>
 
         <div class="logo">
@@ -21,8 +21,9 @@
         </div>
 
     </header>
-    <main>
-        <div class="container">
+    <main >
+        <div id="div-login" class="container">
+
             <div class="login-container">
                 <form id="form-login" method="POST">
                     <div class="input-container">
@@ -41,9 +42,25 @@
 
                 <a href="./forgotPassword.html">Esqueci minha senha</a>
                 <a href="./Register.html">Não tenho uma conta</a>
-            </div>
-        </div>
-    </main>
+						</div>
+
+				</div>
+
+
+		</main>
+
+		<div id="div-modal" class="div-modal" style="display: none;">
+			<p>Selecione <br/> para onde <br/> você deseja  ir </p>
+			<div class="btn-pagindex">
+			<a href="./index.html">Página Inicial</a>
+			</div>
+
+			<div class="btn-pagPanel">
+				<a href="./panelControl.html">Painel de Controle</a>
+			</div>
+		</div>
+
+		<script src="../js/api/login.js"></script>
 </body>
 
 
