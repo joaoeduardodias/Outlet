@@ -3,13 +3,19 @@
 	border: none;
 	position: absolute;
 	width: 30rem;
-	height: 60vh;
+	height: 33rem;
 	background-color: var(--color-div-background);
 	top: 18rem;
-	left: 1.6rem;
+	left: 50%;
+	transform: translate(-50%);
+}
+.div-modal p:first-child{
+	font-size: 3rem;
+	line-height: 0.1rem;
+	font-style: italic;
 }
 .div-modal p {
-	font-size: 3rem;
+	font-size: 2.8rem;
 	font-weight: 500;
 	text-align: center;
 	margin-top: 4rem;
@@ -23,7 +29,7 @@
 	padding-top:0.5rem ;
 }
 .btn-pagindex{
-	margin: 5rem auto 0;
+	margin: 4rem auto 0;
 	background: var(--color-button-secondary);
 	transition: background-color 0.4s;
 }
@@ -121,7 +127,11 @@ a:nth-of-type(2) {
 	margin-top: 2.7rem;
 }
 
-
+@media (min-height: 700px){
+	.div-modal{
+		top: 22rem;
+	}
+}
 
 /* a partir de 700px */
 
@@ -157,6 +167,21 @@ a:nth-of-type(2) {
 	a:nth-of-type(2) {
 		margin-top: 2.5rem;
 	}
+	/* MODAL */
+	.div-modal {
+		width: 38rem;
+		height: 35rem;
+		top: 22rem;
+	}
+
+	.btn-pagindex,
+	.btn-pagPanel {
+		width: 26rem;
+		height: 4.5rem;
+		padding-top:0.8rem ;
+	}
+
+
 }
 
 /* para maior que 1000px */
@@ -199,5 +224,26 @@ a:nth-of-type(2) {
 	}
 	a:nth-of-type(2) {
 		margin-top: 4rem;
+	}
+	.div-modal {
+		width: 55rem;
+		height: 45rem;
+		top: 50%;
+		transform: translate(-50%,-50%);
+	}
+	.div-modal p:first-child{
+		margin-top: 6rem;
+		font-size: 4rem;
+	}
+	.div-modal p {
+		margin-top: 5rem;
+		font-size: 3.5rem;
+	}
+
+	.btn-pagindex,
+	.btn-pagPanel {
+		width: 35rem;
+		height: 5rem;
+		padding-top: 1.2rem;
 	}
 }

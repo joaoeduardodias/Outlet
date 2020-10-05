@@ -1,0 +1,29 @@
+
+ 
+
+
+
+
+
+@media (min-width: 700px){
+	options {
+		width: 100%;
+		max-width: 50rem;
+		height: 2.3rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.options input {
+		width: 40rem;
+		height: 4rem;
+		border: 1px solid var(--border-div-color);
+		border-radius: 0.4rem;
+		font-size: 1.8rem;
+	}
+	.options a img {
+		width: 4rem;
+		height: 4rem;
+	}
+}
+.

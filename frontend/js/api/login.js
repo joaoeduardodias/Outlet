@@ -39,11 +39,10 @@ async function login() {
 				body.classList.add('modal')
 
 				const divLogin = document.getElementById('div-login')
-				divLogin.classList.add('-modal')
+				divLogin.style.display = "none"
 				const modal = document.getElementById('div-modal')
 				modal.style.display = ""
 
-				console.log("sou adm");
 			} else {
 				location.href = "../pages/index.html";
 			}
