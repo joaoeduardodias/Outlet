@@ -21,9 +21,8 @@ module.exports = {
                 name,
                 email,
                 whatsapp,
-                cpf,
-                date_birth,
-                administrador,
+
+
             } = req.body;
             const password = await bcrypt.hash(req.body.password, 5);
             const id = crypto.randomBytes(3).toString("HEX");
@@ -34,9 +33,7 @@ module.exports = {
                 email,
                 password,
                 whatsapp,
-                cpf,
-                date_birth,
-                administrador,
+
             });
 
             return res.status(201).send();
@@ -52,9 +49,6 @@ module.exports = {
                 email,
                 password,
                 whatsapp,
-                cpf,
-                date_birth,
-                administrador
             } = req.body
             const { id } = req.params
             await Connection('Users').update({
@@ -62,9 +56,7 @@ module.exports = {
                 email,
                 password,
                 whatsapp,
-                cpf,
-                date_birth,
-                administrador
+
             }).where({ id })
 
             return res.send()
