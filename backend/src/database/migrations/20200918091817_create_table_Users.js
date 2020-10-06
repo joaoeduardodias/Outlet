@@ -5,7 +5,7 @@ exports.up = function(knex) {
         table.string("email").unique().notNullable();
         table.integer("whatsapp").notNullable();
         table.string("password").notNullable();
-        table.integer("cpf").notNullable();
+
         table.boolean("administrador").defaultTo(0);
 
         table.timestamp("created_at").defaultTo(knex.fn.now());
