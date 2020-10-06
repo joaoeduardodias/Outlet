@@ -2,12 +2,11 @@ exports.up = function(knex) {
     return knex.schema.createTable("Users", (table) => {
         table.string("id").primary().notNullable();
         table.string("name").notNullable();
-        table.string("email").notNullable();
+        table.string("email").unique().notNullable();
         table.integer("whatsapp").notNullable();
         table.string("password").notNullable();
         table.integer("cpf").notNullable();
-        table.date("date_birth").notNullable();
-        table.boolean("administrador").notNullable().defaultTo(false);
+        table.boolean("administrador").defaultTo(0);
 
         table.timestamp("created_at").defaultTo(knex.fn.now());
         table.timestamp("updated_at").defaultTo(knex.fn.now());
