@@ -1,148 +1,146 @@
 .register-container {
-	display: flex;
-	flex-direction: column;
-	margin-top: 4.5rem;
-	width: 27rem;
-	height: 42rem;
-	background-color: var(--color-div-background);
-	border: 1.5px solid var(--border-div-color);
-	border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4.5rem;
+    width: 27rem;
+    height: 42rem;
+    background-color: var(--color-div-background);
+    border: 1.5px solid var(--border-div-color);
+    border-radius: 0.5rem;
 }
 
 .input-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
 }
 
 .input-container label {
-	font-family: "Roboto";
-	font-size: 1.6rem;
-	font-weight: 200;
-	margin-left: -16.7rem;
-	color: var(--color-label);
+    font-family: "Roboto";
+    font-size: 1.6rem;
+    font-weight: 200;
+    margin-left: -16.7rem;
+    color: var(--color-label);
 }
-.input-container #tel{
-	margin-left: -15.5rem;
+
+.input-container #tel {
+    margin-left: -18.5rem;
 }
 
 .input-container>input {
-	width: 22rem;
-	height: 4.3rem;
-	border-radius: 0.4rem;
-	padding: 0.6rem;
-	font-size: 1.5rem;
-	border: 1px solid var(--border-div-color);
+    width: 22rem;
+    height: 4.3rem;
+    border-radius: 0.4rem;
+    padding: 0.6rem;
+    font-size: 1.5rem;
+    border: 1px solid var(--border-div-color);
 }
 
 .button-container {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	margin-top: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
 }
 
 .button-container button {
-	width: 18rem;
-	height: 4.1rem;
-	border-radius: 0.6rem;
-	border: none;
-	background-color: var(--color-primary);
-	color: var(--color-text-button);
-	font-weight: 500;
-	letter-spacing: 0.2rem;
-	font-size: 2.3rem;
-	transition: background-color 0.4s;
+    width: 18rem;
+    height: 4.1rem;
+    border-radius: 0.6rem;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-text-button);
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    font-size: 2.3rem;
+    transition: background-color 0.4s;
 }
 
 .button-container button:hover {
-	background-color: var(--color-primary-hover);
+    background-color: var(--color-primary-hover);
 }
 
 a {
-	margin: 2.5rem auto 0;
-	text-decoration: none;
-	font-size: 1.6rem;
-	color: var(--color-text-link);
-	transition: color 0.3s, font-weight 0.3s;
+    margin: 2.5rem auto 0;
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: var(--color-text-link);
+    transition: color 0.3s, font-weight 0.3s;
 }
-
 
 a:hover {
-	color: var(--color-text-link-hover);
-	font-weight: 700;
+    color: var(--color-text-link-hover);
+    font-weight: 700;
 }
+
 
 /* a partir de 700px */
 
 @media (min-width: 700px) {
-	.register-container {
-		width: 35rem;
-		height: 40rem;
-	}
-
-	.input-container label {
-		font-size: 1.6rem;
-		margin-left: -26.2rem;
-	}
-	.input-container #tel {
-		margin-left: -25rem;
-	}
-	.input-container input {
-		width: 32rem;
-		height: 4.5rem;
-	}
-
-	.button-container button {
-		width: 23rem;
-		height: 3.8rem;
-		font-size: 2.3rem;
-	}
-	a {
-		font-size: 1.6rem;
-		margin-top: 0.8rem;
-	}
-
+    .register-container {
+        width: 35rem;
+        height: 40rem;
+    }
+    .input-container label {
+        font-size: 1.6rem;
+        margin-left: -26.2rem;
+    }
+    .input-container #tel {
+        margin-left: -25rem;
+    }
+    .input-container input {
+        width: 32rem;
+        height: 4.5rem;
+    }
+    .button-container button {
+        width: 23rem;
+        height: 3.8rem;
+        font-size: 2.3rem;
+    }
+    a {
+        font-size: 1.6rem;
+        margin-top: 0.8rem;
+    }
 }
+
 
 /* para maior que 1000px */
 
 @media (min-width: 1000px) {
-	.register-container {
-		width: 56rem;
-		height: 55rem;
-	}
-
-	.input-container:first-child {
-		margin-top: 3rem;
-	}
-	.input-container label {
-		font-size: 2rem;
-		margin-left: -43rem;
-	}
-	.input-container #tel {
-		margin-left: -42.2rem;
-	}
-	.input-container input {
-		width: 50rem;
-		height: 5.6rem;
-		font-size: 2.0rem;
-	}
-	.button-container {
-		margin-top: 2.3rem;
-	}
-	.button-container button {
-		width: 45rem;
-		height: 5rem;
-		font-size: 3.2rem;
-		font-weight: 500;
-		letter-spacing: 0.2rem;
-	}
-	a {
-		font-size: 1.9rem;
-		margin-top: 4.7rem;
-	}
-
+    .register-container {
+        width: 56rem;
+        height: 55rem;
+    }
+    .input-container:first-child {
+        margin-top: 3rem;
+    }
+    .input-container label {
+        font-size: 2rem;
+        margin-left: -43rem;
+    }
+    .input-container #tel {
+        margin-left: -40rem;
+    }
+    .input-container input {
+        width: 50rem;
+        height: 5.6rem;
+        font-size: 2.0rem;
+        font-weight: normal;
+    }
+    .button-container {
+        margin-top: 2.3rem;
+    }
+    .button-container button {
+        width: 45rem;
+        height: 5rem;
+        font-size: 3.2rem;
+        font-weight: 500;
+        letter-spacing: 0.2rem;
+    }
+    a {
+        font-size: 1.9rem;
+        margin-top: 4.7rem;
+    }
 }

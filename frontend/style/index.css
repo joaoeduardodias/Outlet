@@ -1,29 +1,214 @@
-
- 
-
-
-
-
-
-@media (min-width: 700px){
-	options {
-		width: 100%;
-		max-width: 50rem;
-		height: 2.3rem;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-	.options input {
-		width: 40rem;
-		height: 4rem;
-		border: 1px solid var(--border-div-color);
-		border-radius: 0.4rem;
-		font-size: 1.8rem;
-	}
-	.options a img {
-		width: 4rem;
-		height: 4rem;
-	}
+.logo {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-.
+
+.menu-section nav {
+    display: none;
+}
+
+.one,
+.two,
+.three {
+    background-color: var(--color-primary);
+    height: 0.3rem;
+    width: 100%;
+    margin: 0.6rem auto;
+    transition-duration: 0.3s;
+}
+
+.menu-toggle {
+    width: 3rem;
+    height: 3.1rem;
+    margin: 3.4rem 1.5rem 0 4rem;
+}
+
+
+/* fullscrenn */
+
+.menu-section.on {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background: var(--color-header-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-section.on nav {
+    display: block;
+}
+
+.menu-section.on .menu-toggle {
+    position: absolute;
+    right: 1.7rem;
+    top: 1rem;
+}
+
+.menu-section.on .menu-toggle .one {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.menu-section.on .menu-toggle .two {
+    opacity: 0;
+}
+
+.menu-section.on .menu-toggle .three {
+    transform: rotate(-45deg) translate(4px, -7px);
+}
+
+.menu-section.on nav input {
+    display: block;
+    width: 25rem;
+    height: 3.5rem;
+    font-size: 1.6rem;
+    padding: 1.5rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--border-div-color);
+    margin: 0 0 5rem;
+    transition-duration: 0.5s;
+}
+
+.menu-section.on nav>a {
+    transition-duration: 0.5s;
+    text-decoration: none;
+}
+
+.menu-section.on .btn-login,
+.menu-section.on .btn-Register {
+    display: flex;
+    flex: 1;
+    width: 15rem;
+    margin: 2rem auto;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text-button);
+    font-size: 2.5rem;
+    letter-spacing: 0.5rem;
+}
+
+.menu-section.on .btn-Register {
+    width: 26rem;
+    margin-top: 2rem;
+}
+
+.menu-section.on nav a img {
+    width: 3rem;
+    height: 3rem;
+}
+
+@media (min-width: 370px) {
+    .menu-section .menu-toggle {
+        margin-left: 7rem;
+    }
+    .menu-section.on .menu-toggle {
+        right: 2rem;
+    }
+}
+
+@media (min-width:410px) {
+    .menu-section .menu-toggle {
+        margin-left: 10 rem;
+    }
+}
+
+@media (min-width: 700px) {
+    .menu-section {
+        margin-left: 20rem;
+    }
+    .menu-toggle {
+        width: 4rem;
+    }
+    .menu-section.on {
+        margin-left: 0;
+    }
+    .menu-section.on .menu-toggle {
+        right: 6rem;
+        top: 1.3rem;
+    }
+    .menu-section.on nav input {
+        width: 55rem;
+        height: 5rem;
+        font-size: 1.7rem;
+    }
+    .menu-section.on .btn-login,
+    .menu-section.on .btn-Register {
+        width: 20rem;
+        margin: 3rem auto;
+        font-size: 3.5rem;
+    }
+    .menu-section.on .btn-Register {
+        width: 35rem;
+    }
+    .menu-section.on nav a img {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+}
+
+@media (min-width: 1000px) {
+    .menu-section.on {
+        display: none;
+    }
+    .menu-section {
+        margin: 0;
+    }
+    .menu-toggle {
+        display: none;
+    }
+    header {
+        height: 10.8rem;
+    }
+    .logo {
+        margin: 0.5rem auto;
+        max-width: 800px;
+        align-items: initial;
+        justify-content: initial;
+    }
+    .logo h1 {
+        height: 4.2rem;
+        font-size: 2.3rem;
+        margin: .2rem 0.5rem 0 0.5rem;
+    }
+    .menu-section nav {
+        margin-top: 5rem;
+        display: flex;
+    }
+    .menu-section nav input {
+        height: 4rem;
+        width: 40rem;
+        font-size: 1.4rem;
+        margin-right: 1.5rem;
+        padding: 0.5rem;
+        border-radius: 0.4rem;
+        border: 1px solid var(--border-div-color);
+    }
+    .btn-login p,
+    .btn-Register p {
+        display: none;
+    }
+    .btn-login img,
+    .btn-Register img {
+        margin: 0 1.2rem;
+        width: 3.6rem;
+        height: 3.6rem;
+        display: initial;
+    }
+}
+
+@media(min-width:1200px) {
+    .logo {
+        max-width: 900px;
+    }
+    .logo h1 {
+        margin: .2rem 1.3rem 0 0.5rem;
+    }
+}

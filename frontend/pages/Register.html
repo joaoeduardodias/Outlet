@@ -18,45 +18,46 @@
     <header>
 
         <div class="logo">
-            <a href="/">
+            <a href="./index.html">
                 <h1>OUTLET <br/> MULTIMARCAS</h1>
             </a>
         </div>
 
     </header>
     <main>
-			<div class="container">
-        <div class="register-container">
-            <form action="#" method="post">
-                <div class="input-container">
-                    <label for="name">Nome</label>
-                    <input name="name" type="text" placeholder="Digite seu Nome" />
-                </div>
-                <div class="input-container">
-                    <label for="email">E-mail</label>
-                    <input name="email" type="email" placeholder="Digite seu e-mail" />
-                </div>
-                <div class="input-container">
-                    <label for="password">Senha</label>
-                    <input name="password" type="password" placeholder="Digite sua Senha" />
-                </div>
-                <div class="input-container">
-                    <label id="tel" for="telephone">Telefone</label>
-                    <input type="text" class="phone" name="telefone" placeholder="(00) 00000-0000" data-mask-selectonfocus="true" />
-                </div>
+        <div class="container">
+            <div class="register-container">
+                <form method="post">
+                    <div class="input-container">
+                        <label for="name">Nome</label>
+                        <input id="name" name="name" type="text" placeholder="Digite seu Nome" />
+                    </div>
+                    <div class="input-container">
+                        <label for="email">E-mail</label>
+                        <input id="email" name="email" type="email" placeholder="Digite seu e-mail" />
+                    </div>
+                    <div class="input-container">
+                        <label for="password">Senha</label>
+                        <input id="password" name="password" type="password" placeholder="Digite sua Senha" />
+                    </div>
+                    <div class="input-container">
+                        <label id="tel" for="telephone">Whatsapp</label>
+                        <input id="telephone" type="text" class="phone" name="telefone" placeholder="(00) 00000-0000" data-mask-selectonfocus="true" />
+                    </div>
 
-                <div class="button-container">
-                    <button id="btn-register"  type="submit" >Cadastrar</button>
-                </div>
+                    <div class="button-container">
+                        <button id="btn-register" type="submit">Cadastrar</button>
+                    </div>
 
-            </form>
+                </form>
 
-            <a href="./login.html">Já tenho uma conta</a>
+                <a href="./login.html">Já tenho uma conta</a>
 
 
-				</div>
-			</div>
+            </div>
+        </div>
     </main>
+    <script src="../js/api/register.js"></script>
 </body>
 
 
