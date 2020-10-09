@@ -12,8 +12,8 @@ async function login() {
 
         const myHeaders = new Headers();
 
-        myHeaders.append("Authorization", "Basic " + btoa(email + ":" + password)),
-            myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "Basic " + btoa(email + ":" + password))
+        myHeaders.append("Content-Type", "application/json");
 
         const response = await fetch(baseurl + "/login", {
             method: "post",
@@ -30,22 +30,20 @@ async function login() {
         }
         if (data.message === "Valid") {
             const token = await response.headers.get("auth_token");
-            console.log(token)
             localStorage.setItem("Authorization", token); // salvando no localStorage
             const dataUser = JSON.parse(atob(token.split(".")[1])); // decodificando o token
             console.log(dataUser);
 
             if (dataUser.administrador === 1) {
-                const body = document.getElementById('body-modal')
-                body.classList.add('modal')
+                const body = document.getElementById("body-modal");
+                body.classList.add("modal");
 
-                const divLogin = document.getElementById('div-login')
-                divLogin.style.display = "none"
-                const modal = document.getElementById('div-modal')
-                modal.style.display = ""
-
+                const divLogin = document.getElementById("div-login");
+                divLogin.style.display = "none";
+                const modal = document.getElementById("div-modal");
+                modal.style.display = "";
             } else {
-                location.href = "../pages/index.html";
+                location.href = "/";
             }
         }
     } catch (error) {

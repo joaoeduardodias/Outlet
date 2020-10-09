@@ -47,15 +47,18 @@ module.exports = {
             const {
                 name,
                 email,
-                password,
                 whatsapp,
+                administrador
             } = req.body
+            const password = await bcrypt.hash(req.body.password, 5);
+
             const { id } = req.params
             await Connection('Users').update({
                 name,
                 email,
                 password,
                 whatsapp,
+                administrador
 
             }).where({ id })
 
