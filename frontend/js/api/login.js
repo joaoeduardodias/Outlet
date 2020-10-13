@@ -32,7 +32,7 @@ async function login() {
             const token = await response.headers.get("auth_token");
             localStorage.setItem("Authorization", token); // salvando no localStorage
             const dataUser = JSON.parse(atob(token.split(".")[1])); // decodificando o token
-            console.log(dataUser);
+
 
             if (dataUser.administrador === 1) {
                 const body = document.getElementById("body-modal");

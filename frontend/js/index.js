@@ -17,10 +17,11 @@ const buttonCart = document.querySelector(".btn-cart")
 const buttonDashboard = document.querySelector(".btn-dash")
 const token = localStorage.getItem("Authorization")
 
-const { administrador } = JSON.parse(atob(token.split(".")[1]));
-
+console.log(token)
 
 if (token) {
+    const { administrador } = JSON.parse(atob(token.split(".")[1]));
+
     buttonRegister.classList.add('logged')
     buttonLogin.classList.add('logged')
     buttonLogout.style.display = 'flex'
