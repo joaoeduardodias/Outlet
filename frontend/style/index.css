@@ -1,3 +1,7 @@
+header {
+    position: fixed;
+}
+
 .logo {
     width: 100%;
     height: 10rem;
@@ -153,31 +157,60 @@
 
 .products {
     width: 100%;
-    height: 100vh;
+    height: calc(100vh- 10rem);
+    max-width: 990px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(15rem, 18rem));
+    grid-column-gap: 0.3rem;
 }
 
 .product {
-    width: 25rem;
-    height: 30rem;
+    width: 13rem;
+    height: 14rem;
     border-radius: 0.2rem;
+    padding: 0.5rem;
     border: 1px solid var(--border-div-color);
-    margin: 1.5rem auto;
+    justify-self: center;
+    align-self: center;
     display: grid;
+    flex-grow: 0;
+    background-color: var(--color-div-background);
+    box-shadow: 0 2px 4px 1px var(--color-shadow);
+    transition-duration: 10ms;
+}
+
+.product:hover {
+    background-color: #FFF;
+    cursor: pointer;
 }
 
 .product img {
-    width: 20rem;
-    height: 18rem;
-    margin: 1rem auto;
+    width: 11rem;
+    height: 8rem;
+    margin: 0 auto;
+    border-radius: 0.2rem;
+    border: none;
+}
+
+.product .row {
+    border-top: 1px solid #6d6c6c;
+    opacity: 50%;
 }
 
 .product #title {
-    font-size: 3rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .product #price {
-    font-size: 2rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
+    font-family: "Roboto";
+    color: #5f5f5f;
+    font-weight: 800;
+    margin-left: 1rem;
 }
 
 @media (min-width: 370px) {
@@ -192,9 +225,54 @@
     }
 }
 
+.products {
+    grid-template-rows: repeat(auto-fit, minmax(15rem, 19rem));
+}
+
+.product {
+    width: 15rem;
+    height: 14.5rem;
+}
+
+.product img {
+    width: 12rem;
+    height: 8.5rem;
+}
+
+.product #title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
 @media (min-width:410px) {
     .menu-section .menu-toggle {
         margin-left: 10 rem;
+    }
+    .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+        grid-template-rows: repeat(auto-fit, minmax(15rem, 18rem));
+        grid-column-gap: 0.3rem;
+    }
+    .product {
+        width: 17rem;
+        height: 15rem;
+    }
+    .product img {
+        width: 12rem;
+        height: 8.5rem;
+    }
+    .product #title {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .product #price {
+        font-size: 1.3rem;
+        letter-spacing: 0.1rem;
+        font-family: "Roboto";
+        color: #5f5f5f;
+        font-weight: 800;
+        margin-left: 1rem;
     }
 }
 
@@ -249,6 +327,9 @@
     }
     .menu-section.on .btn-cart img {
         margin-bottom: 0.5rem;
+    }
+    .products {
+        grid-template-rows: repeat(auto-fit, minmax(15rem, 20rem));
     }
 }
 
@@ -305,6 +386,35 @@
         width: 3.6rem;
         height: 3.6rem;
         display: initial;
+    }
+    .menu-section .btn-logout,
+    .menu-section .btn-cart,
+    .menu-section .btn-dash,
+    .menu-section .btn-login.logged,
+    .menu-section .btn-Register.logged {
+        display: none;
+    }
+    .products {
+        margin-top: 1rem;
+        grid-column-gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 23.1rem));
+    }
+    .product {
+        width: 19rem;
+        height: 18rem;
+        transition: 0.3s;
+    }
+    .product:hover {
+        width: 19.4rem;
+        height: 18.4rem;
+    }
+    .product img {
+        width: 16rem;
+        height: 10rem;
+    }
+    .product #title {
+        font-size: 1.5rem;
+        font-weight: 600;
     }
 }
 
