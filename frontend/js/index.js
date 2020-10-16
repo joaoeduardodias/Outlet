@@ -47,7 +47,7 @@ products.map((item, index) => {
     c('.products').append(ProductItem)
 
     ProductItem.addEventListener('click', () => {
-        console.log("cliquei")
+        
     })
 
 })

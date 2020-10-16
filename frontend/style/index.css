@@ -235,7 +235,7 @@ header {
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: #ffffff80;
+    /* background-color: #ffffff80; */
     transition: all ease 0.5s;
     justify-content: center;
     align-items: center;
