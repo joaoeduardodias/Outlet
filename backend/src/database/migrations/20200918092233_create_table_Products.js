@@ -5,7 +5,7 @@ exports.up = function(knex) {
         table.string('description')
         table.float('price').notNullable()
         table.string('images')
-        table.integer('amount').notNullable()
+        table.integer('amount').notNullable() // estoque
 
 
 

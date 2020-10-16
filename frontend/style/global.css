@@ -17,6 +17,9 @@
     --border-alert: #a9c288;
     --color-text-alert: #2c2c2cf5;
     --color-shadow: #c0d0e6cc;
+    --background-footer: #f8f8f8cc;
+    --border-footer: #d3d3d3de;
+    --color-text-price: #5f5f5f;
     /* todas as fontes começam por padrão a 9,6px */
     font-size: 60%;
     font-family: "Archivo";
@@ -31,7 +34,7 @@ html {
 }
 
 body {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     -webkit-font-smoothing: antialiased !important;
     background-color: var(--color-background);

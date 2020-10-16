@@ -1,7 +1,11 @@
 let show = true;
 
-const menuSection = document.querySelector(".menu-section")
-const menuToggle = document.querySelector(".menu-toggle")
+const c = (el) => document.querySelector(el)
+const cs = (el) => document.querySelectorAll(el)
+
+
+const menuSection = c(".menu-section")
+const menuToggle = c(".menu-toggle")
 
 menuToggle.addEventListener('click', () => {
     document.body.style.overflow = show ? 'hidden' : 'initial'
@@ -10,14 +14,13 @@ menuToggle.addEventListener('click', () => {
     show = !show;
 })
 
-const buttonRegister = document.querySelector(".btn-Register")
-const buttonLogin = document.querySelector(".btn-login")
-const buttonLogout = document.querySelector(".btn-logout")
-const buttonCart = document.querySelector(".btn-cart")
-const buttonDashboard = document.querySelector(".btn-dash")
+const buttonRegister = c(".btn-Register")
+const buttonLogin = c(".btn-login")
+const buttonLogout = c(".btn-logout")
+const buttonCart = c(".btn-cart")
+const buttonDashboard = c(".btn-dash")
 const token = localStorage.getItem("Authorization")
 
-console.log(token)
 
 if (token) {
     const { administrador } = JSON.parse(atob(token.split(".")[1]));
@@ -32,6 +35,19 @@ if (token) {
 buttonLogout.addEventListener('click', () => {
     localStorage.clear()
     location.href = '/'
+})
 
+//  LIST OF PRODUCT
+products.map((item, index) => {
+    // clonar a div produto
+    let ProductItem = c('.models .product').cloneNode(true)
+        // preenche os dados
+    ProductItem.querySelector('.product-title').innerHTML = item.name;
+    ProductItem.querySelector('.product-price').innerHTML = `R$: ${item.price.toFixed(2)}`;
+    c('.products').append(ProductItem)
+
+    ProductItem.addEventListener('click', () => {
+        console.log("cliquei")
+    })
 
 })

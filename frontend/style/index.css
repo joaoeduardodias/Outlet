@@ -1,5 +1,9 @@
 header {
     position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
 }
 
 .logo {
@@ -157,18 +161,26 @@ header {
 
 .products {
     width: 100%;
-    height: calc(100vh- 10rem);
+    min-height: calc(100vh - 10rem);
     max-width: 990px;
-    margin: 0 auto;
+    position: relative;
+    margin: 11rem auto 2rem;
+    word-break: break-all;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(15rem, 18rem));
+    grid-template-rows: repeat(auto-fit, minmax(14rem, 14.5rem));
     grid-column-gap: 0.3rem;
+    grid-row-gap: 1.7rem;
+}
+
+.models {
+    display: none;
 }
 
 .product {
     width: 13rem;
-    height: 14rem;
+    height: auto;
+    min-height: 15rem;
     border-radius: 0.2rem;
     padding: 0.5rem;
     border: 1px solid var(--border-div-color);
@@ -199,18 +211,86 @@ header {
     opacity: 50%;
 }
 
-.product #title {
-    font-size: 1.5rem;
+.product-title {
+    padding: 0.3rem 0;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    color: #2b2b2b;
     font-weight: 600;
+    word-break: break-word;
 }
 
-.product #price {
+.product-price {
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     font-family: "Roboto";
-    color: #5f5f5f;
-    font-weight: 800;
+    color: var(--color-text-price);
+    font-weight: 600;
     margin-left: 1rem;
+}
+
+.windowdetails {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #ffffff80;
+    transition: all ease 0.5s;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+footer {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-footer);
+    border-top: 1px solid var(--border-footer);
+}
+
+.paginated {
+    display: flex;
+}
+
+.paginated .arrowleft,
+.paginated .arrowright {
+    border: 1px solid var(--border-div-color);
+    border-radius: 0.4rem;
+    opacity: 70%;
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.6rem;
+    margin: 0 0.5rem;
+    color: var(--color-text-price);
+    display: flex;
+    justify-content: center;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.paginated strong {
+    color: var(--color-text-price);
+    opacity: 80%;
+    font-size: 1.7rem;
+    font-weight: 500;
+    font-family: "Roboto";
+}
+
+.paginated .arrowleft:hover,
+.paginated .arrowright:hover {
+    opacity: 100%;
+    width: 2.3rem;
+    height: 2.3rem;
+}
+
+@media(min-width: 280px) {
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    }
 }
 
 @media (min-width: 370px) {
@@ -225,23 +305,9 @@ header {
     }
 }
 
-.products {
-    grid-template-rows: repeat(auto-fit, minmax(15rem, 19rem));
-}
-
-.product {
-    width: 15rem;
-    height: 14.5rem;
-}
-
 .product img {
     width: 12rem;
     height: 8.5rem;
-}
-
-.product #title {
-    font-size: 1.5rem;
-    font-weight: 600;
 }
 
 @media (min-width:410px) {
@@ -251,8 +317,9 @@ header {
     .products {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-        grid-template-rows: repeat(auto-fit, minmax(15rem, 18rem));
+        grid-template-rows: repeat(auto-fit, minmax(12rem, 15rem));
         grid-column-gap: 0.3rem;
+        grid-row-gap: 3rem;
     }
     .product {
         width: 17rem;
@@ -262,7 +329,7 @@ header {
         width: 12rem;
         height: 8.5rem;
     }
-    .product #title {
+    .product .product-title {
         font-size: 1.5rem;
         font-weight: 600;
     }
@@ -329,7 +396,11 @@ header {
         margin-bottom: 0.5rem;
     }
     .products {
-        grid-template-rows: repeat(auto-fit, minmax(15rem, 20rem));
+        margin-top: 13rem;
+        padding-top: 2rem;
+        grid-template-rows: repeat(auto-fit, minmax(13rem, 14rem));
+        grid-column-gap: 0.3rem;
+        grid-row-gap: 3rem;
     }
 }
 
@@ -411,10 +482,6 @@ header {
     .product img {
         width: 16rem;
         height: 10rem;
-    }
-    .product #title {
-        font-size: 1.5rem;
-        font-weight: 600;
     }
 }
 
