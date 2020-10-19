@@ -47,7 +47,32 @@ products.map((item, index) => {
     c('.products').append(ProductItem)
 
     ProductItem.addEventListener('click', () => {
-        
+        c('.windowdetails').style.opacity = 0;
+        c('.windowdetails').style.display = 'flex'
+        setTimeout(() => {
+            c('.windowdetails').style.opacity = 1;
+            c('#body-modal').style.overflow = 'hidden'
+
+            c('.product-title h2').innerHTML = item.name
+            c('.windowdetails .product-price').innerHTML = `R$: ${item.price.toFixed(2)}`;
+            c('.product-amount').innerHTML = ` ${item.amount}  Disponíveis`
+            c('.product-description').innerHTML = item.description
+
+            const modal = c('.product-modal')
+            c('.windowdetails').addEventListener('click', function(e) {
+
+                if (!modal.contains(e.target)) {
+                    setTimeout(() => {
+                        c('.windowdetails').style.opacity = 0;
+                        c('.windowdetails').style.display = 'none'
+                        c('#body-modal').style.overflow = 'initial'
+
+                    }, 200)
+                }
+            })
+
+        }, 200)
+
     })
 
 })
