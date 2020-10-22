@@ -28,7 +28,7 @@ if (token) {
     buttonRegister.classList.add('logged')
     buttonLogin.classList.add('logged')
     buttonLogout.style.display = 'flex'
-    buttonCart.style.display = administrador == 0 ? 'flex' : 'none'
+    buttonCart.style.display = 'flex'
     buttonDashboard.style.display = administrador == 1 ? 'flex' : 'none'
 }
 
