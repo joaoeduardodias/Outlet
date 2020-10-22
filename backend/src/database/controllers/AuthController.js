@@ -26,8 +26,8 @@ module.exports = {
                 }
 
                 if (result == true) {
-                    const { administrador, name } = verifyUser;
-                    const token = jwt.sign({ administrador, name },
+                    const { id, administrador, name } = verifyUser;
+                    const token = jwt.sign({ id, administrador, name },
                         process.env.SECRET, {
                             expiresIn: 86400, // expires in 24 hr
                         }
@@ -110,11 +110,9 @@ module.exports = {
             const [verify] = await Connection("Tokens")
                 .select("user_id", "token_expired")
                 .where("token", token);
-
             const [verifyUser] = await Connection("Users")
                 .select("id")
                 .where("id", verify.user_id);
-
             if (!verifyUser) {
                 return res.status(401).json({ message: "Token Inválido" });
             }
