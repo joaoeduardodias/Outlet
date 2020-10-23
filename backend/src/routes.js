@@ -48,7 +48,13 @@ routes.put('/product/:id', midellwareauth, ProductController.update)
 routes.delete('/product/:id', midellwareauth, ProductController.delete)
 
 //  Products_Sold
+
+// list all sales- lista todas as vendas
 routes.get('/product_sold', midellwareauth, User_Product.index)
+    // list all sales between- lista todas as vendas entre 
+routes.get('/product_sold_between', midellwareauth, User_Product.indexBetween)
+routes.get('/product_sold_betweenCount', midellwareauth, User_Product.sumBetween)
+
 
 routes.post('/product_sold/:id', midellwareauth, User_Product.create) // id do produto
 

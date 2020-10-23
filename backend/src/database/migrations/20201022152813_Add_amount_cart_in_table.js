@@ -1,5 +1,3 @@
-const Knex = require("knex");
-
 exports.up = function(knex) {
     return knex.schema.table("User_Product", (table) => {
         table.renameColumn('amount', 'amount_cart')
