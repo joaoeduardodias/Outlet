@@ -1,6 +1,7 @@
 const Connection = require('../../database')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
+const { ClientRequest } = require('http')
 module.exports = {
     async index(next, res) {
         try {
@@ -54,6 +55,27 @@ module.exports = {
                 return id_user = decoded.id
             });
             const { amount_sold, value_total } = req.body
+
+            const { amount } = await Connection("Products").select('amount').where('id', id_product).first() // estoque
+
+            if (amount <= 0) {
+                const available = 0;
+                await Connection("Products").update({ available }).where('id', id_product)
+                return res.json({ message: 'Product unavailable' }) // produto indisponivel
+            }
+            let newAmount = amount - amount_sold;
+            if (newAmount < 0) {
+                return res.json({ message: "Quantity unavailable" })
+            }
+            if (newAmount == 0) {
+                const available = 0;
+                await Connection("Products").update({ available }).where('id', id_product)
+                return res.send()
+
+            }
+
+
+
             const id_sold = crypto.randomBytes(3).toString('HEX')
 
             await Connection('User_Product').insert({
@@ -63,6 +85,13 @@ module.exports = {
                 amount_sold,
                 value_total
             })
+
+            await Connection("Products").update({
+                amount: newAmount
+            }).where('id', id_product)
+
+
+
             return res.status(201).send()
 
         } catch (error) {
