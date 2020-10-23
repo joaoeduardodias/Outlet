@@ -1,6 +1,8 @@
 const express = require('express')
 const routes = express.Router()
 const jwt = require('jsonwebtoken');
+const multer = require('multer')
+const multerConfig = require('./config/multer')
 
 
 async function midellwareauth(req, res, next) {
@@ -58,7 +60,8 @@ routes.get('/product_sold_betweenCount', midellwareauth, User_Product.sumBetween
 
 routes.post('/product_sold/:id', midellwareauth, User_Product.create) // id do produto
 
-
+// Upload 
+routes.post('/upload', multer(multerConfig).single('file'), ProductController.upload)
 
 
 

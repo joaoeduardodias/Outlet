@@ -102,5 +102,9 @@ module.exports = {
         } catch (error) {
             next(error)
         }
+    },
+    async upload(req, res) {
+        console.log(req.file)
     }
+
 }
