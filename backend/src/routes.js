@@ -61,7 +61,9 @@ routes.get('/product_sold_betweenCount', midellwareauth, User_Product.sumBetween
 routes.post('/product_sold/:id', midellwareauth, User_Product.create) // id do produto
 
 // Upload 
-routes.post('/upload', multer(multerConfig).single('file'), ProductController.upload)
+routes.post('/upload/:idProduct', multer(multerConfig).single('files'), ProductController.upload)
+routes.get('/upload', ProductController.indexIMG)
+routes.delete('/upload/:id', ProductController.deleteIMG)
 
 
 
