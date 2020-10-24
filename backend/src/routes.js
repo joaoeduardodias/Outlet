@@ -28,6 +28,7 @@ const UserController = require('./database/controllers/UserController')
 const AuthController = require('./database/controllers/AuthController');
 const ProductController = require('./database/controllers/ProductController');
 const User_Product = require('./database/controllers/User_Product');
+const UploadController = require('./database/controllers/UploadController');
 
 //  CRUD de usuários
 routes.get('/users', midellwareauth, UserController.index)
@@ -61,9 +62,9 @@ routes.get('/product_sold_betweenCount', midellwareauth, User_Product.sumBetween
 routes.post('/product_sold/:id', midellwareauth, User_Product.create) // id do produto
 
 // Upload 
-routes.post('/upload/:idProduct', multer(multerConfig).single('files'), ProductController.upload)
-routes.get('/upload', ProductController.indexIMG)
-routes.delete('/upload/:id', ProductController.deleteIMG)
+routes.post('/upload/:idProduct', multer(multerConfig).single('files'), UploadController.create)
+routes.get('/upload', UploadController.index)
+routes.delete('/upload/:id', UploadController.delete)
 
 
 
