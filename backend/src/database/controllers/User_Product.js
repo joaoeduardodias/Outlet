@@ -1,7 +1,6 @@
 const Connection = require('../../database')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
-const { ClientRequest } = require('http')
 module.exports = {
     async index(next, res) {
         try {

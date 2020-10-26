@@ -5,8 +5,16 @@ const fs = require('fs')
 const path = require('path')
 const { promisify } = require('util')
 module.exports = {
-
-
+    
+    
+    async index(next, res) {
+        try {
+            const data = await Connection('Images')
+            return res.json(data).send()
+        } catch (error) {
+            next(error)
+        }
+    },
 
     async create(req, res, next) {
         try {
@@ -31,18 +39,9 @@ module.exports = {
 
     },
 
-    async index(next, res) {
-        try {
-            const data = await Connection('Images')
-            return res.json(data).send()
-        } catch (error) {
-            next(error)
-        }
-    },
     async delete(req, res, next) {
         try {
             const s3 = new aws.S3();
-
             const { id } = req.params
             const { key } = await Connection('Images')
                 .select('key')
@@ -59,8 +58,8 @@ module.exports = {
                 return res.status(204).send()
 
             } else {
-                promisify(fs.unlink)(
-                    path.join(path.resolve(__dirname, '..', '..', 'tmp', 'uploads', key))
+           promisify(fs.unlink)(
+                    path.resolve(__dirname, '..','..','..', 'tmp', 'uploads', key)
                 )
             }
             return res.status(204).send()
