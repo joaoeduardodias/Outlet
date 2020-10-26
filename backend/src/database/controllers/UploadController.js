@@ -5,8 +5,8 @@ const fs = require('fs')
 const path = require('path')
 const { promisify } = require('util')
 module.exports = {
-    
-    
+
+
     async index(next, res) {
         try {
             const data = await Connection('Images')
@@ -47,7 +47,7 @@ module.exports = {
                 .select('key')
                 .where({ id })
                 .first();
-            await Connection('Images').where({ id }).del()
+            await Connection('Images').del()
 
 
             if (process.env.STORAGE_TYPE === 's3') {
@@ -58,8 +58,8 @@ module.exports = {
                 return res.status(204).send()
 
             } else {
-           promisify(fs.unlink)(
-                    path.resolve(__dirname, '..','..','..', 'tmp', 'uploads', key)
+                promisify(fs.unlink)(
+                    path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads', key)
                 )
             }
             return res.status(204).send()
