@@ -12,13 +12,14 @@ module.exports = {
             .select(
                     "Products.id",
                     "Products.name",
-                    Connection.raw(`group_concat(Images.url,url:) as urls`),
+                    Connection.raw(`group_concat(Images.url, ' --URL: ') as urls`),
+                    Connection.raw(`group_concat(Images.id, ' --ID: ') as ids`),
                     "description",
                     "price",
                     "amount",
                     "available"
                 )
-                .leftJoin('Images', 'Images.id_product', ' Products.id').groupBy('Products.id')
+                .leftJoin('Images', 'Products.id', '=', 'Images.id_product').groupBy('Products.id')
 
             return res.json(data)
 
