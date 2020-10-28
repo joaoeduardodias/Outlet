@@ -1,4 +1,10 @@
 let show = true;
+let cart = JSON.parse(localStorage.getItem('cart'))
+let key = 0
+let title = ''
+let price = 0;
+
+if (!cart) cart = []
 
 
 const c = (el) => document.querySelector(el)
@@ -50,7 +56,9 @@ products.map((item, index) => {
 
 
     ProductItem.addEventListener('click', () => {
-
+        key = item.id
+        title = item.name
+        price = item.price
         c('.windowdetails').style.opacity = 0;
         c('.windowdetails').style.display = 'flex'
         setTimeout(() => {
@@ -82,7 +90,37 @@ products.map((item, index) => {
             // add cart
         c('.add-cart').addEventListener('click', () => {
 
-            console.log('mandar para a tabela de carrinho')
+
+            let image = c('.product-img #img').getAttribute('src')
+
+            let verifyCart = cart.find((item) => item.id == key)
+            if (verifyCart > -1) {
+                c('.windowdetails').style.opacity = 0;
+
+                setTimeout(() => {
+                    c('.windowdetails').style.display = 'none'
+                    c('#body-modal').style.overflow = 'initial'
+
+                }, 200)
+
+            } else {
+                cart.push({
+                    id: key,
+                    images: image,
+                    title,
+                    price
+                })
+                localStorage.setItem('cart', JSON.stringify(cart))
+                c('.windowdetails').style.opacity = 0;
+
+                setTimeout(() => {
+                    c('.windowdetails').style.display = 'none'
+                    c('#body-modal').style.overflow = 'initial'
+
+                }, 200)
+            }
+
+
         })
 
     })
