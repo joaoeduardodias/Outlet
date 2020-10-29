@@ -336,7 +336,7 @@ header {
 }
 
 @media (min-width: 850px) {
-    .product-list {
+    .product {
         cursor: default;
         padding: 0.8rem 2rem;
         width: 100%;

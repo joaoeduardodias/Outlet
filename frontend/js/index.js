@@ -1,11 +1,9 @@
 let show = true;
-let cart = JSON.parse(localStorage.getItem('cart'))
+let cart = []
 let key = 0
 let title = ''
 let price = 0;
-
-if (!cart) cart = []
-
+let amount;
 
 const c = (el) => document.querySelector(el)
 const cs = (el) => document.querySelectorAll(el)
@@ -46,22 +44,23 @@ buttonLogout.addEventListener('click', () => {
 
 //  LIST OF PRODUCT
 products.map((item, index) => {
-    // clonar a div produto
-    let ProductItem = c('.models .product').cloneNode(true)
-        // preenche os dados
-    ProductItem.querySelector('.product img').src = item.image
-    ProductItem.querySelector('.product-title').innerHTML = item.name;
-    ProductItem.querySelector('.product-price').innerHTML = `R$: ${item.price.toFixed(2)}`;
-    c('.products').append(ProductItem)
+        // clonar a div produto
+        let ProductItem = c('.models .product').cloneNode(true)
+            // preenche os dados
+        ProductItem.querySelector('.product img').src = item.image
+        ProductItem.querySelector('.product-title').innerHTML = item.name;
+        ProductItem.querySelector('.product-price').innerHTML = `R$: ${item.price.toFixed(2)}`;
+        c('.products').append(ProductItem)
 
 
-    ProductItem.addEventListener('click', () => {
-        key = item.id
-        title = item.name
-        price = item.price
-        c('.windowdetails').style.opacity = 0;
-        c('.windowdetails').style.display = 'flex'
-        setTimeout(() => {
+        ProductItem.addEventListener('click', () => {
+            key = item.id
+            title = item.name
+            price = item.price
+            amount = item.amount
+            c('.windowdetails').style.opacity = 0;
+            c('.windowdetails').style.display = 'flex'
+            setTimeout(() => {
                 c('.windowdetails').style.opacity = 1;
                 c('#body-modal').style.overflow = 'hidden'
                 c('.product-img #img').src = item.image
@@ -87,42 +86,49 @@ products.map((item, index) => {
                 })
 
             }, 200)
-            // add cart
-        c('.add-cart').addEventListener('click', () => {
 
-
-            let image = c('.product-img #img').getAttribute('src')
-
-            let verifyCart = cart.find((item) => item.id == key)
-            if (verifyCart > -1) {
-                c('.windowdetails').style.opacity = 0;
-
-                setTimeout(() => {
-                    c('.windowdetails').style.display = 'none'
-                    c('#body-modal').style.overflow = 'initial'
-
-                }, 200)
-
-            } else {
-                cart.push({
-                    id: key,
-                    images: image,
-                    title,
-                    price
-                })
-                localStorage.setItem('cart', JSON.stringify(cart))
-                c('.windowdetails').style.opacity = 0;
-
-                setTimeout(() => {
-                    c('.windowdetails').style.display = 'none'
-                    c('#body-modal').style.overflow = 'initial'
-
-                }, 200)
-            }
 
 
         })
 
+
     })
+    // adiciona product of cart
+c('.add-cart').addEventListener('click', () => {
+    if (JSON.parse(localStorage.getItem('cart'))) cart = JSON.parse(localStorage.getItem('cart'))
+    let image = c('.product-img #img').getAttribute('src')
+
+    let verifyCart = cart.find((item) => item.id === key)
+    if (verifyCart) {
+        c('.windowdetails').style.opacity = 0;
+
+        alert('Produto ja esta no carrinho')
+        setTimeout(() => {
+            c('.windowdetails').style.display = 'none'
+            c('#body-modal').style.overflow = 'initial'
+
+        }, 200)
+        localStorage.setItem('cart', JSON.stringify(cart))
+        cart = JSON.parse(localStorage.getItem('cart'))
+
+    } else {
+        cart.push({
+            id: key,
+            images: image,
+            title,
+            price,
+            amount
+        })
+        localStorage.setItem('cart', JSON.stringify(cart))
+        cart = JSON.parse(localStorage.getItem('cart'))
+        c('.windowdetails').style.opacity = 0;
+
+        setTimeout(() => {
+            c('.windowdetails').style.display = 'none'
+            c('#body-modal').style.overflow = 'initial'
+
+        }, 200)
+    }
+
 
 })
