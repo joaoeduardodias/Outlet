@@ -4,7 +4,87 @@ let key = 0
 let title = ''
 let price = 0;
 let amount;
+const baseurl = 'http://localhost:3333'
 
+//  LIST OF PRODUCT
+async function index() {
+    try {
+        const data = await fetch(baseurl + '/', {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            mode: "cors",
+        })
+        const Products = await data.json()
+        console.log(Products)
+        Products.map((item, index) => {
+            // clonar a div produto
+            let ProductItem = c('.models .product').cloneNode(true)
+                // preenche os dados
+            if (item.available != 1) {
+                ProductItem.style.display = 'none'
+            } else {
+                let images = []
+                let idImages = []
+                console.log(ProductItem)
+                images = item.urls.split('--URL')
+                idImages = item.ids.split('--ID')
+                console.log([idImages])
+                ProductItem.querySelector('.product img').src = images[0]
+                ProductItem.querySelector('.product img').id = idImages[0]
+                ProductItem.querySelector('.product-title').innerHTML = item.name;
+                ProductItem.querySelector('.product-price').innerHTML = `R$: ${item.price.toFixed(2)}`;
+                c('.products').append(ProductItem)
+
+
+                ProductItem.addEventListener('click', () => {
+                    key = item.id
+                    title = item.name
+                    price = item.price
+                    amount = item.amount
+                    c('.windowdetails').style.opacity = 0;
+                    c('.windowdetails').style.display = 'flex'
+                    setTimeout(() => {
+                        c('.windowdetails').style.opacity = 1;
+                        c('#body-modal').style.overflow = 'hidden'
+                        c('.product-img #img').src = item.image
+                        c('.product-title h2').innerHTML = item.name
+                        c('.windowdetails .product-price').innerHTML = `R$: ${item.price.toFixed(2)}`;
+                        c('.product-amount').innerHTML = ` ${item.amount}  Disponíveis`
+                        c('.product-description').innerHTML = item.description
+
+
+                        // close modal
+                        const modal = c('.product-modal')
+                        c('.windowdetails').addEventListener('click', function(e) {
+
+                            if (!modal.contains(e.target)) {
+                                c('.windowdetails').style.opacity = 0;
+
+                                setTimeout(() => {
+                                    c('.windowdetails').style.display = 'none'
+                                    c('#body-modal').style.overflow = 'initial'
+
+                                }, 200)
+                            }
+                        })
+
+                    }, 200)
+
+
+
+                })
+
+            }
+        })
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+index()
 const c = (el) => document.querySelector(el)
 const cs = (el) => document.querySelectorAll(el)
 
@@ -42,58 +122,9 @@ buttonLogout.addEventListener('click', () => {
     location.href = '/'
 })
 
-//  LIST OF PRODUCT
-products.map((item, index) => {
-        // clonar a div produto
-        let ProductItem = c('.models .product').cloneNode(true)
-            // preenche os dados
-        ProductItem.querySelector('.product img').src = item.image
-        ProductItem.querySelector('.product-title').innerHTML = item.name;
-        ProductItem.querySelector('.product-price').innerHTML = `R$: ${item.price.toFixed(2)}`;
-        c('.products').append(ProductItem)
 
 
-        ProductItem.addEventListener('click', () => {
-            key = item.id
-            title = item.name
-            price = item.price
-            amount = item.amount
-            c('.windowdetails').style.opacity = 0;
-            c('.windowdetails').style.display = 'flex'
-            setTimeout(() => {
-                c('.windowdetails').style.opacity = 1;
-                c('#body-modal').style.overflow = 'hidden'
-                c('.product-img #img').src = item.image
-                c('.product-title h2').innerHTML = item.name
-                c('.windowdetails .product-price').innerHTML = `R$: ${item.price.toFixed(2)}`;
-                c('.product-amount').innerHTML = ` ${item.amount}  Disponíveis`
-                c('.product-description').innerHTML = item.description
-
-
-                // close modal
-                const modal = c('.product-modal')
-                c('.windowdetails').addEventListener('click', function(e) {
-
-                    if (!modal.contains(e.target)) {
-                        c('.windowdetails').style.opacity = 0;
-
-                        setTimeout(() => {
-                            c('.windowdetails').style.display = 'none'
-                            c('#body-modal').style.overflow = 'initial'
-
-                        }, 200)
-                    }
-                })
-
-            }, 200)
-
-
-
-        })
-
-
-    })
-    // adiciona product of cart
+// adiciona product of cart
 c('.add-cart').addEventListener('click', () => {
     if (JSON.parse(localStorage.getItem('cart'))) cart = JSON.parse(localStorage.getItem('cart'))
     let image = c('.product-img #img').getAttribute('src')
