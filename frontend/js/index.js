@@ -18,7 +18,6 @@ async function index() {
             mode: "cors",
         })
         const Products = await data.json()
-        console.log(Products)
         Products.map((item, index) => {
             // clonar a div produto
             let ProductItem = c('.models .product').cloneNode(true)
@@ -28,10 +27,8 @@ async function index() {
             } else {
                 let images = []
                 let idImages = []
-                console.log(ProductItem)
-                images = item.urls.split('--URL')
-                idImages = item.ids.split('--ID')
-                console.log([idImages])
+                images = item.urls.split(',')
+                idImages = item.ids.split(',')
                 ProductItem.querySelector('.product img').src = images[0]
                 ProductItem.querySelector('.product img').id = idImages[0]
                 ProductItem.querySelector('.product-title').innerHTML = item.name;
@@ -40,6 +37,9 @@ async function index() {
 
 
                 ProductItem.addEventListener('click', () => {
+									let = indeximg = 0
+
+
                     key = item.id
                     title = item.name
                     price = item.price
@@ -47,9 +47,29 @@ async function index() {
                     c('.windowdetails').style.opacity = 0;
                     c('.windowdetails').style.display = 'flex'
                     setTimeout(() => {
+
                         c('.windowdetails').style.opacity = 1;
-                        c('#body-modal').style.overflow = 'hidden'
-                        c('.product-img #img').src = item.image
+												c('#body-modal').style.overflow = 'hidden'
+												c('.product-img #img').src = images[0]
+
+												c('.product-img .arrowleft').addEventListener('click',()=>{
+													if(indeximg> 0){
+														indeximg--
+														c('.product-img #img').src = images[indeximg]
+													}
+
+												})
+												c('.product-img .arrowright').addEventListener('click',()=>{
+
+													if(indeximg < 2){
+														// tem que ter 3 fotos
+
+														indeximg++
+														c('.product-img #img').src = images[indeximg]
+													}
+
+
+												})
                         c('.product-title h2').innerHTML = item.name
                         c('.windowdetails .product-price').innerHTML = `R$: ${item.price.toFixed(2)}`;
                         c('.product-amount').innerHTML = ` ${item.amount}  Disponíveis`
@@ -62,8 +82,8 @@ async function index() {
 
                             if (!modal.contains(e.target)) {
                                 c('.windowdetails').style.opacity = 0;
-
                                 setTimeout(() => {
+																	indeximg = 0
                                     c('.windowdetails').style.display = 'none'
                                     c('#body-modal').style.overflow = 'initial'
 

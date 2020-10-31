@@ -168,7 +168,6 @@ header {
     word-break: break-all;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(14rem, 14.5rem));
     grid-column-gap: 0.3rem;
     grid-row-gap: 1.7rem;
 }
@@ -180,7 +179,7 @@ header {
 .product {
     width: 13rem;
     height: auto;
-    min-height: 15rem;
+    min-height: 19rem;
     border-radius: 0.2rem;
     padding: 0.5rem;
     border: 1px solid var(--border-div-color);
@@ -190,7 +189,8 @@ header {
     flex-grow: 0;
     background-color: var(--color-div-background);
     box-shadow: 0 2px 4px 1px var(--color-shadow);
-    transition-duration: 10ms;
+		transition-duration: 10ms;
+		grid-template-rows: 9rem auto auto auto;
 }
 
 .product:hover {
@@ -208,7 +208,8 @@ header {
 
 .product .row {
     border-top: 1px solid #6d6c6c;
-    opacity: 50%;
+		opacity: 50%;
+		margin-top: 0.5rem;
 }
 
 .product-title {
@@ -397,7 +398,7 @@ footer {
     }
 }
 
-@media (min-width: 370px) {
+@media (min-width: 300px) {
     .menu-section .menu-toggle {
         margin-left: 7rem;
     }
@@ -406,7 +407,14 @@ footer {
     }
     .menu-section.on .btn-cart {
         margin-top: 1.5rem;
-    }
+		}
+		.products {
+			grid-template-rows: repeat(auto-fit, minmax(19rem, 18.5rem));
+
+		}
+		.product{
+			min-height: 19rem;
+		}
 }
 
 .product img {
@@ -414,13 +422,14 @@ footer {
     height: 8.5rem;
 }
 
-@media (min-width:410px) {
+@media (min-width:400px) {
     .menu-section .menu-toggle {
         margin-left: 10 rem;
     }
     .products {
+			padding-top: 1.5rem;
         grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-        grid-template-rows: repeat(auto-fit, minmax(12rem, 15rem));
+        grid-template-rows: repeat(auto-fit, minmax(19rem, 18rem));
         grid-column-gap: 0.3rem;
         grid-row-gap: 3rem;
     }
@@ -429,7 +438,7 @@ footer {
         height: 15rem;
     }
     .product img {
-        width: 12rem;
+        width: 14rem;
         height: 8.5rem;
     }
     .product .product-title {
@@ -501,7 +510,7 @@ footer {
     .products {
         margin-top: 13rem;
         padding-top: 2rem;
-        grid-template-rows: repeat(auto-fit, minmax(13rem, 14rem));
+        grid-template-rows: repeat(auto-fit, minmax(17rem, 19rem));
         grid-column-gap: 0.3rem;
         grid-row-gap: 3rem;
     }
@@ -576,16 +585,18 @@ footer {
     }
     .product {
         width: 19rem;
-        height: 18rem;
-        transition: 0.3s;
+       	min-height: 21rem;
+				transition: 0.3s;
+				grid-template-rows: 12.5rem auto auto auto ;
+
     }
     .product:hover {
         width: 19.4rem;
         height: 18.4rem;
     }
     .product img {
-        width: 16rem;
-        height: 10rem;
+        width: 17rem;
+        height: 12rem;
     }
 }
 

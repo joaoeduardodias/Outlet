@@ -12,8 +12,8 @@ module.exports = {
             .select(
                     "Products.id",
                     "Products.name",
-                    Connection.raw(`group_concat(Images.url, ' --URL: ') as urls`),
-                    Connection.raw(`group_concat(Images.id, ' --ID: ') as ids`),
+                    Connection.raw(`group_concat(Images.url) as urls`),
+                    Connection.raw(`group_concat(Images.id) as ids`),
                     "description",
                     "price",
                     "amount",
