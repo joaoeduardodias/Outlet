@@ -23,7 +23,7 @@ images.addEventListener('change', function() {
                 const btnAddClone = c('.images-container label')
 
                 const PreviewImg = btnAddClone.cloneNode(true)
-                PreviewImg.querySelector('img').src = this.result
+                // PreviewImg.querySelector('img').src = this.result
                 containerImg.appendChild(PreviewImg)
 
 
