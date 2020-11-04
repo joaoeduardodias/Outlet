@@ -189,8 +189,8 @@ header {
     flex-grow: 0;
     background-color: var(--color-div-background);
     box-shadow: 0 2px 4px 1px var(--color-shadow);
-		transition-duration: 10ms;
-		grid-template-rows: 9rem auto auto auto;
+    transition-duration: 10ms;
+    grid-template-rows: 9rem auto auto auto;
 }
 
 .product:hover {
@@ -204,12 +204,13 @@ header {
     margin: 0 auto;
     border-radius: 0.2rem;
     border: none;
+    object-fit: cover;
 }
 
 .product .row {
     border-top: 1px solid #6d6c6c;
-		opacity: 50%;
-		margin-top: 0.5rem;
+    opacity: 50%;
+    margin-top: 0.5rem;
 }
 
 .product-title {
@@ -266,6 +267,7 @@ header {
     width: 25rem;
     height: 22rem;
     border-radius: 0.3rem;
+    object-fit: cover;
 }
 
 .product-img>.arrowleft,
@@ -407,19 +409,19 @@ footer {
     }
     .menu-section.on .btn-cart {
         margin-top: 1.5rem;
-		}
-		.products {
-			grid-template-rows: repeat(auto-fit, minmax(19rem, 18.5rem));
-
-		}
-		.product{
-			min-height: 19rem;
-		}
+    }
+    .products {
+        grid-template-rows: repeat(auto-fit, minmax(19rem, 18.5rem));
+    }
+    .product {
+        min-height: 19rem;
+    }
 }
 
 .product img {
     width: 12rem;
     height: 8.5rem;
+    object-fit: cover;
 }
 
 @media (min-width:400px) {
@@ -427,7 +429,7 @@ footer {
         margin-left: 10 rem;
     }
     .products {
-			padding-top: 1.5rem;
+        padding-top: 1.5rem;
         grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
         grid-template-rows: repeat(auto-fit, minmax(19rem, 18rem));
         grid-column-gap: 0.3rem;
@@ -585,10 +587,9 @@ footer {
     }
     .product {
         width: 19rem;
-       	min-height: 21rem;
-				transition: 0.3s;
-				grid-template-rows: 12.5rem auto auto auto ;
-
+        min-height: 21rem;
+        transition: 0.3s;
+        grid-template-rows: 12.5rem auto auto auto;
     }
     .product:hover {
         width: 19.4rem;

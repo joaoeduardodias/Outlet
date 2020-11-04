@@ -1,11 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/global.css">
+    <link rel="stylesheet" href="../style/dashboard.css">
+    <title>Dashboard || Outlet Multimarcas</title>
 </head>
+
 <body>
-<h1>PAINEL DE CONTROLE</h1>
+    <header>
+
+        <div class="logo">
+            <a href="/">
+                <h1>OUTLET <br/> MULTIMARCAS</h1>
+            </a>
+        </div>
+
+    </header>
+    <aside>
+
+        <a id="home"> Início</a>
+        <a id="register">Cadastrar Produto</a>
+        <a id="update">Atualizar Produto</a>
+        <a id="adm">Adiministrador</a>
+        <a id="users">Usuários</a>
+
+    </aside>
+    <main>
+        <div class="product">
+            <div class="container">
+                <h2>Cadastro de Produtos</h2>
+                <form method="post">
+                    <div class="input-container">
+                        <label for="name">Nome</label>
+                        <input id="name" name="name" type="text" placeholder="Digite o Nome do Produto" />
+                    </div>
+                    <div class="textarea-container">
+                        <label for="description">Descrição <span> (*máximo de 320 caracteres*)</span></label>
+                        <textarea id="description" name="description" maxlength="320" placeholder="Digite a descrição do Produto"></textarea>
+                    </div>
+                    <div class="input-container">
+                        <label for="price">Preço <span>(*somente números*)</span> </label>
+                        <input id="price" name="price" type="number" placeholder="R$: 00,00" />
+                    </div>
+                    <div class="input-container">
+                        <label for="amount">Quantidade <span>(*somente números*)</span></label>
+                        <input id="amount" name="amount" type="number" placeholder="Digite a Quantidade em estoque	" />
+                    </div>
+                    <div class="file-container">
+
+                        <label id="images" for="images">Fotos <span>(*selecione três imagens*)</span> </label>
+                        <div class="images-container">
+                            <label for="image[]" id="btn-add">
+															<img src="../assets/icon/add-img.svg" alt="Nova Imagem">
+														</label>
+
+                        </div>
+                    </div>
+                    <input multiple id="image[]" type="file" />
+
+
+
+
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <script src="../js/CreateProduct.js"></script>
 </body>
+
 </html>

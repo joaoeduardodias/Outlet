@@ -60,6 +60,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    cursor: default;
 }
 
 .logo>a {
@@ -73,6 +74,7 @@ header {
     color: var(--color-primary);
     letter-spacing: 0.2rem;
     text-align: center;
+    cursor: pointer;
 }
 
 .container {

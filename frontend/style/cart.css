@@ -52,6 +52,7 @@ header {
     width: 7.5rem;
     height: 6.5rem;
     margin-right: 0.5rem;
+    object-fit: cover;
 }
 
 .product-info {
@@ -272,6 +273,7 @@ header {
     .product-modal .product-img img {
         width: 35rem;
         height: 20rem;
+        object-fit: cover;
     }
     .product-modal .product-title {
         margin-left: 0.5rem;
