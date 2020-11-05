@@ -40,6 +40,56 @@ main {
 
 /* PRODUTOS */
 
+.create-product {
+    display: none;
+}
+
+.update-product {
+    display: flex;
+}
+
+.delete-product {
+    display: none;
+}
+
+nav {
+    width: 100%;
+    border-bottom: 1px solid var(--border-div-color);
+    display: flex;
+    justify-content: center;
+}
+
+#search {
+    width: 40rem;
+    height: 3.3rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-div-color);
+    border-radius: 0.4rem;
+}
+
+#btn-search {
+    width: 3.2rem;
+    height: 3.2rem;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: var(--color-primary);
+    transition-duration: 0.5s;
+}
+
+#btn-search:hover {
+    background-color: var(--color-primary-hover);
+}
+
+#btn-search img {
+    width: 2rem;
+    height: 2rem;
+}
+
 .container {
     width: 70rem;
     height: auto;
@@ -68,8 +118,8 @@ main {
 .textarea-container label,
 .file-container label {
     color: var(--color-label);
-		margin-left: 0.3rem;
-		margin-bottom: 0.1rem;
+    margin-left: 0.3rem;
+    margin-bottom: 0.1rem;
 }
 
 .input-container label span,
@@ -77,9 +127,8 @@ main {
 .file-container label span {
     color: #b1b0b0;
     font-size: 1.3rem;
-		margin-left: 1rem;
-		margin-bottom: 0.1rem;
-
+    margin-left: 1rem;
+    margin-bottom: 0.1rem;
 }
 
 .input-container input,
@@ -152,23 +201,26 @@ label#btn-add+label#btn-add img {
     border-radius: 1rem;
     cursor: default;
 }
-.btn-create{
-	display: flex;
-	justify-content: center;
-	margin-bottom: 1.5rem;
+
+.btn-create {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
 }
+
 .btn-create button {
-	width: 25rem;
-	height: 4rem;
-	background-color: var(--color-primary);
-	border: none;
-	border-radius: 0.5rem;
-	color: var(--color-text-button);
-	font-size: 1.7rem;
-	letter-spacing: 0.1rem;
-	cursor: pointer;
-	transition-duration: 0.5s;
+    width: 25rem;
+    height: 4rem;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--color-text-button);
+    font-size: 1.7rem;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    transition-duration: 0.5s;
 }
+
 .btn-create button:hover {
-	background-color: var(--color-primary-hover);
+    background-color: var(--color-primary-hover);
 }

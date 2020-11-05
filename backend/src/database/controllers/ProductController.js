@@ -31,8 +31,30 @@ module.exports = {
 
 
         } catch (error) {
-            // next(error);
-            console.log(error);
+            next(error);
+        }
+    },
+    async show(req, res, next) {
+        try {
+            const { name } = req.params
+            const product = await Connection('Products').select(
+                    "Products.id",
+                    "Products.name",
+                    "description",
+                    "price",
+                    "amount",
+                    "available",
+                    Connection.raw(`group_concat(Images.url) as urls`),
+                    Connection.raw(`group_concat(Images.id) as ids`),
+                )
+                .leftJoin('Images').groupBy('Products.id').where('Products.name', name).first()
+            if (!product) {
+                return res.json({ message: "Not existe is product" })
+            }
+
+            return res.json(product)
+        } catch (error) {
+            next(error)
         }
     },
     async create(req, res, next) {
