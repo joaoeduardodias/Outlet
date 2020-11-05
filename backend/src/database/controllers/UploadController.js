@@ -19,26 +19,23 @@ module.exports = {
     async create(req, res, next) {
         try {
             const { idProduct } = req.params
-            
-            const id = crypto.randomBytes(3).toString("HEX");
-            console.log(req.files);
-            req.files.map(async file => {
-                console.log("aqui");
-                console.log(file);
-                // let { originalname: name, size, key, location: url = "" } = file
-                // if (url === '') {
-                //     url = `${process.env.APP_URL}/files/${key}`
-                // }
 
-                // await Connection("Images").insert({
-                //     id,
-                //     name,
-                //     size,
-                //     key,
-                //     url: url,
-                //     id_product: idProduct,
-                // });
+            req.files.map(async file => {
+                const id = crypto.randomBytes(3).toString("HEX");
+                let { originalname: name, size, key, location: url = "" } = file
+                if (url === "") {
+                    url = `${process.env.APP_URL}/files/${key}`
+                }
+                await Connection("Images").insert({
+                    id,
+                    name,
+                    size,
+                    key,
+                    url,
+                    id_product: idProduct,
+                });
             })
+
             return res.send()
         } catch (error) {
             next(error)
@@ -54,7 +51,7 @@ module.exports = {
                 .select('key')
                 .where({ id })
                 .first();
-            await Connection('Images').del()
+            await Connection('Images').where({ id }).del()
 
 
             if (process.env.STORAGE_TYPE === 's3') {

@@ -1,8 +1,9 @@
 const crypto = require("crypto");
 const Connection = require("../../database");
 const jwt = require("jsonwebtoken");
-// const knex = require("../../database");
-// const knex = require('knex')
+const fs = require('fs')
+const path = require('path')
+const { promisify } = require('util')
 
 module.exports = {
     async index(next, res) {
@@ -58,15 +59,15 @@ module.exports = {
 
             const id = crypto.randomBytes(3).toString("HEX");
 
-            // await Connection("Products").insert({
-            //     id,
-            //     name,
-            //     price,
-            //     amount,
-            //     description,
-            // });
+            await Connection("Products").insert({
+                id,
+                name,
+                price,
+                amount,
+                description,
+            });
 
-            return res.status(201).json({message: 'create',id});
+            return res.status(201).json({ message: 'create', id });
         } catch (error) {
             // next(error)
             console.log(error);
@@ -114,7 +115,23 @@ module.exports = {
                 return res.status(401).json({ message: "User is not adm" });
             }
             const { id } = req.params;
+            const { key } = await Connection('Images')
+                .select('key')
+                .where('id_product', id)
+                .first();
+            await Connection('Images').where('id_product', id).del()
+            if (process.env.STORAGE_TYPE === 's3') {
+                s3.deleteObject({
+                    Bucket: process.env.BUCKET_NAME,
+                    Key: key
+                }).promise()
+                return res.status(204).send()
 
+            } else {
+                promisify(fs.unlink)(
+                    path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads', key)
+                )
+            }
             await Connection("Products").where({ id }).del();
             return res.status(204).send();
         } catch (error) {

@@ -6,8 +6,7 @@ const btnAdd = c('.images-container label img')
 
 
 images.addEventListener('change', function() {
-	var files = c('input[type=file]').files;
-
+    var files = c('input[type=file]').files;
 
 
     function readAndPreview(file) {
@@ -40,69 +39,77 @@ images.addEventListener('change', function() {
 
 
 
+
 })
 
 // conection api
 
 const baseurl = 'http://localhost:3333'
 async function create() {
-	try {
-		const token = localStorage.getItem('Authorization')
-				const { value: name } = document.getElementById('name')
+    try {
+        const token = localStorage.getItem('Authorization')
+        const { value: name } = document.getElementById('name')
         const { value: description } = document.getElementById('description')
         const { value: price } = document.getElementById('price')
-				const { value: amount } = document.getElementById('amount')
-				const product = {
-					name,
-					description,
-					price,
-					amount
-				}
-		const data = await fetch(baseurl+'/product',{
-			method:'Post',
-			headers: {
-				'Content-Type': 'application/json',
-				'Accept': 'application/json',
-				'authorization':'Bearer '+ token
-		},
-		mode: "cors",
-		body: JSON.stringify(product)
-		})
-		const value = await data.json()
-		var form = new FormData()
-		form.append('image',document.getElementById('formdata'))
-		await fetch(`${baseurl}/upload/${value.id}`,{
-			method: 'Post',
-			mode: 'cors',
-			body: form
-		})
+        const { value: amount } = document.getElementById('amount')
+        const product = {
+            name,
+            description,
+            price,
+            amount
+        }
+        const data = await fetch(baseurl + '/product', {
+            method: 'Post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'authorization': 'Bearer ' + token
+            },
+            mode: "cors",
+            body: JSON.stringify(product)
+        })
 
-		if(value.message == `Token invalid.`){
-			location.href = "./login.html"
-		}
-		if(value.message == `There is already a product with that name`){
-			alert('Já existe um produto com esse nome !')
-		}
-		if(value.message == 'create'){
-			const btn = c('.btn-create button')
-			setTimeout(()=>{
-				btn.style.backgroundColor = '#1cca0c';
-				btn.innerText = "Produto Criado"
-				setTimeout(()=>{
-					btn.style.backgroundColor = '#f67600';
-					btn.innerText = "Cadastrar Produto"
+        const value = await data.json()
+        const form = new FormData()
+        const images = Array.from(c('input[type=file]').files)
+        images.forEach(image => {
+            form.append('image[]', image)
+        })
 
-					},1500)
-			},400)
+        await fetch(`${baseurl}/upload/${value.id}`, {
+            method: 'Post',
+            mode: "cors",
+            body: form
 
-		}
+        })
 
-	} catch (error) {
-		console.log(error);
-	}
+        if (value.message == `Token invalid.`) {
+            location.href = "./login.html"
+        }
+        if (value.message == `There is already a product with that name`) {
+            alert('Já existe um produto com esse nome !')
+        }
+        if (value.message == 'create') {
+            const btn = c('.btn-create button')
+            setTimeout(() => {
+                btn.style.backgroundColor = '#1cca0c';
+                btn.innerText = "Produto Criado"
+                setTimeout(() => {
+                    btn.style.backgroundColor = '#f67600';
+                    btn.innerText = "Cadastrar Produto"
+                    location.reload()
+
+                }, 1500)
+            }, 400)
+
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
 }
-c('.btn-create button').addEventListener('click',(e)=>{
+c('.btn-create button').addEventListener('click', (e) => {
 
-	e.preventDefault()
-	create()
+    e.preventDefault()
+    create()
 })

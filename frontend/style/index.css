@@ -282,6 +282,7 @@ header {
     align-items: center;
     background-color: #dfdfdf64;
     opacity: 20%;
+    cursor: pointer;
     transition: .5s;
 }
 
