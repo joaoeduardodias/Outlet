@@ -58,15 +58,15 @@ module.exports = {
 
             const id = crypto.randomBytes(3).toString("HEX");
 
-            await Connection("Products").insert({
-                id,
-                name,
-                price,
-                amount,
-                description,
-            });
+            // await Connection("Products").insert({
+            //     id,
+            //     name,
+            //     price,
+            //     amount,
+            //     description,
+            // });
 
-            return res.status(201).send();
+            return res.status(201).json({message: 'create',id});
         } catch (error) {
             // next(error)
             console.log(error);

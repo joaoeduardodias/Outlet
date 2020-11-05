@@ -10,6 +10,7 @@ const storageTypes = {
             cb(null, path.resolve(__dirname, '..', '..', 'tmp', 'uploads'))
         },
         filename: (req, file, cb) => {
+            
             crypto.randomBytes(16, (err, hash) => {
                 if (err) cb(err);
                 file.key = `${hash.toString('HEX')}-${file.originalname}`
@@ -37,7 +38,7 @@ module.exports = {
     dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
     storage: storageTypes[process.env.STORAGE_TYPE],
     limits: {
-        fileSize: 2 * 1024 * 1024,
+        fileSize: 3 * 1024 * 1024, files: 4
     },
     fileFilter: (req, file, cb) => {
         const allowedMimes = [

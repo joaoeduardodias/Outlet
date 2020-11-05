@@ -35,19 +35,19 @@
                 <form method="post">
                     <div class="input-container">
                         <label for="name">Nome</label>
-                        <input id="name" name="name" type="text" placeholder="Digite o Nome do Produto" />
+                        <input required id="name" name="name" type="text" placeholder="Digite o Nome do Produto" />
                     </div>
                     <div class="textarea-container">
                         <label for="description">Descrição <span> (*máximo de 320 caracteres*)</span></label>
-                        <textarea id="description" name="description" maxlength="320" placeholder="Digite a descrição do Produto"></textarea>
+                        <textarea required id="description" name="description" maxlength="320" placeholder="Digite a descrição do Produto"></textarea>
                     </div>
                     <div class="input-container">
                         <label for="price">Preço <span>(*somente números*)</span> </label>
-                        <input id="price" name="price" type="number" placeholder="R$: 00,00" />
+                        <input required id="price" name="price" type="number" placeholder="R$: 00,00" />
                     </div>
                     <div class="input-container">
                         <label for="amount">Quantidade <span>(*somente números*)</span></label>
-                        <input id="amount" name="amount" type="number" placeholder="Digite a Quantidade em estoque	" />
+                        <input required id="amount" name="amount" type="number" placeholder="Digite a Quantidade em estoque	" />
                     </div>
                     <div class="file-container">
 
@@ -58,13 +58,19 @@
 														</label>
 
                         </div>
-                    </div>
-                    <input multiple id="image[]" type="file" />
+										</div>
+										<div class="btn-create">
+											<button >Cadastrar Produto</button>
+										</div>
 
 
 
 
-                </form>
+									</form>
+											<form method="POST" enctype="multipart/form-data" id="formdata">
+												<input multiple id="image[]" type="file" />
+
+											</form>
             </div>
         </div>
 

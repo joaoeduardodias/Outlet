@@ -60,7 +60,7 @@ main {
 .input-container,
 .textarea-container {
     display: flex;
-    margin: 1rem 0;
+    margin: 3rem 0;
     flex-direction: column;
 }
 
@@ -68,7 +68,8 @@ main {
 .textarea-container label,
 .file-container label {
     color: var(--color-label);
-    margin-left: 0.3rem;
+		margin-left: 0.3rem;
+		margin-bottom: 0.1rem;
 }
 
 .input-container label span,
@@ -76,7 +77,9 @@ main {
 .file-container label span {
     color: #b1b0b0;
     font-size: 1.3rem;
-    margin-left: 1rem;
+		margin-left: 1rem;
+		margin-bottom: 0.1rem;
+
 }
 
 .input-container input,
@@ -148,4 +151,24 @@ label#btn-add+label#btn-add img {
     object-fit: cover;
     border-radius: 1rem;
     cursor: default;
+}
+.btn-create{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1.5rem;
+}
+.btn-create button {
+	width: 25rem;
+	height: 4rem;
+	background-color: var(--color-primary);
+	border: none;
+	border-radius: 0.5rem;
+	color: var(--color-text-button);
+	font-size: 1.7rem;
+	letter-spacing: 0.1rem;
+	cursor: pointer;
+	transition-duration: 0.5s;
+}
+.btn-create button:hover {
+	background-color: var(--color-primary-hover);
 }
