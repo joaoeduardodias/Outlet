@@ -45,7 +45,7 @@ main {
 }
 
 .update-product {
-    display: flex;
+    display: none;
 }
 
 .delete-product {
@@ -164,7 +164,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 0.5rem;
 }
 
-.file-container #btn-add {
+.file-container .btn-add {
     height: 9rem;
     background-color: #f5f8fa;
     border: 1px dashed #ff820ee7;
@@ -190,16 +190,51 @@ input[type=file] {
     max-width: 10rem;
 }
 
-label#btn-add+label#btn-add {
+label.btn-add+label.btn-add {
     border: none;
+    position: relative;
 }
 
-label#btn-add+label#btn-add img {
+img.trash-img {
+    display: none;
+}
+
+label.btn-add+label.btn-add .removeimg {
+    position: absolute;
+    visibility: initial;
+    background-color: #FFF;
+    z-index: 1;
+    width: 3.8rem;
+    height: 3.8rem;
+    border-radius: 0 1rem 0 2rem;
+    border: 1px solid #D3E2E5;
+    top: 0;
+    left: 6.3rem;
+}
+
+.removeimg {
+    visibility: hidden;
+    /* display: none; */
+}
+
+label.btn-add+label.btn-add .trash-img {
+    position: absolute;
+    display: flex;
+    width: 3.5rem;
+    height: 3.5rem;
+    z-index: 2;
+    left: 0.1rem;
+    top: -0.2rem;
+    cursor: pointer;
+}
+
+label.btn-add+label.btn-add .img {
     width: 100%;
     height: 9rem;
     object-fit: cover;
     border-radius: 1rem;
     cursor: default;
+    transition-duration: 0.5s;
 }
 
 .btn-create {

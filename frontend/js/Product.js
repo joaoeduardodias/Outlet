@@ -33,13 +33,15 @@ c('#update').addEventListener('click', () => {
 
 const images = document.getElementById('image[]')
 const btnAdd = c('.images-container label img')
+var files = c('input[type=file]').files;
 
 // preview images
 images.addEventListener('change', function() {
-    var files = c('input[type=file]').files;
+    files = c('input[type=file]').files;
 
 
     function readAndPreview(file) {
+
 
         // Make sure `file.name` matches our extensions criteria
         if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
@@ -48,9 +50,9 @@ images.addEventListener('change', function() {
             reader.addEventListener("load", function() {
                 const containerImg = c('.images-container')
                 const btnAddClone = c('.images-container label')
-
                 const PreviewImg = btnAddClone.cloneNode(true)
                 PreviewImg.querySelector('img').src = this.result
+
                 containerImg.appendChild(PreviewImg)
 
 
@@ -67,10 +69,8 @@ images.addEventListener('change', function() {
     }
 
 
-
-
-
 })
+
 
 // conection api
 
@@ -100,6 +100,7 @@ async function create() {
         })
 
         const value = await data.json()
+
         const form = new FormData()
         const images = Array.from(c('input[type=file]').files)
         images.forEach(image => {
@@ -145,7 +146,11 @@ c('.btn-create button').addEventListener('click', (e) => {
 })
 
 // UPDATE PRODUCT
-async function update() {
+
+let idProduct;
+let url;
+
+async function previewProduct() {
     const { value: nameProduct } = c('#search')
     const product = await fetch(`${baseurl}/show/${nameProduct}`, {
         method: "GET",
@@ -162,13 +167,18 @@ async function update() {
     }
 
     const { id, name, description, amount, available, price, urls, ids } = data
+    idProduct = id
+    url = urls.split(',')
     document.getElementById('name').value = name
     document.getElementById('description').value = description
     document.getElementById('price').value = price
     document.getElementById('amount').value = amount
         // document.getElementById('available').value = available
-    const idProduct = id;
-    const url = urls.split(',')
+}
+
+async function update() {
+
+
     url.map(item => {
         const containerImg = c('.images-container')
         const btnAddClone = c('.images-container label')
@@ -207,5 +217,8 @@ async function update() {
 }
 
 c('#btn-search').addEventListener('click', () => {
-    update()
-})
+        previewProduct()
+    })
+    // c('#btn-update').addEventListener('click', () => {
+    //     update()
+    // })
