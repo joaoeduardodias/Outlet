@@ -39,7 +39,6 @@ var files = c('input[type=file]').files;
 images.addEventListener('change', function() {
     files = c('input[type=file]').files;
 
-
     function readAndPreview(file) {
 
 
@@ -75,6 +74,7 @@ images.addEventListener('change', function() {
 // conection api
 
 const baseurl = 'http://localhost:3333'
+// create product
 async function create() {
     try {
         const token = localStorage.getItem('Authorization')
@@ -93,7 +93,7 @@ async function create() {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + token
             },
             mode: "cors",
             body: JSON.stringify(product)
@@ -139,17 +139,16 @@ async function create() {
         console.log(error);
     }
 }
-c('.btn-create button').addEventListener('click', (e) => {
+// c('.btn-create button').addEventListener('click', (e) => {
 
-    e.preventDefault()
-    create()
-})
+//     e.preventDefault()
+//     create()
+// })
 
 // UPDATE PRODUCT
 
 let idProduct;
-let url;
-
+let ImagesPreview= new Array()
 async function previewProduct() {
     const { value: nameProduct } = c('#search')
     const product = await fetch(`${baseurl}/show/${nameProduct}`, {
@@ -165,29 +164,56 @@ async function previewProduct() {
         alert("Nenhum Produto encontrado")
         return;
     }
-
+    const token = localStorage.getItem('Authorization')
     const { id, name, description, amount, available, price, urls, ids } = data
     idProduct = id
-    url = urls.split(',')
+    let url = urls.split(',')
+    let idImage = ids.split(',')
+    ImagesPreview.push(url)
+    ImagesPreview.push(idImage)
+    const convertArrayToObject = (array, key) => {
+      const initialValue = {};
+      return array.reduce((obj, item) => {
+        return {
+          ...obj,
+          [item[key]]: item,
+        };
+      }, initialValue);
+    };
+    convertArrayToObject(ImagesPreview,id)
     document.getElementById('name').value = name
     document.getElementById('description').value = description
     document.getElementById('price').value = price
     document.getElementById('amount').value = amount
         // document.getElementById('available').value = available
+        ImagesPreview.map((item ,index)=> {
+          console.log(item[0]);
+          // const containerImg = c('.images-container')
+          // const btnAddClone = c('.images-container label')
+          // const PreviewImg = btnAddClone.cloneNode(true)
+          // PreviewImg.querySelector('img').src = item
+          // PreviewImg.querySelector('.removeimg').addEventListener('click',async()=>{
+          //   await fetch(`${baseurl}/upload/${url[index]}`,{
+          //     method: 'DELETE',
+          //     headers: {
+          //       'Authorization': 'Bearer ' + token
+          //     },
+          //     mode: "cors"
+          //   })
+          //   url.splice(index,1)
+
+
+          // })
+          // containerImg.appendChild(PreviewImg)
+      })
+
 }
 
 async function update() {
 
 
-    url.map(item => {
-        const containerImg = c('.images-container')
-        const btnAddClone = c('.images-container label')
-        const PreviewImg = btnAddClone.cloneNode(true)
-        PreviewImg.querySelector('img').src = item
-        containerImg.appendChild(PreviewImg)
-    })
 
-    // update
+
     const token = localStorage.getItem('Authorization')
     const { value: newname } = document.getElementById('name')
     const { value: newdescription } = document.getElementById('description')
@@ -198,19 +224,23 @@ async function update() {
         description: newdescription,
         price: newprice,
         amount: newamount,
-        available,
+        // available,
     }
-    await fetch(`${baseurl}/product/${idProduct}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'authorization': 'Bearer ' + token
-        },
-        mode: "cors",
-        body: JSON.stringify(newProduct)
+    // await fetch(`${baseurl}/product/${idProduct}`, {
+    //     method: 'PUT',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'Accept': 'application/json',
+    //         'authorization': 'Bearer ' + token
+    //     },
+    //     mode: "cors",
+    //     body: JSON.stringify(newProduct)
+    // })
+    url.map(item =>{
+
+      console.log(btnImage);
+
     })
-    const btnImage = c('.images-container label')
 
     // await fetch(`${baseurl}/upload/${}`)
 
@@ -219,6 +249,7 @@ async function update() {
 c('#btn-search').addEventListener('click', () => {
         previewProduct()
     })
-    // c('#btn-update').addEventListener('click', () => {
-    //     update()
-    // })
+    c('#btn-update').addEventListener('click', (e) => {
+      e.preventDefault()
+        update()
+    })

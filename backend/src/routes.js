@@ -65,7 +65,7 @@ routes.post('/product_sold/:id', midellwareauth, User_Product.create) // id do p
 // Upload 
 routes.post('/upload/:idProduct', multer(multerConfig).array('image[]'), UploadController.create)
 routes.get('/upload', UploadController.index)
-routes.delete('/upload/:id', UploadController.delete)
+routes.delete('/upload/:name', UploadController.delete)
 
 
 
