@@ -149,6 +149,24 @@ async function create() {
 
 let idProduct;
 let ImagesPreview= new Array()
+let IdPreview= new Array()
+function arrayToObject(array, array1) {
+    let result = {
+        url: "",
+        id: ''
+    }
+    array.forEach((element , index)=> {
+        // result.url= element[index]
+        console.log(element[1]);
+    });
+   array1.forEach((element,index)=>{
+    // result.id = element[index]
+    console.log(element[1]);
+
+   })
+    return result;
+
+}
 async function previewProduct() {
     const { value: nameProduct } = c('#search')
     const product = await fetch(`${baseurl}/show/${nameProduct}`, {
@@ -170,24 +188,16 @@ async function previewProduct() {
     let url = urls.split(',')
     let idImage = ids.split(',')
     ImagesPreview.push(url)
-    ImagesPreview.push(idImage)
-    const convertArrayToObject = (array, key) => {
-      const initialValue = {};
-      return array.reduce((obj, item) => {
-        return {
-          ...obj,
-          [item[key]]: item,
-        };
-      }, initialValue);
-    };
-    convertArrayToObject(ImagesPreview,id)
+    IdPreview.push(idImage)
+
+
     document.getElementById('name').value = name
     document.getElementById('description').value = description
     document.getElementById('price').value = price
     document.getElementById('amount').value = amount
         // document.getElementById('available').value = available
         ImagesPreview.map((item ,index)=> {
-          console.log(item[0]);
+
           // const containerImg = c('.images-container')
           // const btnAddClone = c('.images-container label')
           // const PreviewImg = btnAddClone.cloneNode(true)
