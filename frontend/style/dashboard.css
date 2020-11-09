@@ -18,6 +18,7 @@ aside {
     flex-direction: column;
     border-right: 1px solid var(--border-div-color);
     background-color: #FFFFFa;
+    cursor: pointer;
 }
 
 aside>a {
@@ -69,7 +70,7 @@ nav {
     border-radius: 0.4rem;
 }
 
-#btn-search {
+.btn-search {
     width: 3.2rem;
     height: 3.2rem;
     border: none;
@@ -81,11 +82,11 @@ nav {
     transition-duration: 0.5s;
 }
 
-#btn-search:hover {
+.btn-search:hover {
     background-color: var(--color-primary-hover);
 }
 
-#btn-search img {
+.btn-search img {
     width: 2rem;
     height: 2rem;
 }
@@ -105,6 +106,10 @@ nav {
 .container h2 {
     margin-top: 1rem;
     color: var(--color-text-alert);
+}
+
+form {
+    margin: 0 auto;
 }
 
 .input-container,
@@ -153,6 +158,85 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+
+/* available */
+
+.available-container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.5rem auto;
+}
+
+.available-container label {
+    font-size: 1.8rem;
+    color: var(--color-label);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 6rem;
+    height: 2.5rem;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    margin-bottom: 0.5rem;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.6rem;
+    width: 1.6rem;
+    left: 0.4rem;
+    bottom: 0.3rem;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: var(--color-primary);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--color-primary);
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(34px);
+    -ms-transform: translateX(34px);
+    transform: translateX(34px);
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 3.4rem;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
 .file-container {
     display: flex;
     flex-direction: column;
@@ -182,7 +266,7 @@ input[type=file] {
 
 .images-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 1.6rem;
 }
 
@@ -258,4 +342,105 @@ label.btn-add+label.btn-add .img {
 
 .btn-create button:hover {
     background-color: var(--color-primary-hover);
+}
+
+.delete-product .search {
+    display: grid;
+    grid-template-columns: 41rem 5rem;
+    grid-template-rows: auto auto;
+    grid-template-areas: 'label label' 'input button';
+    margin-top: 1rem;
+}
+
+.delete-product .search label {
+    font-size: 1.6rem;
+    color: var(--color-label);
+    grid-area: label;
+    margin-left: 0.5rem;
+}
+
+.products {
+    width: 100%;
+    margin: 2rem auto;
+    word-break: break-all;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.product {
+    width: 20rem;
+    height: auto;
+    min-height: 20rem;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    border: 1px solid var(--border-div-color);
+    display: grid;
+    flex-grow: 0;
+    background-color: var(--color-div-background);
+    box-shadow: 0 2px 4px 1px var(--color-shadow);
+    transition-duration: 10ms;
+}
+
+.product:hover {
+    background-color: #FFF;
+    cursor: pointer;
+}
+
+.product img {
+    width: 18rem;
+    height: 13rem;
+    margin: 0 auto;
+    border-radius: 0.2rem;
+    border: none;
+    object-fit: cover;
+}
+
+.product .row {
+    border-top: 1px solid #6d6c6c;
+    opacity: 50%;
+    margin-top: 0.5rem;
+}
+
+.product-title {
+    padding: 0.3rem 0;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    color: #2b2b2b;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.product-price {
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
+    font-family: "Roboto";
+    color: var(--color-text-price);
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+.btn-delete {
+    width: 100%;
+    margin: 1rem 0;
+    display: none;
+    justify-content: center;
+}
+
+#btn-delete {
+    width: 25rem;
+    height: 4rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--color-text-button);
+    background-color: var(--color-trash);
+    letter-spacing: 0.1rem;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#btn-delete:hover {
+    background-color: var(--color-trash-hover);
 }

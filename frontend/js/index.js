@@ -37,7 +37,7 @@ async function index() {
 
 
                 ProductItem.addEventListener('click', () => {
-									let = indeximg = 0
+                    let = indeximg = 0
 
 
                     key = item.id
@@ -49,31 +49,33 @@ async function index() {
                     setTimeout(() => {
 
                         c('.windowdetails').style.opacity = 1;
-												c('#body-modal').style.overflow = 'hidden'
-												c('.product-img #img').src = images[0]
+                        c('#body-modal').style.overflow = 'hidden'
+                        c('.product-img #img').src = images[0]
 
-												c('.product-img .arrowleft').addEventListener('click',()=>{
-													if(indeximg> 0){
-														indeximg--
-														c('.product-img #img').src = images[indeximg]
-													}
+                        c('.product-img .arrowleft').addEventListener('click', () => {
+                            if (indeximg > 0) {
+                                indeximg--
+                                c('.product-img #img').src = images[indeximg]
+                            }
 
-												})
-												c('.product-img .arrowright').addEventListener('click',()=>{
+                        })
+                        c('.product-img .arrowright').addEventListener('click', () => {
 
-													if(indeximg < 2){
-														// tem que ter 3 fotos
+                            if (indeximg < 2) {
+                                // tem que ter 3 fotos
 
-														indeximg++
-														c('.product-img #img').src = images[indeximg]
-													}
+                                indeximg++
+                                c('.product-img #img').src = images[indeximg]
+                            }
 
 
-												})
+                        })
                         c('.product-title h2').innerHTML = item.name
                         c('.windowdetails .product-price').innerHTML = `R$: ${item.price.toFixed(2)}`;
                         c('.product-amount').innerHTML = ` ${item.amount}  Disponíveis`
                         c('.product-description').innerHTML = item.description
+                        c('.product-id').innerHTML = `Código do Produto:     ${item.id}`;
+
 
 
                         // close modal
@@ -83,7 +85,7 @@ async function index() {
                             if (!modal.contains(e.target)) {
                                 c('.windowdetails').style.opacity = 0;
                                 setTimeout(() => {
-																	indeximg = 0
+                                    indeximg = 0
                                     c('.windowdetails').style.display = 'none'
                                     c('#body-modal').style.overflow = 'initial'
 

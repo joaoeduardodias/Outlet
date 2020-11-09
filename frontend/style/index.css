@@ -186,6 +186,7 @@ header {
     justify-self: center;
     align-self: center;
     display: grid;
+    grid-template-rows: repeat(3, auto);
     flex-grow: 0;
     background-color: var(--color-div-background);
     box-shadow: 0 2px 4px 1px var(--color-shadow);
@@ -599,6 +600,16 @@ footer {
     .product img {
         width: 17rem;
         height: 12rem;
+    }
+    .product-id {
+        border: 1px solid var(--border-div-color);
+        margin-top: 0.5rem;
+        font-size: 1.6rem;
+        background-color: #4444;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
     }
 }
 

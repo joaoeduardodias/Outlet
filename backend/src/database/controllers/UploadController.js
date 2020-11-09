@@ -46,12 +46,12 @@ module.exports = {
     async delete(req, res, next) {
         try {
             const s3 = new aws.S3();
-            const { name } = req.params
+            const { id } = req.params
             const { key } = await Connection('Images')
                 .select('key')
-                .where({ name })
+                .where({ id })
                 .first();
-            await Connection('Images').where({ name }).del()
+            await Connection('Images').where({ id }).del()
 
 
             if (process.env.STORAGE_TYPE === 's3') {

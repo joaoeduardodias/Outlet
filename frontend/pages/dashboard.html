@@ -23,6 +23,7 @@
         <a id="home"> Início</a>
         <a id="create">Cadastrar Produto</a>
         <a id="update">Atualizar Produto</a>
+        <a id="delete">Deletar Produto</a>
         <a id="adm">Adiministrador</a>
         <a id="users">Usuários</a>
     </aside>
@@ -81,12 +82,14 @@
             </form>
         </div>
         </div> -->
-        <div class="update-product">
+        <!-- <div class="update-product">
             <div class="container">
                 <h2>Atualizar Produto</h2>
                 <nav class="search">
                     <input type="text" name="search" id="search" placeholder="Digite o nome do produto que deseja atualizar" />
-                    <button id="btn-search"><img src="../assets/icon/search.svg" alt="Pesquisar"></button>
+                    <button class="btn-search .update">
+              <img src="../assets/icon/search.svg" alt="Pesquisar" />
+            </button>
                 </nav>
                 <form method="post">
                     <div class="input-container">
@@ -108,6 +111,7 @@
               <label for="price">Preço <span>(*somente números*)</span> </label>
                         <input required id="price" name="price" type="number" placeholder="R$: 00,00" />
                     </div>
+
                     <div class="input-container">
                         <label for="amount">Quantidade <span>(*somente números*)</span></label
               >
@@ -119,14 +123,31 @@
                 placeholder="Digite a Quantidade em estoque	"
               />
             </div>
-            <div class="file-container">
-              <label id="images" for="images"
-                >Fotos <span>(*selecione três imagens*)</span></label
+            <div class="available-container">
+              <label for="check">Está disponível ?</label>
+                        <label class="switch">
+                <input id="check" type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+                    </div>
+                    <div class="file-container">
+                        <label id="images" for="images">Fotos <span>(*selecione três imagens*)</span></label
               >
               <div class="images-container">
                 <label for="image[]" class="btn-add">
-                  <img class="img" src="../assets/icon/add-img.svg" alt="Nova Imagem" />
-                 <button type="button"  class="removeimg"><img class="trash-img" src="../assets/icon/removeimg.svg" alt="Deletar Imagem"></button>
+                  <img
+                    id=""
+                    class="img"
+                    src="../assets/icon/add-img.svg"
+                    alt="Nova Imagem"
+                  />
+                  <button type="button" class="removeimg">
+                    <img
+                      class="trash-img"
+                      src="../assets/icon/removeimg.svg"
+                      alt="Deletar Imagem"
+                    />
+                  </button>
                 </label>
                     </div>
             </div>
@@ -138,6 +159,33 @@
                 <input multiple id="image[]" type="file" />
             </form>
         </div>
+        </div> -->
+
+        <div class="delete-product">
+            <div class="container">
+                <h2>Deletar Produto</h2>
+                <nav class="search">
+                    <label for="search">Nome do Produto</label>
+                    <input type="text" name="search" id="search" placeholder="Digite o nome do produto que deseja apagar" />
+                    <button class="btn-search" id="btn-search-delete">
+              <img src="../assets/icon/search.svg" alt="Pesquisar" />
+            </button>
+                </nav>
+                <section class="products">
+                    <div class="product">
+                        <img src="" alt="title ">
+                        <div class="row"></div>
+                        <div class="product-title">
+                            <p> -- </p>
+                        </div>
+                    </div>
+
+                </section>
+                <div class="btn-delete">
+                    <button type="button" id="btn-delete">Deletar Produto</button>
+                </div>
+            </div>
+
         </div>
     </main>
     <script src="../js/Product.js"></script>
