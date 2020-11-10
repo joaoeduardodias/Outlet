@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/global.css" />
+    <link rel="stylesheet" href="../style/dashboard.css" />
+    <title>Dashboard || Outlet Multimarcas</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <h1>
+                    OUTLET <br /> MULTIMARCAS
+                </h1>
+            </a>
+        </div>
+    </header>
+    <aside>
+        <a href="./dashboard.html"> Início</a>
+        <a href="./createProduct.html">Cadastrar Produto</a>
+        <a href="./updateProduct.html">Atualizar Produto</a>
+        <a href="./deleteProduct.html">Deletar Produto</a>
+        <a href="./user.html">Usuários</a>
+    </aside>
+    <main>
+        <div class="update-product">
+            <div class="container">
+                <h2>Atualizar Produto</h2>
+                <nav class="search">
+                    <input type="text" name="search" id="search" placeholder="Digite o código do produto que deseja atualizar" />
+                    <button id="btn-search-update" class="btn-search">
+              <img src="../assets/icon/search.svg" alt="Pesquisar" />
+            </button>
+                </nav>
+                <form method="post">
+                    <div class="input-container">
+                        <label for="name">Nome</label>
+                        <input required id="name" name="name" type="text" placeholder="Digite o Nome do Produto" />
+                    </div>
+                    <div class="textarea-container">
+                        <label for="description">Descrição <span> (*máximo de 320 caracteres*)</span></label
+              >
+              <textarea
+                required
+                id="description"
+                name="description"
+                maxlength="320"
+                placeholder="Digite a descrição do Produto"
+              ></textarea>
+            </div>
+            <div class="input-container">
+              <label for="price">Preço <span>(*somente números*)</span> </label>
+                        <input required id="price" name="price" type="number" placeholder="R$: 00,00" />
+                    </div>
+
+                    <div class="input-container">
+                        <label for="amount">Quantidade <span>(*somente números*)</span></label
+              >
+              <input
+                required
+                id="amount"
+                name="amount"
+                type="number"
+                placeholder="Digite a Quantidade em estoque	"
+              />
+            </div>
+            <div class="available-container">
+              <label for="check">Está disponível ?</label>
+                        <label class="switch">
+                <input id="check" type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+                    </div>
+                    <div class="file-container">
+                        <label id="images" for="images">Fotos <span>(*selecione três imagens*)</span></label
+              >
+              <div class="images-container">
+                <label for="image[]" class="btn-add">
+                  <img
+                    id=""
+                    class="img"
+                    src="../assets/icon/add-img.svg"
+                    alt="Nova Imagem"
+                  />
+                  <button type="button" class="removeimg">
+                    <img
+                      class="trash-img"
+                      src="../assets/icon/removeimg.svg"
+                      alt="Deletar Imagem"
+                    />
+                  </button>
+                </label>
+                    </div>
+            </div>
+            <div class="btn-create" id="btn-update">
+                <button>Atualizar Produto</button>
+            </div>
+            </form>
+            <form method="POST" enctype="multipart/form-data" id="formdata">
+                <input multiple id="image[]" type="file" />
+            </form>
+        </div>
+        </div>
+    </main>
+    <script src="../js/updateProduct.js"></script>
+</body>
+
+</html>

@@ -24,9 +24,11 @@ aside {
 aside>a {
     height: 5rem;
     text-align: center;
+    text-decoration: none;
     padding-top: 1.5rem;
     border-bottom: 1px solid var(--border-div-color);
     transition-duration: .5s;
+    color: var(--color-text-link);
 }
 
 aside>a:hover {
@@ -35,22 +37,7 @@ aside>a:hover {
 
 main {
     grid-area: main;
-    background-color: #DDD1E8;
-}
-
-
-/* PRODUTOS */
-
-.create-product {
-    display: none;
-}
-
-.update-product {
-    display: none;
-}
-
-.delete-product {
-    display: none;
+    background-color: var(--color-background);
 }
 
 nav {

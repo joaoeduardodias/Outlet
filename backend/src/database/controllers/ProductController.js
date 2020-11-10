@@ -36,7 +36,7 @@ module.exports = {
     },
     async show(req, res, next) {
         try {
-            const { name } = req.params
+            const { id } = req.params
             const product = await Connection('Products').select(
                     "Products.id",
                     "Products.name",
@@ -47,7 +47,7 @@ module.exports = {
                     Connection.raw(`group_concat(Images.url) as urls`),
                     Connection.raw(`group_concat(Images.id) as ids`),
                 )
-                .leftJoin('Images').groupBy('Products.id').where('Products.name', name).first()
+                .leftJoin('Images', 'Products.id', '=', 'Images.id_product').groupBy('Products.id').where('Products.id', id).first()
             if (!product) {
                 return res.json({ message: "Not existe is product" })
             }
@@ -155,7 +155,7 @@ module.exports = {
                 )
             }
             await Connection("Products").where({ id }).del();
-            return res.status(204).send();
+            return res.json({ message: 'success' })
         } catch (error) {
             next(error);
         }

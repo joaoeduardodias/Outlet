@@ -46,7 +46,7 @@ routes.post('/reset/:token', AuthController.verifyToken)
 // CRUD of Products
 
 routes.get('/', ProductController.index)
-routes.get('/show/:name', ProductController.show)
+routes.get('/show/:id', ProductController.show)
 routes.post('/product', midellwareauth, ProductController.create)
 routes.put('/product/:id', midellwareauth, ProductController.update)
 routes.delete('/product/:id', midellwareauth, ProductController.delete)
