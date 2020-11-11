@@ -48,19 +48,24 @@ cart.map((item, index) => {
             ProductItem.querySelector(
                 ".product-info-img .product-price"
             ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
-
         }
-
     });
-    // excluir product do carrinho
-    ProductItem.querySelector('.product-options .product-trash').addEventListener('click', () => {
-        console.log("passei por aqui")
-        console.log(`Index desse produto é ${index}`)
-        cart.splice(index, 1)
-        localStorage.setItem('cart', JSON.stringify(cart))
-        location.reload()
-    })
 
+    // excluir product do carrinho
+    ProductItem.querySelector(".product-options .product-trash").addEventListener(
+        "click",
+        () => {
+            console.log("passei por aqui");
+            console.log(`Index desse produto é ${index}`);
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            location.reload();
+        }
+    );
+    //comprar
+    ProductItem.querySelector('.product-purchase').addEventListener('click', () => {
+        location.href = './dataPayment.html'
+    })
     c(".section-cart").append(ProductItem);
 
     if (screenWidth < 850) {
@@ -101,7 +106,6 @@ cart.map((item, index) => {
                             ".product-modal .product-price"
                         ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
                     }
-
                 }
             );
 
