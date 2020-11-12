@@ -1,14 +1,55 @@
+const baseurl = "http://localhost:3333";
+let selectState = document.getElementById('state')
+let idState
+let IdCity
+
+
 async function listState() {
-    const data = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados', {
-        method: 'GET'
+    const data = await fetch(baseurl + '/liststate', {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        mode: 'cors'
     })
     const state = await data.json()
+
+    state.map(item => {
+        var el = document.createElement('option')
+        el.textContent = item.name
+        el.value = item.id
+        selectState.appendChild(el)
+    })
     return state
 }
 listState()
 
-let selectState = document.getElementById('state')
+function returnValueState() {
+    var value = selectState.options[selectState.selectedIndex].value
+    idState = value.toString()
+    listCity(idState)
 
-for (i = 0; i < selectState.length; i++) {
-    console.log(selectState.options[i]);
+
+}
+
+
+async function listCity(idState) {
+
+    const data = await fetch(`${baseurl}/listcity/${idState}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        mode: 'cors'
+    })
+    let selectCity = document.getElementById('city')
+    const city = await data.json()
+    city.map(item => {
+        var el = document.createElement('option')
+        el.textContent = item.name
+        el.value = item.id
+        selectCity.appendChild(el)
+    })
 }

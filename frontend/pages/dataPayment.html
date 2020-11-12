@@ -22,13 +22,16 @@
             <h3>Endereço de Entrega</h3>
             <div class="input-container">
                 <label for="state">Estado</label>
-                <select name="state" id="state">
+                <select name="state" id="state" onchange="returnValueState()">
                   <option value="">Selecione seu Estado</option>
                 </select>
             </div>
             <div class="input-container">
                 <label for="city">Cidade</label>
-                <select name="city" id="city"></select>
+                <select name="city" id="city">
+                  <option value="">Selecione sua Cidade</option>
+
+                </select>
             </div>
             <div class="input-container">
                 <label for="neighborhood">Bairro</label>

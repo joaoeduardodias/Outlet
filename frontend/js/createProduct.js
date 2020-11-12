@@ -52,8 +52,8 @@ async function create() {
             method: "Post",
             headers: {
                 "Content-Type": "application/json",
-                Accept: "application/json",
-                Authorization: "Bearer " + token,
+                "Accept": "application/json",
+                "Authorization": "Bearer " + token,
             },
             mode: "cors",
             body: JSON.stringify(product),
