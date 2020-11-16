@@ -53,3 +53,36 @@ async function listCity(idState) {
         selectCity.appendChild(el)
     })
 }
+// api
+async function create() {
+    const token = localStorage.getItem("Authorization");
+    const neighborhood = document.getElementById('neighborhood').value
+    const street = document.getElementById('street').value
+    const number = document.getElementById('number').value
+    const selectCity = docuemt.getElementById('city')
+    const id_city = selectCity.options[selectCity.selectedIndex].value
+    const idUser
+    jwt.verify(token, process.env.SECRET, function(err, decoded) {
+        idUser = decoded.id
+    });
+    console.log(idUser)
+    const address = {
+        neighborhood,
+        name: street,
+        number,
+        id_city,
+        id_users: idUser
+    }
+    const data = fetch(BaseUrl + '/address', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        mode: 'cors'
+    })
+    const message = await data.json()
+    if (message != 'success') {
+        alert('Endereço invalido, tente outro endereço')
+    }
+}
