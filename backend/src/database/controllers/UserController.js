@@ -112,6 +112,7 @@ module.exports = {
             });
             const { id } = req.params;
             if (userLogged != id) return res.json({ message: "You not Delete  other user" })
+            await Connection('Address').where('id_users', userLogged).del()
             await Connection("Users").where({ id }).del();
             return res.status(204).send();
         } catch (error) {
@@ -132,6 +133,7 @@ module.exports = {
                 return res.status(401).json({ message: "User is not adm" })
             }
             const { id } = req.params;
+            await Connection('Address').where('id_users', id).del()
             await Connection("Users").where({ id }).del();
             return res.status(204).send();
         } catch (error) {

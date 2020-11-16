@@ -69,12 +69,19 @@ routes.get('/upload', midellwareauth, UploadController.index)
 routes.delete('/upload/:id', midellwareauth, UploadController.delete)
 
 // adiciona estados e cidades
-// routes.post('/teste', AddressController.addstate)
+routes.post('/teste', AddressController.addstate)
 
 // lista estado
 routes.get('/liststate', AddressController.listState)
     // lista cidade por estado
 routes.get('/listcity/:id', AddressController.listCity)
-
+    // cria endereco
+routes.post('/address', AddressController.create)
+    // lista todos endereços cadastrados
+routes.get('/address', AddressController.index)
+    // lista os enderecos de um usuario
+routes.get('/address/:id', AddressController.show)
+    // delete
+routes.delete('/address/:id', AddressController.delete)
 
 module.exports = routes;

@@ -1,11 +1,11 @@
-const baseurl = "http://localhost:3333";
+const BaseUrl = "http://localhost:3333";
 let selectState = document.getElementById('state')
 let idState
 let IdCity
 
 
 async function listState() {
-    const data = await fetch(baseurl + '/liststate', {
+    const data = await fetch(BaseUrl + '/liststate', {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function returnValueState() {
 
 async function listCity(idState) {
 
-    const data = await fetch(`${baseurl}/listcity/${idState}`, {
+    const data = await fetch(`${BaseUrl}/listcity/${idState}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",

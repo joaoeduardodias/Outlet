@@ -1,0 +1,21 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 10rem);
+    margin-top: 1rem;
+}
+
+.container {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: initial;
+    background-color: var(--color-div-background);
+    box-shadow: 0 2px 4px 1px var(--color-shadow);
+    /* border: 1px solid var(--border-div-color); */
+    border-radius: 0.4rem;
+}
