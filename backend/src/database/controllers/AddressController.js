@@ -42,10 +42,10 @@ module.exports = {
     },
     async create(req, res, next) {
         try {
+
             const {
                 name,
                 neighborhood,
-                street,
                 number,
                 id_city,
                 id_users,

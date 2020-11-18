@@ -1,5 +1,6 @@
 const BaseUrl = "http://localhost:3333";
 let selectState = document.getElementById('state')
+let selectCity = document.getElementById('city')
 let idState
 let IdCity
 
@@ -26,6 +27,7 @@ async function listState() {
 listState()
 
 function returnValueState() {
+
     var value = selectState.options[selectState.selectedIndex].value
     idState = value.toString()
     listCity(idState)
@@ -35,7 +37,10 @@ function returnValueState() {
 
 
 async function listCity(idState) {
-
+    var length = selectCity.options.length;
+    for (i = length - 1; i >= 0; i--) {
+        selectCity.options[i] = null;
+    }
     const data = await fetch(`${BaseUrl}/listcity/${idState}`, {
         method: 'GET',
         headers: {
@@ -44,45 +49,59 @@ async function listCity(idState) {
         },
         mode: 'cors'
     })
-    let selectCity = document.getElementById('city')
     const city = await data.json()
     city.map(item => {
         var el = document.createElement('option')
+
         el.textContent = item.name
         el.value = item.id
         selectCity.appendChild(el)
     })
 }
 // api
-async function create() {
-    const token = localStorage.getItem("Authorization");
-    const neighborhood = document.getElementById('neighborhood').value
-    const street = document.getElementById('street').value
-    const number = document.getElementById('number').value
-    const selectCity = docuemt.getElementById('city')
-    const id_city = selectCity.options[selectCity.selectedIndex].value
-    const idUser
-    jwt.verify(token, process.env.SECRET, function(err, decoded) {
-        idUser = decoded.id
-    });
-    console.log(idUser)
-    const address = {
-        neighborhood,
-        name: street,
-        number,
-        id_city,
-        id_users: idUser
+async function create(idUser) {
+    try {
+        const neighborhood = document.getElementById('neighborhood').value
+        const street = document.getElementById('street').value
+        const number = document.getElementById('number').value
+        const selectCity = document.getElementById('city')
+        const id_city = selectCity.options[selectCity.selectedIndex].value
+
+        const address = {
+            neighborhood,
+            name: street,
+            number,
+            id_city,
+            id_users: idUser
+        }
+        const data = await fetch(BaseUrl + '/address', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(address),
+            mode: 'cors'
+        })
+        location.href = "../../pages/login.html"
+
+
+    } catch (error) {
+        console.log(error)
     }
-    const data = fetch(BaseUrl + '/address', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        mode: 'cors'
-    })
-    const message = await data.json()
-    if (message != 'success') {
-        alert('Endereço invalido, tente outro endereço')
-    }
+
+
 }
+
+selectState.addEventListener('change', () => {
+    selectState.style.color = '#01cA01'
+    selectState.style.border = '1px solid #22FA0E'
+
+    returnValueState()
+
+})
+
+selectCity.addEventListener('change', () => {
+    selectCity.style.color = '#01cA01'
+    selectCity.style.border = '1px solid #22FA0E'
+})

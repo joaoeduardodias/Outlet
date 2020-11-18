@@ -41,7 +41,7 @@ module.exports = {
                 whatsapp,
             });
 
-            return res.status(201).send();
+            return res.status(201).json({ idUser: id })
         } catch (error) {
             next(error);
         }

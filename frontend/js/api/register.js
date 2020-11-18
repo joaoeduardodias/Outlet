@@ -1,42 +1,41 @@
-const form = document.querySelector('form')
-form.onsubmit = function(e) {
-    Register()
-    e.preventDefault()
-}
-const baseurl = 'http://localhost:3333'
-
+const baseurl = "http://localhost:3333";
+let idUser;
 async function Register() {
     try {
-        const { value: name } = document.getElementById('name')
-        const { value: email } = document.getElementById('email')
-        const { value: telephone } = document.getElementById('telephone')
-        const { value: password } = document.getElementById('password')
+        const { value: name } = document.getElementById("name");
+        const { value: email } = document.getElementById("email");
+        const { value: telephone } = document.getElementById("telephone");
+        const { value: password } = document.getElementById("password");
         const data = {
             name,
             email,
             password,
-            whatsapp: telephone
+            whatsapp: telephone,
+        };
 
-        }
-
-
-
-        await fetch(baseurl + "/users", {
+        const dataUser = await fetch(baseurl + "/users", {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                "Content-Type": "application/json",
+                Accept: "application/json",
             },
             mode: "cors",
             body: JSON.stringify(data),
         });
-        location.href = "../../pages/login.html"
-
-
+        const message = await dataUser.json();
+        idUser = message.idUser;
     } catch (error) {
-        console.log('errou')
-        console.log(error)
+        console.log(error);
     }
-
-
 }
+
+async function tocall() {
+    await Register();
+    await create(idUser)
+}
+
+const form = document.querySelector("form");
+form.onsubmit = function(e) {
+    tocall()
+    e.preventDefault();
+};
