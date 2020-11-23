@@ -144,7 +144,18 @@ buttonLogout.addEventListener('click', () => {
     location.href = '/'
 })
 
+const tokenUser = localStorage.getItem('Authorization')
 
+if (!tokenUser) {
+    c('.add-cart').addEventListener('click', () => {
+        location.href = './pages/login.html'
+    })
+}
+const dataUser = JSON.parse(atob(tokenUser.split(".")[1])); // decodificando o token
+
+if (dataUser.administrador === 1) {
+    c('.product-id').style.display = 'flex'
+}
 
 // adiciona product of cart
 c('.add-cart').addEventListener('click', () => {

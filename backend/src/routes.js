@@ -30,6 +30,8 @@ const ProductController = require('./database/controllers/ProductController');
 const User_Product = require('./database/controllers/User_Product');
 const UploadController = require('./database/controllers/UploadController');
 const AddressController = require('./database/controllers/AddressController');
+const PaymenController = require('./database/controllers/PaymentController');
+
 
 //  CRUD de usuários
 routes.get('/users', midellwareauth, UserController.index)
@@ -83,5 +85,9 @@ routes.get('/address', AddressController.index)
 routes.get('/address/:id', AddressController.show)
     // delete
 routes.delete('/address/:id', AddressController.delete)
+
+// payment
+routes.post('/process_payment', PaymenController.create)
+
 
 module.exports = routes;
