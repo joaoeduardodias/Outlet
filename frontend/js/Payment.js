@@ -1,4 +1,4 @@
-window.Mercadopago.setPublishableKey("TEST-d63e4063-023b-47a3-872d-b371e96d507e");
+window.Mercadopago.setPublishableKey("TEST-51f8db06-c035-4c78-a0d1-0e67fc404294");
 window.Mercadopago.getIdentificationTypes();
 const baseurl = "http://localhost:3333";
 
@@ -106,7 +106,6 @@ async function setCardTokenAndPay(status, response) {
         const email = document.getElementById('email').value
         const docType = document.getElementById('docType').value
         const docNumber = document.getElementById('docNumber').value
-        console.log(transaction_amount)
         const Payment = {
             transaction_amount,
             token,
@@ -118,7 +117,7 @@ async function setCardTokenAndPay(status, response) {
             docType,
             docNumber
         }
-        const Teste = await fetch(baseurl + '/process_payment', {
+        const Response = await fetch(baseurl + '/process_payment', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -127,8 +126,47 @@ async function setCardTokenAndPay(status, response) {
             mode: 'cors',
             body: JSON.stringify(Payment)
         })
-        const data = await Teste.json()
-        console.log(data)
+        const data = await Response.json()
+        switch (data.status_detail) {
+            case 'accredited':
+                alert(`Pronto, seu pagamento foi aprovado! No resumo
+                    , você verá a cobrança do valor como ${data.statement_descriptor}.`)
+                break;
+            case 'pending_contingency':
+                alert(`Estamos processando o pagamento.
+                    Não se preocupe, em menos de 2 dias úteis
+                    informaremos por e-mail se foi creditado.`)
+                break;
+            case 'pending_review_manual':
+                alert(`Estamos processando seu pagamento.
+                    Não se preocupe, em menos de 2 dias úteis
+                    informaremos por e-mail se foi creditado ou se necessitamos de mais informação.`)
+                break;
+            case 'cc_rejected_bad_filled_card_number':
+                alert('Revise o número do cartão.')
+                break;
+            case 'cc_rejected_bad_filled_date':
+                alert('Revise a data de vencimento.')
+                break;
+            case 'cc_rejected_bad_filled_other':
+                alert('Revise os dados.')
+                break;
+            case 'cc_rejected_bad_filled_security_code':
+                alert('Revise o código de segurança do cartão.')
+                break;
+            case 'cc_rejected_card_error':
+                alert('Não conseguimos processar seu pagamento.')
+                break;
+            case 'cc_rejected_insufficient_amount':
+                alert('Saldo insuficiente')
+                break;
+            case 'cc_rejected_max_attempts':
+                alert('Você atingiu o limite de tentativas permitido.Escolha outro cartão ou outra forma de pagamento.')
+                break;
+
+        }
+
+
     } else {
         alert("Verify filled data!\n" + JSON.stringify(response, null, 4));
     }

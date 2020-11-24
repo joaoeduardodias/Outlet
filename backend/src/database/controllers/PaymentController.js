@@ -2,7 +2,7 @@
 const mercadopago = require('mercadopago');
 module.exports = {
     async create(req, res) {
-        mercadopago.configurations.setAccessToken("TEST-8113273517396248-112312-a471b7324ff5b0a19b8fc1a126ca4ec0-646358601");
+        mercadopago.configurations.setAccessToken("TEST-3078541527341225-112412-e1d0f60d041f863c6d28410526c2913e-676623518");
 
         var payment_data = {
             transaction_amount: Number(req.body.transaction_amount),
@@ -22,16 +22,15 @@ module.exports = {
 
         mercadopago.payment.save(payment_data)
             .then(function(response) {
-                console.log('teste')
-                    // res.status(response.status).json({
-                    //     status: response.body.status,
-                    //     status_detail: response.body.status_detail,
-                    //     id: response.body.id
-                    // });
+                res.status(response.status).json({
+                    status: response.body.status,
+                    status_detail: response.body.status_detail,
+                    id: response.body.id
+                });
             })
             .catch(function(error) {
                 console.log(error)
-                    // res.status(response.status).send(error);
+                res.status(response.status).send(error);
             });
 
     }
