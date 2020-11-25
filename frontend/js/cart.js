@@ -1,6 +1,7 @@
 const c = (el) => document.querySelector(el);
 const cs = (el) => document.querySelectorAll(el);
-let qtd = 1;
+import { qtdProduct } from "./global.js";
+
 let screenWidth = screen.width;
 let cart = JSON.parse(localStorage.getItem("cart"));
 cart.map((item, index) => {
@@ -17,19 +18,19 @@ cart.map((item, index) => {
     ).innerHTML = `R$: ${item.price.toFixed(2)}`;
     ProductItem.querySelector(
         ".product--item--qtarea .product--item--qt"
-    ).innerHTML = qtd;
+    ).innerHTML = qtdProduct;
     ProductItem.querySelector(
         ".product-options .product-item-qtavailable"
     ).innerHTML = `${item.amount} Disponíveis`;
     ProductItem.querySelector(
         ".product--item--qtarea .product--item-qtmenos"
     ).addEventListener("click", () => {
-        if (qtd > 1) {
-            qtd--;
+        if (qtdProduct > 1) {
+            qtdProduct--;
             ProductItem.querySelector(
                 ".product--item--qtarea .product--item--qt"
-            ).innerHTML = qtd;
-            priceTotal = price * qtd;
+            ).innerHTML = qtdProduct;
+            priceTotal = price * qtdProduct;
             ProductItem.querySelector(
                 ".product-info-img .product-price"
             ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
@@ -39,12 +40,12 @@ cart.map((item, index) => {
     ProductItem.querySelector(
         ".product--item--qtarea .product--item-qtmais"
     ).addEventListener("click", () => {
-        if (qtd < item.amount) {
-            qtd++;
+        if (qtdProduct < item.amount) {
+            qtdProduct++;
             ProductItem.querySelector(
                 ".product--item--qtarea .product--item--qt"
-            ).innerHTML = qtd;
-            priceTotal = price * qtd;
+            ).innerHTML = qtdProduct;
+            priceTotal = price * qtdProduct;
             ProductItem.querySelector(
                 ".product-info-img .product-price"
             ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
@@ -63,9 +64,12 @@ cart.map((item, index) => {
         }
     );
     //comprar
-    ProductItem.querySelector('.product-purchase').addEventListener('click', () => {
-        location.href = './dataPayment.html'
-    })
+    ProductItem.querySelector(".product-purchase").addEventListener(
+        "click",
+        () => {
+            location.href = "./dataPayment.html";
+        }
+    );
     c(".section-cart").append(ProductItem);
 
     if (screenWidth < 850) {
@@ -85,10 +89,10 @@ cart.map((item, index) => {
             c(".product-modal .product--item-qtmenos").addEventListener(
                 "click",
                 () => {
-                    if (qtd > 1) {
-                        qtd--;
-                        c(".product-modal .product--item--qt").innerHTML = qtd;
-                        priceTotal = price * qtd;
+                    if (qtdProduct > 1) {
+                        qtdProduct--;
+                        c(".product-modal .product--item--qt").innerHTML = qtdProduct;
+                        priceTotal = price * qtdProduct;
                         c(
                             ".product-modal .product-price "
                         ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
@@ -98,10 +102,10 @@ cart.map((item, index) => {
             c(".product-modal .product--item-qtmais").addEventListener(
                 "click",
                 () => {
-                    if (qtd < item.amount) {
-                        qtd++;
-                        c(".product-modal .product--item--qt").innerHTML = qtd;
-                        priceTotal = price * qtd;
+                    if (qtdProduct < item.amount) {
+                        qtdProduct++;
+                        c(".product-modal .product--item--qt").innerHTML = qtdProduct;
+                        priceTotal = price * qtdProduct;
                         c(
                             ".product-modal .product-price"
                         ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
@@ -124,9 +128,6 @@ cart.map((item, index) => {
             });
             // excluir product do carrinho
             c(".product-modal .product-trash").addEventListener("click", () => {
-                console.log("passei por aqui");
-                console.log(`Index desse produto é ${index}`);
-
                 c(".product").style.opacity = 1;
                 setTimeout(() => {
                     c(".product").style.opacity = 0;
@@ -139,3 +140,4 @@ cart.map((item, index) => {
         });
     }
 });
+console.log(qtdProduct);

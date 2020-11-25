@@ -77,7 +77,7 @@ function setInstallments(status, response) {
 
 // gerando o token do cartao
 
-doSubmit = false;
+let doSubmit = false;
 document.getElementById('paymentForm').addEventListener('submit', getCardToken);
 
 function getCardToken(event) {
@@ -97,6 +97,7 @@ async function setCardTokenAndPay(status, response) {
         card.setAttribute('type', 'hidden');
         card.setAttribute('value', response.id);
         form.appendChild(card);
+
         const transaction_amount = document.getElementById('transactionAmount').value
         const token = response.id
         const description = document.getElementById('description').value
@@ -127,10 +128,29 @@ async function setCardTokenAndPay(status, response) {
             body: JSON.stringify(Payment)
         })
         const data = await Response.json()
+        const tokenUser = localStorage.getItem('Authorization')
+
+        const Product_Sold = {
+            value_total: transaction_amount,
+            amount_sold: qtd
+
+        }
+        console.log(Product_Sold)
+
+
         switch (data.status_detail) {
             case 'accredited':
-                alert(`Pronto, seu pagamento foi aprovado! No resumo
-                    , você verá a cobrança do valor como ${data.statement_descriptor}.`)
+                alert(`Pronto, seu pagamento foi aprovado! No resumo.`)
+                    // await fetch(`${baseurl}/product_sold/${idProduct}`, {
+                    //     method: 'POST',
+                    //     headers: {
+                    //         "Content-Type": "application/json",
+                    //         "Accept": "application/json",
+                    //         'Authorization': 'Bearer' + tokenUser
+                    //     },
+                    //     mode: 'cors',
+
+                // })
                 break;
             case 'pending_contingency':
                 alert(`Estamos processando o pagamento.
