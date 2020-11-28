@@ -17,13 +17,20 @@ async function Register() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Accept: "application/json",
+                "Accept": "application/json",
             },
             mode: "cors",
             body: JSON.stringify(data),
         });
         const message = await dataUser.json();
         idUser = message.idUser;
+        if(message.message == 'Email already registered, try another'){
+          valid('Email já cadastrado')
+        }
+        if(message.message == 'success'){
+         await create(idUser)
+
+        }
     } catch (error) {
         console.log(error);
     }
@@ -31,7 +38,6 @@ async function Register() {
 
 async function tocall() {
     await Register();
-    await create(idUser)
 }
 
 const form = document.querySelector("form");

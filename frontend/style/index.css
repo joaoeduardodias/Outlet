@@ -1,3 +1,6 @@
+body{
+  max-height: 94vh;
+}
 header {
     position: fixed;
     left: 0;
@@ -9,6 +12,7 @@ header {
 .logo {
     width: 100%;
     height: 10rem;
+    margin-left: 0.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -35,7 +39,7 @@ header {
 .menu-toggle {
     width: 3rem;
     height: 3.1rem;
-    margin: 3.4rem 1.5rem 0 4rem;
+    margin: 3.4rem 1.5rem 0 3rem;
 }
 
 
@@ -60,7 +64,7 @@ header {
 
 .menu-section.on .menu-toggle {
     position: absolute;
-    right: 1.7rem;
+    right: 0.3rem;
     top: 1rem;
 }
 
@@ -167,19 +171,20 @@ header {
     margin: 11rem auto 2rem;
     word-break: break-all;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
     grid-column-gap: 0.3rem;
     grid-row-gap: 1.7rem;
 }
-
+/* .products {
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+} */
 .models {
     display: none;
 }
 
 .product {
-    width: 13rem;
+    width: 22rem;
     height: auto;
-    min-height: 19rem;
+    min-height: 22rem;
     border-radius: 0.2rem;
     padding: 0.5rem;
     border: 1px solid var(--border-div-color);
@@ -191,7 +196,7 @@ header {
     background-color: var(--color-div-background);
     box-shadow: 0 2px 4px 1px var(--color-shadow);
     transition-duration: 10ms;
-    grid-template-rows: 9rem auto auto auto;
+    /* grid-template-rows: 9rem auto auto auto; */
 }
 
 .product:hover {
@@ -200,8 +205,8 @@ header {
 }
 
 .product img {
-    width: 11rem;
-    height: 8rem;
+    width: 18rem;
+    height: 11.5rem;
     margin: 0 auto;
     border-radius: 0.2rem;
     border: none;
@@ -395,14 +400,13 @@ footer {
     width: 2.3rem;
     height: 2.3rem;
 }
-
-@media(min-width: 280px) {
-    .products {
-        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    }
+@media(min-width:320px){
+  .menu-section.on .menu-toggle {
+    right: 2.3rem;
+  }
 }
 
-@media (min-width: 300px) {
+@media (min-width: 350px) {
     .menu-section .menu-toggle {
         margin-left: 7rem;
     }
@@ -414,21 +418,25 @@ footer {
     }
     .products {
         grid-template-rows: repeat(auto-fit, minmax(19rem, 18.5rem));
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+
     }
+
     .product {
-        min-height: 19rem;
-    }
+      width: 17rem;
+      height: auto;
+      min-height: 19rem;
+  }
+  .product img {
+    width: 15rem;
+    height: 9.5rem;
+  }
 }
 
-.product img {
-    width: 12rem;
-    height: 8.5rem;
-    object-fit: cover;
-}
 
 @media (min-width:400px) {
     .menu-section .menu-toggle {
-        margin-left: 10 rem;
+        margin-left: 10rem;
     }
     .products {
         padding-top: 1.5rem;
@@ -464,8 +472,22 @@ footer {
         margin-left: 12.3rem;
     }
 }
+@media (min-width: 530px){
+  .menu-section .menu-toggle {
+    margin-left: 17.3rem;
+  }
+  .menu-section.on .menu-toggle {
+    right: 4rem;
+  }
+  .menu-section.on .menu-toggle .three {
+    transform: rotate(-45deg) translate(4.8px, -7.7px);
+}
+}
 
 @media (min-width: 700px) {
+  .products {
+    max-width: 66rem;
+  }
     .menu-section {
         margin-left: 20rem;
     }
@@ -479,7 +501,7 @@ footer {
         margin-left: 0;
     }
     .menu-section.on .menu-toggle {
-        right: 6rem;
+        right: 5.5rem;
         top: 1.3rem;
     }
     .menu-section.on nav input {
@@ -588,6 +610,7 @@ footer {
         display: none;
     }
     .products {
+      max-width: 94rem;
         margin-top: 13rem;
         grid-row-gap: 3rem;
         grid-template-columns: repeat(auto-fit, minmax(15rem, 23.1rem));

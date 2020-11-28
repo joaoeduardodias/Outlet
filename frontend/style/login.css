@@ -113,6 +113,7 @@
     color: var(--color-text-button);
     font-weight: 600;
     font-size: 2rem;
+    cursor: pointer;
     transition: background-color 0.4s;
 }
 

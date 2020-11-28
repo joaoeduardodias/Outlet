@@ -20,21 +20,24 @@ async function login() {
             headers: myHeaders,
             mode: "cors",
         });
-
+        // console.log(response.status);
         const data = await response.json();
         if (data.message === "Email incorrect") {
-            alert("Email Incorreto");
+            valid('Email Incorreto')
         }
         if (data.message === "Invalid  Password") {
-            alert("Senha Incorreta");
+          valid('Senha Incorreta')
+
+
         }
         if (data.message === "Valid") {
             const token = await response.headers.get("auth_token");
             localStorage.setItem("Authorization", token); // salvando no localStorage
             const dataUser = JSON.parse(atob(token.split(".")[1])); // decodificando o token
 
-
             if (dataUser.administrador === 1) {
+
+              document.getElementById('nameUser').innerText = dataUser.name
                 const body = document.getElementById("body-modal");
                 body.classList.add("modal");
 

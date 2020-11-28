@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="../style/global.css">
     <link rel="stylesheet" href="../style/Register.css">
+    <link rel="stylesheet" href="../style/validator.css">
     <title>Outlet Multimarcas | Faça seu Cadastro</title>
     <script src="../js/jquery-3.5.1.min.js"></script>
     <script src="../js/jquery.mask.min.js"></script>
@@ -30,19 +31,19 @@
                 <form method="post">
                     <div class="input-container">
                         <label for="name">Nome</label>
-                        <input id="name" name="name" type="text" placeholder="Digite seu Nome" />
+                        <input  required id="name" name="name" type="text" placeholder="Digite seu Nome" />
                     </div>
                     <div class="input-container">
                         <label for="email">E-mail</label>
-                        <input id="email" name="email" type="email" placeholder="Digite seu e-mail" />
+                        <input required id="email" name="email" type="email" placeholder="Digite seu e-mail" />
                     </div>
                     <div class="input-container">
                         <label for="password">Senha</label>
-                        <input id="password" name="password" type="password" placeholder="Digite sua Senha" />
+                        <input required id="password" name="password" type="password" placeholder="Digite sua Senha" />
                     </div>
                     <div class="input-container">
                         <label id="tel" for="telephone">Whatsapp</label>
-                        <input id="telephone" type="text" class="phone" name="telefone" placeholder="(00) 00000-0000" data-mask-selectonfocus="true" />
+                        <input required id="telephone" type="text" class="phone" name="telefone" placeholder="(00) 00000-0000" data-mask-selectonfocus="true" />
                     </div>
 
 
@@ -62,15 +63,15 @@
                     </div>
                     <div class="input-container">
                         <label for="neighborhood">Bairro</label>
-                        <input type="text" name="neighborhood" id="neighborhood" placeholder="Nome do Bairro">
+                        <input required type="text" name="neighborhood" id="neighborhood" placeholder="Nome do Bairro">
                     </div>
                     <div class="input-container">
                         <label id="lblstreet" for="street">Rua</label>
-                        <input type="text" name="street" id="street" placeholder="Nome da Rua">
+                        <input required type="text" name="street" id="street" placeholder="Nome da Rua">
                     </div>
                     <div class="input-container">
                         <label id="lblnumber" for="number">Número</label>
-                        <input type="number" name="number" id="number" placeholder="Número">
+                        <input required type="number" name="number" id="number" placeholder="Número">
                     </div>
 
 
@@ -86,8 +87,14 @@
             </div>
         </div>
     </main>
+    <div class="valid-email ">
+      <div class="background"></div>
+      <p></p>
+      <button id="closediv"><img src="../assets/icon/close.svg" alt="Fechar"></button>
+    </div>
     <script src="../js/api/register.js"></script>
     <script src="../js/Address.js"></script>
+    <script src="../js/validator.js"></script>
 </body>
 
 

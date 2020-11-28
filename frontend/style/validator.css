@@ -1,0 +1,96 @@
+.valid-email{
+  width: 25rem;
+  height: 7rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 11rem;
+  right: 2rem;
+  background-color: #ee1919;
+}
+.valid-email .background {
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #a52a2a;
+  width: 100%;
+  height: 7rem;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  animation: alterbackground 10s linear forwards;
+
+}
+
+.valid-email button {
+  border: none;
+  height: 100%;
+  width: 4.5rem;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 2;
+
+}
+.valid-email p {
+  color: var(--color-text-button);
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  z-index: 2;
+
+}
+.valid-email.fill {
+  animation: up 800ms linear forwards;
+}
+@media(min-width:320px){
+  .valid-email{
+    right: 4rem;
+  }
+}
+@media(min-width: 360px){
+  .valid-email{
+    right: 6rem;
+  }
+}
+@media(min-width: 400px){
+  .valid-email{
+    right: 7.5rem;
+  }
+}
+@media(min-width: 500px){
+  .valid-email{
+    right: 13.5rem;
+  }
+}
+
+@media(min-width: 700px){
+  .valid-email{
+    right: 2rem;
+    top: 14rem;
+  }
+}
+
+
+
+
+
+
+@keyframes alterbackground {
+  from{
+    width: 100%;
+  }
+  to{
+    width: 0;
+  }
+}
+@keyframes up {
+  from{
+    top: 14rem;
+  }
+  to{
+    top: -7rem
+  }
+}
+

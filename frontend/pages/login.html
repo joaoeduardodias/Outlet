@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="../style/global.css">
     <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="../style/validator.css">
     <title>Outlet Multimarcas | Login</title>
 </head>
 
@@ -38,7 +39,7 @@
 
                     </div>
                     <div class="button-container">
-                        <button type="submit" name="btn-login">Login</button>
+                        <button type="submit" id="btn-login">Login</button>
                     </div>
                 </form>
 
@@ -53,7 +54,7 @@
     </main>
 
     <div id="div-modal" class="div-modal" style="display: none;">
-        <p>Olá, João !</p>
+        <p>Olá, <span id="nameUser"></span> !</p>
         <p>Selecione <br/> para onde <br/> você deseja ir </p>
         <a href="/">
             <div class="btn-pagindex">
@@ -66,6 +67,12 @@
                 Painel de Controle
             </div>
         </a>
+    </div>
+
+    <div class="valid-email ">
+      <div class="background"></div>
+      <p></p>
+      <button id="closediv"><img src="../assets/icon/close.svg" alt="Fechar"></button>
     </div>
     <script src="../js/validator.js"></script>
     <script src="../js/api/login.js"></script>

@@ -83,7 +83,7 @@ async function create(idUser) {
             body: JSON.stringify(address),
             mode: 'cors'
         })
-        location.href = "../../pages/login.html"
+        // location.href = "../../pages/login.html"
 
 
     } catch (error) {
