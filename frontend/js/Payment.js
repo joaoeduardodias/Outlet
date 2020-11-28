@@ -45,7 +45,7 @@ function setIssuers(status, response) {
 
         getInstallments(
             document.getElementById('paymentMethodId').value,
-            document.getElementById('transactionAmount').value,
+            document.getElementById('transactionAmount').value = valueTotal,
             issuerSelect.value
         );
     } else {
@@ -98,7 +98,7 @@ async function setCardTokenAndPay(status, response) {
         card.setAttribute('value', response.id);
         form.appendChild(card);
 
-        const transaction_amount = document.getElementById('transactionAmount').value
+
         const token = response.id
         const description = document.getElementById('description').value
         const installments = document.getElementById('installments').value
@@ -108,7 +108,7 @@ async function setCardTokenAndPay(status, response) {
         const docType = document.getElementById('docType').value
         const docNumber = document.getElementById('docNumber').value
         const Payment = {
-            transaction_amount,
+            transaction_amount: valueTotal,
             token,
             description,
             installments,
@@ -131,26 +131,26 @@ async function setCardTokenAndPay(status, response) {
         const tokenUser = localStorage.getItem('Authorization')
 
         const Product_Sold = {
-            value_total: transaction_amount,
-            amount_sold: qtd
-
+            value_total: valueTotal,
+            amount_sold: qtd,
         }
-        console.log(Product_Sold)
 
 
         switch (data.status_detail) {
             case 'accredited':
-                alert(`Pronto, seu pagamento foi aprovado! No resumo.`)
-                    // await fetch(`${baseurl}/product_sold/${idProduct}`, {
-                    //     method: 'POST',
-                    //     headers: {
-                    //         "Content-Type": "application/json",
-                    //         "Accept": "application/json",
-                    //         'Authorization': 'Bearer' + tokenUser
-                    //     },
-                    //     mode: 'cors',
+                alert(`Pronto, seu pagamento foi aprovado! `)
+                await fetch(`${baseurl}/product_sold/${idProduct}`, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "Authorization": "Bearer " + tokenUser,
+                    },
+                    mode: 'cors',
+                    body: JSON.stringify(Product_Sold)
 
-                // })
+                })
+                removeCart(Index)
                 break;
             case 'pending_contingency':
                 alert(`Estamos processando o pagamento.

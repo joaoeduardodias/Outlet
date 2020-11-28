@@ -483,6 +483,9 @@ footer {
         top: 1.3rem;
     }
     .menu-section.on nav input {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
         width: 55rem;
         height: 5rem;
         font-size: 1.7rem;
@@ -549,6 +552,9 @@ footer {
         display: flex;
     }
     .menu-section nav input {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
         height: 4rem;
         width: 40rem;
         font-size: 1.4rem;

@@ -29,8 +29,8 @@
     height: 4rem;
     border-radius: 0.5rem;
     text-align: center;
-		padding-top: 0.5rem;
-		text-decoration: none;
+    padding-top: 0.5rem;
+    text-decoration: none;
     font-size: 2.3rem;
     color: var(--color-text-button);
 }
@@ -54,8 +54,6 @@
 .btn-pagPanel:hover {
     background-color: var(--color-primary-hover);
 }
-
-
 
 .login-container {
     margin-top: 9rem;
@@ -86,6 +84,9 @@
 }
 
 .input-container>input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     width: 22rem;
     height: 4rem;
     border-radius: 0.4rem;

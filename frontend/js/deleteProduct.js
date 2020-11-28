@@ -44,8 +44,9 @@ async function Delete() {
         const value = await fetch(`${baseurl}/product/${id}`, {
             method: "DELETE",
             headers: {
-                Accept: "application/json",
-                Authorization: "Bearer " + token,
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": "Bearer " + token,
             },
             mode: "cors",
         });

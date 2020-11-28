@@ -35,6 +35,9 @@ form h3 {
 
 .input-container input,
 .input-container select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     height: 3.5rem;
     border: 1px solid var(--border-div-color);
     border-radius: 0.4rem;
@@ -74,6 +77,9 @@ button:hover {
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     -webkit-appearance: none;
     margin: 0;
 }

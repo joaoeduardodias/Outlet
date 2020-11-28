@@ -1,4 +1,3 @@
 
 tela de adicionar mais endereços
 tela de editar endereços
-parte de compras atraves do mercado pago

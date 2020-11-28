@@ -125,6 +125,9 @@ form {
 
 .input-container input,
 .textarea-container textarea {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     width: 50rem;
     height: 4rem;
     padding: 0.4rem;
@@ -141,7 +144,9 @@ form {
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
+    -moz-appearance: none;
     -webkit-appearance: none;
+    appearance: none;
     margin: 0;
 }
 

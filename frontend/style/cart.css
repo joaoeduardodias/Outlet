@@ -93,7 +93,8 @@ header {
     height: 4.5rem;
 }
 
-.windowdetails {
+.windowdetails,
+.windowpurchase {
     background-color: #d6d2d280;
     position: fixed;
     left: 0;
@@ -227,6 +228,81 @@ header {
     display: none;
 }
 
+.purchase-modal {
+    width: 25rem;
+    background-color: #FFF;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 15px #999;
+}
+
+form h3 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--color-text-link-hover);
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem auto;
+    width: 23rem;
+}
+
+.input-container label {
+    font-size: 1.5rem;
+    margin-left: 0.4rem;
+}
+
+.input-container input,
+.input-container select {
+    height: 3.5rem;
+    border: 1px solid var(--border-div-color);
+    border-radius: 0.4rem;
+    padding: .5rem;
+    letter-spacing: 0.1rem;
+}
+
+.date_card input {
+    width: 5rem;
+    padding-left: 1.3rem;
+}
+
+.date_card span {
+    font-size: 2rem;
+    margin: 0 0.5rem;
+}
+
+#pay {
+    width: 15rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--color-primary);
+    font-size: 2rem;
+    color: var(--color-text-button);
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    font-family: 'Roboto';
+    margin: 0 auto;
+    cursor: pointer;
+    transition: .5s;
+}
+
+#pay:hover {
+    background-color: var(--color-primary-hover);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.product-details {
+    display: none;
+}
+
 @media (min-width: 300px) {
     .product-trash {
         display: flex;
@@ -237,6 +313,19 @@ header {
     .product-modal .product-purchase {
         margin-top: 2rem;
         font-size: 1.6rem;
+    }
+    .purchase-modal {
+        width: 30rem;
+    }
+    .input-container {
+        width: 26.5rem;
+    }
+}
+
+@media(min-height:550px) {
+    .windowpurchase {
+        overflow-y: scroll;
+        padding-top: 8.5rem;
     }
 }
 
@@ -334,6 +423,66 @@ header {
         border-radius: 0.8rem;
         background-color: var(--color-button-secondary);
         margin: 1rem auto;
+    }
+    .purchase-modal {
+        width: 50rem;
+        height: 39rem;
+    }
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'card user ';
+    }
+    #user {
+        grid-area: user;
+        justify-self: center;
+    }
+    #card {
+        grid-area: card;
+    }
+    .input-container {
+        width: 21.4rem;
+    }
+    #date_card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: 1rem auto;
+    }
+    #pay {
+        width: 20rem;
+        margin-left: 0.5rem;
+    }
+    .product-details {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem .7rem;
+        border: 1px solid #ccc;
+        border-radius: 0.3rem;
+        padding: 0.5rem;
+    }
+    .product-details .product-title h2 {
+        font-size: 1.6rem;
+        margin-top: 0.3rem;
+    }
+    .product-details .product-price {
+        font-size: 1.6rem;
+        margin-top: 0.3rem;
+    }
+    .product-details .product--item--qt {
+        font-size: 1.4rem;
+        margin-top: 0.3rem;
+    }
+    .product-details .freight,
+    .product-details .price-total {
+        font-size: 1.4rem;
+        margin-top: 0.3rem;
+        font-family: 'Roboto';
+    }
+    .product-details .freight span,
+    .product-details .price-total span {
+        font-family: 'Archivo';
     }
 }
 

@@ -1,13 +1,16 @@
-const c = (el) => document.querySelector(el);
+const cc = (el) => document.querySelector(el);
 const cs = (el) => document.querySelectorAll(el);
-import { qtdProduct } from "./global.js";
-
+let valueTotal;
+let qtd = 1;
+let Index;
+let idProduct;
 let screenWidth = screen.width;
 let cart = JSON.parse(localStorage.getItem("cart"));
 cart.map((item, index) => {
     let price = item.price;
+    idProduct = item.id;
     let priceTotal = price;
-    let ProductItem = c(".models .product").cloneNode(true);
+    let ProductItem = cc(".models .product").cloneNode(true);
 
     ProductItem.querySelector(".product-info-img .product-img img").src =
         item.images;
@@ -18,19 +21,19 @@ cart.map((item, index) => {
     ).innerHTML = `R$: ${item.price.toFixed(2)}`;
     ProductItem.querySelector(
         ".product--item--qtarea .product--item--qt"
-    ).innerHTML = qtdProduct;
+    ).innerHTML = qtd;
     ProductItem.querySelector(
         ".product-options .product-item-qtavailable"
     ).innerHTML = `${item.amount} Disponíveis`;
     ProductItem.querySelector(
         ".product--item--qtarea .product--item-qtmenos"
     ).addEventListener("click", () => {
-        if (qtdProduct > 1) {
-            qtdProduct--;
+        if (qtd > 1) {
+            qtd--;
             ProductItem.querySelector(
                 ".product--item--qtarea .product--item--qt"
-            ).innerHTML = qtdProduct;
-            priceTotal = price * qtdProduct;
+            ).innerHTML = qtd;
+            priceTotal = price * qtd;
             ProductItem.querySelector(
                 ".product-info-img .product-price"
             ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
@@ -40,12 +43,10 @@ cart.map((item, index) => {
     ProductItem.querySelector(
         ".product--item--qtarea .product--item-qtmais"
     ).addEventListener("click", () => {
-        if (qtdProduct < item.amount) {
-            qtdProduct++;
-            ProductItem.querySelector(
-                ".product--item--qtarea .product--item--qt"
-            ).innerHTML = qtdProduct;
-            priceTotal = price * qtdProduct;
+        if (qtd < item.amount) {
+            qtd++;
+            ProductItem.querySelector(".product--item--qtarea .product--item--qt").innerHTML = qtd;
+            priceTotal = price * qtd;
             ProductItem.querySelector(
                 ".product-info-img .product-price"
             ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
@@ -56,57 +57,75 @@ cart.map((item, index) => {
     ProductItem.querySelector(".product-options .product-trash").addEventListener(
         "click",
         () => {
-            console.log("passei por aqui");
-            console.log(`Index desse produto é ${index}`);
-            cart.splice(index, 1);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            location.reload();
+
+            Index = index
+            removeCart(Index)
         }
     );
     //comprar
-    ProductItem.querySelector(".product-purchase").addEventListener(
-        "click",
-        () => {
-            location.href = "./dataPayment.html";
-        }
-    );
-    c(".section-cart").append(ProductItem);
+    ProductItem.querySelector(".product-purchase")
+        .addEventListener("click", () => {
+            Index = index
+            cc(".windowpurchase").style.opacity = 0;
+            cc(".windowpurchase").style.display = "flex";
+            setTimeout(() => {
+                cc(".windowpurchase").style.opacity = 1;
+                cc(".purchase-modal .product-title h2").innerHTML = item.title;
+                cc(".purchase-modal .product-price").innerHTML = `R$: ${priceTotal.toFixed(2)}`;
+                cc(".purchase-modal .product--item--qt").innerHTML = `Quantidade : ${qtd}`;
+                cc(".purchase-modal .freight").innerHTML = `Valor do frete - R$: ${priceTotal.toFixed(2)}` // colocar o valor do frete
+                valueTotal = priceTotal + priceTotal
+                cc(".purchase-modal .price-total").innerHTML = `Valor Total - R$: ${valueTotal.toFixed(2)}`
+            }, 200);
+            // close modal
+            const modal = cc(".purchase-modal");
+            cc(".windowpurchase").addEventListener("click", function(e) {
+                if (!modal.contains(e.target)) {
+                    cc(".windowpurchase").style.opacity = 0;
+                    setTimeout(() => {
+                        cc(".windowpurchase").style.display = "none";
+
+                    }, 200);
+                }
+            });
+        });
+    cc(".section-cart").append(ProductItem);
 
     if (screenWidth < 850) {
         ProductItem.addEventListener("click", () => {
-            c(".windowdetails").style.opacity = 0;
-            c(".windowdetails").style.display = "flex";
+            cc(".windowdetails").style.opacity = 0;
+            cc(".windowdetails").style.display = "flex";
             setTimeout(() => {
-                c(".windowdetails").style.opacity = 1;
-                c("#body-modal").style.overflow = "hidden";
+                cc(".windowdetails").style.opacity = 1;
+                cc("#body-modal").style.overflow = "hidden";
 
-                c(".product-modal .product-img #img").src = item.images;
-                c(".product-modal .product-title h2").innerHTML = item.title;
-                c(
+                cc(".product-modal .product-img #img").src = item.images;
+                cc(".product-modal .product-title h2").innerHTML = item.title;
+                cc(
                     ".product-modal .product-price"
                 ).innerHTML = `R$: ${item.price.toFixed(2)}`;
             }, 200);
-            c(".product-modal .product--item-qtmenos").addEventListener(
+            cc(".product-modal .product--item-qtmenos").addEventListener(
                 "click",
                 () => {
-                    if (qtdProduct > 1) {
-                        qtdProduct--;
-                        c(".product-modal .product--item--qt").innerHTML = qtdProduct;
-                        priceTotal = price * qtdProduct;
-                        c(
+                    if (qtd > 1) {
+                        qtd--;
+                        cc(".product-modal .product--item--qt").innerHTML = qtd;
+                        priceTotal = price * qtd;
+                        cc(
                             ".product-modal .product-price "
                         ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
                     }
                 }
             );
-            c(".product-modal .product--item-qtmais").addEventListener(
+            cc(".product-modal .product--item-qtmais").addEventListener(
                 "click",
                 () => {
-                    if (qtdProduct < item.amount) {
-                        qtdProduct++;
-                        c(".product-modal .product--item--qt").innerHTML = qtdProduct;
-                        priceTotal = price * qtdProduct;
-                        c(
+                    if (qtd < item.amount) {
+                        qtd++;
+                        cc(".product-modal .product--item--qt").innerHTML = qtd;
+                        priceTotal = price * qtd;
+                        cc(
                             ".product-modal .product-price"
                         ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
                     }
@@ -114,24 +133,24 @@ cart.map((item, index) => {
             );
 
             // close modal
-            const modal = c(".product-modal");
-            c(".windowdetails").addEventListener("click", function(e) {
+            const modal = cc(".product-modal");
+            cc(".windowdetails").addEventListener("click", function(e) {
                 if (!modal.contains(e.target)) {
-                    c(".windowdetails").style.opacity = 0;
+                    cc(".windowdetails").style.opacity = 0;
                     setTimeout(() => {
-                        c(".windowdetails").style.display = "none";
-                        c("#body-modal").style.overflow = "initial";
+                        cc(".windowdetails").style.display = "none";
+                        cc("#body-modal").style.overflow = "initial";
                         qtd = 1;
-                        c(".product-modal .product--item--qt").innerHTML = qtd;
+                        cc(".product-modal .product--item--qt").innerHTML = qtd;
                     }, 200);
                 }
             });
             // excluir product do carrinho
-            c(".product-modal .product-trash").addEventListener("click", () => {
-                c(".product").style.opacity = 1;
+            cc(".product-modal .product-trash").addEventListener("click", () => {
+                cc(".product").style.opacity = 1;
                 setTimeout(() => {
-                    c(".product").style.opacity = 0;
-                    c(".product").style.display = "none";
+                    cc(".product").style.opacity = 0;
+                    cc(".product").style.display = "none";
                 }, 200);
                 cart.splice(index, 1);
                 localStorage.setItem("cart", JSON.stringify(cart));
@@ -140,4 +159,9 @@ cart.map((item, index) => {
         });
     }
 });
-console.log(qtdProduct);
+
+function removeCart(Index) {
+    cart.splice(Index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    location.reload();
+}
