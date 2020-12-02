@@ -53,7 +53,7 @@ async function previewProduct() {
         return;
     }
     const token = localStorage.getItem("Authorization");
-    const { id, name, description, amount, available, price, urls, ids } = data;
+    const { id, name, description, amount, available, price, urls, ids, weight, typeWeight, lenght, width, height } = data;
     idProduct = id;
     if (urls.split(",") != null) {
         let url = urls.split(",");
@@ -97,6 +97,11 @@ async function previewProduct() {
     document.getElementById("description").value = description;
     document.getElementById("price").value = price;
     document.getElementById("amount").value = amount;
+    document.getElementById('weight').value = weight
+    document.getElementById('type_weight').value = typeWeight
+    document.getElementById('length').value = lenght
+    document.getElementById('width').value = width
+    document.getElementById('height').value = height
     if (available == 1) {
         document.getElementById("check").checked = true;
     } else {
@@ -114,6 +119,11 @@ async function update() {
     const { value: newdescription } = document.getElementById("description");
     const { value: newprice } = document.getElementById("price");
     const { value: newamount } = document.getElementById("amount");
+    const newWeight = document.getElementById('weight').value
+    const newTypeWeight = document.getElementById('type_weight').value
+    const newLenght = document.getElementById('length').value
+    const newWidth = document.getElementById('width').value
+    const newHeight = document.getElementById('height').value
     const btnavailable = document.getElementById("check");
     if (btnavailable.checked == true) {
         available = 1;
@@ -127,6 +137,12 @@ async function update() {
         price: newprice,
         amount: newamount,
         available,
+        weight: newWeight,
+        typeWeight: newTypeWeight,
+        lenght: newLenght,
+        width: newWidth,
+        height: newHeight
+
     };
     const data = await fetch(`${baseurl}/product/${idProduct}`, {
         method: "PUT",

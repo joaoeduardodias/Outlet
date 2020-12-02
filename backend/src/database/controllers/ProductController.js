@@ -44,6 +44,11 @@ module.exports = {
                     "price",
                     "amount",
                     "available",
+                    "weight",
+                    "typeWeight",
+                    "lenght",
+                    "width",
+                    "height",
                     Connection.raw(`group_concat(Images.url) as urls`),
                     Connection.raw(`group_concat(Images.id) as ids`),
                 )
@@ -87,6 +92,11 @@ module.exports = {
                 price,
                 amount,
                 description,
+                weight,
+                typeWeight,
+                lenght,
+                width,
+                height
             });
 
             return res.status(201).json({ message: 'create', id });
@@ -116,6 +126,11 @@ module.exports = {
                     description,
                     amount,
                     available,
+                    weight,
+                    typeWeight,
+                    lenght,
+                    width,
+                    height
                 })
                 .where({ id });
 

@@ -38,15 +38,26 @@ images.addEventListener("change", function() {
 async function create() {
     try {
         const token = localStorage.getItem("Authorization");
-        const { value: name } = document.getElementById("name");
-        const { value: description } = document.getElementById("description");
-        const { value: price } = document.getElementById("price");
-        const { value: amount } = document.getElementById("amount");
+        const name = document.getElementById("name").value
+        const description = document.getElementById("description").value
+        const price = document.getElementById("price").value
+        const amount = document.getElementById("amount").value
+        const weight = document.getElementById('weight').value
+        const typeWeight = document.getElementById('type_weight').value
+        const lenght = document.getElementById('length').value
+        const width = document.getElementById('width').value
+        const height = document.getElementById('height').value
         const product = {
             name,
             description,
             price,
             amount,
+            weight,
+            typeWeight,
+            lenght,
+            width,
+            height
+
         };
         const data = await fetch(baseurl + "/product", {
             method: "Post",
@@ -80,6 +91,7 @@ async function create() {
             alert("Já existe um produto com esse nome !");
         }
         if (value.message == "create") {
+
             const btn = c(".btn-create button");
             setTimeout(() => {
                 btn.style.backgroundColor = "#1cca0c";
