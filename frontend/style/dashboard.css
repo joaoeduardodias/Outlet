@@ -7,6 +7,10 @@ body {
     grid-template-areas: "header header" "aside main";
 }
 
+.container {
+    align-items: center;
+}
+
 header {
     grid-area: header;
 }
@@ -97,6 +101,7 @@ nav {
 
 form {
     margin: 0 auto;
+    width: 71%;
 }
 
 .input-container,
@@ -435,4 +440,83 @@ label.btn-add+label.btn-add .img {
 
 #btn-delete:hover {
     background-color: var(--color-trash-hover);
+}
+
+.freight {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 6rem 9rem 9rem auto;
+    grid-template-areas: 'desc desc' 'divweight lenght' 'divheight divwidth' 'img img';
+    margin: 0 auto;
+    justify-items: center;
+    border: 1px solid #CCC;
+    border-radius: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.freight>span {
+    grid-area: desc;
+    text-align: center;
+}
+
+#divweight {
+    grid-area: divweight;
+    margin: 0;
+}
+
+#divweight .inputselect {
+    display: flex;
+    flex-direction: row;
+}
+
+#divweight input {
+    width: 12rem;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#divweight select {
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid var(--border-div-color);
+    border-left: 0;
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+    background-color: #d1d1d1;
+    padding-left: 0.1rem;
+}
+
+#divlenght {
+    grid-area: lenght;
+    margin: 0;
+}
+
+#divlenght input {
+    width: 15rem;
+}
+
+#divheight {
+    grid-area: divheight;
+    margin: 0;
+}
+
+#divheight input {
+    width: 16rem;
+}
+
+#divwidth {
+    grid-area: divwidth;
+    margin: 0;
+}
+
+#divwidth input {
+    width: 15rem;
+}
+
+.freight>img {
+    grid-area: img;
+    height: 27rem;
+    object-fit: cover;
 }
