@@ -4,12 +4,22 @@ let valueTotal;
 let qtd = 1;
 let Index;
 let idProduct;
+let weight;
+let typeWeight;
+let lenght;
+let width;
+let height;
 let screenWidth = screen.width;
 let cart = JSON.parse(localStorage.getItem("cart"));
 cart.map((item, index) => {
     let price = item.price;
     idProduct = item.id;
     let priceTotal = price;
+          weight = item.weight
+          typeWeight = item.typeWeight
+          lenght = item.lenght
+          width = item.width
+          height = item.height
     let ProductItem = cc(".models .product").cloneNode(true);
 
     ProductItem.querySelector(".product-info-img .product-img img").src =

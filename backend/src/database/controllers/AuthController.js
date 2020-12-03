@@ -26,8 +26,8 @@ module.exports = {
                 }
 
                 if (result == true) {
-                    const { id, administrador, name } = verifyUser;
-                    const token = jwt.sign({ id, administrador, name },
+                    const { id, administrador, name, email } = verifyUser;
+                    const token = jwt.sign({ id, administrador, name, email },
                         process.env.SECRET, {
                             expiresIn: 86400, // expires in 24 hr
                         }

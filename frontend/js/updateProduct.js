@@ -6,6 +6,7 @@ const btnAdd = c(".images-container label img");
 let idProduct;
 let ImagesPreview = new Array();
 let IdPreview = new Array();
+let available;
 
 images.addEventListener("change", function() {
     files = c("input[type=file]").files;

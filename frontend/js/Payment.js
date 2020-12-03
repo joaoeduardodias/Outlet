@@ -1,6 +1,19 @@
 window.Mercadopago.setPublishableKey("TEST-51f8db06-c035-4c78-a0d1-0e67fc404294");
 window.Mercadopago.getIdentificationTypes();
 const baseurl = "http://localhost:3333";
+const tokenUser = localStorage.getItem('Authorization')
+const dataUser = JSON.parse(atob(tokenUser.split(".")[1]));
+document.getElementById('email').value = dataUser.email
+console.log(weight,
+  typeWeight,
+  lenght,
+  width,
+  height,);
+ async function setPriceFreight() {
+  const priceFreight = document.getElementById('price_freight')
+  const data = await fetch()
+}
+
 
 
 document.getElementById('cardNumber').addEventListener('change', guessPaymentMethod);
@@ -99,6 +112,7 @@ async function setCardTokenAndPay(status, response) {
         form.appendChild(card);
 
 
+
         const token = response.id
         const description = document.getElementById('description').value
         const installments = document.getElementById('installments').value
@@ -128,7 +142,6 @@ async function setCardTokenAndPay(status, response) {
             body: JSON.stringify(Payment)
         })
         const data = await Response.json()
-        const tokenUser = localStorage.getItem('Authorization')
 
         const Product_Sold = {
             value_total: valueTotal,

@@ -18,17 +18,16 @@ module.exports = {
                     "description",
                     "price",
                     "amount",
-                    "available"
+                    "available",
+                    "weight",
+                    "typeWeight",
+                    "lenght",
+                    "width",
+                    "height",
                 )
                 .leftJoin('Images', 'Products.id', '=', 'Images.id_product').groupBy('Products.id')
 
             return res.json(data)
-
-
-
-
-
-
 
         } catch (error) {
             next(error);
@@ -74,7 +73,7 @@ module.exports = {
             if (adm === false) {
                 return res.status(401).json({ message: "User is not adm" });
             }
-            const { name, price, amount, description } = req.body;
+            const { name, price, amount, description, weight, typeWeight,lenght, width, height } = req.body;
             const verifyName = await Connection("Products")
                 .select("name")
                 .where({ name })
@@ -118,7 +117,8 @@ module.exports = {
                 return res.status(401).json({ message: "User is not adm" });
             }
             const { id } = req.params;
-            const { name, price, description, amount, available } = req.body;
+            const { name, price, amount,available, description, weight, typeWeight,lenght, width, height } = req.body;
+
             await Connection("Products")
                 .update({
                     name,

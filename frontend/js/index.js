@@ -4,6 +4,11 @@ let key = 0
 let title = ''
 let price = 0;
 let amount;
+let weight;
+let typeWeight;
+let lenght;
+let width;
+let height;
 const baseurl = 'http://localhost:3333'
 
 //  LIST OF PRODUCT
@@ -19,6 +24,13 @@ async function index() {
         })
         const Products = await data.json()
         Products.map((item, index) => {
+
+          weight = item.weight
+          typeWeight = item.typeWeight
+          lenght = item.lenght
+          width = item.width
+          height = item.height
+
             // clonar a div produto
             let ProductItem = c('.models .product').cloneNode(true)
                 // preenche os dados
@@ -181,7 +193,12 @@ c('.add-cart').addEventListener('click', () => {
             images: image,
             title,
             price,
-            amount
+            amount,
+            weight,
+            typeWeight,
+            lenght,
+            width,
+            height,
         })
         localStorage.setItem('cart', JSON.stringify(cart))
         cart = JSON.parse(localStorage.getItem('cart'))

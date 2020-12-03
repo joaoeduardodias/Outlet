@@ -64,6 +64,7 @@ async function create(idUser) {
         const neighborhood = document.getElementById('neighborhood').value
         const street = document.getElementById('street').value
         const number = document.getElementById('number').value
+        const zip_code = document.getElementById('zip_code').value
         const selectCity = document.getElementById('city')
         const id_city = selectCity.options[selectCity.selectedIndex].value
 
@@ -71,6 +72,7 @@ async function create(idUser) {
             neighborhood,
             name: street,
             number,
+            zip_code,
             id_city,
             id_users: idUser
         }
@@ -83,7 +85,7 @@ async function create(idUser) {
             body: JSON.stringify(address),
             mode: 'cors'
         })
-        // location.href = "../../pages/login.html"
+        location.href = "../../pages/login.html"
 
 
     } catch (error) {

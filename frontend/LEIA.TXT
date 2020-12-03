@@ -1,3 +1,6 @@
 
 tela de adicionar mais endereços
 tela de editar endereços
+
+ja temos o cep de origem(cep de taboado), e adicionei o input de cep no cadastro de cidade
+falta so configurar a api dos correios e tudo estara pronto

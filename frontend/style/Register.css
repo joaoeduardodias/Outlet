@@ -5,7 +5,7 @@ body{
         display: flex;
         flex-direction: column;
         width: 27rem;
-        height: 84rem;
+        height: 92rem;
         margin-top: 2rem;
         margin-bottom: 1rem;
         background-color: var(--color-div-background);
@@ -39,6 +39,9 @@ body{
 
     .input-container label#lblnumber {
         margin-left: -14.8rem;
+    }
+    .input-container label#zip_code {
+      margin-right: 2rem;
     }
 
     .input-container>input,
@@ -129,7 +132,6 @@ body{
     @media (min-width: 700px) {
         .register-container {
             width: 38rem;
-            height: 84rem;
         }
         .input-container label {
             font-size: 1.6rem;
@@ -170,7 +172,7 @@ body{
       }
         .register-container {
             width: 56rem;
-            height: 103rem;
+            height: 113rem;
             /* margin-top: 50rem; */
         }
         .input-container:first-child {

@@ -42,6 +42,8 @@ module.exports = {
     },
     async create(req, res, next) {
         try {
+            const {zip_code} = req.body
+            await Connection('City').insert({ zip_code})
 
             const {
                 name,
@@ -73,7 +75,8 @@ module.exports = {
                     "Address.name",
                     "Address.neighborhood",
                     "Address.number",
-                    "City.name"
+                    "City.name",
+                    "City.zip_code"
                 );
             return res.json(data);
         } catch (error) {
@@ -90,7 +93,8 @@ module.exports = {
                     "Address.name",
                     "Address.neighborhood",
                     "Address.number",
-                    "City.name"
+                    "City.name",
+                    "City.zip_code"
                 ).where('id_users', id)
             return res.json(data)
         } catch (error) {
