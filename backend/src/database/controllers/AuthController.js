@@ -12,8 +12,8 @@ module.exports = {
                 .toString()
                 .split(":");
 
-            const verifyUser = await Connection("Users")
-                .select("email", "password", "id", "name", "administrador")
+            const verifyUser = await Connection("Users").join('City')
+                .select("email", "password", "Users.id", "Users.name", "administrador", "City.zip_code")
                 .where("email", email)
                 .first();
             if (!verifyUser) {
@@ -26,8 +26,8 @@ module.exports = {
                 }
 
                 if (result == true) {
-                    const { id, administrador, name, email } = verifyUser;
-                    const token = jwt.sign({ id, administrador, name, email },
+                    const { id, administrador, name, email, zip_code } = verifyUser;
+                    const token = jwt.sign({ id, administrador, name, email, zip_code },
                         process.env.SECRET, {
                             expiresIn: 86400, // expires in 24 hr
                         }

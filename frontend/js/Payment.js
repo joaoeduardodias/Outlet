@@ -1,17 +1,33 @@
 window.Mercadopago.setPublishableKey("TEST-51f8db06-c035-4c78-a0d1-0e67fc404294");
 window.Mercadopago.getIdentificationTypes();
-const baseurl = "http://localhost:3333";
 const tokenUser = localStorage.getItem('Authorization')
+    // const zip_code = localStorage.getItem('Zip_code')
 const dataUser = JSON.parse(atob(tokenUser.split(".")[1]));
 document.getElementById('email').value = dataUser.email
-console.log(weight,
-  typeWeight,
-  lenght,
-  width,
-  height,);
- async function setPriceFreight() {
-  const priceFreight = document.getElementById('price_freight')
-  const data = await fetch()
+let Freight = {
+    weight,
+    zip_code: 79500000,
+    lenght,
+    width,
+    height,
+    methodFreight: 'PAC'
+}
+async function setPriceFreight() {
+    const DataFreight = await fetch(`${baseurl}/freight`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        mode: 'cors',
+        body: JSON.stringify(Freight)
+    })
+    const DataFreightJson = await DataFreight.json()
+    console.log(DataFreightJson)
+    document.getElementById('price_freight').innerText = `Valor do Frete: ${DataFreightJson.Valor.replace(',' ,'.')}`
+
+    valueTotal = priceTotal + DataFreightJson.Valor
+    cc(".purchase-modal .price-total").innerHTML = `Valor Total - R$: ${valueTotal}`
 }
 
 

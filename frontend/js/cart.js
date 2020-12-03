@@ -1,5 +1,7 @@
 const cc = (el) => document.querySelector(el);
 const cs = (el) => document.querySelectorAll(el);
+const baseurl = "http://localhost:3333";
+let priceTotal;
 let valueTotal;
 let qtd = 1;
 let Index;
@@ -14,12 +16,13 @@ let cart = JSON.parse(localStorage.getItem("cart"));
 cart.map((item, index) => {
     let price = item.price;
     idProduct = item.id;
-    let priceTotal = price;
-          weight = item.weight
-          typeWeight = item.typeWeight
-          lenght = item.lenght
-          width = item.width
-          height = item.height
+    priceTotal = price;
+    weight = item.weight
+    typeWeight = item.typeWeight
+    lenght = item.lenght
+    width = item.width
+    height = item.height
+
     let ProductItem = cc(".models .product").cloneNode(true);
 
     ProductItem.querySelector(".product-info-img .product-img img").src =
@@ -74,8 +77,10 @@ cart.map((item, index) => {
     );
     //comprar
     ProductItem.querySelector(".product-purchase")
-        .addEventListener("click", () => {
+        .addEventListener("click", async() => {
             Index = index
+            setPriceFreight()
+
             cc(".windowpurchase").style.opacity = 0;
             cc(".windowpurchase").style.display = "flex";
             setTimeout(() => {
@@ -83,9 +88,9 @@ cart.map((item, index) => {
                 cc(".purchase-modal .product-title h2").innerHTML = item.title;
                 cc(".purchase-modal .product-price").innerHTML = `R$: ${priceTotal.toFixed(2)}`;
                 cc(".purchase-modal .product--item--qt").innerHTML = `Quantidade : ${qtd}`;
-                cc(".purchase-modal .freight").innerHTML = `Valor do frete - R$: ${priceTotal.toFixed(2)}` // colocar o valor do frete
-                valueTotal = priceTotal + priceTotal
-                cc(".purchase-modal .price-total").innerHTML = `Valor Total - R$: ${valueTotal.toFixed(2)}`
+
+                valueTotal = priceTotal
+
             }, 200);
             // close modal
             const modal = cc(".purchase-modal");

@@ -31,6 +31,7 @@ const User_Product = require('./database/controllers/User_Product');
 const UploadController = require('./database/controllers/UploadController');
 const AddressController = require('./database/controllers/AddressController');
 const PaymenController = require('./database/controllers/PaymentController');
+const FreightController = require('./database/controllers/FreightController');
 
 
 //  CRUD de usuários
@@ -88,6 +89,7 @@ routes.delete('/address/:id', AddressController.delete)
 
 // payment
 routes.post('/process_payment', PaymenController.create)
-
+    // freight
+routes.post('/freight', FreightController.create)
 
 module.exports = routes;

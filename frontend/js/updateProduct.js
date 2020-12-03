@@ -149,8 +149,8 @@ async function update() {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: "Bearer " + token,
+            "Accept": "application/json",
+            "Authorization": "Bearer " + token,
         },
         mode: "cors",
         body: JSON.stringify(newProduct),
@@ -164,6 +164,11 @@ async function update() {
 
     await fetch(`${baseurl}/upload/${idProduct}`, {
         method: "Post",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Bearer " + token,
+        },
         mode: "cors",
         body: form,
     });
