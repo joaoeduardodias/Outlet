@@ -89,7 +89,7 @@ cart.map((item, index) => {
                 cc(".purchase-modal .product-price").innerHTML = `R$: ${priceTotal.toFixed(2)}`;
                 cc(".purchase-modal .product--item--qt").innerHTML = `Quantidade : ${qtd}`;
 
-                valueTotal = priceTotal
+
 
             }, 200);
             // close modal

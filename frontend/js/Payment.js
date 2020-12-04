@@ -23,10 +23,12 @@ async function setPriceFreight() {
         body: JSON.stringify(Freight)
     })
     const DataFreightJson = await DataFreight.json()
-    console.log(DataFreightJson)
-    document.getElementById('price_freight').innerText = `Valor do Frete: ${DataFreightJson.Valor.replace(',' ,'.')}`
+    const valorFreight = DataFreightJson.Valor.replace(',', '.')
+    const valorFreightFormat = parseFloat(valorFreight)
+    document.getElementById('price_freight').innerText = `Valor do Frete: ${valorFreight}`
+    const priceTotalFormat = parseFloat(priceTotal)
+    valueTotal = priceTotalFormat + valorFreightFormat
 
-    valueTotal = priceTotal + DataFreightJson.Valor
     cc(".purchase-modal .price-total").innerHTML = `Valor Total - R$: ${valueTotal}`
 }
 

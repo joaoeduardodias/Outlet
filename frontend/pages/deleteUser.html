@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/global.css" />
+    <link rel="stylesheet" href="../style/dashboard.css" />
+    <title>Dashboard || Outlet Multimarcas</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <h1>
+                    OUTLET <br /> MULTIMARCAS
+                </h1>
+            </a>
+        </div>
+    </header>
+    <aside>
+        <a href="./dashboard.html"> Início</a>
+        <a href="./createProduct.html">Cadastrar Produto</a>
+        <a href="./updateProduct.html">Atualizar Produto</a>
+        <a href="./deleteProduct.html">Deletar Produto</a>
+        <a href="./user.html">Usuários</a>
+    </aside>
+    <main>
+        <div class="delete-product">
+            <div class="container">
+                <h2>Deletar Produto</h2>
+                <nav class="search">
+                    <label for="search">Código do Produto</label>
+                    <input type="text" name="search" id="search" placeholder="Digite o código do produto que deseja apagar" />
+                    <button class="btn-search" id="btn-search-delete">
+              <img src="../assets/icon/search.svg" alt="Pesquisar" />
+            </button>
+                </nav>
+                <section class="products">
+                    <div class="product">
+                        <img src="" alt="title " />
+                        <div class="row"></div>
+                        <div class="product-title">
+                            <p>--</p>
+                        </div>
+                    </div>
+                </section>
+                <div class="btn-delete">
+                    <button type="button" id="btn-delete">Deletar Produto</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../js/deleteProduct.js"></script>
+</body>
+
+</html>
