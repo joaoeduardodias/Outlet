@@ -18,17 +18,14 @@ let idUser;
    if(data.message == 'Token invalid.'){
      location.href = '../pages/login.html'
    }
-   if(data.administrador == 1){
-     alert("Usuario ja é ADM")
-   }
+
    if(data.message == 'User not exist'){
      alert('Usuário não cadastrado')
    }
-   if(data.administrador == 0){
+   if(data.id){
     const div = c('.hiddem')
     div.style.display = 'flex'
     document.getElementById('name').innerHTML = data.name
-    document.getElementById('nameUser').innerHTML = data.name
    }
    idUser = data.id
 
@@ -39,39 +36,38 @@ let idUser;
    getUser()
    event.preventDefault()
  })
+async function DeleteUser(){
 
- async function UpdateUser(){
+  const message = await fetch(`${baseurl}/userADM/${idUser}`, {
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Authorization": "Bearer " + token,
+    },
+    mode: 'cors'
+  })
+  const data = await message.json()
+  if(data.message == 'success'){
+    const btn = c('#DeleteUser')
+  setTimeout(() => {
+   btn.style.backgroundColor = "#1cca0c";
+   btn.innerText = "Usuário Deletado";
+   setTimeout(() => {
+       btn.style.backgroundColor = "#f67600";
+       btn.innerText = "Deletar Usuário";
 
-  const User = {
-    administrador : 1
+   }, 1900);
+
+   location.reload();
+
+}, 500);
   }
 
 
-   const message = await fetch (`${baseurl}/userADM/${idUser}`,{
-      method: "PUT",
-      headers: {
-       "Content-Type": "application/json",
-      "Accept": "application/json",
-      "Authorization": "Bearer " + token,
-      },
-      mode: 'cors',
-      body: JSON.stringify(User)
-    })
-    const messageJson = await message.json()
-    if(messageJson.message == 'success'){
-     const btn = c('#addADM')
-     setTimeout(() => {
-      btn.style.backgroundColor = "#1cca0c";
-      btn.innerText = "Administrador Adicionado";
-      setTimeout(() => {
-          btn.style.backgroundColor = "#f67600";
-          btn.innerText = "Adicionar Administrador";
-      }, 1900);
-  }, 500);
+}
 
-    }
- }
- c('#addADM').addEventListener('click', (event)=> {
+c('#DeleteUser').addEventListener('click',(event)=>{
   event.preventDefault()
-  UpdateUser()
- })
+  DeleteUser()
+})

@@ -4,6 +4,31 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
+    async show (req,res,next){
+        try {
+            let adm = false
+            const [, token] = req.headers.authorization.split(" ");
+            jwt.verify(token, process.env.SECRET, function(err, decoded) {
+                if (decoded.administrador != 0) {
+                    return adm = true
+                }
+            });
+            if (adm === false) {
+
+                return res.status(401).json({ message: "User is not adm" })
+            }
+
+            const {email} = req.params
+            
+            const user = await Connection('Users').select('id','name','administrador').where({email}).first()
+            if(!user) return res.json ({message: "User not exist"})
+            return res.json(user)
+
+        } catch (error) {
+            next(error)
+        }
+    },
+
     async index(req, res, next) {
         try {
             let adm = false
@@ -97,7 +122,7 @@ module.exports = {
                 })
                 .where({ id });
 
-            return res.send();
+            return res.json({message: 'success'}).send();
         } catch (error) {
             next(error);
         }
@@ -135,7 +160,7 @@ module.exports = {
             const { id } = req.params;
             await Connection('Address').where('id_users', id).del()
             await Connection("Users").where({ id }).del();
-            return res.status(204).send();
+            return res.json({message: 'success'}).status(204)
         } catch (error) {
             next(error);
         }

@@ -1,0 +1,75 @@
+.container h3 {
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container label {
+  font-size: 2rem;
+}
+.input-container input {
+  width: 45rem;
+  height: 5rem;
+  font-size: 1.5rem;
+  padding: .5rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-container .search {
+  display: flex;
+  flex-direction: row;
+
+
+}
+.search button {
+  width: 5rem;
+  border: 1px solid var(--border-div-color);
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  background-color: var(--color-primary);
+
+}
+.search img {
+  width: 3rem;
+}
+.hiddem {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+.name{
+  width: 50rem;
+  height: 4rem;
+  margin: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-div-color);
+  background-color: #e6e6e6;
+}
+
+.container #DeleteUser {
+  width: 30rem;
+  height: 4rem;
+  border: 0;
+  border-radius: .5rem;
+  font-size: 1.8rem;
+  color: var(--color-text-button);
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  background-color: var(--color-primary);
+  cursor: pointer;
+  transition: .5s;
+}
+.container #DeleteUser:hover{
+  background-color: var(--color-primary-hover);
+}

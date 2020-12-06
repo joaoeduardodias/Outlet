@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/global.css" />
     <link rel="stylesheet" href="../style/dashboard.css" />
+    <link rel="stylesheet" href="../style/deleteUser.css" />
     <title>Dashboard || Outlet Multimarcas</title>
 </head>
 
@@ -28,8 +29,32 @@
       <a href="./deleteUserADM.html">Deletar Usuário</a>
   </aside>
     <main>
+      <div class="container">
 
+        <form method="post">
+            <h3>Deletar Usuário</h3>
+            <div class="input-container">
+                <label for="name">Email</label>
+                <div class="search">
+                <input required id="email" name="name" type="email" placeholder="Digite o email do usuário " />
+                <button id="Usersearch">
+                  <img src="../assets/icon/search.svg" alt="Pesquisar" />
+                </button>
+              </div>
+            </div>
+            <div class="hiddem">
+              <div class="dataUser">
+                <div id="name" class="name">User teste de ADM</div>
+            </div>
+
+
+            <button id="DeleteUser">Deletar Usuário</button>
+            </div>
+        </form>
+
+</div>
     </main>
+    <script src="../js/deleteUserADM.js"></script>
 </body>
 
 </html>

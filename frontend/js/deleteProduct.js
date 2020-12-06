@@ -10,7 +10,7 @@ async function previewDelete() {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            Accept: "application/json",
+            "Accept": "application/json",
         },
         mode: "cors",
     });
