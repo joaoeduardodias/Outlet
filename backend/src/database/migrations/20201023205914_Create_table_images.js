@@ -5,6 +5,7 @@ exports.up = function(knex) {
         table.float('size')
         table.string('key')
         table.string('url')
+        table.string('id_product')
         table.foreign('id_product')
             .references('id')
             .inTable('Products')
