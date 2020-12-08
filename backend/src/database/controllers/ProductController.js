@@ -13,8 +13,8 @@ module.exports = {
             .select(
                     "Products.id",
                     "Products.name",
-                    Connection.raw(`group_concat(Images.url) as urls`),
-                    Connection.raw(`group_concat(Images.id) as ids`),
+                    // Connection.raw(`group_concat(Images.url) as urls`),
+                    // Connection.raw(`group_concat(Images.id) as ids`),
                     "description",
                     "price",
                     "amount",
@@ -30,7 +30,8 @@ module.exports = {
             return res.json(data)
 
         } catch (error) {
-            next(error);
+            // next(error);
+            console.log(error)
         }
     },
     async show(req, res, next) {
@@ -73,7 +74,7 @@ module.exports = {
             if (adm === false) {
                 return res.status(401).json({ message: "User is not adm" });
             }
-            const { name, price, amount, description, weight, typeWeight,lenght, width, height } = req.body;
+            const { name, price, amount, description, weight, typeWeight, lenght, width, height } = req.body;
             const verifyName = await Connection("Products")
                 .select("name")
                 .where({ name })
@@ -117,7 +118,7 @@ module.exports = {
                 return res.status(401).json({ message: "User is not adm" });
             }
             const { id } = req.params;
-            const { name, price, amount,available, description, weight, typeWeight,lenght, width, height } = req.body;
+            const { name, price, amount, available, description, weight, typeWeight, lenght, width, height } = req.body;
 
             await Connection("Products")
                 .update({
