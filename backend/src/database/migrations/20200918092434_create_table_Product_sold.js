@@ -4,7 +4,7 @@ exports.up = function(knex) {
         table.string('id_user_product').notNullable()
 
         table.foreign('id_user_product')
-            .references('id')
+            .references('id_sold')
             .inTable('User_Product')
 
 

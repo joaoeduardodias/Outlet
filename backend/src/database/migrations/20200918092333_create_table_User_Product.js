@@ -1,9 +1,9 @@
 exports.up = function(knex) {
     return knex.schema.createTable('User_Product', (table) => {
-        table.string('id').notNullable()
+        table.string('id_sold').notNullable()
         table.string('id_user').notNullable()
         table.string('id_product').notNullable()
-        table.integer('amount').notNullable().defaultTo(1)
+        table.integer('amount_sold').notNullable().defaultTo(1)
         table.float('value_total').notNullable()
 
         table.foreign('id_user')

@@ -2,7 +2,7 @@ exports.up = function(knex) {
     return knex.schema.createTable('City', (table) => {
         table.string('id').primary().notNullable()
         table.string('name').notNullable()
-        table.integer('zip_code').notNullable()
+        table.float('zip_code')
         table.string('id_State').notNullable()
 
         table.foreign('id_State')

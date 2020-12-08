@@ -3,7 +3,6 @@ exports.up = function(knex) {
         table.string('id').primary().notNullable()
         table.string('name').notNullable()
         table.integer('neighborhood').notNullable()
-        table.integer('street').notNullable()
         table.integer('number').notNullable()
         table.string('id_city').notNullable()
         table.string('id_users').notNullable()
