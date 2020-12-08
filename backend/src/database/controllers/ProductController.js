@@ -20,7 +20,7 @@ module.exports = {
                     "amount",
                     "available",
                     "weight",
-                    "typeWeight",
+
                     "lenght",
                     "width",
                     "height",
@@ -45,7 +45,7 @@ module.exports = {
                     "amount",
                     "available",
                     "weight",
-                    "typeWeight",
+
                     "lenght",
                     "width",
                     "height",
@@ -93,7 +93,7 @@ module.exports = {
                 amount,
                 description,
                 weight,
-                typeWeight,
+
                 lenght,
                 width,
                 height
@@ -128,7 +128,7 @@ module.exports = {
                     amount,
                     available,
                     weight,
-                    typeWeight,
+
                     lenght,
                     width,
                     height
