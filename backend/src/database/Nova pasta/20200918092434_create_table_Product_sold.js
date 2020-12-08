@@ -6,8 +6,7 @@ exports.up = function(knex) {
         table.foreign('id_user_product')
             .references('id')
             .inTable('User_Product')
-            .onDelete('NO ACTION')
-            .onUpdate('NO ACTION')
+
 
 
         table.timestamp('created_at').defaultTo(knex.fn.now())
