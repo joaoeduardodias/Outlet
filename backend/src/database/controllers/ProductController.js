@@ -10,7 +10,7 @@ module.exports = {
         try {
             const data = await Connection("Products")
 
-            .leftJoin('Images', 'Products.id', '=', 'Images.id_product').groupBy('Products.id')
+            .leftJoin('Images').groupBy('Products.id')
                 .select(
                     "Products.id",
                     "Products.name",
