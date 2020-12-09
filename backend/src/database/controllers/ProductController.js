@@ -26,7 +26,7 @@ module.exports = {
                     "lenght",
                     "width",
                     "height",
-                ).groupBy('Products.id')
+                )
 
             return res.json(data)
 
