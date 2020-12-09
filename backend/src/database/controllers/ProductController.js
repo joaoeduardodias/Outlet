@@ -10,7 +10,7 @@ module.exports = {
         try {
             const data = await Connection("Products")
 
-            .leftJoin('Images').groupBy('Products.id')
+            .leftJoin('Images')
                 .select(
                     "Products.id",
                     "Products.name",
@@ -26,7 +26,7 @@ module.exports = {
                     "lenght",
                     "width",
                     "height",
-                )
+                ).groupBy('Products.id')
 
             return res.json(data)
 
