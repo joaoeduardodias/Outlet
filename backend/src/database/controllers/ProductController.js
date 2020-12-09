@@ -16,7 +16,7 @@ module.exports = {
                 "Products.name",
                 // Connection.raw(`group_concat(Images.url) as urls`),
                 // Connection.raw(`group_concat(Images.id) as ids`),
-                Connection.raw(`array_to_string(array_agg (Images.url)) as urls`),
+                // Connection.raw(`array_to_string(array_agg (Images.url)) as urls`),
                 // Connection.raw(`array_to_string(array_agg (Images.id)) as ids`),
                 "description",
                 "price",
