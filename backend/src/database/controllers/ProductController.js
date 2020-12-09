@@ -25,7 +25,7 @@ module.exports = {
                 "lenght",
                 "width",
                 "height",
-                "Images.url",
+
                 Connection.raw(`ARRAY_AGG(url) Images`)
             ).leftJoin('Images', 'Products.id', "=", 'Images.id_product').groupBy('Products.id')
 
