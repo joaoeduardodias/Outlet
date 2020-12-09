@@ -26,7 +26,7 @@ module.exports = {
                 "lenght",
                 "width",
                 "height",
-            ).leftJoin('Images', 'Products.id' = 'Images.id_product')
+            )
 
             return res.json(data)
 
