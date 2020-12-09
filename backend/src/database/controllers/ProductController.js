@@ -10,23 +10,23 @@ module.exports = {
         try {
             const data = await Connection("Products")
 
-            .leftJoin('Images')
-                .select(
-                    "Products.id",
-                    "Products.name",
-                    // Connection.raw(`group_concat(Images.url) as urls`),
-                    // Connection.raw(`group_concat(Images.id) as ids`),
-                    // Connection.raw(`array_to_string(array_agg (Images.url)) as urls`),
-                    // Connection.raw(`array_to_string(array_agg (Images.id)) as ids`),
-                    "description",
-                    "price",
-                    "amount",
-                    "available",
-                    "weight",
-                    "lenght",
-                    "width",
-                    "height",
-                )
+            // .leftJoin('Images')
+            .select(
+                "Products.id",
+                "Products.name",
+                // Connection.raw(`group_concat(Images.url) as urls`),
+                // Connection.raw(`group_concat(Images.id) as ids`),
+                // Connection.raw(`array_to_string(array_agg (Images.url)) as urls`),
+                // Connection.raw(`array_to_string(array_agg (Images.id)) as ids`),
+                "description",
+                "price",
+                "amount",
+                "available",
+                "weight",
+                "lenght",
+                "width",
+                "height",
+            )
 
             return res.json(data)
 
