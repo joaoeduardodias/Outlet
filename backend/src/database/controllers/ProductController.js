@@ -11,7 +11,7 @@ module.exports = {
             const data = await Connection("Products")
 
 
-            .select([
+            .select(
                 "Products.id",
                 "Products.name",
                 // Connection.raw(`group_concat(Images.url) as urls`),
@@ -25,8 +25,8 @@ module.exports = {
                 "lenght",
                 "width",
                 "height",
-                Connection.raw(`array_agg (Images.url) as urls`),
-            ]).leftJoin('Images', 'Products.id', "=", 'Images.id_product')
+                Connection.raw(`concat(array_agg ( Images.url) as urls)`),
+            ).leftJoin('Images', 'Products.id', "=", 'Images.id_product')
 
             return res.json(data)
 
