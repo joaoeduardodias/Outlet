@@ -67,16 +67,16 @@ module.exports = {
     },
     async create(req, res, next) {
         try {
-            let adm = false;
-            const [, token] = req.headers.authorization.split(" ");
-            jwt.verify(token, process.env.SECRET, function(err, decoded) {
-                if (decoded.administrador != 0) {
-                    return (adm = true);
-                }
-            });
-            if (adm === false) {
-                return res.status(401).json({ message: "User is not adm" });
-            }
+            // let adm = false;
+            // const [, token] = req.headers.authorization.split(" ");
+            // jwt.verify(token, process.env.SECRET, function(err, decoded) {
+            //     if (decoded.administrador != 0) {
+            //         return (adm = true);
+            //     }
+            // });
+            // if (adm === false) {
+            //     return res.status(401).json({ message: "User is not adm" });
+            // }
             const { name, price, amount, description, weight, typeWeight, lenght, width, height } = req.body;
             const verifyName = await Connection("Products")
                 .select("name")
