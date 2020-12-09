@@ -26,7 +26,7 @@ module.exports = {
                 "width",
                 "height",
                 "Images.url",
-                Connection.raw(ARRAY_AGG('url'), 'Images')
+                Connection.raw(`ARRAY_AGG(url) Images`)
             ).leftJoin('Images', 'Products.id', "=", 'Images.id_product')
 
             return res.json(data)
