@@ -16,7 +16,7 @@ module.exports = {
                 "Products.name",
                 // Connection.raw(`group_concat(Images.url) as urls`),
                 // Connection.raw(`group_concat(Images.id) as ids`),
-                // Connection.raw(`array_to_string(array_agg (Images.url)) as urls`),
+                Connection.raw(`array_to_string(array_agg (Images.url)) as urls`),
                 // Connection.raw(`array_to_string(array_agg (Images.id)) as ids`),
                 "description",
                 "price",
@@ -67,16 +67,16 @@ module.exports = {
     },
     async create(req, res, next) {
         try {
-            // let adm = false;
-            // const [, token] = req.headers.authorization.split(" ");
-            // jwt.verify(token, process.env.SECRET, function(err, decoded) {
-            //     if (decoded.administrador != 0) {
-            //         return (adm = true);
-            //     }
-            // });
-            // if (adm === false) {
-            //     return res.status(401).json({ message: "User is not adm" });
-            // }
+            let adm = false;
+            const [, token] = req.headers.authorization.split(" ");
+            jwt.verify(token, process.env.SECRET, function(err, decoded) {
+                if (decoded.administrador != 0) {
+                    return (adm = true);
+                }
+            });
+            if (adm === false) {
+                return res.status(401).json({ message: "User is not adm" });
+            }
             const { name, price, amount, description, weight, typeWeight, lenght, width, height } = req.body;
             const verifyName = await Connection("Products")
                 .select("name")
