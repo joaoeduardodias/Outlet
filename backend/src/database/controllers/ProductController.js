@@ -25,7 +25,7 @@ module.exports = {
                 "lenght",
                 "width",
                 "height",
-                Connection.raw(`concat(array_agg( Images.url)) as urls`),
+                "Images.url",
             ).leftJoin('Images', 'Products.id', "=", 'Images.id_product')
 
             return res.json(data)
