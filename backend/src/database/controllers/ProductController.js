@@ -26,7 +26,7 @@ module.exports = {
                     "width",
                     "height",
                 )
-                .leftJoin('Images', 'Products.id', '=', 'Images.id_product')
+                .Join('Images').groupBy('Products.id')
 
             return res.json(data)
 
