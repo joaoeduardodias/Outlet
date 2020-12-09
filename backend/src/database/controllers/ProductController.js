@@ -52,8 +52,8 @@ module.exports = {
                     "height",
                     // Connection.raw(`group_concat(Images.url) as urls`),
                     // Connection.raw(`group_concat(Images.id) as ids`),
-                    Connection.raw(`array_to_string(array_agg (Images.url) as urls`),
-                    Connection.raw(`array_to_string(array_agg (Images.id) as ids`),
+                    Connection.raw(`array_to_string(array_agg (Images.url) as "urls"`),
+                    Connection.raw(`array_to_string(array_agg (Images.id) as "ids"`),
                 )
                 .leftJoin('Images', 'Products.id', '=', 'Images.id_product').groupBy('Products.id').where('Products.id', id).first()
             if (!product) {
