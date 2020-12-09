@@ -52,7 +52,7 @@ routes.post('/reset/:token', AuthController.verifyToken)
 
 routes.get('/', ProductController.index)
 routes.get('/show/:id', ProductController.show)
-routes.post('/product', midellwareauth, ProductController.create)
+routes.post('/product', ProductController.create)
 routes.put('/product/:id', midellwareauth, ProductController.update)
 routes.delete('/product/:id', midellwareauth, ProductController.delete)
 
@@ -69,7 +69,7 @@ routes.post('/product_sold/:id', midellwareauth, User_Product.create) // id do p
 
 // Upload 
 routes.post('/upload/:idProduct', multer(multerConfig).array('image[]'), UploadController.create)
-routes.get('/upload', midellwareauth, UploadController.index)
+routes.get('/upload', UploadController.index)
 routes.delete('/upload/:id', midellwareauth, UploadController.delete)
 
 // adiciona estados e cidades
