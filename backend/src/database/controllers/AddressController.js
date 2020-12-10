@@ -47,10 +47,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data1 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/13/municipios`
         );
-        data.map(async(item) => {
+        data1.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -62,10 +62,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data2 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/14/municipios`
         );
-        data.map(async(item) => {
+        data2.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -77,10 +77,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data3 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/12/municipios`
         );
-        data.map(async(item) => {
+        data3.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -92,10 +92,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data4 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/17/municipios`
         );
-        data.map(async(item) => {
+        data4.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -107,10 +107,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data5 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/15/municipios`
         );
-        data.map(async(item) => {
+        data5.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -122,10 +122,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data6 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/21/municipios`
         );
-        data.map(async(item) => {
+        data6.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -137,10 +137,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data7 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/16/municipios`
         );
-        data.map(async(item) => {
+        data7.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -152,10 +152,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data8 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/22/municipios`
         );
-        data.map(async(item) => {
+        data8.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -167,10 +167,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data9 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/25/municipios`
         );
-        data.map(async(item) => {
+        data9.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -182,10 +182,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data10 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/24/municipios`
         );
-        data.map(async(item) => {
+        data10.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -197,10 +197,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data11 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/26/municipios`
         );
-        data.map(async(item) => {
+        data11.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -212,10 +212,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data12 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/23/municipios`
         );
-        data.map(async(item) => {
+        data12.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -227,10 +227,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data13 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/27/municipios`
         );
-        data.map(async(item) => {
+        data13.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -242,10 +242,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data14 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/28/municipios`
         );
-        data.map(async(item) => {
+        data14.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -257,10 +257,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data15 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/29/municipios`
         );
-        data.map(async(item) => {
+        data15.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -272,10 +272,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data16 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/31/municipios`
         );
-        data.map(async(item) => {
+        data16.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -287,10 +287,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data17 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/32/municipios`
         );
-        data.map(async(item) => {
+        data17.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -302,10 +302,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data18 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/33/municipios`
         );
-        data.map(async(item) => {
+        data18.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -317,10 +317,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data19 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/41/municipios`
         );
-        data.map(async(item) => {
+        data19.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -332,10 +332,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data20 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/42/municipios`
         );
-        data.map(async(item) => {
+        data20.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -347,10 +347,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data21 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/43/municipios`
         );
-        data.map(async(item) => {
+        data21.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -363,10 +363,10 @@ module.exports = {
 
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data22 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/municipios`
         );
-        data.map(async(item) => {
+        data22.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -378,10 +378,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data23 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/50/municipios`
         );
-        data.map(async(item) => {
+        data23.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -393,10 +393,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data24 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/51/municipios`
         );
-        data.map(async(item) => {
+        data24.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -408,10 +408,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data25 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/53/municipios`
         );
-        data.map(async(item) => {
+        data25.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -423,10 +423,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data26 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/52/municipios`
         );
-        data.map(async(item) => {
+        data26.map(async(item) => {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
@@ -438,10 +438,10 @@ module.exports = {
             // muda estado
 
         // CIDADE
-        const { data } = await axios.get(
+        const { data: data27 } = await axios.get(
             `https://servicodados.ibge.gov.br/api/v1/localidades/estados/DF/municipios`
         );
-        data.map(async(item) => {
+        data27.map(async(item) => {
             let idCity = item.id.toString()
             await Connection('City').insert({
                 id: idCity,
