@@ -41,7 +41,7 @@ module.exports = {
             // TERMINA A CIDADE
         });
 
-        function addcity(state) {
+        async function addcity(state) {
             const { data } = await axios.get(
                 `https://servicodados.ibge.gov.br/api/v1/localidades/estados/state/municipios`
             );
