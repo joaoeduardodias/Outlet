@@ -60,7 +60,7 @@ module.exports = {
     async create(req, res, next) {
         try {
             const { zip_code } = req.body
-            await Connection('City').insert({ zip_code })
+            await Connection('City').update({ zip_code })
 
             const {
                 name,
