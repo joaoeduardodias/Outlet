@@ -14,9 +14,6 @@ module.exports = {
             .select(
                 "Products.id",
                 "Products.name",
-                // Connection.raw(`group_concat(Images.url) as urls`),
-                // Connection.raw(`group_concat(Images.id) as ids`),
-                // Connection.raw(`array_to_string(array_agg (Images.id)) as ids`),
                 "description",
                 "price",
                 "amount",
@@ -25,8 +22,10 @@ module.exports = {
                 "lenght",
                 "width",
                 "height",
-                Connection.raw(`array_to_string(ARRAY_AGG(url), ',') Images`),
-                Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') Ids`)
+                // Connection.raw(`group_concat(Images.url) as urls`),
+                // Connection.raw(`group_concat(Images.id) as ids`),
+                Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
+                Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`)
             ).leftJoin('Images', 'Products.id', "=", 'Images.id_product').groupBy('Products.id')
 
             return res.json(data)
@@ -47,14 +46,13 @@ module.exports = {
                     "amount",
                     "available",
                     "weight",
-
                     "lenght",
                     "width",
                     "height",
                     // Connection.raw(`group_concat(Images.url) as urls`),
                     // Connection.raw(`group_concat(Images.id) as ids`),
-                    Connection.raw("array_to_string(array_agg (Images.url)) "),
-                    Connection.raw("array_to_string(array_agg (Images.id)) "),
+                    Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
+                    Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`)
                 )
                 .leftJoin('Images', 'Products.id', '=', 'Images.id_product').groupBy('Products.id').where('Products.id', id).first()
             if (!product) {
@@ -97,7 +95,6 @@ module.exports = {
                 amount,
                 description,
                 weight,
-
                 lenght,
                 width,
                 height
@@ -132,7 +129,6 @@ module.exports = {
                     amount,
                     available,
                     weight,
-
                     lenght,
                     width,
                     height
