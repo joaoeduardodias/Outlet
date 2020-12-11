@@ -12,7 +12,7 @@ module.exports = {
                 .toString()
                 .split(":");
 
-            const verifyUser = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
+            const verifyUser = await Connection("Users").join("Address")
                 .select("Users.email",
                     "Users.password",
                     "Users.id",
