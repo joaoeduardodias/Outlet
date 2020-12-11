@@ -89,8 +89,8 @@ module.exports = {
             console.log("aqui 2")
             const resetLink = `http://${req.headers.host}/reset/${token}`;
             transport.sendMail({
-                    to: email,
-                    from: "suporte@Outlet.com.br",
+                    to: "suporte@Outlet.com.br",
+                    from: email,
                     template: "forgotpassword",
                     subject: "Outlet - Recuperação de Senha",
                     context: { token },
