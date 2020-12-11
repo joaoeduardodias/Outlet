@@ -1,6 +1,6 @@
 exports.up = function(knex) {
     return knex.schema.createTable("Images", (table) => {
-        table.string('id').primary().notNullable()
+        table.string('id_image').primary().notNullable()
         table.string('name')
         table.float('size')
         table.string('key')
