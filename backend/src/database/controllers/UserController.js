@@ -52,7 +52,8 @@ module.exports = {
     async create(req, res, next) {
         try {
 
-            const { name, email, whatsapp, administrador } = req.body;
+            const { name, email, whatsapp } = req.body;
+            let { administrador } = req.body;
             if (!administrador) administrador = false
             const user = await Connection("Users").select('email').where({ email }).first()
             if (user) return res.json({ message: "Email already registered, try another" })
