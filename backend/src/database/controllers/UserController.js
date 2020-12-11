@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-    async show (req,res,next){
+    async show(req, res, next) {
         try {
             let adm = false
             const [, token] = req.headers.authorization.split(" ");
@@ -18,10 +18,10 @@ module.exports = {
                 return res.status(401).json({ message: "User is not adm" })
             }
 
-            const {email} = req.params
-            
-            const user = await Connection('Users').select('id','name','administrador').where({email}).first()
-            if(!user) return res.json ({message: "User not exist"})
+            const { email } = req.params
+
+            const user = await Connection('Users').select('id', 'name', 'administrador').where({ email }).first()
+            if (!user) return res.json({ message: "User not exist" })
             return res.json(user)
 
         } catch (error) {
@@ -52,7 +52,8 @@ module.exports = {
     async create(req, res, next) {
         try {
 
-            const { name, email, whatsapp } = req.body;
+            const { name, email, whatsapp, administrador } = req.body;
+            if (!administrador) administrador = false
             const user = await Connection("Users").select('email').where({ email }).first()
             if (user) return res.json({ message: "Email already registered, try another" })
             const password = await bcrypt.hash(req.body.password, 5);
@@ -64,9 +65,10 @@ module.exports = {
                 email,
                 password,
                 whatsapp,
+                administrador
             });
 
-            return res.status(201).json({ idUser: id, message:'success'})
+            return res.status(201).json({ idUser: id, message: 'success' })
         } catch (error) {
             next(error);
         }
@@ -122,7 +124,7 @@ module.exports = {
                 })
                 .where({ id });
 
-            return res.json({message: 'success'}).send();
+            return res.json({ message: 'success' }).send();
         } catch (error) {
             next(error);
         }
@@ -160,7 +162,7 @@ module.exports = {
             const { id } = req.params;
             await Connection('Address').where('id_users', id).del()
             await Connection("Users").where({ id }).del();
-            return res.json({message: 'success'}).status(204)
+            return res.json({ message: 'success' }).status(204)
         } catch (error) {
             next(error);
         }
