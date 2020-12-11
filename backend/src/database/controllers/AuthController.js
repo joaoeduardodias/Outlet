@@ -12,25 +12,25 @@ module.exports = {
                 .toString()
                 .split(":");
 
-            const verifyUser = await Connection.select("Users.email",
+            const verifyUser = await Connection("Users").join("Address", 'Users.id', "=", "Adress.id_users")
+                .select("Users.email",
                     "Users.password",
                     "Users.id",
                     "Users.name",
                     "Users.administrador",
-                    "zip_code"
+                    "Address.zip_code"
                 )
-                .from("Users , City")
                 .where({ email })
                 .first();
             if (!verifyUser) {
                 return res.json({ message: "Email incorrect" });
             }
+            console.log(verifyUser)
 
             bcrypt.compare(password, verifyUser.password, function(err, result) {
                 if (err) {
                     return res.json({ message: "Ocorreu um erro" });
                 }
-                console.log(verifyUser)
 
                 if (result == true) {
                     const { id, administrador, name, email, zip_code } = verifyUser;

@@ -62,12 +62,10 @@ module.exports = {
                 name,
                 neighborhood,
                 number,
+                zip_code,
                 id_city,
                 id_users,
-                zip_code
             } = req.body;
-            await Connection('City').update({ zip_code }).where('id', id_city)
-
 
             const id = crypto.randomBytes(3).toString("HEX");
             await Connection("Address").insert({
@@ -75,6 +73,7 @@ module.exports = {
                 name,
                 neighborhood,
                 number,
+                zip_code,
                 id_city,
                 id_users,
             });
@@ -92,8 +91,8 @@ module.exports = {
                     "Address.name",
                     "Address.neighborhood",
                     "Address.number",
+                    "Address.zip_code",
                     "City.name",
-                    "City.zip_code"
                 );
             return res.json(data);
         } catch (error) {
@@ -110,8 +109,8 @@ module.exports = {
                     "Address.name",
                     "Address.neighborhood",
                     "Address.number",
+                    "Address.zip_code",
                     "City.name",
-                    "City.zip_code"
                 ).where('id_users', id)
             return res.json(data)
         } catch (error) {
