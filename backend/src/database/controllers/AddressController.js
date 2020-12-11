@@ -33,14 +33,14 @@ module.exports = {
             //     })
             // CIDADE
 
-            addcity(idState)
+            addcity(item.id, idState)
 
 
 
             // TERMINA A CIDADE
         });
 
-        async function addcity(state) {
+        async function addcity(state, state_id) {
             const { data } = await axios.get(
                 `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/municipios`
             );
@@ -49,7 +49,7 @@ module.exports = {
                 await Connection('City').insert({
                     id: idCity,
                     name: item.nome,
-                    id_State: state
+                    id_State: state_id
 
                 })
             })
