@@ -79,7 +79,6 @@ module.exports = {
             let userLogged = '';
             const [, token] = req.headers.authorization.split(" ");
             jwt.verify(token, process.env.SECRET, function(err, decoded) {
-                console.log(decoded.id)
                 userLogged = decoded.id
             });
             const { id } = req.params;
