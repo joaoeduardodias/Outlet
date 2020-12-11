@@ -25,15 +25,15 @@ module.exports = {
         data.map(async(item) => {
             let idState = item.id.toString();
 
-            await Connection("State").insert({
-                    id: idState,
-                    name: item.nome,
-                    id_country: "1",
-                    uf: item.sigla,
-                })
-                // CIDADE
+            // await Connection("State").insert({
+            //         id: idState,
+            //         name: item.nome,
+            //         id_country: "1",
+            //         uf: item.sigla,
+            //     })
+            // CIDADE
 
-            // addcity(idState)
+            addcity(idState)
 
 
 
