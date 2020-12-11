@@ -68,12 +68,7 @@ module.exports = {
             } = req.body;
             await Connection('City').update({ zip_code }).where('id', id_city)
 
-            console.log(name,
-                neighborhood,
-                number,
-                id_city,
-                id_users,
-                zip_code)
+
             const id = crypto.randomBytes(3).toString("HEX");
             await Connection("Address").insert({
                 id,
