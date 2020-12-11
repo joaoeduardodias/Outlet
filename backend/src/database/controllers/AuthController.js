@@ -22,10 +22,11 @@ module.exports = {
                 )
                 .where({ email })
                 .first();
+            console.log(verifyUser)
             if (!verifyUser) {
                 return res.json({ message: "Email incorrect" });
             }
-            console.log(verifyUser)
+
 
             bcrypt.compare(password, verifyUser.password, function(err, result) {
                 if (err) {
