@@ -69,8 +69,7 @@ module.exports = {
             if (!verifyUser) {
                 return res.json({ message: "Email incorrect" });
             }
-            console.log("aqui")
-                // gerar o id da tablea token
+            // gerar o id da tablea token
             const id = crypto.randomBytes(3).toString("HEX");
             // obter user_id
             const user_id = verifyUser.id;
@@ -87,7 +86,7 @@ module.exports = {
                 user_id,
             });
             // 3- Gerar Link para o reset de senha com o token
-
+            console.log("aqui 2")
             const resetLink = `http://${req.headers.host}/reset/${token}`;
             transport.sendMail({
                     to: email,
@@ -107,6 +106,7 @@ module.exports = {
                     return res.json({ message: 'send' }).send()
                 }
             );
+            console.log("fim")
         } catch (error) {
             next(error);
         }
