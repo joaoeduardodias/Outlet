@@ -19,7 +19,7 @@ module.exports = {
                     "Users.administrador",
                     "zip_code"
                 )
-                .from("Users", "City")
+                .from("Users , City")
                 .where({ email })
                 .first();
             if (!verifyUser) {
