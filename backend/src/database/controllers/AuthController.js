@@ -13,7 +13,7 @@ module.exports = {
                 .split(":");
 
             const verifyUser = await Connection("Users")
-                .select("Users.email", "Users.password", "Users.id", "Users.name", "Users.administrador", "City.zip_code")
+                .select("Users.email", "Users.password", "Users.id", "Users.name", "Users.administrador")
                 .where({ email })
                 .first();
             if (!verifyUser) {
