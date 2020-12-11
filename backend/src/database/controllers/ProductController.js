@@ -9,36 +9,7 @@ module.exports = {
     async index(next, res) {
         try {
             const data = await Connection("Products")
-
-
-            .select(
-                "Products.id",
-                "Products.name",
-                "description",
-                "price",
-                "amount",
-                "available",
-                "weight",
-                "lenght",
-                "width",
-                "height",
-                // Connection.raw(`group_concat(Images.url) as urls`),
-                // Connection.raw(`group_concat(Images.id) as ids`),
-                Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
-                Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`)
-            ).leftJoin('Images', 'Products.id', "=", 'Images.id_product').groupBy('Products.id')
-
-            return res.json(data)
-
-        } catch (error) {
-            // next(error);
-            console.log(error)
-        }
-    },
-    async show(req, res, next) {
-        try {
-            const { id } = req.params
-            const product = await Connection('Products').select(
+                .select(
                     "Products.id",
                     "Products.name",
                     "description",
@@ -53,8 +24,38 @@ module.exports = {
                     // Connection.raw(`group_concat(Images.id) as ids`),
                     Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
                     Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`)
-                )
-                .leftJoin('Images', 'Products.id', '=', 'Images.id_product').groupBy('Products.id').where('Products.id', id).first()
+                ).leftJoin('Images', 'Products.id', "=", 'Images.id_product').groupBy('Products.id')
+
+            return res.json(data)
+
+        } catch (error) {
+            // next(error);
+            console.log(error)
+        }
+    },
+    async show(req, res, next) {
+        try {
+            const { id } = req.params
+            const product = await Connection('Products')
+                .select(
+                    "Products.id",
+                    "Products.name",
+                    "description",
+                    "price",
+                    "amount",
+                    "available",
+                    "weight",
+                    "lenght",
+                    "width",
+                    "height",
+                    // Connection.raw(`group_concat(Images.url) as urls`),
+                    // Connection.raw(`group_concat(Images.id) as ids`),
+                    Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
+                    Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`)
+                ).leftJoin('Images', 'Products.id', "=", 'Images.id_product')
+                .groupBy('Products.id')
+                .where('Products.id', id)
+                .first()
             if (!product) {
                 return res.json({ message: "Not existe is product" })
             }
