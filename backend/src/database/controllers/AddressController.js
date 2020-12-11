@@ -18,10 +18,10 @@ module.exports = {
             "https://servicodados.ibge.gov.br/api/v1/localidades/estados"
         );
 
-        // await Connection("Country").insert({
-        //     id: "1",
-        //     name: "Brasil"
-        // })
+        await Connection("Country").insert({
+            id: "1",
+            name: "Brasil"
+        })
         data.map(async(item) => {
             let idState = item.id.toString();
 
@@ -33,8 +33,7 @@ module.exports = {
             //     })
             // CIDADE
 
-            // muda estado
-            addcity(idState)
+            // addcity(idState)
 
 
 
@@ -67,9 +66,14 @@ module.exports = {
                 id_users,
                 zip_code
             } = req.body;
-            await Connection('City').update({ zip_code })
+            await Connection('City').update({ zip_code }).where('id', id_city)
 
-
+            console.log(name,
+                neighborhood,
+                number,
+                id_city,
+                id_users,
+                zip_code)
             const id = crypto.randomBytes(3).toString("HEX");
             await Connection("Address").insert({
                 id,
