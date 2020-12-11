@@ -49,7 +49,7 @@ module.exports = {
             const { id } = req.params
             const { key } = await Connection('Images')
                 .select('key')
-                .where({ id })
+                .where('id_image', id)
                 .first();
             await Connection('Images').where({ id }).del()
 
