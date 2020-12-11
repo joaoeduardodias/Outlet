@@ -142,7 +142,7 @@ module.exports = {
             });
 
             await Connection('Address').where('id_users', userLogged).del()
-            await Connection("Users").where({ userLogged }).del();
+            await Connection("Users").where('id', userLogged).del();
             return res.status(204).send();
         } catch (error) {
             next(error);
