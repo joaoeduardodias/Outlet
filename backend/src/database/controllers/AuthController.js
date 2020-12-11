@@ -24,6 +24,7 @@ module.exports = {
                 if (err) {
                     return res.json({ message: "Ocorreu um erro" });
                 }
+                console.log(verifyUser)
 
                 if (result == true) {
                     const { id, administrador, name, email, zip_code } = verifyUser;
