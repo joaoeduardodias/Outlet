@@ -42,7 +42,7 @@ module.exports = {
 
         async function addcity(state) {
             const { data } = await axios.get(
-                `https://servicodados.ibge.gov.br/api/v1/localidades/estados/state/municipios`
+                `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/municipios`
             );
             data.map(async(item) => {
                 let idCity = item.id.toString()
