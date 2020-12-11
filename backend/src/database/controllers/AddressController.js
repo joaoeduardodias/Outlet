@@ -59,16 +59,17 @@ module.exports = {
     },
     async create(req, res, next) {
         try {
-            const { zip_code } = req.body
-            await Connection('City').update({ zip_code })
-
             const {
                 name,
                 neighborhood,
                 number,
                 id_city,
                 id_users,
+                zip_code
             } = req.body;
+            await Connection('City').update({ zip_code })
+
+
             const id = crypto.randomBytes(3).toString("HEX");
             await Connection("Address").insert({
                 id,
