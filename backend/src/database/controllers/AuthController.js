@@ -12,7 +12,7 @@ module.exports = {
                 .toString()
                 .split(":");
 
-            const verifyUser = await Connection().from('Users', 'City')
+            const verifyUser = await Connection("Users").from('City')
                 .select("Users.email", "Users.password", "Users.id", "Users.name", "Users.administrador", "City.zip_code")
                 .where({ email })
                 .first();
