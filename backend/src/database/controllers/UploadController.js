@@ -51,7 +51,7 @@ module.exports = {
                 .select('key')
                 .where('id_image', id)
                 .first();
-            await Connection('Images').where('id_image', id).del()
+            await Connection('Images').where('id_image', id)
 
 
             if (process.env.STORAGE_TYPE === 's3') {
