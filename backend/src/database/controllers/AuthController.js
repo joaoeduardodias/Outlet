@@ -13,8 +13,8 @@ module.exports = {
                 .split(":");
 
             const verifyUser = await Connection("Users").join('City')
-                .select("email", "password", "Users.id", "Users.name", "administrador", "City.zip_code")
-                .where("email", email)
+                .select("email", "password", "Users.id", "Users.name", "administrador", "zip_code")
+                .where({ email })
                 .first();
             if (!verifyUser) {
                 return res.json({ message: "Email incorrect" });
