@@ -22,7 +22,6 @@ module.exports = {
                 )
                 .where({ email })
                 .first();
-            console.log(verifyUser)
             if (!verifyUser) {
                 return res.json({ message: "Email incorrect" });
             }
@@ -70,8 +69,8 @@ module.exports = {
             if (!verifyUser) {
                 return res.json({ message: "Email incorrect" });
             }
-
-            // gerar o id da tablea token
+            console.log("aqui")
+                // gerar o id da tablea token
             const id = crypto.randomBytes(3).toString("HEX");
             // obter user_id
             const user_id = verifyUser.id;
