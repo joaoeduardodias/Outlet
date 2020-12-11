@@ -27,7 +27,7 @@ module.exports = {
                     url = `${process.env.APP_URL}/files/${key}`
                 }
                 await Connection("Images").insert({
-                    id,
+                    id_image,
                     name,
                     size,
                     key,
