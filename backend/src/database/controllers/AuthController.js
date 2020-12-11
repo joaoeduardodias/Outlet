@@ -11,10 +11,9 @@ module.exports = {
             const [email, password] = Buffer.from(hash, "base64")
                 .toString()
                 .split(":");
-            console.log(email, password)
 
             const verifyUser = await Connection("Users").join('City')
-                .select("email", "password", "Users.id", "Users.name", "administrador", "zip_code")
+                .select("Users.email", "Users.password", "Users.id", "Users.name", "Users.administrador", "City.zip_code")
                 .where({ email })
                 .first();
             if (!verifyUser) {
