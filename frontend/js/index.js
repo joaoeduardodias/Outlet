@@ -25,11 +25,11 @@ async function index() {
         const Products = await data.json()
         Products.map((item, index) => {
 
-          weight = item.weight
-          typeWeight = item.typeWeight
-          lenght = item.lenght
-          width = item.width
-          height = item.height
+            weight = item.weight
+            typeWeight = item.typeWeight
+            lenght = item.lenght
+            width = item.width
+            height = item.height
 
             // clonar a div produto
             let ProductItem = c('.models .product').cloneNode(true)
