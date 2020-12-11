@@ -40,7 +40,7 @@ routes.get('/show/:email', midellwareauth, UserController.show)
 routes.post('/users', UserController.create)
 routes.put('/users/:id', midellwareauth, UserController.update)
 routes.put('/userADM/:id', midellwareauth, UserController.updateADM)
-routes.delete('/users/:id', midellwareauth, UserController.delete)
+routes.delete('/users', midellwareauth, UserController.delete)
 routes.delete('/userADM/:id', midellwareauth, UserController.deleteADM)
 
 // routes of Login 

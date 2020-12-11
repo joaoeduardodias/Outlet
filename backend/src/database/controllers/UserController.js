@@ -140,10 +140,9 @@ module.exports = {
             jwt.verify(token, process.env.SECRET, function(err, decoded) {
                 userLogged = decoded.id
             });
-            const { id } = req.params;
-            if (userLogged != id) return res.json({ message: "You not Delete  other user" })
+
             await Connection('Address').where('id_users', userLogged).del()
-            await Connection("Users").where({ id }).del();
+            await Connection("Users").where({ userLogged }).del();
             return res.status(204).send();
         } catch (error) {
             next(error);
