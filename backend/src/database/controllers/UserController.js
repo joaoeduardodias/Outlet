@@ -78,9 +78,11 @@ module.exports = {
             let userLogged = '';
             const [, token] = req.headers.authorization.split(" ");
             jwt.verify(token, process.env.SECRET, function(err, decoded) {
+                console.log(decoded.id)
                 userLogged = decoded.id
             });
             const { id } = req.params;
+            console.log(id)
             if (userLogged != id) return res.json({ message: "You not Update in other users" })
 
             const { name, email, whatsapp } = req.body;
