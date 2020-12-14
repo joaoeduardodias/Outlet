@@ -6,7 +6,7 @@ html body * {
     width: 100vw;
 }
 
-body {
+div {
     background-color: #ecf1f8;
     display: flex;
     justify-content: center;
