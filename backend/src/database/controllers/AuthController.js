@@ -86,7 +86,7 @@ module.exports = {
                 user_id,
             });
             // 3- Gerar Link para o reset de senha com o token
-            console.log("aqui 2")
+
             const resetLink = `http://${req.headers.host}/reset/${token}`;
             transport.sendMail({
                     to: "suporte@Outlet.com.br",
