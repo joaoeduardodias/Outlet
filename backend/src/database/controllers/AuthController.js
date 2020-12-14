@@ -93,7 +93,7 @@ module.exports = {
                     from: email,
                     template: "forgotpassword",
                     subject: "Outlet - Recuperação de Senha",
-                    context: { token },
+                    context: { token, resetLink },
                 },
                 (error) => {
                     if (error) {
@@ -106,7 +106,6 @@ module.exports = {
                     return res.json({ message: 'send' }).send()
                 }
             );
-            console.log("fim")
         } catch (error) {
             next(error);
         }
