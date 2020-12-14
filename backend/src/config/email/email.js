@@ -4,11 +4,11 @@ const exphbs = require('express-handlebars');
 const hbs = require('nodemailer-express-handlebars')
 
 const transport = nodemailer.createTransport({
-    host: process.env.HOST,
-    port: process.env.PORT,
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
     auth: {
-        user: process.env.USER,
-        pass: process.env.PASS
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
     }
 });
 const viewPath = resolve(__dirname, '../../', 'resources', 'mail', 'auth');
