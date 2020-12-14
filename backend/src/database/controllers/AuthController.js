@@ -69,7 +69,7 @@ module.exports = {
             if (!verifyUser) {
                 return res.json({ message: "Email incorrect" });
             }
-            // gerar o id da tablea token
+            // gerar o id da table token
             const id = crypto.randomBytes(3).toString("HEX");
             // obter user_id
             const user_id = verifyUser.id;
@@ -93,7 +93,7 @@ module.exports = {
                     from: email,
                     template: "forgotpassword",
                     subject: "Outlet - Recuperação de Senha",
-                    context: { token, resetLink },
+                    context: { token },
                 },
                 (error) => {
                     if (error) {
