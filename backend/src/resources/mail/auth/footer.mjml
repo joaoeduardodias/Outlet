@@ -1,0 +1,41 @@
+<mj-section background-color="#ebebeb">
+
+  <mj-column>
+    <mj-text>
+      <h2>Conecte-se</h2>
+    </mj-text>
+    <mj-button width="100%"
+               background-color="#3b5998"
+               font-size="16px"
+               href="https://facebook.com/comsolid">
+      Facebook
+    </mj-button>
+    <mj-button width="100%"
+               background-color="#f77716"
+               font-size="16px"
+               href="https://www.instagram.com/?hl=pt-br">
+      Instagram
+    </mj-button>
+    <mj-button width="100%"
+               background-color="#1cca0c"
+               font-size="16px"
+               href="https://plus.google.com/111367041594691089785/posts">
+      Whatsapp
+    </mj-button>
+  </mj-column>
+  <mj-column>
+    <mj-text align="justify">
+      <h2>Informações para contato</h2>
+      <ul>
+        <li>
+          Email:
+          <a href="mailto:suporte@outlet.com">
+            suporte@outlet.com
+          </a>
+        </li>
+       
+      </ul>
+    </mj-text>
+  </mj-column>
+
+</mj-section>
