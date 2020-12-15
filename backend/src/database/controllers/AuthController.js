@@ -63,7 +63,7 @@ module.exports = {
                 .split(":");
 
             const verifyUser = await Connection("Users")
-                .select("email", "id")
+                .select("email", "name", "id")
                 .where("email", email)
                 .first();
             if (!verifyUser) {
@@ -73,6 +73,7 @@ module.exports = {
             const id = crypto.randomBytes(3).toString("HEX");
             // obter user_id
             const user_id = verifyUser.id;
+            const nameUser = verifyUser.name;
             //  2- Gerar token com data de expiração
 
             const token = crypto.randomBytes(20).toString("HEX");
@@ -93,7 +94,7 @@ module.exports = {
                     from: "suporte@Outlet.com.br",
                     template: "forgotpassword",
                     subject: "Outlet - Recuperação de Senha",
-                    context: { resetLink },
+                    context: { email, nameUser, resetLink },
                 },
                 (error) => {
                     if (error) {
