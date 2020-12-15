@@ -93,7 +93,7 @@ module.exports = {
                     from: "suporte@Outlet.com.br",
                     template: "forgotpassword",
                     subject: "Outlet - Recuperação de Senha",
-                    context: { token },
+                    context: { resetLink },
                 },
                 (error) => {
                     if (error) {
