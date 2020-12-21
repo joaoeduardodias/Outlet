@@ -11,9 +11,9 @@ module.exports = {
             // const [email, password] = Buffer.from(hash, "base64")
             //     .toString()
             //     .split(":");
-            const { email, password } = req.body
-            console.log(email, password)
-            console.log(req.files)
+            const teste = req.body
+            console.log(teste)
+
 
 
             const verifyUser = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
