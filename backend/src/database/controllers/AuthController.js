@@ -7,10 +7,11 @@ const transport = require("../../config/email/email");
 module.exports = {
     async create(req, res, next) {
         try {
-            const [, hash] = req.headers.authorization.split(" ");
-            const [email, password] = Buffer.from(hash, "base64")
-                .toString()
-                .split(":");
+            // const [, hash] = req.headers.authorization.split(" ");
+            // const [email, password] = Buffer.from(hash, "base64")
+            //     .toString()
+            //     .split(":");
+            const { email, password } = req.body
 
             const verifyUser = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
                 .select("Users.email",
