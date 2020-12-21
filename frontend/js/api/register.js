@@ -1,4 +1,4 @@
-const baseurl = "http://localhost:3333";
+const baseurl = "https://ecomerceoutlet.herokuapp.com";
 let idUser;
 async function Register() {
     try {
@@ -24,11 +24,11 @@ async function Register() {
         });
         const message = await dataUser.json();
         idUser = message.idUser;
-        if(message.message == 'Email already registered, try another'){
-          valid('Email já cadastrado')
+        if (message.message == 'Email already registered, try another') {
+            valid('Email já cadastrado')
         }
-        if(message.message == 'success'){
-         await create(idUser)
+        if (message.message == 'success') {
+            await create(idUser)
 
         }
     } catch (error) {

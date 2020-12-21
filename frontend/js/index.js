@@ -9,7 +9,7 @@ let typeWeight;
 let lenght;
 let width;
 let height;
-const baseurl = 'http://localhost:3333'
+const baseurl = 'https://ecomerceoutlet.herokuapp.com'
 
 //  LIST OF PRODUCT
 async function index() {

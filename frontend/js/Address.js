@@ -1,4 +1,4 @@
-const BaseUrl = "http://localhost:3333";
+const BaseUrl = "https://ecomerceoutlet.herokuapp.com";
 let selectState = document.getElementById('state')
 let selectCity = document.getElementById('city')
 let idState

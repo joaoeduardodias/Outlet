@@ -1,4 +1,4 @@
-const baseurl = "http://localhost:3333";
+const baseurl = "https://ecomerceoutlet.herokuapp.com";
 const c = (el) => document.querySelector(el);
 const cs = (el) => document.querySelectorAll(el);
 const form = c("form");
