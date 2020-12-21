@@ -12,6 +12,7 @@ module.exports = {
             //     .toString()
             //     .split(":");
             const { email, password } = req.body
+            console.log(email, password)
 
             const verifyUser = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
                 .select("Users.email",
