@@ -13,9 +13,8 @@ module.exports = {
             //     .split(":");
             // const { email, password } = req.body
             // console.log(email, password)
-            req.files.map(async(item) => {
-                console.log(item)
-            })
+
+            console.log(req.body)
 
             const verifyUser = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
                 .select("Users.email",
