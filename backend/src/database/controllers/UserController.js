@@ -56,6 +56,7 @@ module.exports = {
             let { administrador } = req.body;
             if (!administrador) administrador = false
             const user = await Connection("Users").select('email').where({ email }).first()
+            console.log(user)
             if (user) return res.json({ message: "Email already registered, try another" })
             const password = await bcrypt.hash(req.body.password, 5);
             const id = crypto.randomBytes(3).toString("HEX");
