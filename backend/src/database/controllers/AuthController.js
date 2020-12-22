@@ -11,10 +11,10 @@ module.exports = {
             // const [email, password] = Buffer.from(hash, "base64")
             //     .toString()
             //     .split(":");
-            const teste1 = req.body
+            const { email, password } = req.body
 
 
-            console.log(teste1)
+            console.log(email, password)
 
 
 
