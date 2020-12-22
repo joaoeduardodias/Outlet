@@ -18,6 +18,14 @@ module.exports = {
             height,
             zip_code
         } = req.body
+        console.log(
+            methodFreight,
+            weight,
+            lenght,
+            width,
+            height,
+            zip_code
+        )
         if (methodFreight == 'PAC') {
             method = 41106
         } else {
@@ -62,9 +70,9 @@ module.exports = {
                 }
 
                 var row = xml.Servicos.cServico
-                    // return res.json(row)
+                return res.json(row)
 
-                console.log(row)
+                // console.log(row)
             });
         });
     }
