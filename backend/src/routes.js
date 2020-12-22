@@ -36,7 +36,7 @@ const FreightController = require('./database/controllers/FreightController');
 
 
 //  CRUD de usuários
-routes.get('/users', UserController.index)
+routes.get('/users', midellwareauth, UserController.index)
 routes.get('/show/:email', midellwareauth, UserController.show)
 routes.post('/users', UserController.create)
 routes.put('/users/:id', midellwareauth, UserController.update)

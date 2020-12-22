@@ -31,17 +31,17 @@ module.exports = {
 
     async index(req, res, next) {
         try {
-            // let adm = false
-            // const [, token] = req.headers.authorization.split(" ");
-            // jwt.verify(token, process.env.SECRET, function(err, decoded) {
-            //     if (decoded.administrador != 0) {
-            //         return adm = true
-            //     }
-            // });
-            // if (adm === false) {
+            let adm = false
+            const [, token] = req.headers.authorization.split(" ");
+            jwt.verify(token, process.env.SECRET, function(err, decoded) {
+                if (decoded.administrador != 0) {
+                    return adm = true
+                }
+            });
+            if (adm === false) {
 
-            //     return res.status(401).json({ message: "User is not adm" })
-            // }
+                return res.status(401).json({ message: "User is not adm" })
+            }
             const users = await Connection("Users");
             return res.json(users);
         } catch (error) {
@@ -56,7 +56,7 @@ module.exports = {
             let { administrador } = req.body;
             if (!administrador) administrador = false
             const user = await Connection("Users").select('email').where({ email }).first()
-            console.log(user)
+
             if (user) return res.json({ message: "Email already registered, try another" })
             const password = await bcrypt.hash(req.body.password, 5);
             const id = crypto.randomBytes(3).toString("HEX");

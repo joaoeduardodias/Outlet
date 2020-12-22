@@ -62,9 +62,9 @@ module.exports = {
                 }
 
                 var row = xml.Servicos.cServico
-                return res.json(row)
+                    // return res.json(row)
 
-
+                console.log(row)
             });
         });
     }

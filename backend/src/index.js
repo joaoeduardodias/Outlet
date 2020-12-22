@@ -4,12 +4,10 @@ const cors = require('cors')
 const routes = require('./routes')
 const path = require('path')
 const app = express()
-const bodyParser = require('body-parser')
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-// app.use(express.json())
-// app.use(express.urlencoded({ extended: true }))
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')))
 
 
