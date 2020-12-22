@@ -154,9 +154,9 @@ module.exports = {
                 return res.status(401).json({ message: "User is not adm" });
             }
             const { id } = req.params;
-            const key = await Connection('Images')
+            const { key } = await Connection('Images')
                 .select('key')
-                .where('id_product', id)
+                .where('id_product', id).first()
             console.log(key)
             await Connection('Images').where('id_product', id).del()
             if (process.env.STORAGE_TYPE === 's3') {
