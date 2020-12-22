@@ -166,7 +166,7 @@ module.exports = {
                         Bucket: process.env.BUCKET_NAME,
                         Key: element.key
                     }).promise()
-                    return res.status(204).send()
+                    return res.status(204)
 
                 } else {
                     promisify(fs.unlink)(
