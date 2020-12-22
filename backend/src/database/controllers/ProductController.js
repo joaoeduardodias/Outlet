@@ -158,7 +158,7 @@ module.exports = {
                 .select('key')
                 .where('id_product', id)
             key.forEach(element => {
-                console.log(element)
+                console.log(element.key)
             });
             // await Connection('Images').where('id_product', id).del()
             if (process.env.STORAGE_TYPE === 's3') {
