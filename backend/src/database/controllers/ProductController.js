@@ -158,21 +158,22 @@ module.exports = {
                 .select('key')
                 .where('id_product', id)
             key.forEach(element => {
-                console.log(element.key)
+
+                if (process.env.STORAGE_TYPE === 's3') {
+                    s3.deleteObject({
+                        Bucket: process.env.BUCKET_NAME,
+                        Key: element.key
+                    }).promise()
+                    return res.status(204).send()
+
+                } else {
+                    promisify(fs.unlink)(
+                        path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads', element.key)
+                    )
+                }
             });
             // await Connection('Images').where('id_product', id).del()
-            if (process.env.STORAGE_TYPE === 's3') {
-                s3.deleteObject({
-                    Bucket: process.env.BUCKET_NAME,
-                    Key: key
-                }).promise()
-                return res.status(204).send()
 
-            } else {
-                promisify(fs.unlink)(
-                    path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads', key)
-                )
-            }
             await Connection("Products").where({ id }).del();
             return res.json({ message: 'success' })
         } catch (error) {
