@@ -61,11 +61,11 @@ module.exports = {
                 if (err) {
                     return console.log('Erro ', err);
                 }
-                console.log(row)
+
                 var row = xml.Servicos.cServico
                 return res.json(row)
 
-                // console.log(row)
+
             });
         });
     }
