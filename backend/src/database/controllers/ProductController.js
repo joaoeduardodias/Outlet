@@ -157,7 +157,7 @@ module.exports = {
             const { key } = await Connection('Images')
                 .select('key')
                 .where('id_product', id)
-                .first();
+            console.log(key)
             await Connection('Images').where('id_product', id).del()
             if (process.env.STORAGE_TYPE === 's3') {
                 s3.deleteObject({
