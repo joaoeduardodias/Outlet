@@ -41,7 +41,7 @@ module.exports = {
             'StrRetorno': 'xml',
             'nCdServico': method
         };
-        console.log(params)
+
         var url = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx';
 
         var options = {
@@ -61,7 +61,7 @@ module.exports = {
                 if (err) {
                     return console.log('Erro ', err);
                 }
-
+                console.log(row)
                 var row = xml.Servicos.cServico
                 return res.json(row)
 
