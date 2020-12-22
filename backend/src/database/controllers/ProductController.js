@@ -1,6 +1,7 @@
 const crypto = require("crypto");
 const Connection = require("../../database");
 const jwt = require("jsonwebtoken");
+const aws = require('aws-sdk')
 const fs = require('fs')
 const path = require('path')
 const { promisify } = require('util')
@@ -153,6 +154,7 @@ module.exports = {
             if (adm === false) {
                 return res.status(401).json({ message: "User is not adm" });
             }
+            const s3 = new aws.S3();
             const { id } = req.params;
             const key = await Connection('Images')
                 .select('key')
