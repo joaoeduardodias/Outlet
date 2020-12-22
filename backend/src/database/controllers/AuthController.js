@@ -9,9 +9,10 @@ module.exports = {
         try {
 
             const { email, senha: password } = req.body
+            let User;
             console.log(email, password)
 
-            const verifyUser = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
+            const verifyUserAddress = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
                 .select("Users.email",
                     "Users.password",
                     "Users.id",
@@ -21,19 +22,33 @@ module.exports = {
                 )
                 .where({ email })
                 .first();
-            console.log(verifyUser)
-            if (!verifyUser) {
+            User = verifyUserAddress
+            if (!verifyUserAddress) {
+                const verifyUser = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
+                    .select("Users.email",
+                        "Users.password",
+                        "Users.id",
+                        "Users.name",
+                        "Users.administrador"
+
+                    )
+                    .where({ email })
+                    .first();
+                User = verifyUser
+            }
+
+            if (!User) {
                 return res.json({ message: "Email incorrect" });
             }
 
 
-            bcrypt.compare(password, verifyUser.password, function(err, result) {
+            bcrypt.compare(password, User.password, function(err, result) {
                 if (err) {
                     return res.json({ message: "Ocorreu um erro" });
                 }
 
                 if (result == true) {
-                    const { id, administrador, name, email, zip_code } = verifyUser;
+                    const { id, administrador, name, email, zip_code } = User;
                     const token = jwt.sign({ id, administrador, name, email, zip_code },
                         process.env.SECRET, {
                             expiresIn: 86400, // expires in 24 hr
