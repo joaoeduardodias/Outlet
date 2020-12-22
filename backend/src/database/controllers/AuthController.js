@@ -34,7 +34,7 @@ module.exports = {
                     )
                     .where({ email })
                     .first();
-                User = verifyUser
+                return User = verifyUser
             }
 
             if (!User) {
