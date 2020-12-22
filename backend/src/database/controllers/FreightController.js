@@ -18,14 +18,7 @@ module.exports = {
             height,
             zip_code
         } = req.body
-        console.log(
-            methodFreight,
-            weight,
-            lenght,
-            width,
-            height,
-            zip_code
-        )
+
         if (methodFreight == 'PAC') {
             method = 41106
         } else {
@@ -48,7 +41,7 @@ module.exports = {
             'StrRetorno': 'xml',
             'nCdServico': method
         };
-
+        console.log(params)
         var url = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx';
 
         var options = {
