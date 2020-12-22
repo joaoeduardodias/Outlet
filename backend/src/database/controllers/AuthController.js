@@ -11,7 +11,7 @@ module.exports = {
             // const [email, password] = Buffer.from(hash, "base64")
             //     .toString()
             //     .split(":");
-            const teste = req
+            const teste = req.fields
 
             console.log(teste)
 
