@@ -24,7 +24,7 @@ module.exports = {
                 .first();
             User = verifyUserAddress
             if (!verifyUserAddress) {
-                const verifyUser = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
+                const verifyUser = await Connection("Users")
                     .select("Users.email",
                         "Users.password",
                         "Users.id",
