@@ -2,6 +2,7 @@ const express = require('express')
 const routes = express.Router()
 const jwt = require('jsonwebtoken');
 const multer = require('multer')
+var login = multer()
 const multerConfig = require('./config/multer')
 
 
@@ -44,7 +45,7 @@ routes.delete('/users', midellwareauth, UserController.delete)
 routes.delete('/userADM/:id', midellwareauth, UserController.deleteADM)
 
 // routes of Login 
-routes.post('/login', AuthController.create)
+routes.post('/login', login.none(), AuthController.create)
 routes.post('/forgot', AuthController.forgotPassword)
 routes.post('/reset/:token', AuthController.verifyToken)
 

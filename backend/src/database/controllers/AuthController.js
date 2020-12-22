@@ -12,10 +12,10 @@ module.exports = {
             //     .toString()
             //     .split(":");
             const teste1 = req.body
-            const teste2 = req.files
 
-            console.log("BODY" + teste1)
-            console.log("FILES" + teste2)
+
+            console.log(teste1)
+
 
 
             const verifyUser = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
