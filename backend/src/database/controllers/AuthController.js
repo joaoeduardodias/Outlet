@@ -34,8 +34,9 @@ module.exports = {
                     )
                     .where({ email })
                     .first();
-                return User = verifyUser
+                User = verifyUser
             }
+            console.log(User)
 
             if (!User) {
                 return res.json({ message: "Email incorrect" });
