@@ -23,7 +23,7 @@ async function index() {
             mode: "cors",
         })
         const Products = await data.json()
-        Products.map((item, index) => {
+        Products.map((item) => {
 
             weight = item.weight
             typeWeight = item.typeWeight
@@ -34,7 +34,7 @@ async function index() {
             // clonar a div produto
             let ProductItem = c('.models .product').cloneNode(true)
                 // preenche os dados
-            if (item.available != 1) {
+            if (item.available != true) {
                 ProductItem.style.display = 'none'
             } else {
                 let images = []
@@ -87,6 +87,7 @@ async function index() {
                         c('.product-amount').innerHTML = ` ${item.amount}  Disponíveis`
                         c('.product-description').innerHTML = item.description
                         c('.product-id').innerHTML = `Código do Produto:     ${item.id}`;
+
 
 
 
@@ -148,7 +149,8 @@ if (token) {
     buttonLogin.classList.add('logged')
     buttonLogout.style.display = 'flex'
     buttonCart.style.display = 'flex'
-    buttonDashboard.style.display = administrador == 1 ? 'flex' : 'none'
+    buttonDashboard.style.display = administrador == true ? 'flex' : 'none'
+    c('.product-id').style.display = administrador == true ? 'flex' : 'none'
 }
 
 buttonLogout.addEventListener('click', () => {

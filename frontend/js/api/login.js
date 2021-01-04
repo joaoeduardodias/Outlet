@@ -1,24 +1,24 @@
 const form = document.querySelector("form");
 form.onsubmit = function(e) {
-    login();
     e.preventDefault();
+    login();
+
 };
 const baseurl = "https://ecomerceoutlet.herokuapp.com";
 
 async function login() {
     try {
-        const { value: email } = document.getElementById("input-email");
-        const { value: password } = document.getElementById("input-password");
 
-        const myHeaders = new Headers();
-
-        myHeaders.append("Authorization", "Basic " + btoa(email + ":" + password))
-        myHeaders.append("Content-Type", "application/json");
+        const formData = new FormData(form)
 
         const response = await fetch(baseurl + "/login", {
             method: "post",
-            headers: myHeaders,
-            mode: "cors",
+            headers: {
+
+                "Accept": "application/json",
+            },
+
+            body: formData
         });
         const data = await response.json();
         if (data.message === "Email incorrect") {
@@ -50,7 +50,7 @@ async function login() {
             }
         }
     } catch (error) {
-        await console.log("errou");
+
         console.error(error);
     }
 }

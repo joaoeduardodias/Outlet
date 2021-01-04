@@ -1,6 +1,7 @@
-body{
-  max-height: 94vh;
+body {
+    max-height: 94vh;
 }
+
 header {
     position: fixed;
     left: 0;
@@ -174,9 +175,12 @@ header {
     grid-column-gap: 0.3rem;
     grid-row-gap: 1.7rem;
 }
+
+
 /* .products {
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 } */
+
 .models {
     display: none;
 }
@@ -400,10 +404,11 @@ footer {
     width: 2.3rem;
     height: 2.3rem;
 }
-@media(min-width:320px){
-  .menu-section.on .menu-toggle {
-    right: 2.3rem;
-  }
+
+@media(min-width:320px) {
+    .menu-section.on .menu-toggle {
+        right: 2.3rem;
+    }
 }
 
 @media (min-width: 350px) {
@@ -418,21 +423,18 @@ footer {
     }
     .products {
         grid-template-rows: repeat(auto-fit, minmax(19rem, 18.5rem));
-    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
     }
-
     .product {
-      width: 17rem;
-      height: auto;
-      min-height: 19rem;
-  }
-  .product img {
-    width: 15rem;
-    height: 9.5rem;
-  }
+        width: 17rem;
+        height: auto;
+        min-height: 19rem;
+    }
+    .product img {
+        width: 15rem;
+        height: 9.5rem;
+    }
 }
-
 
 @media (min-width:400px) {
     .menu-section .menu-toggle {
@@ -472,22 +474,23 @@ footer {
         margin-left: 12.3rem;
     }
 }
-@media (min-width: 530px){
-  .menu-section .menu-toggle {
-    margin-left: 17.3rem;
-  }
-  .menu-section.on .menu-toggle {
-    right: 4rem;
-  }
-  .menu-section.on .menu-toggle .three {
-    transform: rotate(-45deg) translate(4.8px, -7.7px);
-}
+
+@media (min-width: 530px) {
+    .menu-section .menu-toggle {
+        margin-left: 17.3rem;
+    }
+    .menu-section.on .menu-toggle {
+        right: 4rem;
+    }
+    .menu-section.on .menu-toggle .three {
+        transform: rotate(-45deg) translate(4.8px, -7.7px);
+    }
 }
 
 @media (min-width: 700px) {
-  .products {
-    max-width: 66rem;
-  }
+    .products {
+        max-width: 66rem;
+    }
     .menu-section {
         margin-left: 20rem;
     }
@@ -610,7 +613,7 @@ footer {
         display: none;
     }
     .products {
-      max-width: 94rem;
+        max-width: 94rem;
         margin-top: 13rem;
         grid-row-gap: 3rem;
         grid-template-columns: repeat(auto-fit, minmax(15rem, 23.1rem));

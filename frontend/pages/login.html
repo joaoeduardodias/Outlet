@@ -26,7 +26,7 @@
         <div class="container">
 
             <div id="div-login" class="login-container" style="display: flex;">
-                <form method="POST">
+                <form id="login-form" enctype="multipart/form-data" method="POST">
                     <div class="input-container">
                         <label for="email">E-mail</label>
                         <input required name="email" type="email" id="input-email" autofocus placeholder="Digite seu e-mail" />
@@ -70,9 +70,9 @@
     </div>
 
     <div class="valid-email ">
-      <div class="background"></div>
-      <p></p>
-      <button id="closediv"><img src="../assets/icon/close.svg" alt="Fechar"></button>
+        <div class="background"></div>
+        <p></p>
+        <button id="closediv"><img src="../assets/icon/close.svg" alt="Fechar"></button>
     </div>
     <script src="../js/validator.js"></script>
     <script src="../js/api/login.js"></script>

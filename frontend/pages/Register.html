@@ -10,9 +10,7 @@
     <link rel="stylesheet" href="../style/Register.css">
     <link rel="stylesheet" href="../style/validator.css">
     <title>Outlet Multimarcas | Faça seu Cadastro</title>
-    <script src="../js/jquery-3.5.1.min.js"></script>
-    <script src="../js/jquery.mask.min.js"></script>
-    <script src="../js/mask.js"></script>
+
 </head>
 
 <body>
@@ -31,7 +29,7 @@
                 <form method="post">
                     <div class="input-container">
                         <label for="name">Nome</label>
-                        <input  required id="name" name="name" type="text" placeholder="Digite seu Nome" />
+                        <input required id="name" name="name" type="text" placeholder="Digite seu Nome" />
                     </div>
                     <div class="input-container">
                         <label for="email">E-mail</label>
@@ -43,7 +41,7 @@
                     </div>
                     <div class="input-container">
                         <label id="tel" for="telephone">Whatsapp</label>
-                        <input required id="telephone" type="text" class="phone" name="telefone" placeholder="(00) 00000-0000" data-mask-selectonfocus="true" />
+                        <input required id="telephone" type="number" class="phone" name="telefone" placeholder="(00) 00000-0000" data-mask-selectonfocus="true" />
                     </div>
 
 
@@ -62,8 +60,8 @@
                           </select>
                     </div>
                     <div class="input-container">
-                      <label id="zip_code" for="zip_code">Cep</label>
-                      <input type="number" id="zip_code" name="zip_code" placeholder="Cep">
+                        <label id="zip_code" for="zip_code">Cep</label>
+                        <input type="number" id="zip_code" name="zip_code" placeholder="Cep">
                     </div>
                     <div class="input-container">
                         <label for="neighborhood">Bairro</label>
@@ -92,9 +90,9 @@
         </div>
     </main>
     <div class="valid-email ">
-      <div class="background"></div>
-      <p></p>
-      <button id="closediv"><img src="../assets/icon/close.svg" alt="Fechar"></button>
+        <div class="background"></div>
+        <p></p>
+        <button id="closediv"><img src="../assets/icon/close.svg" alt="Fechar"></button>
     </div>
     <script src="../js/api/register.js"></script>
     <script src="../js/Address.js"></script>

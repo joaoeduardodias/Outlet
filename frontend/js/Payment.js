@@ -1,17 +1,20 @@
 window.Mercadopago.setPublishableKey("TEST-51f8db06-c035-4c78-a0d1-0e67fc404294");
 window.Mercadopago.getIdentificationTypes();
 const tokenUser = localStorage.getItem('Authorization')
-    // const zip_code = localStorage.getItem('Zip_code')
+const zip_code = localStorage.getItem('Zip_code')
 const dataUser = JSON.parse(atob(tokenUser.split(".")[1]));
+
 document.getElementById('email').value = dataUser.email
 let Freight = {
     weight,
-    zip_code: 79500000,
+    zip_code,
     lenght,
     width,
     height,
     methodFreight: 'PAC'
 }
+console.log(Freight)
+
 async function setPriceFreight() {
     const DataFreight = await fetch(`${baseurl}/freight`, {
         method: 'POST',
@@ -22,7 +25,9 @@ async function setPriceFreight() {
         mode: 'cors',
         body: JSON.stringify(Freight)
     })
+
     const DataFreightJson = await DataFreight.json()
+    console.log(DataFreightJson)
     const valorFreight = DataFreightJson.Valor.replace(',', '.')
     const valorFreightFormat = parseFloat(valorFreight)
     document.getElementById('price_freight').innerText = `Valor do Frete: ${valorFreight}`

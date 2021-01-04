@@ -6,11 +6,13 @@ async function Register() {
         const { value: email } = document.getElementById("email");
         const { value: telephone } = document.getElementById("telephone");
         const { value: password } = document.getElementById("password");
+        const tel = parseInt(telephone)
+        console.log(tel)
         const data = {
             name,
             email,
             password,
-            whatsapp: telephone,
+            whatsapp: tel,
         };
 
         const dataUser = await fetch(baseurl + "/users", {

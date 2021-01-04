@@ -6,7 +6,7 @@ const btnAdd = c(".images-container label img");
 
 async function previewDelete() {
     const { value: idProduct } = c("#search");
-    const product = await fetch(`${baseurl}/show/${idProduct}`, {
+    const product = await fetch(`${baseurl}/Productshow/${idProduct}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -19,6 +19,7 @@ async function previewDelete() {
         alert("Nenhum Produto encontrado");
         return;
     }
+
     const { name, urls } = data;
     const url = urls.split(",");
     c(".product img").src = url[0];
