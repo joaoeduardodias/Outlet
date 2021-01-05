@@ -13,7 +13,7 @@ let Freight = {
     height,
     methodFreight: 'PAC'
 }
-console.log(Freight)
+
 
 async function setPriceFreight() {
     const DataFreight = await fetch(`${baseurl}/freight`, {
@@ -27,14 +27,17 @@ async function setPriceFreight() {
     })
 
     const DataFreightJson = await DataFreight.json()
-    console.log(DataFreightJson)
+
+
+
+
     const valorFreight = DataFreightJson.Valor.replace(',', '.')
     const valorFreightFormat = parseFloat(valorFreight)
     document.getElementById('price_freight').innerText = `Valor do Frete: ${valorFreight}`
     const priceTotalFormat = parseFloat(priceTotal)
     valueTotal = priceTotalFormat + valorFreightFormat
 
-    cc(".purchase-modal .price-total").innerHTML = `Valor Total - R$: ${valueTotal}`
+    cc(".purchase-modal .price-total").innerHTML = `Valor Total - R$: ${valueTotal.toFixed(2)}`
 }
 
 

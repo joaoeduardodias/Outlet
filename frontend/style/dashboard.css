@@ -67,7 +67,7 @@ nav {
     border: none;
     border-radius: 0.4rem;
     cursor: pointer;
-    margin-left: 0.5rem;
+    /* margin-left: 0.5rem;  */
     margin-top: 0.5rem;
     background-color: var(--color-primary);
     transition-duration: 0.5s;

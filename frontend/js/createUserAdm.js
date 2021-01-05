@@ -18,13 +18,13 @@ async function getUser() {
     if (data.message == 'Token invalid.') {
         location.href = '../pages/login.html'
     }
-    if (data.administrador == 1) {
+    if (data.administrador == true) {
         alert("Usuario ja é ADM")
     }
     if (data.message == 'User not exist') {
         alert('Usuário não cadastrado')
     }
-    if (data.administrador == 0) {
+    if (data.administrador == false) {
         const div = c('.hiddem')
         div.style.display = 'flex'
         document.getElementById('name').innerHTML = data.name
@@ -36,8 +36,8 @@ async function getUser() {
 
 const btnSearch = c('#Usersearch')
 btnSearch.addEventListener('click', (event) => {
-    getUser()
     event.preventDefault()
+    getUser()
 })
 
 async function UpdateUser() {
@@ -66,7 +66,9 @@ async function UpdateUser() {
             setTimeout(() => {
                 btn.style.backgroundColor = "#f67600";
                 btn.innerText = "Adicionar Administrador";
+                location.reload()
             }, 1900);
+
         }, 500);
 
     }

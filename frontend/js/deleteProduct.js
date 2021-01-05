@@ -52,10 +52,11 @@ async function Delete() {
             mode: "cors",
         });
         const data = await value.json();
+
         if (data.message == "No token provided.") {
             location.href = "./login.html";
         }
-        if (value.message == `Token invalid.`) {
+        if (data.message == `Token invalid.`) {
             location.href = "./login.html";
         }
         if (data.message == "success") {

@@ -40,7 +40,7 @@ images.addEventListener("change", function() {
 
 async function previewProduct() {
     const { value: idsearch } = c("#search");
-    const product = await fetch(`${baseurl}/show/${idsearch}`, {
+    const product = await fetch(`${baseurl}/Productshow/${idsearch}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -162,13 +162,9 @@ async function update() {
         form.append("image[]", image);
     });
 
+
     await fetch(`${baseurl}/upload/${idProduct}`, {
         method: "Post",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": "Bearer " + token,
-        },
         mode: "cors",
         body: form,
     });

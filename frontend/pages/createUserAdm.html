@@ -21,41 +21,43 @@
         </div>
     </header>
     <aside>
-      <a href="./dashboard.html"> Início</a>
-      <a href="./createProduct.html">Cadastrar Produto</a>
-      <a href="./updateProduct.html">Atualizar Produto</a>
-      <a href="./deleteProduct.html">Deletar Produto</a>
-      <a href="./createUserAdm.html">Administradores</a>
-      <a href="./deleteUserADM.html">Deletar Usuário</a>
-  </aside>
+        <a href="./dashboard.html"> Início</a>
+        <a href="./createProduct.html">Cadastrar Produto</a>
+        <a href="./updateProduct.html">Atualizar Produto</a>
+        <a href="./deleteProduct.html">Deletar Produto</a>
+        <a href="./createUserAdm.html">Administradores</a>
+        <a href="./deleteUserADM.html">Deletar Usuário</a>
+    </aside>
     <main>
         <div class="container">
 
-                <form method="post">
-                    <h3>Adicionar Administradores</h3>
-                    <div class="input-container">
-                        <label for="name">Email</label>
+            <form method="post">
+                <h3>Adicionar Administradores</h3>
+                <div class="input-container">
+                    <form>
+                        <label for="email">Email</label>
                         <div class="search">
-                        <input required id="email" name="name" type="email" placeholder="Digite o email do usuário " />
-                        <button id="Usersearch">
+                            <input required id="email" name="email" type="email" placeholder="Digite o email do usuário " />
+                            <button type="submit" id="Usersearch">
                           <img src="../assets/icon/search.svg" alt="Pesquisar" />
                         </button>
-                      </div>
-                    </div>
-                    <div class="hiddem">
-                      <div class="dataUser">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="hiddem">
+                    <div class="dataUser">
                         <div id="name" class="name">User teste de ADM</div>
                     </div>
                     <div class="description">
-                    <p>Usuários administradores, tem acesso a plataforma de gerenciamento de sua loja online. <br/>
-                       Você realmente deseja adicionar <span id="nameUser">User teste de ADM</span>, como um administrador ?</p>
+                        <p>Usuários administradores, tem acesso a plataforma de gerenciamento de sua loja online. <br/> Você realmente deseja adicionar <span id="nameUser">User teste de ADM</span>, como um administrador ?</p>
 
                     </div>
 
 
                     <button id="addADM">Adicionar administrador</button>
-                    </div>
-                </form>
+                </div>
+            </form>
 
         </div>
     </main>
