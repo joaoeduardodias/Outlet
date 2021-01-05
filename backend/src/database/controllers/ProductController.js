@@ -159,24 +159,24 @@ module.exports = {
             const key = await Connection('Images')
                 .select('key')
                 .where('id_product', id)
-                // key.forEach(element => {
+                key.forEach(element => {
 
-            //     if (process.env.STORAGE_TYPE === 's3') {
-            //         s3.deleteObject({
-            //             Bucket: process.env.BUCKET_NAME,
-            //             Key: element.key
-            //         }).promise()
-            //         return res.status(204)
+                if (process.env.STORAGE_TYPE === 's3') {
+                    s3.deleteObject({
+                        Bucket: process.env.BUCKET_NAME,
+                        Key: element.key
+                    }).promise()
+                    return res.status(204)
 
-            //     } else {
-            //         promisify(fs.unlink)(
-            //             path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads', element.key)
-            //         )
-            //     }
-            // });
+                } else {
+                    promisify(fs.unlink)(
+                        path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads', element.key)
+                    )
+                }
+            });
             await Connection('Images').where('id_product', id).del()
 
-            // await Connection("Products").where({ id }).del();
+            await Connection("Products").where({ id }).del();
             return res.json({ message: 'success' })
         } catch (error) {
             next(error);

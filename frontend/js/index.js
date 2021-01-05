@@ -9,9 +9,10 @@ let typeWeight;
 let lenght;
 let width;
 let height;
+
 const baseurl = 'https://ecomerceoutlet.herokuapp.com'
 
-//  LIST OF PRODUCT
+//  LIST PRODUCTS
 async function index() {
     try {
         const data = await fetch(baseurl + '/', {
@@ -24,6 +25,7 @@ async function index() {
         })
         const Products = await data.json()
         Products.map((item) => {
+
 
             weight = item.weight
             typeWeight = item.typeWeight
@@ -49,7 +51,7 @@ async function index() {
 
 
                 ProductItem.addEventListener('click', () => {
-                    let = indeximg = 0
+                    let indeximg = 0
 
 
                     key = item.id
@@ -122,6 +124,7 @@ async function index() {
 index()
 const c = (el) => document.querySelector(el)
 const cs = (el) => document.querySelectorAll(el)
+
 
 
 const menuSection = c(".menu-section")
