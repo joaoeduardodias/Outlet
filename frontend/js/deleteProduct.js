@@ -51,6 +51,7 @@ async function Delete() {
             },
             mode: "cors",
         });
+
         const data = await value.json();
 
         if (data.message == "No token provided.") {
@@ -73,7 +74,7 @@ async function Delete() {
         }
     } catch (error) {
         alert("erro encontrado, tente novamente!");
-        console.log(error);
+
     }
 }
 

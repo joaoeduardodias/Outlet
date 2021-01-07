@@ -352,6 +352,7 @@ button {
     background-color: var(--color-primary);
     border: none;
     border-radius: 0.5rem;
+    cursor: pointer;
     margin: 1rem auto;
     transition: .4s;
 }
@@ -577,7 +578,8 @@ footer {
         display: flex;
     }
     .menu-section nav input {
-      opacity: 0; /* PARA RECOLOCAR A BARRA DE PESQUISAR APAGUE ESTA LINHA */
+        opacity: 0;
+        /* PARA RECOLOCAR A BARRA DE PESQUISAR APAGUE ESTA LINHA */
         -moz-appearance: none;
         -webkit-appearance: none;
         appearance: none;
