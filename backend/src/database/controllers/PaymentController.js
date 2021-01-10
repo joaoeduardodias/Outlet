@@ -1,7 +1,30 @@
 // SDK de Mercado Pago
 // const mercadopago = require('mercadopago');
-const Stripe = require("stripe");
-const stripe = Stripe(process.env.STRIPE_SECRETE_KEY);
+const stripe = require("stripe")(process.env.STRIPE_SECRETE_KEY)
+const calculateOrderAmount = (items) => {
+    // calcular o preço total aqui
+    return 1400; // valor do produto
+};
+const chargeCustomer = async (customerId) => {
+    // Pesquise os métodos de pagamento disponíveis para o cliente
+    const paymentMethods = await stripe.paymentMethods.list({
+      customer: customerId,
+      type: "card"
+    });
+    // Cobrar do cliente e método de pagamento imediatamente
+    const paymentIntent = await stripe.paymentIntents.create({
+        amount: calculateOrderAmount(items), // valor do produto
+      currency: "usd",
+      customer: customerId,
+      payment_method: paymentMethods.data[0].id,
+      off_session: true,
+      confirm: true
+    });
+    if (paymentIntent.status === "succeeded") {
+      console.log("✅ Successfully charged card off session");
+    }
+  }
+
 module.exports = {
   async create(req, res) {
     //     mercadopago.configurations.setAccessToken("TEST-3078541527341225-112412-e1d0f60d041f863c6d28410526c2913e-676623518");
@@ -39,7 +62,7 @@ module.exports = {
 
     //  STRIPE STRIPE STRIPE STRIPE STRIPE STRIPE
 
-    async (req, res) => {
+    
         const { items } = req.body;
         // salvar um cartao para compras futuras
   
@@ -55,7 +78,7 @@ module.exports = {
         res.json({
           clientSecret: paymentIntent.client_secret,
         });
-      };
+     
 
     
 
@@ -67,27 +90,6 @@ module.exports = {
   },
   
 };
-const calculateOrderAmount = (items) => {
-    // calcular o preço total aqui
-    return 1400; // valor do produto
-  };
 
-  const chargeCustomer = async (customerId) => {
-      // Pesquise os métodos de pagamento disponíveis para o cliente
-      const paymentMethods = await stripe.paymentMethods.list({
-        customer: customerId,
-        type: "card"
-      });
-      // Cobrar do cliente e método de pagamento imediatamente
-      const paymentIntent = await stripe.paymentIntents.create({
-          amount: calculateOrderAmount(items), // valor do produto
-        currency: "usd",
-        customer: customerId,
-        payment_method: paymentMethods.data[0].id,
-        off_session: true,
-        confirm: true
-      });
-      if (paymentIntent.status === "succeeded") {
-        console.log("✅ Successfully charged card off session");
-      }
-    }
+
+  
