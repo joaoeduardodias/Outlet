@@ -90,7 +90,7 @@ routes.get('/address/:id', AddressController.show)
 routes.delete('/address/:id', AddressController.delete)
 
 // payment
-routes.post('/process_payment', PaymenController.create)
+routes.post('/create-payment-intent', PaymenController.create)
     // freight
 routes.post('/freight', FreightController.create)
 

@@ -41,14 +41,20 @@ module.exports = {
         const Stripe = require('stripe');
         const stripe = Stripe(process.env.STRIPE_SECRETE_KEY);
 
-        // `source` is obtained with Stripe.js; see https://stripe.com/docs/payments/accept-a-payment-charges#web-create-token
-        const charge = await stripe.charges.create({
-            amount: 2000,
-            currency: 'brl',
-            source: 'tok_mastercard',
-            description: 'My First Test Charge (created for API docs)',
-        });
-
-        console.log(charge)
+        const calculateOrderAmount = items => {
+            // calcular o preço total aqui
+            return 1400;
+          };
+          async (req, res) => {
+            const { items } = req.body;
+            // Create a PaymentIntent with the order amount and currency
+            const paymentIntent = await stripe.paymentIntents.create({
+              amount: calculateOrderAmount(items),
+              currency: "usd"
+            });
+            res.json({
+              clientSecret: paymentIntent.client_secret
+            });
+          }
     }
 }
