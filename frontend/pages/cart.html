@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/global.css" />
     <link rel="stylesheet" href="../style/cart.css" />
+    <script src="https://js.stripe.com/v3/"></script>
     <title>Meu Carrinho | Outlet</title>
 </head>
 
@@ -25,12 +26,18 @@
 
         <div class="models">
             <div class="product">
+
                 <div class="product-info-img">
                     <div class="product-img"><img src="" /></div>
                     <div class="product-info">
                         <div class="product-title">
                             <h2>--</h2>
                         </div>
+                        <div class="product-id">--</div>
+                        <!-- <div class="product-weight">--</div>
+                        <div class="product-width">--</div>
+                        <div class="product-height">--</div>
+                        <div class="product-lenght">--</div> -->
                         <div class="product-price">--</div>
                     </div>
 
@@ -67,6 +74,7 @@
                     <div class="product--item--qt">1</div>
                     <button class="product--item-qtmais">+</button>
                 </div>
+
                 <div class="product-item-qtavailable">-- Disponíveis</div>
                 <div class="product-purchase">Comprar</div>
                 <div id="btn-trash" class="product-trash">Excluir Produto<img src="../assets/icon/trash.svg"></div>
@@ -75,83 +83,47 @@
         </div>
         <div class="windowpurchase">
             <div class="purchase-modal">
-                <form method="post" id="paymentForm">
-                    <div id="user">
-                        <h3>Detalhe do comprador</h3>
-
-                        <div class="input-container">
-                            <!-- o email pegar do usuario logado -->
-                            <label for="email">E-mail</label>
-                            <input id="email" name="email" type="text" />
-                        </div>
-                        <div class="input-container">
-                            <label for="docType">Tipo de documento</label>
-                            <select id="docType" name="docType" data-checkout="docType" type="text"></select>
-                        </div>
-                        <div class="input-container">
-                            <label for="docNumber">Número do documento</label>
-                            <input id="docNumber" name="docNumber" data-checkout="docNumber" type="number" />
-                        </div>
-                    </div>
-                    <div class="product-details">
-                        <div class="product-title">
-                            <h2> -- </h2>
-                        </div>
-                        <div class="product-price">R$: --</div>
-                        <div class="product--item--qt"> <span>Quantidade:</span> 1</div>
-                        <div class="freight" id="price_freight"><span>Valor do Frete: </span>R$ -- </div>
-                        <div class="price-total"><span>Valor Total: </span>R$ -- </div>
 
 
-                    </div>
 
-                    <button id="pay" type="submit">Pagar</button>
-                    <div id="card">
-                        <h3>Detalhes do cartão</h3>
+            <div class="product-details">
+                <div class="product-title">
+                    <h2> -- </h2>
+                </div>
+                <div class="product-price"> Valor total dos produtos R$: --</div>
+                <div class="product--item--qt"> <span>Quantidade:</span> 1</div>
+                <div class="freight" id="price_freight"><span>Valor do Frete: </span>R$ -- </div>
+                <div class="freight" id="date_freight"><span>Prazo de entrega de</span> -- dias </div>
+                <div class="price-total"><span>Total: </span>R$ -- </div>
+                <div class="product-img"><img id="img" src="" /></div>
 
-                        <div class="input-container">
-                            <label for="cardholderName">Nome do titular do cartão</label>
-                            <input id="cardholderName" data-checkout="cardholderName" type="text">
-                        </div>
-                        <div id="date_card" class="input-container">
-                            <label for="">Validade</label>
-                            <div class="date_card">
-                                <input type="number" placeholder="MM" id="cardExpirationMonth" data-checkout="cardExpirationMonth" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off>
-                                <span class="date-separator">/</span>
-                                <input type="number" placeholder="YY" id="cardExpirationYear" data-checkout="cardExpirationYear" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off>
-                            </div>
-                        </div>
-                        <div class="input-container">
-                            <label for="cardNumber">Número do cartão</label>
-                            <input type="number" id="cardNumber" data-checkout="cardNumber" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off>
-                        </div>
-                        <div class="input-container">
-                            <label for="securityCode">Código de segurança</label>
-                            <input id="securityCode" data-checkout="securityCode" type="number" onselectstart="return false" onpaste="return false" oncopy="return false" oncut="return false" ondrag="return false" ondrop="return false" autocomplete=off>
-                        </div>
-                        <div id="issuerInput" class="input-container">
-                            <label for="issuer">Banco emissor</label>
-                            <select id="issuer" name="issuer" data-checkout="issuer"></select>
-                        </div>
-                        <div class="input-container">
-                            <label for="installments">Parcelas</label>
-                            <select type="text" id="installments" name="installments"></select>
-                        </div>
-                        <div class="input-container">
-                            <input type="hidden" name="transactionAmount" id="transactionAmount" />
-                            <input type="hidden" name="paymentMethodId" id="paymentMethodId" />
-                            <input type="hidden" name="description" id="description" />
 
-                        </div>
-                    </div>
+          </div>
 
-            </div>
+          <!-- STRIPE STRIPE STRIPE STRIPE STRIPE STRIPE -->
 
-            </form>
+
+
+
+          <form id="payment-form">
+            <input type="text" id="email" placeholder="Insira seu e-mail" />
+            <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+            <p id="card-error" role="alert"></p>
+            <p class="result-message hidden">
+              Payment succeeded, see the result in your
+              <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+            </p>
+            <button id="submit">
+              <div class="spinner hidden" id="spinner"></div>
+              <span id="button-text">Pagar</span>
+            </button>
+          </form>
+
+
         </div>
-        </div>
+      </div>
     </section>
-    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+    <!-- <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script> -->
     <script src="../js/cart.js"></script>
     <script src="../js/Payment.js"></script>
 
