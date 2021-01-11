@@ -6,9 +6,9 @@ const calculateOrderAmount = (items) => {
     const price = items.price
 
     const numberTotal = parseFloat(price) * 100
-    console.log("preco " + price)
-    console.log("total " + numberTotal.toFixed(4))
-    return 1400; // valor do produto
+    const priceInCents = numberTotal.toFixed(2)
+
+    return priceInCents; // valor do produto
 };
 const chargeCustomer = async(customerId) => {
     // Pesquise os métodos de pagamento disponíveis para o cliente
