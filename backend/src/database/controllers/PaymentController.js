@@ -3,7 +3,8 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRETE_KEY)
 const calculateOrderAmount = (items) => {
     // calcular o preço total aqui
-    console.log(items)
+    const price = items.price * 100
+    console.log(price)
     return 1400; // valor do produto
 };
 const chargeCustomer = async(customerId) => {
