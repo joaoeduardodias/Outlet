@@ -6,8 +6,8 @@ const calculateOrderAmount = (items) => {
     const price = items.price
 
     const numberTotal = parseFloat(price) * 100
-    const priceInCents = numberTotal.toFixed(2)
-
+    const priceInCents = parseInt(numberTotal.toFixed(2))
+    console.log(priceInCents)
     return priceInCents; // valor do produto
 };
 const chargeCustomer = async(customerId) => {
