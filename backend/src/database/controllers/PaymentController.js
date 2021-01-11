@@ -5,9 +5,9 @@ const calculateOrderAmount = (items) => {
     // calcular o preço total aqui
     const price = parseFloat(items.price)
     const total = price.toString().replace(".", ",")
-        // const priceincents = price * 100
-    console.log("preco" + price)
-    console.log("total" + total)
+    const numberTotal = parseFloat(total)
+    console.log("preco " + price)
+    console.log("total " + numberTotal)
         // console.log("centavos"+priceincents)
     return 1400; // valor do produto
 };
