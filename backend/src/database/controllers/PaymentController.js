@@ -4,7 +4,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRETE_KEY)
 const calculateOrderAmount = (items) => {
     // calcular o preço total aqui
     const price = parseFloat(items.price)
-    const total = pricetotal.toString().replace(".", ",")
+    const total = price.toString().replace(".", ",")
         // const priceincents = price * 100
     console.log("preco" + price)
     console.log("total" + total)
