@@ -6,7 +6,7 @@ module.exports = {
         try {
             const data = await Connection('User_Product')
                 .join('Products', 'id_product', '=', 'Products.id')
-                .select('id_sold', 'id_product', 'amount_sold', 'User_Product.created_at',
+                .select('id_sold', 'id_user', 'id_product', 'amount_sold', 'User_Product.created_at',
                     'value_total',
                     'Products.name',
 

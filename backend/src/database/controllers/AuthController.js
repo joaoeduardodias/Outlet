@@ -10,7 +10,7 @@ module.exports = {
 
             const { email, senha: password } = req.body
             let User;
-            console.log(email, password)
+
 
             const verifyUserAddress = await Connection("Users").join("Address", 'Users.id', "=", "id_users")
                 .select("Users.email",
@@ -36,7 +36,7 @@ module.exports = {
                     .first();
                 User = verifyUser
             }
-            console.log(User)
+
 
             if (!User) {
                 return res.json({ message: "Email incorrect" });
