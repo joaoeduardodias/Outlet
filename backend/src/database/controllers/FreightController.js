@@ -26,7 +26,7 @@ module.exports = {
         }
         var params = {
             'nCdEmpresa': '21008922',
-            'sDsSenha': '',
+            'sDsSenha': '26570583',
             'sCepOrigem': '79570000',
             'sCepDestino': zip_code,
             'nVlPeso': weight,
