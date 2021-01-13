@@ -20,9 +20,9 @@ module.exports = {
         } = req.body
 
         if (methodFreight == 'PAC') {
-            method = 41106
+            method = 41068
         } else {
-            method = 40010
+            method = 41068
         }
         var params = {
             'nCdEmpresa': '21008922',
