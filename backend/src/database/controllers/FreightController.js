@@ -20,13 +20,13 @@ module.exports = {
         } = req.body
 
         if (methodFreight == 'PAC') {
-            method = 41068
+            method = 41106
         } else {
-            method = 41068
+            method = 40010
         }
         var params = {
             'nCdEmpresa': '21008922',
-            'sDsSenha': '26570583',
+            'sDsSenha': '',
             'sCepOrigem': '79570000',
             'sCepDestino': zip_code,
             'nVlPeso': weight,
