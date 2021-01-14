@@ -11,11 +11,24 @@ module.exports = {
                     'Products.name',
 
                 )
-            data.map((item) => {
-                console.log(item.id_user)
-            })
+            let sold = []
+            data.map(async(item) => {
+                const User = await Connection("Address")
+                    .join('Users', 'id_users', '=', 'Users.id')
+                    .select(
+                        'Address.id_city',
+                        'Address.zip_code',
+                        'Address.neighborhood',
+                        'Address.name',
+                        'Address.number',
+                        'Users.name',
+                        'Users.email',
+                        'Users.whatsapp')
 
-            return res.json(data).send()
+                sold = [item, User]
+            })
+            console.log(sold)
+            return res.json(sold).send()
 
         } catch (error) {
             // next()
