@@ -27,8 +27,8 @@ module.exports = {
                     )
 
                 let sold;
+                sold = [item, User]
                 console.log(sold)
-                return sold = [item, User]
             })
 
 
