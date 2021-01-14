@@ -13,7 +13,7 @@ module.exports = {
 
                 )
 
-            data.map(async(item) => {
+            await data.map(async(item) => {
                 const User = await Connection("Users")
                     // .join('Address')
                     .select(
