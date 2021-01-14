@@ -28,15 +28,13 @@ module.exports = {
                         ).where('Users.id', item.id_user).first()
 
                     // console.log(item, User)
-                    sold = [
-                        item,
-                        User
-                    ]
-                    return { item, User }
-                    // return res.json(item, User)
+                    sold = User
+
+                    return sold
+                        // return res.json(item, User)
                 })
                 // console.log('fora do map   ' + item)
-            console.log('fora do map   ' + User)
+            console.log('fora do map   ' + sold)
 
 
         } catch (error) {
