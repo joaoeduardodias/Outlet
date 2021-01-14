@@ -25,7 +25,7 @@ module.exports = {
                         'Users.email',
                         'Users.whatsapp')
 
-                sold = [item, User]
+                return sold = [item, User]
             })
             console.log(sold)
             return res.json(sold).send()
