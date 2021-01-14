@@ -29,9 +29,10 @@ module.exports = {
 
                 // console.log(item, User)
                 sold = [
-                        item,
-                        User
-                    ]
+                    item,
+                    User
+                ]
+                return sold
                     // return res.json(item, User)
             })
             console.log(sold)
