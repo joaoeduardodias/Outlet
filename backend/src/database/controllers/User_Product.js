@@ -24,7 +24,7 @@ module.exports = {
                         'Users.name',
                         'Users.email',
                         'Users.whatsapp'
-                    ).where('User.id', item.id_user)
+                    ).where('Users.id', item.id_user)
 
                 console.log(item, User)
             })
