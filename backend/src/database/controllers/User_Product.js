@@ -12,6 +12,7 @@ module.exports = {
                     'Products.name',
 
                 )
+            console.log(data)
 
             const sold = data.map(async(item) => {
                 const User = await Connection("Users")
