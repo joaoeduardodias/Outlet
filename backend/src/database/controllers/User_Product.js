@@ -11,8 +11,8 @@ module.exports = {
                     'Products.name',
 
                 )
-            data.map((item, index) => {
-                console.log(item)
+            data.map((item) => {
+                console.log(item.id_user)
             })
 
             return res.json(data).send()
