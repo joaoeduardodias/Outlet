@@ -19,7 +19,7 @@ module.exports = {
                     .join('City', 'City.id', 'Address.id_city')
                     .select(
                         'City.name',
-
+                        'City.id',
                         'Address.zip_code',
                         'Address.neighborhood',
                         'Address.name',
