@@ -18,7 +18,8 @@ module.exports = {
             return res.json(data).send()
 
         } catch (error) {
-            next()
+            // next()
+            console.log(error)
         }
     },
     async indexBetween(req, res, next) {
