@@ -16,13 +16,13 @@ module.exports = {
 
             const sold = data.map(async(item) => {
                 const User = await Connection("Users")
-                    // .join('Address')
+                    .join('Address')
                     .select(
-                        // 'Address.id_city',
-                        // 'Address.zip_code',
-                        // 'Address.neighborhood',
-                        // 'Address.name',
-                        // 'Address.number',
+                        'Address.id_city',
+                        'Address.zip_code',
+                        'Address.neighborhood',
+                        'Address.name',
+                        'Address.number',
                         'Users.name',
                         'Users.email',
                         'Users.whatsapp'
@@ -31,19 +31,16 @@ module.exports = {
 
 
                 const sold = Object.assign({}, item, User);
-                console.log(sold)
+
 
                 return sold
 
             })
             Promise.all(sold).then((value) => {
-                    // value.forEach(item => {
-                    //         console.log(item)
-                    //     })
-                    // console.log(value)
-                    return res.json(value)
-                })
-                // console.log('fora do map   ' + sold)
+
+                return res.json(value)
+            })
+
 
 
         } catch (error) {
