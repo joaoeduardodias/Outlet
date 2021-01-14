@@ -36,7 +36,7 @@ module.exports = {
                 return sold
 
             })
-            Promise.race(sold).then((value) => {
+            Promise.all(sold).then((value) => {
                     // value.forEach(item => {
                     //         console.log(item)
                     //     })
