@@ -28,10 +28,10 @@ module.exports = {
                     ).where('Users.id', item.id_user).first()
 
                 // console.log(item, User)
-                const sold = {
+                const sold = [{
                     item,
                     User
-                }
+                }]
 
 
 
