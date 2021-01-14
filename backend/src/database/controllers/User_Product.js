@@ -11,7 +11,7 @@ module.exports = {
                     'Products.name',
 
                 )
-            console.log({ data })
+            console.log(data[0].id_user)
             return res.json(data).send()
 
         } catch (error) {
