@@ -32,10 +32,11 @@ module.exports = {
                     item,
                     User
                 ]
+                console.log(sold)
                 return sold
                     // return res.json(item, User)
             })
-            console.log(sold)
+            console.log('fora do map   ' + sold)
 
 
         } catch (error) {
