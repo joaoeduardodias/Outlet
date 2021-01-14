@@ -18,7 +18,7 @@ module.exports = {
                     .join('Address', 'Address.id_users', 'Users.id')
                     .join('City', 'City.id', 'Address.id_city')
                     .select(
-                        'City.name',
+                        'City.nameCity',
                         'City.id',
                         'Address.zip_code',
                         'Address.neighborhood',

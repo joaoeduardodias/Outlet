@@ -9,7 +9,7 @@ module.exports = {
     async listCity(req, res) {
         const { id } = req.params;
         const data = await Connection("City")
-            .select("id", "name")
+            .select("id", "nameCity")
             .where("id_State", id);
         res.json(data);
     },
@@ -48,7 +48,7 @@ module.exports = {
                 let idCity = item.id.toString()
                 await Connection('City').insert({
                     id: idCity,
-                    name: item.nome,
+                    nameCity: item.nome,
                     id_State: state_id
 
                 })
@@ -92,7 +92,7 @@ module.exports = {
                     "Address.neighborhood",
                     "Address.number",
                     "Address.zip_code",
-                    "City.name",
+                    "City.nameCity",
                 );
             return res.json(data);
         } catch (error) {
@@ -110,7 +110,7 @@ module.exports = {
                     "Address.neighborhood",
                     "Address.number",
                     "Address.zip_code",
-                    "City.name",
+                    "City.nameCity",
                 ).where('id_users', id)
             return res.json(data)
         } catch (error) {
