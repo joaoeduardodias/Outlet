@@ -27,7 +27,7 @@ module.exports = {
                     ).where('Users.id', item.id_user).first()
 
                 console.log(item, User)
-                return res.json(item, User)
+                    // return res.json(item, User)
             })
 
 
