@@ -39,7 +39,10 @@ module.exports = {
                     // return res.json(item, User)
             })
             Promise.race(sold).then((value) => {
-                    console.log(value)
+                    value.forEach(item => {
+                            console.log(item)
+                        })
+                        // console.log(value)
                     return res.json(value)
                 })
                 // console.log('fora do map   ' + sold)
