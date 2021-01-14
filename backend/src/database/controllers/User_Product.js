@@ -40,6 +40,7 @@ module.exports = {
             })
             Promise.race(sold).then((value) => {
                     console.log(value)
+                    return res.json(value)
                 })
                 // console.log('fora do map   ' + sold)
 
