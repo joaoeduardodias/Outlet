@@ -25,10 +25,10 @@ module.exports = {
                         'Users.email',
                         'Users.whatsapp')
 
+                console.log(sold)
                 return sold = [item, User]
             })
-            console.log(sold)
-            return res.json(sold).send()
+
 
         } catch (error) {
             // next()
