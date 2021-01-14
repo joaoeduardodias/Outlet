@@ -13,7 +13,7 @@ module.exports = {
 
                 )
 
-            await data.map(async(item) => {
+            data.map(async(item) => {
                 const User = await Connection("Users")
                     // .join('Address')
                     .select(
@@ -32,11 +32,11 @@ module.exports = {
                     item,
                     User
                 ]
-                console.log(sold)
-                return sold
-                    // return res.json(item, User)
+                return { item, User }
+                // return res.json(item, User)
             })
-            console.log('fora do map   ' + sold)
+            console.log('fora do map   ' + item)
+            console.log('fora do map   ' + User)
 
 
         } catch (error) {
