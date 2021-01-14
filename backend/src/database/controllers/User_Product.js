@@ -12,7 +12,7 @@ module.exports = {
 
                 )
             data.map((item, index) => {
-                console.log(item[index].id_user)
+                console.log(item)
             })
 
             return res.json(data).send()
