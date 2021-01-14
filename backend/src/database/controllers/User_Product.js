@@ -11,7 +11,7 @@ module.exports = {
                     'Products.name',
 
                 )
-            let sold = []
+            let sold;
             data.map(async(item) => {
                 const User = await Connection("Address")
                     .join('Users', 'id_users', '=', 'Users.id')
