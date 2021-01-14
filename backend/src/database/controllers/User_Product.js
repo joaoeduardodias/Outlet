@@ -13,22 +13,20 @@ module.exports = {
                 )
 
             data.map(async(item) => {
-                const User = await Connection("Address")
-                    .join('Users', 'id_users', '=', 'Users.id')
+                const User = await Connection("Users")
+                    // .join('Address')
                     .select(
-                        'Address.id_city',
-                        'Address.zip_code',
-                        'Address.neighborhood',
-                        'Address.name',
-                        'Address.number',
+                        // 'Address.id_city',
+                        // 'Address.zip_code',
+                        // 'Address.neighborhood',
+                        // 'Address.name',
+                        // 'Address.number',
                         'Users.name',
                         'Users.email',
                         'Users.whatsapp'
-                    )
+                    ).where('User.id' = item.id_user)
 
-                let sold;
-                sold = [item, User]
-                console.log(sold)
+                console.log(item, User)
             })
 
 
