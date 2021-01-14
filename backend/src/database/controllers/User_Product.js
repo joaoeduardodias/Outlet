@@ -28,21 +28,18 @@ module.exports = {
                     ).where('Users.id', item.id_user).first()
 
                 // console.log(item, User)
-                const sold = [{
-                    item,
-                    User
-                }]
 
+                const sold = Object.assign({}, item, User);
 
 
                 return sold
                     // return res.json(item, User)
             })
             Promise.race(sold).then((value) => {
-                    value.forEach(item => {
-                            console.log(item)
-                        })
-                        // console.log(value)
+                    // value.forEach(item => {
+                    //         console.log(item)
+                    //     })
+                    // console.log(value)
                     return res.json(value)
                 })
                 // console.log('fora do map   ' + sold)
