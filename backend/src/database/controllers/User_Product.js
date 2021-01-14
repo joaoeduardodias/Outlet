@@ -7,10 +7,9 @@ module.exports = {
 
             const data = await Connection('User_Product')
                 .join('Products', 'id_product', '=', 'Products.id')
-                .select('id_sold', 'id_user', 'id_product', 'amount_sold', 'User_Product.created_at',
+                .select('id_sold', 'id_user', 'amount_sold',
                     'value_total',
                     'Products.name',
-
                 )
 
 
@@ -26,7 +25,9 @@ module.exports = {
                         'Users.name',
                         'Users.email',
                         'Users.whatsapp'
-                    ).first()
+                    ).first().union(
+                        Connection('City').where('id', 'Address.id_city')
+                    )
 
 
 
