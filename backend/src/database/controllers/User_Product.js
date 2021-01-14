@@ -15,8 +15,8 @@ module.exports = {
 
 
             const sold = data.map(async(item) => {
-                const User = await Connection("Users")
-                    .join('Address', 'Users.id', '=', item.id_user)
+                const User = await Connection("Users").where('Users.id', item.id_user)
+                    .join('Address', 'Address.id_users', 'Users.id')
                     .select(
                         'Address.id_city',
                         'Address.zip_code',
