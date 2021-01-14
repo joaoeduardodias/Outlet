@@ -36,7 +36,7 @@ module.exports = {
                 return sold
                     // return res.json(item, User)
             })
-            console.log('fora do map   ' + sold)
+            console.log('fora do map   ' + Promise.race(sold))
 
 
         } catch (error) {
