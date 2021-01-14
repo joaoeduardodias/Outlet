@@ -86,42 +86,44 @@
 
 
 
-            <div class="product-details">
-                <div class="product-title">
-                    <h2> -- </h2>
+                <div class="product-details">
+                    <div class="product-title">
+                        <h2> -- </h2>
+                    </div>
+                    <div class="product-price"> Valor total dos produtos R$: --</div>
+                    <div class="product--item--qt"> <span>Quantidade:</span> 1</div>
+                    <div class="freight" id="price_freight"><span>Valor do Frete: </span>R$ -- </div>
+                    <div class="freight" id="date_freight"><span>Prazo de entrega de</span> -- dias </div>
+                    <div class="price-total"><span>Total: </span>R$ -- </div>
+                    <div class="product-img"><img id="img" src="" /></div>
+
+
                 </div>
-                <div class="product-price"> Valor total dos produtos R$: --</div>
-                <div class="product--item--qt"> <span>Quantidade:</span> 1</div>
-                <div class="freight" id="price_freight"><span>Valor do Frete: </span>R$ -- </div>
-                <div class="freight" id="date_freight"><span>Prazo de entrega de</span> -- dias </div>
-                <div class="price-total"><span>Total: </span>R$ -- </div>
-                <div class="product-img"><img id="img" src="" /></div>
 
-
-          </div>
-
-          <!-- STRIPE STRIPE STRIPE STRIPE STRIPE STRIPE -->
+                <!-- STRIPE STRIPE STRIPE STRIPE STRIPE STRIPE -->
 
 
 
 
-          <form id="payment-form">
-            <input type="text" id="email" placeholder="Insira seu e-mail" />
-            <div id="card-element"><!--Stripe.js injects the Card Element--></div>
-            <p id="card-error" role="alert"></p>
-            <p class="result-message hidden">
-              Payment succeeded, see the result in your
-              <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-            </p>
-            <button id="submit">
+                <form id="payment-form">
+                    <input type="text" id="email" placeholder="Insira seu e-mail" />
+                    <div id="card-element">
+                        <!--Stripe.js injects the Card Element-->
+                    </div>
+                    <p id="card-error" role="alert"></p>
+                    <p class="result-message hidden">
+                        Pagamento bem-sucedido, Atualize a página para pagar novamente.
+                        <a href="/">Voltar para página inicial.</a>
+                    </p>
+                    <button id="submit">
               <div class="spinner hidden" id="spinner"></div>
               <span id="button-text">Pagar</span>
             </button>
-          </form>
+                </form>
 
 
+            </div>
         </div>
-      </div>
     </section>
     <!-- <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script> -->
     <script src="../js/cart.js"></script>
