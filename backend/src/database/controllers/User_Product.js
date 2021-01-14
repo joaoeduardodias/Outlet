@@ -11,7 +11,10 @@ module.exports = {
                     'Products.name',
 
                 )
-            console.log(data[0].id_user)
+            data.map((item, index) => {
+                console.log(item[index].id_user)
+            })
+
             return res.json(data).send()
 
         } catch (error) {
