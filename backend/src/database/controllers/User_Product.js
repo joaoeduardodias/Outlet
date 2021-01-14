@@ -12,7 +12,7 @@ module.exports = {
                     'Products.name',
 
                 )
-            console.log(data)
+
 
             const sold = data.map(async(item) => {
                 const User = await Connection("Users")
@@ -26,15 +26,15 @@ module.exports = {
                         'Users.name',
                         'Users.email',
                         'Users.whatsapp'
-                    ).where('Users.id', item.id_user)
+                    ).where('Users.id', item.id_user).first()
 
-                // console.log(item, User)
+
 
                 const sold = Object.assign({}, item, User);
-
+                console.log(sold)
 
                 return sold
-                    // return res.json(item, User)
+
             })
             Promise.race(sold).then((value) => {
                     // value.forEach(item => {
