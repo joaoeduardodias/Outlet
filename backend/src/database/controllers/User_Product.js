@@ -14,28 +14,28 @@ module.exports = {
                 )
 
             data.map(async(item) => {
-                const User = await Connection("Users")
-                    // .join('Address')
-                    .select(
-                        // 'Address.id_city',
-                        // 'Address.zip_code',
-                        // 'Address.neighborhood',
-                        // 'Address.name',
-                        // 'Address.number',
-                        'Users.name',
-                        'Users.email',
-                        'Users.whatsapp'
-                    ).where('Users.id', item.id_user).first()
+                    const User = await Connection("Users")
+                        // .join('Address')
+                        .select(
+                            // 'Address.id_city',
+                            // 'Address.zip_code',
+                            // 'Address.neighborhood',
+                            // 'Address.name',
+                            // 'Address.number',
+                            'Users.name',
+                            'Users.email',
+                            'Users.whatsapp'
+                        ).where('Users.id', item.id_user).first()
 
-                // console.log(item, User)
-                sold = [
-                    item,
-                    User
-                ]
-                return { item, User }
-                // return res.json(item, User)
-            })
-            console.log('fora do map   ' + item)
+                    // console.log(item, User)
+                    sold = [
+                        item,
+                        User
+                    ]
+                    return { item, User }
+                    // return res.json(item, User)
+                })
+                // console.log('fora do map   ' + item)
             console.log('fora do map   ' + User)
 
 
