@@ -4,7 +4,7 @@ const crypto = require('crypto')
 module.exports = {
     async index(next, res) {
         try {
-            let sold;
+
             const data = await Connection('User_Product')
                 .join('Products', 'id_product', '=', 'Products.id')
                 .select('id_sold', 'id_user', 'id_product', 'amount_sold', 'User_Product.created_at',
@@ -13,27 +13,29 @@ module.exports = {
 
                 )
 
-            data.map(async(item) => {
-                    const User = await Connection("Users")
-                        // .join('Address')
-                        .select(
-                            // 'Address.id_city',
-                            // 'Address.zip_code',
-                            // 'Address.neighborhood',
-                            // 'Address.name',
-                            // 'Address.number',
-                            'Users.name',
-                            'Users.email',
-                            'Users.whatsapp'
-                        ).where('Users.id', item.id_user).first()
+            const sold = data.map(async(item) => {
+                const User = await Connection("Users")
+                    // .join('Address')
+                    .select(
+                        // 'Address.id_city',
+                        // 'Address.zip_code',
+                        // 'Address.neighborhood',
+                        // 'Address.name',
+                        // 'Address.number',
+                        'Users.name',
+                        'Users.email',
+                        'Users.whatsapp'
+                    ).where('Users.id', item.id_user).first()
 
-                    // console.log(item, User)
-                    sold = User
+                // console.log(item, User)
+                const sold = [
+                    item,
+                    User
+                ]
 
-                    return sold
-                        // return res.json(item, User)
-                })
-                // console.log('fora do map   ' + item)
+                return sold
+                    // return res.json(item, User)
+            })
             console.log('fora do map   ' + sold)
 
 
