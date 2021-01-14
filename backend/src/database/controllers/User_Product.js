@@ -4,6 +4,7 @@ const crypto = require('crypto')
 module.exports = {
     async index(next, res) {
         try {
+            let sold;
             const data = await Connection('User_Product')
                 .join('Products', 'id_product', '=', 'Products.id')
                 .select('id_sold', 'id_user', 'id_product', 'amount_sold', 'User_Product.created_at',
@@ -26,9 +27,14 @@ module.exports = {
                         'Users.whatsapp'
                     ).where('Users.id', item.id_user).first()
 
-                console.log(item, User)
+                // console.log(item, User)
+                sold = [
+                        item,
+                        User
+                    ]
                     // return res.json(item, User)
             })
+            console.log(sold)
 
 
         } catch (error) {
