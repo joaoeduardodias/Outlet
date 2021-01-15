@@ -21,38 +21,39 @@
         </div>
     </header>
     <aside>
-      <a href="./dashboard.html"> Início</a>
-      <a href="./createProduct.html">Cadastrar Produto</a>
-      <a href="./updateProduct.html">Atualizar Produto</a>
-      <a href="./deleteProduct.html">Deletar Produto</a>
-      <a href="./createUserAdm.html">Administradores</a>
-      <a href="./deleteUserADM.html">Deletar Usuário</a>
-  </aside>
+        <a href="./dashboard.html">Pedidos para Enviar</a>
+        <a href="./orderFinish.html">Pedidos Enviados</a>
+        <a href="./createProduct.html">Cadastrar Produto</a>
+        <a href="./updateProduct.html">Atualizar Produto</a>
+        <a href="./deleteProduct.html">Deletar Produto</a>
+        <a href="./createUserAdm.html">Administradores</a>
+        <a href="./deleteUserADM.html">Deletar Usuário</a>
+    </aside>
     <main>
-      <div class="container">
+        <div class="container">
 
-        <form method="post">
-            <h3>Deletar Usuário</h3>
-            <div class="input-container">
-                <label for="name">Email</label>
-                <div class="search">
-                <input required id="email" name="name" type="email" placeholder="Digite o email do usuário " />
-                <button id="Usersearch">
+            <form method="post">
+                <h3>Deletar Usuário</h3>
+                <div class="input-container">
+                    <label for="name">Email</label>
+                    <div class="search">
+                        <input required id="email" name="name" type="email" placeholder="Digite o email do usuário " />
+                        <button id="Usersearch">
                   <img src="../assets/icon/search.svg" alt="Pesquisar" />
                 </button>
-              </div>
-            </div>
-            <div class="hiddem">
-              <div class="dataUser">
-                <div id="name" class="name">User teste de ADM</div>
-            </div>
+                    </div>
+                </div>
+                <div class="hiddem">
+                    <div class="dataUser">
+                        <div id="name" class="name">User teste de ADM</div>
+                    </div>
 
 
-            <button id="DeleteUser">Deletar Usuário</button>
-            </div>
-        </form>
+                    <button id="DeleteUser">Deletar Usuário</button>
+                </div>
+            </form>
 
-</div>
+        </div>
     </main>
     <script src="../js/deleteUserADM.js"></script>
 </body>
