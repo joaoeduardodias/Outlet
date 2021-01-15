@@ -26,7 +26,7 @@ module.exports = {
                         "City.nameCity",
                         "Address.zip_code",
                         "Address.neighborhood",
-                        "Address.name",
+                        "Address.street",
                         "Address.number"
                     )
                     .first();

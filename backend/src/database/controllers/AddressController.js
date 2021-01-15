@@ -59,7 +59,7 @@ module.exports = {
     async create(req, res, next) {
         try {
             const {
-                name,
+                street,
                 neighborhood,
                 number,
                 zip_code,
@@ -70,7 +70,7 @@ module.exports = {
             const id = crypto.randomBytes(3).toString("HEX");
             await Connection("Address").insert({
                 id,
-                name,
+                street,
                 neighborhood,
                 number,
                 zip_code,
@@ -88,7 +88,7 @@ module.exports = {
                 .join("City", "Address.id_city", "=", "City.id")
                 .select(
                     "Address.id",
-                    "Address.name",
+                    "Address.street",
                     "Address.neighborhood",
                     "Address.number",
                     "Address.zip_code",
@@ -106,7 +106,7 @@ module.exports = {
                 .join("City", "Address.id_city", "=", "City.id")
                 .select(
                     "Address.id",
-                    "Address.name",
+                    "Address.street",
                     "Address.neighborhood",
                     "Address.number",
                     "Address.zip_code",

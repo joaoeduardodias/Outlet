@@ -70,7 +70,7 @@ async function create(idUser) {
 
         const address = {
             neighborhood,
-            name: street,
+            street,
             number,
             zip_code,
             id_city,
