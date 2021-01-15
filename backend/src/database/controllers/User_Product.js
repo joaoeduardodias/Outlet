@@ -19,16 +19,16 @@ module.exports = {
                     .where("Users.id", item.id_user)
                     .join("Address", "Address.id_users", "Users.id")
                     .join("City", "City.id", "Address.id_city")
-                    .select(
-                        "Users.name",
-                        "Users.email",
-                        "Users.whatsapp",
-                        "City.nameCity",
-                        "Address.zip_code",
-                        "Address.neighborhood",
-                        "Address.street",
-                        "Address.number"
-                    )
+                    .select({
+                        nameUser: " Users.name",
+                        email: "Users.email",
+                        whatsapp: "Users.whatsapp",
+                        nameCity: "City.nameCity",
+                        zip_code: "Address.zip_code",
+                        neighborhood: "Address.neighborhood",
+                        street: "Address.street",
+                        number: "Address.number"
+                    })
                     .first();
                 const sold = Object.assign({}, item, User);
                 return sold;
