@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/global.css" />
     <link rel="stylesheet" href="../style/dashboard.css" />
+    <link rel="stylesheet" href="../style/orderSend.css" />
     <title>Dashboard || Outlet Multimarcas</title>
 </head>
 
@@ -30,14 +31,44 @@
     </aside>
     <main>
         <section class="products-to-send">
-            <div class="order-send">
-                <div class="id-order"></div>
-                .product-name
+            <!-- HEADER -->
 
+            <div class="header-order-send">
+                <div class="group-info">
+                    <div class="id-order">Código</div>
+                    <div class="product-name">Nome Produto</div>
+                    <div class="amount-sold">Quantidade</div>
+                    <div class="price">Valor Total</div>
+                </div>
+            </div>
+
+            <div class="order-send">
+                <div class="group-info">
+                    <div class="id-order">21fer3</div>
+                    <div class="product-name">Plaquinha Motivadora</div>
+                    <div class="amount-sold">2</div>
+                    <div class="price">120.00</div>
+                    <div class="description"><img src="../assets/icon/angle-down.svg" alt="Detalhes"></div>
+                </div>
+                <div id="details" class="details on">
+                    <div class="grid">
+                        <h4>Dados do Cliente</h4>
+                        <div class="client-name">Comprador: User adm</div>
+                        <div class="client-email">Email: adm@email.com</div>
+                        <div class="client-telephone">Telefone: 67998988777</div>
+                        <div class="city-name">Cidade: Aparecida do Taboado</div>
+                        <div class="zip-code">Cep: 79570-000</div>
+                        <div class="neighborhood">Bairro: Vila Maria</div>
+                        <div class="street">Rua: Rua Jaciara</div>
+                        <div class="number">Nº: 5051</div>
+                        <div class="send-order"><button>Pedido Enviado</button></div>
+                    </div>
+                </div>
             </div>
 
         </section>
     </main>
+    <script src="../js/ordeSend.js"></script>
 </body>
 
 </html>

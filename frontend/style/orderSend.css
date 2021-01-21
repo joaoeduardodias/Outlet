@@ -1,0 +1,157 @@
+.products-to-send {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    margin: 3rem auto 0;
+}
+
+.header-order-send {
+    width: 100%;
+    height: 3rem;
+    background-color: var(--color-text-button);
+    border: 1px solid #e6e6e6;
+}
+
+.order-send {
+    width: 100%;
+    /* height: 5rem; */
+    display: flex;
+    position: relative;
+    background-color: var(--color-text-button);
+    border: 1px solid #e6e6e6;
+    border-top: none;
+}
+
+.header-order-send .group-info,
+.group-info {
+    height: 3rem;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.group-info {
+    height: 5rem;
+}
+
+.id-order {
+    text-align: center;
+    padding: 0.4rem;
+    width: 13rem;
+    height: 100%;
+    border-right: 1px solid #CCC;
+}
+
+.product-name {
+    text-align: center;
+    padding: 0.4rem;
+    width: 49rem;
+    height: 100%;
+    border-right: 1px solid #CCC;
+}
+
+.amount-sold {
+    text-align: center;
+    padding: 0.4rem;
+    width: 12.5rem;
+    height: 100%;
+    border-right: 1px solid #CCC;
+}
+
+.price {
+    text-align: center;
+    padding: 0.4rem;
+    width: 12rem;
+    height: 100%;
+    border-right: 1px solid #CCC;
+}
+
+.description {
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.description img {
+    width: 1.5rem;
+}
+
+.details {
+    display: none;
+    width: 100%;
+    height: 0rem;
+    background-color: yellow;
+    position: absolute;
+    top: 5.1rem;
+    background-color: var(--color-text-button);
+    border: 1px solid #CCC;
+    border-top: none;
+    font-weight: 600;
+    animation: dow 700ms linear forwards;
+}
+
+.details .grid {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'h4 h4' 'name email' 'tel city' 'zip_code neighborhood' 'street number' 'send-order send-order';
+    justify-items: center;
+    height: 23rem;
+    margin: 0 auto;
+}
+
+.details h4 {
+    padding-top: 1rem;
+    margin: 0 auto;
+    grid-area: h4;
+    font-size: 1.8rem;
+}
+
+.send-order {
+    grid-area: send-order;
+    margin-left: 70%;
+}
+
+.send-order button {
+    width: 15rem;
+    height: 2.3rem;
+    font-weight: 600;
+    background-color: var(--color-button-secondary);
+    border-radius: 0.2rem;
+    border: none;
+    transition: .5s;
+    cursor: pointer;
+    /* color: var(--color-text-button) */
+}
+
+.send-order button:hover {
+    background-color: var(--color-button-secondary-hover);
+}
+
+.order-send .id-order,
+.order-send .product-name,
+.order-send .amount-sold,
+.order-send .price {
+    padding: 1.5rem;
+}
+
+
+/* animação de dow para descricao */
+
+@keyframes up {
+    from {
+        height: 22rem;
+    }
+    to {
+        height: 0
+    }
+}
+
+@keyframes dow {
+    from {
+        height: 0rem;
+    }
+    to {
+        height: 22rem
+    }
+}
