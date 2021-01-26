@@ -20,9 +20,9 @@ module.exports = {
         } = req.body
 
         if (methodFreight == 'PAC') {
-            method = 41106
+            method = 3085
         } else {
-            method = 40010
+            method = 3050
         }
         var params = {
             // 21008922
