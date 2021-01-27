@@ -138,6 +138,7 @@ module.exports = {
             }).where("id_sold", id)
             return res.status(201).send()
         } catch (error) {
+            console.log(error)
             next(error)
         }
     },
