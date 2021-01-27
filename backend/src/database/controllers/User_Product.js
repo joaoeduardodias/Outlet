@@ -133,7 +133,7 @@ module.exports = {
             const { tracking, send } = req.body
 
             await Connection("User_product").update({
-                send,
+                // send,
                 tracking
             }).where("id_sold", id)
             return res.status(201).send()
