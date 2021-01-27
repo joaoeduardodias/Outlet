@@ -5,6 +5,7 @@ module.exports = {
     async index(next, res) {
         try {
             const data = await Connection("User_Product")
+                .where("send", false)
                 .join("Products", "id_product", "=", "Products.id")
                 .select(
                     "id_sold",
@@ -17,8 +18,8 @@ module.exports = {
             const sold = data.map(async(item) => {
                 const User = await Connection("Users")
                     .where("Users.id", item.id_user)
-                    .andWhere("send", false)
-                    .join("Address", "Address.id_users", "Users.id")
+
+                .join("Address", "Address.id_users", "Users.id")
                     .join("City", "City.id", "Address.id_city")
                     .select({
                         nameUser: " Users.name",
