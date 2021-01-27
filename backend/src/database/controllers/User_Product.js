@@ -135,7 +135,7 @@ module.exports = {
             await Connection("User_product").update({
                 send,
                 tracking
-            }).where({ id })
+            }).where("id_sold", id)
             return res.status(201).send()
         } catch (error) {
             next(error)
