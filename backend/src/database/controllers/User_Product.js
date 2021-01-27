@@ -12,6 +12,7 @@ module.exports = {
                     "id_user",
                     "amount_sold",
                     "value_total",
+                    "tracking",
                     "Products.name"
                 );
 
