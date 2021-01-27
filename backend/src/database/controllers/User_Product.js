@@ -131,15 +131,13 @@ module.exports = {
         try {
             const { id } = req.params
             const { tracking, send } = req.body
-            console.log(id, tracking, send)
 
-            await Connection("User_product").update({
-                // send,
+            await Connection("User_Product").update({
+                send,
                 tracking
             }).where("id_sold", id)
             return res.status(201).send()
         } catch (error) {
-            console.log(error)
             next(error)
         }
     },
