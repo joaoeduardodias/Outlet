@@ -131,6 +131,7 @@ module.exports = {
         try {
             const { id } = req.params
             const { tracking, send } = req.body
+            console.log(id, tracking, send)
 
             await Connection("User_product").update({
                 // send,
