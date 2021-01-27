@@ -130,9 +130,10 @@ module.exports = {
     async update(req, res, next) {
         try {
             const { id } = req.params
-            const tracking = req.body
+            const { tracking, send } = req.body
+
             await Connection("User_product").update({
-                send: true,
+                send,
                 tracking
             }).where({ id })
             return res.status(201).send()
