@@ -127,6 +127,19 @@ module.exports = {
             next(error);
         }
     },
+    async update(req, res, next) {
+        try {
+            const { id } = req.params
+            const tracking = req.body
+            await Connection("User_product").update({
+                send: true,
+                tracking
+            }).where({ id })
+            return res.status(201).send()
+        } catch (error) {
+            next(error)
+        }
+    },
     async delete(req, res, next) {
         try {
             const { id } = req.params;
