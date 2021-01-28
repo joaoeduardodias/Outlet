@@ -5,19 +5,22 @@ module.exports = {
     async index(next, res) {
         try {
             const data = await Connection("User_Product")
+                .where("send", false)
                 .join("Products", "id_product", "=", "Products.id")
                 .select(
                     "id_sold",
                     "id_user",
                     "amount_sold",
                     "value_total",
+                    "tracking",
                     "Products.name"
                 );
 
             const sold = data.map(async(item) => {
                 const User = await Connection("Users")
                     .where("Users.id", item.id_user)
-                    .join("Address", "Address.id_users", "Users.id")
+
+                .join("Address", "Address.id_users", "Users.id")
                     .join("City", "City.id", "Address.id_city")
                     .select({
                         nameUser: " Users.name",
@@ -122,6 +125,20 @@ module.exports = {
             return res.status(201).send();
         } catch (error) {
             next(error);
+        }
+    },
+    async update(req, res, next) {
+        try {
+            const { id } = req.params
+            const { tracking, send } = req.body
+
+            await Connection("User_Product").update({
+                send,
+                tracking
+            }).where("id_sold", id)
+            return res.status(201).send()
+        } catch (error) {
+            next(error)
         }
     },
     async delete(req, res, next) {

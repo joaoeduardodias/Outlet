@@ -67,6 +67,7 @@ routes.get('/product_sold_betweenCount', midellwareauth, User_Product.sumBetween
 
 
 routes.post('/product_sold/:id', midellwareauth, User_Product.create) // id do produto
+routes.put('/product_sold/:id', midellwareauth, User_Product.update) // id da venda
 
 // Upload 
 routes.post('/upload/:idProduct', multer(multerConfig).array('image[]'), UploadController.create)
