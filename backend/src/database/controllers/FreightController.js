@@ -25,10 +25,10 @@ module.exports = {
             method = 40010
         }
         var params = {
-            // 21008922
-            'nCdEmpresa': '',
-            // 26570583
-            'sDsSenha': '',
+            
+            'nCdEmpresa':'21008922',
+            
+            'sDsSenha': '26570583',
             'sCepOrigem': '79570000',
             'sCepDestino': zip_code,
             'nVlPeso': weight,
