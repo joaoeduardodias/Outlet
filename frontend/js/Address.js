@@ -22,6 +22,7 @@ async function listState() {
         el.value = item.id
         selectState.appendChild(el)
     })
+
     return state
 }
 listState()
@@ -29,7 +30,9 @@ listState()
 function returnValueState() {
 
     var value = selectState.options[selectState.selectedIndex].value
+
     idState = value.toString()
+
     listCity(idState)
 
 
@@ -49,13 +52,17 @@ async function listCity(idState) {
         },
         mode: 'cors'
     })
+
     const city = await data.json()
+
+
     city.map(item => {
         var el = document.createElement('option')
 
-        el.textContent = item.name
+        el.textContent = item.nameCity
         el.value = item.id
         selectCity.appendChild(el)
+
     })
 }
 // api
@@ -64,7 +71,7 @@ async function create(idUser) {
         const neighborhood = document.getElementById('neighborhood').value
         const street = document.getElementById('street').value
         const number = document.getElementById('number').value
-        const zip_code = document.getElementById('zip_code').value
+        const zip_code = document.getElementById('ZipCode').value
         const selectCity = document.getElementById('city')
         const id_city = selectCity.options[selectCity.selectedIndex].value
 
@@ -76,6 +83,7 @@ async function create(idUser) {
             id_city,
             id_users: idUser
         }
+        console.log(address)
         await fetch(BaseUrl + '/address', {
             method: 'POST',
             headers: {
@@ -106,4 +114,5 @@ selectState.addEventListener('change', () => {
 selectCity.addEventListener('change', () => {
     selectCity.style.color = '#01cA01'
     selectCity.style.border = '1px solid #22FA0E'
+
 })

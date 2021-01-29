@@ -7,7 +7,7 @@ async function Register() {
         const { value: telephone } = document.getElementById("telephone");
         const { value: password } = document.getElementById("password");
         const tel = parseInt(telephone)
-        console.log(tel)
+
         const data = {
             name,
             email,
