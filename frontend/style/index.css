@@ -361,51 +361,6 @@ button:hover {
     background-color: var(--color-primary-hover);
 }
 
-footer {
-    width: 100%;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--background-footer);
-    border-top: 1px solid var(--border-footer);
-}
-
-.paginated {
-    display: flex;
-}
-
-.paginated .arrowleft,
-.paginated .arrowright {
-    border: 1px solid var(--border-div-color);
-    border-radius: 0.4rem;
-    opacity: 70%;
-    width: 2.2rem;
-    height: 2.2rem;
-    font-size: 1.6rem;
-    margin: 0 0.5rem;
-    color: var(--color-text-price);
-    display: flex;
-    justify-content: center;
-    transition-duration: 0.3s;
-    cursor: pointer;
-}
-
-.paginated strong {
-    color: var(--color-text-price);
-    opacity: 80%;
-    font-size: 1.7rem;
-    font-weight: 500;
-    font-family: "Roboto";
-}
-
-.paginated .arrowleft:hover,
-.paginated .arrowright:hover {
-    opacity: 100%;
-    width: 2.3rem;
-    height: 2.3rem;
-}
-
 @media(min-width:320px) {
     .menu-section.on .menu-toggle {
         right: 2.3rem;

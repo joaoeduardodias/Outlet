@@ -13,20 +13,29 @@ images.addEventListener("change", function() {
         if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
             var reader = new FileReader();
 
-            reader.addEventListener(
-                "load",
-                function() {
-                    const containerImg = c(".images-container");
-                    const btnAddClone = c(".images-container label");
-                    const PreviewImg = btnAddClone.cloneNode(true);
-                    PreviewImg.querySelector("img").src = this.result;
 
-                    containerImg.appendChild(PreviewImg);
-                },
-                false
-            );
+            if (file.size > 3145728) {
+                // 3145728 = 3mb
+                alert("imagem maior que o tamanho permitido")
 
-            reader.readAsDataURL(file);
+            } else {
+                reader.addEventListener(
+                    "load",
+                    function() {
+                        const containerImg = c(".images-container");
+                        const btnAddClone = c(".images-container label");
+                        const PreviewImg = btnAddClone.cloneNode(true);
+                        PreviewImg.querySelector("img").src = this.result;
+
+                        containerImg.appendChild(PreviewImg);
+                    },
+                    false
+                );
+
+                reader.readAsDataURL(file);
+            }
+
+
         }
     }
 

@@ -27,11 +27,8 @@ async function index() {
         });
         const Products = await data.json();
         Products.map((item) => {
-            weight = item.weight;
-            typeWeight = item.typeWeight;
-            lenght = item.lenght;
-            width = item.width;
-            height = item.height;
+
+
 
             // clonar a div produto
             let ProductItem = c(".models .product").cloneNode(true);
@@ -39,14 +36,18 @@ async function index() {
             if (item.available != true) {
                 ProductItem.style.display = "none";
             } else {
+                weight = item.weight;
+                typeWeight = item.typeWeight;
+                lenght = item.lenght;
+                width = item.width;
+                height = item.height;
                 images = item.urls.split(",");
+
                 idImages = item.ids.split(",");
                 ProductItem.querySelector(".product img").src = images[0];
                 ProductItem.querySelector(".product img").id = idImages[0];
                 ProductItem.querySelector(".product-title").innerHTML = item.name;
-                ProductItem.querySelector(
-                    ".product-price"
-                ).innerHTML = `R$: ${item.price.toFixed(2)}`;
+                ProductItem.querySelector(".product-price").innerHTML = `R$: ${item.price.toFixed(2)}`;
                 c(".products").append(ProductItem);
 
                 ProductItem.addEventListener("click", () => {
@@ -54,12 +55,16 @@ async function index() {
                     title = item.name;
                     price = item.price;
                     amount = item.amount;
+                    images = item.urls.split(",");
+                    idImages = item.ids.split(",");
+                    indeximg = 0
                     c(".windowdetails").style.opacity = 0;
                     c(".windowdetails").style.display = "flex";
                     setTimeout(() => {
                         c(".windowdetails").style.opacity = 1;
                         c("#body-modal").style.overflow = "hidden";
-                        c(".product-img #img").src = images[indeximg];
+
+                        c(".product-img #img").src = images[indeximg]
 
                         c(".product-title h2").innerHTML = item.name;
                         c(
