@@ -76,7 +76,7 @@ async function create(idUser) {
             id_city,
             id_users: idUser
         }
-        const data = await fetch(BaseUrl + '/address', {
+        await fetch(BaseUrl + '/address', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
