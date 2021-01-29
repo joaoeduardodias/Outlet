@@ -66,6 +66,7 @@ module.exports = {
                 id_city,
                 id_users,
             } = req.body;
+            console.log(zip_code)
 
             const id = crypto.randomBytes(3).toString("HEX");
             await Connection("Address").insert({
