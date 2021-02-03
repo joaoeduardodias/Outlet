@@ -1,5 +1,5 @@
 const paypal = require('paypal-rest-sdk')
-paypal.configure(PROCCESS.ENV.PAY_MODE, PROCCESS.ENV.PAY_CLIENT_ID, PROCCESS.ENV.PAY_CLIENT_SECRET)
+paypal.configure(process.env.PAY_MODE, process.env.PAY_CLIENT_ID, process.env.PAY_CLIENT_SECRET)
 
 
 module.exports = {
