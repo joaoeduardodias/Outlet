@@ -7,6 +7,24 @@ module.exports = {
     async create(req, res) {
         const { items } = req.body
         console.log(items)
+        const json_payment = {
+            "intent": "sale",
+            "payer": { payment_method: "paypal" },
+            "transactions": [{
+                "item_list": { "items": items },
+                "amount": items.amount_sold,
+                "description": "Outlet Multimarcas"
+            }]
+        }
+        paypal.payment.create(json_payment, (err, payment) => {
+            if (err) {
+                console.log(err)
+            } else {
+                payment.links.forEach((link) => {
+                    if (link.rel === 'approval_url') return res.redirect(link.rel)
+                })
+            }
+        })
 
     },
     // // quando pagar com sucesso
