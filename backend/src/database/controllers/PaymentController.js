@@ -5,8 +5,8 @@ paypal.configure(process.env.PAY_MODE, process.env.PAY_CLIENT_ID, process.env.PA
 module.exports = {
     // quando clicar para pagar 
     async create(req, res) {
-        const { price, id: product_id, amount_sold: quantity } = req.body
-        console.log(price, product_id, quantity)
+        const { items } = req.body
+        console.log(items)
 
     },
     // // quando pagar com sucesso
