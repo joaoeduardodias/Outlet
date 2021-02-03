@@ -91,7 +91,7 @@ routes.get('/address/:id', AddressController.show)
 routes.delete('/address/:id', AddressController.delete)
 
 // payment
-routes.post('/create-payment-intent', PaymenController.create)
+routes.post('/buy', PaymenController.create)
     // freight
 routes.post('/freight', FreightController.create)
 
