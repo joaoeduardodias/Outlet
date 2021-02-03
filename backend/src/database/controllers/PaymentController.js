@@ -9,14 +9,14 @@ module.exports = {
         console.log(price, product_id, quantity)
 
     },
-    // quando pagar com sucesso
-    async success(req, res) {
+    // // quando pagar com sucesso
+    // async success(req, res) {
 
-        res.send({ success: true })
+    //     res.send({ success: true })
 
-    },
-    // quando o cliente cancelar a compra 
-    async cancel(req, res) {
-        res.send({ cancel: true })
-    }
+    // },
+    // // quando o cliente cancelar a compra 
+    // async cancel(req, res) {
+    //     res.send({ cancel: true })
+    // }
 }
