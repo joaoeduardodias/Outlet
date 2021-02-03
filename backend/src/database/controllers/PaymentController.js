@@ -8,34 +8,45 @@ module.exports = {
     async create(req, res) {
         const { items } = req.body
         console.log(items)
-        const json_payment = {
+        const create_payment_json = {
             "intent": "sale",
-            "payer": { payment_method: "paypal" },
+            "payer": {
+                "payment_method": "paypal"
+            },
+            "redirect_urls": {
+                "return_url": "http://return.url",
+                "cancel_url": "http://cancel.url"
+            },
             "transactions": [{
-                "item_list": { "items": items },
-                "amount": items.amount_sold,
-                "description": "Outlet Multimarcas"
+                "item_list": {
+                    "items": [{
+                        "name": "item",
+                        "sku": items.id,
+                        "price": items.price,
+                        "currency": "BRL",
+                        "quantity": items.amount_sold
+                    }]
+                },
+                "amount": {
+                    "currency": "BRL",
+                    "total": items.price
+                },
+                "description": "Outlet Multimarcas."
             }]
-        }
-        paypal.payment.create(json_payment, (err, payment) => {
-            if (err) {
-                console.log(err)
+        };
+
+
+        paypal.payment.create(create_payment_json, function(error, payment) {
+            if (error) {
+                throw error;
             } else {
-                payment.links.forEach((link) => {
-                    if (link.rel === 'approval_url') return res.redirect(link.rel)
-                })
+                console.log("Create Payment Response");
+                console.log(payment);
             }
-        })
+        });
+
+
 
     },
-    // // quando pagar com sucesso
-    // async success(req, res) {
 
-    //     res.send({ success: true })
-
-    // },
-    // // quando o cliente cancelar a compra 
-    // async cancel(req, res) {
-    //     res.send({ cancel: true })
-    // }
 }
