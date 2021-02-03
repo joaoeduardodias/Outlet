@@ -46,7 +46,7 @@ module.exports = {
         });
 
 
-
+        res.json({ message: success })
     },
 
 }
