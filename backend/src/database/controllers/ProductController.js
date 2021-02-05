@@ -115,28 +115,65 @@ module.exports = {
 
             const id = crypto.randomBytes(3).toString("HEX");
             const id_attribute = crypto.randomBytes(3).toString('HEX')
-            await Connection("Products").insert({
-                id,
-                name,
-                price,
-                amount,
-                description,
-                weight,
-                lenght,
-                width,
-                height
-            });
-            await Connection("attributes").insert({
-                id: id_attribute,
-                type: type_attribute,
-                option_one,
-                option_two,
-                option_three,
-                option_for,
-                id_product: id
-            })
+                // await Connection("Products").insert({
+                // id,
+                // name,
+                // price,
+                // amount,
+                // description,
+                // weight,
+                // lenght,
+                // width,
+                // height
+                // });
+                // await Connection("attributes").insert({
+                // id: id_attribute,
+                // type: type_attribute,
+                // option_one,
+                // option_two,
+                // option_three,
+                // option_for,
+                // id_product: id
+                // })
+            return Connection.transaction(function(t) {
+                    return Connection("Products")
+                        .transacting(t)
+                        .insert({
+                            id,
+                            name,
+                            price,
+                            amount,
+                            description,
+                            weight,
+                            lenght,
+                            width,
+                            height
+                        })
+                        .then(function(response) {
+                            return Connection('attributes')
+                                .transacting(t)
+                                .insert({
+                                    id: id_attribute,
+                                    type_attribute,
+                                    option_one,
+                                    option_two,
+                                    option_three,
+                                    option_for,
+                                    id_product: id
+                                })
+                        })
+                        .then(t.commit)
+                        .catch(t.rollback)
+                })
+                .then(function() {
+                    return res.status(201).json({ message: 'create', id });
 
-            return res.status(201).json({ message: 'create', id });
+                })
+                .catch(function() {
+                    return res.status(500).json({ message: 'error' });
+
+                });
+
         } catch (error) {
             // next(error)
             console.log(error);
