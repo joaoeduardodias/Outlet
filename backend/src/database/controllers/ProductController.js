@@ -58,9 +58,14 @@ module.exports = {
                     // Connection.raw(`group_concat(Images.url) as urls`),
                     // Connection.raw(`group_concat(Images.id) as ids`),
                     Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
-                    Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`)
-                ).leftJoin('Images', 'Products.id', "=", 'Images.id_product')
-                .groupBy('Products.id')
+                    Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
+                    Connection.raw(`array_to_string(ARRAY_AGG(type), ',') type_attribute`),
+                    Connection.raw(`array_to_string(ARRAY_AGG(option_one), ',') option_one`),
+                    Connection.raw(`array_to_string(ARRAY_AGG(option_two), ',') option_two`),
+                    Connection.raw(`array_to_string(ARRAY_AGG(option_three), ',') option_three`),
+                    Connection.raw(`array_to_string(ARRAY_AGG(option_for), ',') option_for`),
+                ).leftJoin('Images', 'Products.id', "=", 'Images.id_product').groupBy('Products.id')
+                .leftJoin('attributes', 'Products.id', "=", 'attributes.id_product').groupBy('Products.id')
                 .where('Products.id', id)
                 .first()
             if (!product) {
@@ -84,7 +89,21 @@ module.exports = {
             if (adm === false) {
                 return res.status(401).json({ message: "User is not adm" });
             }
-            const { name, price, amount, description, weight, typeWeight, lenght, width, height } = req.body;
+            const {
+                name,
+                price,
+                amount,
+                description,
+                weight,
+                lenght,
+                width,
+                height,
+                type_attribute,
+                option_one,
+                option_two,
+                option_three,
+                option_for,
+            } = req.body;
             const verifyName = await Connection("Products")
                 .select("name")
                 .where({ name })
@@ -95,7 +114,7 @@ module.exports = {
                 });
 
             const id = crypto.randomBytes(3).toString("HEX");
-
+            const id_attribute = crypto.randomBytes(3).toString('HEX')
             await Connection("Products").insert({
                 id,
                 name,
@@ -107,6 +126,15 @@ module.exports = {
                 width,
                 height
             });
+            await Connection("attributes").insert({
+                id: id_attribute,
+                type_attribute,
+                option_one,
+                option_two,
+                option_three,
+                option_for,
+                id_product: id
+            })
 
             return res.status(201).json({ message: 'create', id });
         } catch (error) {
@@ -127,8 +155,21 @@ module.exports = {
                 return res.status(401).json({ message: "User is not adm" });
             }
             const { id } = req.params;
-            const { name, price, amount, available, description, weight, typeWeight, lenght, width, height } = req.body;
-
+            const {
+                name,
+                price,
+                amount,
+                description,
+                weight,
+                lenght,
+                width,
+                height,
+                type_attribute,
+                option_one,
+                option_two,
+                option_three,
+                option_for,
+            } = req.body;
             await Connection("Products")
                 .update({
                     name,
@@ -140,8 +181,15 @@ module.exports = {
                     lenght,
                     width,
                     height
-                })
-                .where({ id });
+                }).where({ id });
+            await Connection("attributes").update({
+                id: id_attribute,
+                type_attribute,
+                option_one,
+                option_two,
+                option_three,
+                option_for,
+            }).where('id_product', id)
 
             return res.status(200).json({ message: 'succcess' }).send();
         } catch (error) {
@@ -181,6 +229,7 @@ module.exports = {
                 }
             });
             await Connection('Images').where('id_product', id).del()
+            await Connection('attributes').where('id_product', id).del()
 
             await Connection("Products").where({ id }).del();
             return res.json({ message: 'success' }).send()
