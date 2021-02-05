@@ -202,14 +202,7 @@ module.exports = {
                     width,
                     height
                 }).where({ id });
-            await Connection("attributes").update({
-                id: id_attribute,
-                type: type_attribute,
-                option_one,
-                option_two,
-                option_three,
-                option_for,
-            }).where('id_product', id)
+
 
             return res.status(200).json({ message: 'succcess' }).send();
         } catch (error) {
