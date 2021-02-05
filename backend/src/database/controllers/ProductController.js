@@ -169,8 +169,8 @@ module.exports = {
                     return res.status(201).json({ message: 'create', id });
 
                 })
-                .catch(function() {
-                    return res.status(500).json({ message: 'error' });
+                .catch(function(error) {
+                    return res.status(500).json({ message: 'error', error });
 
                 });
 
