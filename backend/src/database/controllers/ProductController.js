@@ -128,7 +128,7 @@ module.exports = {
             });
             await Connection("attributes").insert({
                 id: id_attribute,
-                type_attribute,
+                type: type_attribute,
                 option_one,
                 option_two,
                 option_three,
@@ -184,7 +184,7 @@ module.exports = {
                 }).where({ id });
             await Connection("attributes").update({
                 id: id_attribute,
-                type_attribute,
+                type: type_attribute,
                 option_one,
                 option_two,
                 option_three,
