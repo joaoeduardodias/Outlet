@@ -154,7 +154,7 @@ module.exports = {
                                 .transacting(t)
                                 .insert({
                                     id: id_attribute,
-                                    type_attribute,
+                                    type: type_attribute,
                                     option_one,
                                     option_two,
                                     option_three,
@@ -169,10 +169,10 @@ module.exports = {
                     return res.status(201).json({ message: 'create', id });
 
                 })
-                // .catch(function(error) {
-                //     return res.status(500).json({ message: 'error', error });
+                .catch(function(error) {
+                    return res.status(500).json({ message: 'error', error });
 
-            // });
+                });
 
         } catch (error) {
             // next(error)
