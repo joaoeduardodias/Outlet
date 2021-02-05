@@ -32,6 +32,7 @@ module.exports = {
                     Connection.raw(`array_to_string(ARRAY_AGG(option_for), ',') option_for`),
                 ).leftJoin('Images', 'Products.id', "=", 'Images.id_product').groupBy('Products.id')
                 .leftJoin('attributes', 'Products.id', "=", 'attributes.id_product').groupBy('Products.id')
+                .orderBy('created_at', 'asc')
 
             return res.json(data)
 
@@ -115,26 +116,7 @@ module.exports = {
 
             const id = crypto.randomBytes(3).toString("HEX");
             const id_attribute = crypto.randomBytes(3).toString('HEX')
-                // await Connection("Products").insert({
-                // id,
-                // name,
-                // price,
-                // amount,
-                // description,
-                // weight,
-                // lenght,
-                // width,
-                // height
-                // });
-                // await Connection("attributes").insert({
-                // id: id_attribute,
-                // type: type_attribute,
-                // option_one,
-                // option_two,
-                // option_three,
-                // option_for,
-                // id_product: id
-                // })
+
             return Connection.transaction(function(t) {
                     return Connection("Products")
                         .transacting(t)
