@@ -183,6 +183,7 @@ module.exports = {
                 lenght,
                 width,
                 height,
+                available,
                 type_attribute,
                 option_one,
                 option_two,
