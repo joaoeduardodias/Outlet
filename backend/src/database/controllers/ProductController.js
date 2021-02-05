@@ -32,7 +32,7 @@ module.exports = {
                     Connection.raw(`array_to_string(ARRAY_AGG(option_for), ',') option_for`),
                 ).leftJoin('Images', 'Products.id', "=", 'Images.id_product').groupBy('Products.id')
                 .leftJoin('attributes', 'Products.id', "=", 'attributes.id_product').groupBy('Products.id')
-                .orderBy('Products.created_at', 'asc')
+                .orderBy('Products.created_at', 'desc')
 
             return res.json(data)
 
