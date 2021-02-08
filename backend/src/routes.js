@@ -33,6 +33,7 @@ const UploadController = require('./database/controllers/UploadController');
 const AddressController = require('./database/controllers/AddressController');
 const PaymenController = require('./database/controllers/PaymentController');
 const FreightController = require('./database/controllers/FreightController');
+const AttributeController = require('./database/controllers/AttributeController');
 
 
 //  CRUD de usuários
@@ -56,6 +57,11 @@ routes.get('/Productshow/:id', ProductController.show)
 routes.post('/product', midellwareauth, ProductController.create)
 routes.put('/product/:id', midellwareauth, ProductController.update)
 routes.delete('/product/:id', midellwareauth, ProductController.delete)
+
+// Attributes
+routes.post('/attribute/:id_product', midellwareauth, AttributeController.create)
+routes.put('/attribute/:id', midellwareauth, AttributeController.create)
+routes.delete('/attribute/:id', midellwareauth, AttributeController.create)
 
 //  Products_Sold
 
