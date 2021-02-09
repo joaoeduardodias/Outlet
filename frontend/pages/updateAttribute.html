@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/global.css" />
+    <link rel="stylesheet" href="../style/dashboard.css" />
+    <link rel="stylesheet" href="../style/updateAttributes.css" />
+    <title>Dashboard || Outlet Multimarcas</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <h1>
+                    OUTLET <br /> MULTIMARCAS
+                </h1>
+            </a>
+        </div>
+    </header>
+    <aside>
+        <a href="./dashboard.html">Pedidos para Enviar</a>
+        <a href="./orderFinish.html">Pedidos Enviados</a>
+        <a href="./createProduct.html">Cadastrar Produto</a>
+        <a href="./updateProduct.html">Atualizar Produto</a>
+        <a href="./deleteProduct.html">Deletar Produto</a>
+        <a href="./addAtribute.html">Adicionar Atributo</a>
+        <a href="./updateAttribute.html">Atualizar Atributo</a>
+        <a href="./deleteAttribute.html">Deletar Atributo</a>
+        <a href="./createUserAdm.html">Administradores</a>
+        <a href="./deleteUserADM.html">Deletar Usuário</a>
+    </aside>
+    <section>
+        <div class="container">
+            <div class="add-attributes">
+                <h3> Atualizar Atributos</h3>
+
+                <div class="input-container">
+                    <label for="cod-product">Código do produto</label>
+                    <div class="search">
+                        <input type="text" id="cod-product" placeholder="Digite o Código do Produto">
+                        <button class="btn-search" id="btn-search-delete">
+                        <img src="../assets/icon/search.svg" alt="Pesquisar" />
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <div class="product-attribute">
+                    <p>Selecione o atributo que deseja alterar</p>
+                    <div class="list-attribute">
+                        <div class="attribute">Cor</div>
+                        <div class="attribute">Tamanho</div>
+                    </div>
+
+                </div>
+
+                <div class="update-attribute">
+                    <div class="input-container">
+                        <label class="type-attribute" for="type-attribute">Tipo de Atributo</label>
+                        <input type="text" id="type-attribute">
+                    </div>
+
+                    <div class="options">
+                        <p>Digite as opções disponíveis</p>
+                        <div class="option-one">
+                            <label for="option-one">Opção 1</label>
+                            <input type="text" id="option-one">
+                        </div>
+                        <div class="option-two">
+                            <label for="option-two">Opção 2</label>
+                            <input type="text" id="option-two">
+                        </div>
+
+                        <div class="option-three">
+                            <label for="option-three">Opção 3</label>
+                            <input type="text" id="option-three">
+                        </div>
+                        <div class="option-for">
+                            <label for="option-for">Opção 4</label>
+                            <input type="text" id="option-for">
+                        </div>
+
+                        <button id="add-attribute">Adicionar</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <script src="../js/updateAttribute.js"></script>
+</body>
+
+</html>

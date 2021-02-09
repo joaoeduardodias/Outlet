@@ -1,288 +1,297 @@
 header {
-  height: 11rem;
-  position: fixed;
+    height: 11rem;
+    position: fixed;
 }
 
 .mycart {
-  width: 100%;
-  height: 2rem;
-  font-size: 1.6rem;
-  letter-spacing: 0.1rem;
-  text-align: center;
-  font-weight: 600;
-  background-color: var(--background-footer);
-  margin-top: 1.5rem;
+    width: 100%;
+    height: 2rem;
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    font-weight: 600;
+    background-color: var(--background-footer);
+    margin-top: 1.5rem;
 }
 
 .section-cart {
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 11rem;
-  min-height: calc(100vh - 11rem);
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 11rem;
+    min-height: calc(100vh - 11rem);
 }
 
 .models {
-  display: none;
+    display: none;
 }
 
 .product {
-  width: 100%;
-  min-height: 8.5rem;
-  background-color: var(--color-text-button);
-  border: 1.5px solid var(--border-div-color);
-  border-top: none;
-  display: flex;
-  cursor: pointer;
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.8rem;
+    width: 100%;
+    min-height: 8.5rem;
+    background-color: var(--color-text-button);
+    border: 1.5px solid var(--border-div-color);
+    border-top: none;
+    display: flex;
+    cursor: pointer;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem;
 }
 
 .product:hover {
-  background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 .product-info-img {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .product-img img {
-  width: 7.5rem;
-  height: 6.5rem;
-  margin-right: 0.5rem;
-  object-fit: cover;
+    width: 7.5rem;
+    height: 6.5rem;
+    margin-right: 0.5rem;
+    object-fit: cover;
 }
 
 .product-info {
-  margin-left: 0.6rem;
-  width: 16rem;
-  height: 6.5rem;
+    margin-left: 0.6rem;
+    width: 16rem;
+    height: 6.5rem;
 }
+
 .product-info-img .product-id {
-  display: none;
+    display: none;
 }
+
 .product-title {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
 .product-price {
-  font-size: 1.8rem;
-  font-family: "Roboto";
+    font-size: 1.8rem;
+    font-family: "Roboto";
 }
 
 .product-trash {
-  background-color: var(--color-trash);
-  width: 4.5rem;
-  height: 5.5rem;
-  display: none;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.8rem;
-  margin-left: 1.7rem;
-  transition: background 0.5s;
+    background-color: var(--color-trash);
+    width: 4.5rem;
+    height: 5.5rem;
+    display: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem;
+    margin-left: 1.7rem;
+    transition: background 0.5s;
 }
 
 .product-trash:hover {
-  background-color: var(--color-trash-hover);
+    background-color: var(--color-trash-hover);
 }
 
 .product-trash img {
-  width: 3rem;
-  height: 4.5rem;
+    width: 3rem;
+    height: 4.5rem;
 }
 
 .windowdetails,
 .windowpurchase {
-  background-color: #d6d2d280;
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  display: none;
-  /* flex */
-  transition: all ease 0.5s;
-  justify-content: center;
-  align-items: center;
-  overflow-y: hidden;
-  z-index: 11;
+    background-color: #d6d2d280;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+    /* flex */
+    transition: all ease 0.5s;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    z-index: 11;
 }
 
 .product-modal {
-  width: 25rem;
-  background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 0px 0px 15px #999;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(auto-fit, auto);
-  grid-template-areas: "img img" "title title" "price qtd" "qtdavailable qtdavailable" "purchase purchase" "trash trash";
-  padding: 1rem;
+    width: 25rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 15px #999;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto-fit, auto);
+    grid-template-areas: "img img" "title title" "price qtd" "qtdavailable qtdavailable" "purchase purchase" "trash trash";
+    padding: 1rem;
 }
 
 .product-modal .product-img {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-  grid-area: img;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    grid-area: img;
 }
 
 .product-modal .product-img img {
-  width: 20rem;
-  height: 14rem;
-  object-fit: cover;
+    width: 20rem;
+    height: 14rem;
+    object-fit: cover;
 }
 
 .product-modal .product-title {
-  grid-area: title;
-  margin-left: 0.5rem;
+    grid-area: title;
+    margin-left: 0.5rem;
 }
 
 .product-modal .product-price {
-  grid-area: price;
-  margin-top: 0.5rem;
-  margin-left: 0.7rem;
+    grid-area: price;
+    margin-top: 0.5rem;
+    margin-left: 0.7rem;
 }
 
 .product-modal .product--item--qtarea {
-  display: inline-flex;
-  justify-content: center;
-  background-color: var(--border-footer);
-  border-radius: 1rem;
-  height: 2.8rem;
-  width: 9rem;
-  grid-area: qtd;
-  margin-left: 1rem;
+    display: inline-flex;
+    justify-content: center;
+    background-color: var(--border-footer);
+    border-radius: 1rem;
+    height: 2.8rem;
+    width: 9rem;
+    grid-area: qtd;
+    margin-left: 1rem;
 }
 
 .product-modal .product--item--qtarea button:first-child {
-  font-size: 2.3rem;
-  margin-bottom: 2rem;
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
 }
 
 .product-modal .product--item--qtarea button {
-  border: 0;
-  background-color: transparent;
-  font-size: 1.9rem;
-  outline: 0;
-  cursor: pointer;
-  padding: 0rem 0.8rem;
-  color: var(--color-text-button-qt);
+    border: 0;
+    background-color: transparent;
+    font-size: 1.9rem;
+    outline: 0;
+    cursor: pointer;
+    padding: 0rem 0.8rem;
+    color: var(--color-text-button-qt);
 }
 
 .product-modal .product--item--qt {
-  line-height: 3rem;
-  font-size: 1.6rem;
-  font-weight: bold;
-  padding: 0rem 0.5rem;
-  color: #000;
+    line-height: 3rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 0rem 0.5rem;
+    color: #000;
 }
 
 .product-modal .product-item-qtavailable {
-  display: none;
+    display: none;
 }
 
 .product-modal .product-trash,
 .product-modal .product-purchase {
-  width: 20rem;
-  height: 3.3rem;
-  font-size: 1.5rem;
-  color: var(--color-text-button);
-  font-weight: 600;
-  letter-spacing: 0.1rem;
-  grid-area: trash;
-  display: flex;
-  padding-bottom: 0.1rem;
-  text-align: center;
-  flex-direction: row;
-  margin: 0 auto;
-  transition: background 0.5s;
+    width: 20rem;
+    height: 3.3rem;
+    font-size: 1.5rem;
+    color: var(--color-text-button);
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    grid-area: trash;
+    display: flex;
+    padding-bottom: 0.1rem;
+    text-align: center;
+    flex-direction: row;
+    margin: 0 auto;
+    transition: background 0.5s;
 }
 
 .product-modal .product-trash img {
-  height: 2rem;
+    height: 2rem;
 }
 
 .product-modal .product-purchase {
-  grid-area: purchase;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 0.8rem;
-  background-color: var(--color-button-secondary);
-  margin: 1rem auto;
+    grid-area: purchase;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    background-color: var(--color-button-secondary);
+    margin: 1rem auto;
 }
 
 .product-modal .product-purchase:hover {
-  background-color: var(--color-button-secondary-hover);
+    background-color: var(--color-button-secondary-hover);
 }
 
 .product-modal .product-trash:hover {
-  background-color: var(--color-trash-hover);
+    background-color: var(--color-trash-hover);
 }
 
 .product-options .product--item--qtarea,
 .product-options .product-item-qtavailable,
 .product-options .product-purchase {
-  display: none;
+    display: none;
 }
 
 .purchase-modal {
-  width: 28rem;
-  height: auto;
-  background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 0px 0px 15px #999;
+    width: 28rem;
+    height: auto;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 15px #999;
 }
+
 .product-details {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  border-bottom: 1px solid #4d4c4c;
-  margin: 0 auto;
-  margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    border-bottom: 1px solid #4d4c4c;
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
 }
+
 .product-details .product-title {
-  font-size: 1.5rem;
-  margin: 0.3rem 0;
+    font-size: 1.5rem;
+    margin: 0.3rem 0;
 }
+
 .product-details .product-price,
 .product-details .product--item--qt,
 .product-details #price_freight,
 .product-details #date_freight {
-  font-size: 1.8rem;
-  margin: 0.3rem 0;
-  font-weight: 600;
+    font-size: 1.8rem;
+    margin: 0.3rem 0;
+    font-weight: 600;
 }
+
 .product-details .price-total {
-  font-size: 2rem;
-  font-family: "Roboto";
-  margin: 0.3rem 0;
-  font-weight: 800;
+    font-size: 2rem;
+    font-family: "Roboto";
+    margin: 0.3rem 0;
+    font-weight: 800;
 }
+
 form {
-  width: 27.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 2rem;
+    width: 27.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
 }
 
 input#email {
-  border-radius: 6px;
-  margin-bottom: 6px;
-  padding: 12px;
-  border: 1px solid #32325d1a;
-  height: 44px;
-  font-size: 16px;
-  width: 100%;
-  background: white;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    padding: 12px;
+    border: 1px solid #32325d1a;
+    height: 44px;
+    font-size: 16px;
+    width: 100%;
+    background: white;
 }
-#card-element {
+
+
+/* #card-element {
   border-radius: 4px 4px 0 0;
   padding: 12px 6px;
   border: 1px solid #32325d1a;
@@ -300,341 +309,327 @@ input#email {
   border-radius: 0 0 4px 4px;
   text-align: center;
   margin-bottom: 1rem;
-}
-#submit {
-  width: 20rem;
-  height: 3.5rem;
-  border: none;
-  border-radius: 0.5rem;
-  background-color: var(--color-primary);
-  font-size: 2rem;
-  color: var(--color-text-button);
-  font-weight: 600;
-  letter-spacing: 0.2rem;
-  font-family: "Roboto";
-  margin: 1rem 0;
-  cursor: pointer;
-  transition: 0.5s;
+} */
+
+#pay {
+    width: 20rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--color-primary);
+    font-size: 2rem;
+    color: var(--color-text-button);
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    font-family: "Roboto";
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 #submit:hover {
-  background-color: var(--color-primary-hover);
+    background-color: var(--color-primary-hover);
 }
 
 .result-message {
-  line-height: 22px;
-  font-size: 16px;
+    line-height: 22px;
+    font-size: 16px;
 }
 
 .result-message a {
-  color: #596fd6;
-  font-weight: 600;
-  text-decoration: none;
+    color: #596fd6;
+    font-weight: 600;
+    text-decoration: none;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 #payment-request-button {
-  margin-bottom: 32px;
+    margin-bottom: 32px;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 @media (min-width: 300px) {
-  .product-trash {
-    display: flex;
-  }
-  .product-modal .product-trash {
-    display: none;
-  }
-  .product-modal .product-purchase {
-    margin-top: 2rem;
-    font-size: 1.6rem;
-  }
-  .purchase-modal {
-    width: 30rem;
-  }
-  form {
-    width: 29.5rem;
-  }
+    .product-trash {
+        display: flex;
+    }
+    .product-modal .product-trash {
+        display: none;
+    }
+    .product-modal .product-purchase {
+        margin-top: 2rem;
+        font-size: 1.6rem;
+    }
+    .purchase-modal {
+        width: 30rem;
+    }
+    form {
+        width: 29.5rem;
+    }
 }
 
 @media (min-height: 550px) {
-  .windowpurchase {
-    overflow-y: scroll;
-    padding-top: 8.5rem;
-  }
+    .windowpurchase {
+        overflow-y: scroll;
+        padding-top: 8.5rem;
+    }
 }
 
 @media (min-width: 700px) {
-  header {
-    height: 12.4rem;
-  }
-  .product {
-    padding: 0.8rem 2rem;
-  }
-  .mycart {
-    height: 2.2rem;
-    font-size: 1.6rem;
-    letter-spacing: 0.1rem;
-    text-align: center;
-    font-weight: 600;
-    background-color: var(--background-footer);
-    margin-top: 1.6rem;
-  }
-  .section-cart {
-    padding-top: 12.5rem;
-  }
-  .product-modal {
-    width: 40rem;
-    min-height: 35rem;
-    padding: 1rem;
-  }
-  .product-modal .product-img {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-    grid-area: img;
-  }
-  .product-modal .product-img img {
-    width: 35rem;
-    height: 20rem;
-    object-fit: cover;
-  }
-  .product-modal .product-title {
-    margin-left: 0.5rem;
-    font-size: 1.8rem;
-  }
-  .product-modal .product-price {
-    grid-area: price;
-    margin-top: 0.4rem;
-    margin-left: 1.5rem;
-    font-size: 2rem;
-  }
-  .product-modal .product--item--qtarea {
-    height: 3.2rem;
-    margin-left: 8.5rem;
-  }
-  .product-modal .product--item--qtarea button:first-child {
-    margin-bottom: 0.3rem;
-    font-size: 2.5rem;
-  }
-  .product-modal .product--item--qtarea button {
-    font-size: 1.9rem;
-    padding: 0rem 0.8rem;
-  }
-  .product-modal .product--item--qt {
-    margin-top: 0.2rem;
-  }
-  .product-modal .product-item-qtavailable {
-    grid-area: qtdavailable;
-    display: flex;
-    margin-left: 27.6rem;
-    font-size: 1.3rem;
-    margin-top: 0.1rem;
-    color: var(--color-text-price);
-  }
-  .product-modal .product-trash,
-  .product-modal .product-purchase {
-    width: 35rem;
-    height: 4rem;
-    font-size: 2rem;
-    color: var(--color-text-button);
-    font-weight: 600;
-    letter-spacing: 0.1rem;
-    grid-area: trash;
-    display: flex;
-    padding-bottom: 0.1rem;
-    text-align: center;
-    flex-direction: row;
-    margin: 0 auto;
-    transition: background 0.5s;
-  }
-  .product-modal .product-trash img {
-    height: 2rem;
-  }
-  .product-modal .product-purchase {
-    grid-area: purchase;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.8rem;
-    background-color: var(--color-button-secondary);
-    margin: 1rem auto;
-  }
-  .purchase-modal {
-    width: 50rem;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-  }
-
-
-  .product-details {
-    margin: 1rem 0.7rem;
-    border: 1px solid #ccc;
-    border-radius: 0.3rem;
-    padding: 1rem;
-    display: grid;
-    grid-template-rows: repeat(7,auto);
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:  'title img'
-                          'value img'
-                          'qtd img'
-                          'freight img'
-                          'date img'
-                          'total img'
-  }
-  .product-details .product-title h2 {
-    font-size: 2rem;
-    margin-top: 0.3rem;
-    grid-area: title;
-  }
-  .product-details .product-price {
-    font-size: 1.8rem;
-    margin-top: 0.3rem;
-    grid-area: value;
-
-  }
-  .product-details .product--item--qt {
-    font-size: 2rem;
-    margin-top: 0.3rem;
-    grid-area: qtd;
-
-  }
-  .product-details .freight,
-  .product-details .price-total {
-    font-size: 1.8rem;
-    margin-top: 0.3rem;
-    font-family: "Roboto";
-  }
-  .product-details #freight{
-    grid-area: freight;
-
-  }
-  .product-details #date_freight {
-    grid-area: date;
-  }
-  .product-details .price-total {
-    grid-area: total;
-
-  }
-  .product-details .product-img {
-    grid-area: img;
-
-    object-fit: cover;
-    justify-self: center;
-    align-self: center;
-
-  }
-  .product-details .product-img img {
-    width: 90%;
-    height: 90%;
-    margin-left: 1.5rem;
-  }
-  form {
-    width: 45.5rem;
-  }
-
+    header {
+        height: 12.4rem;
+    }
+    .product {
+        padding: 0.8rem 2rem;
+    }
+    .mycart {
+        height: 2.2rem;
+        font-size: 1.6rem;
+        letter-spacing: 0.1rem;
+        text-align: center;
+        font-weight: 600;
+        background-color: var(--background-footer);
+        margin-top: 1.6rem;
+    }
+    .section-cart {
+        padding-top: 12.5rem;
+    }
+    .product-modal {
+        width: 40rem;
+        min-height: 35rem;
+        padding: 1rem;
+    }
+    .product-modal .product-img {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+        grid-area: img;
+    }
+    .product-modal .product-img img {
+        width: 35rem;
+        height: 20rem;
+        object-fit: cover;
+    }
+    .product-modal .product-title {
+        margin-left: 0.5rem;
+        font-size: 1.8rem;
+    }
+    .product-modal .product-price {
+        grid-area: price;
+        margin-top: 0.4rem;
+        margin-left: 1.5rem;
+        font-size: 2rem;
+    }
+    .product-modal .product--item--qtarea {
+        height: 3.2rem;
+        margin-left: 8.5rem;
+    }
+    .product-modal .product--item--qtarea button:first-child {
+        margin-bottom: 0.3rem;
+        font-size: 2.5rem;
+    }
+    .product-modal .product--item--qtarea button {
+        font-size: 1.9rem;
+        padding: 0rem 0.8rem;
+    }
+    .product-modal .product--item--qt {
+        margin-top: 0.2rem;
+    }
+    .product-modal .product-item-qtavailable {
+        grid-area: qtdavailable;
+        display: flex;
+        margin-left: 27.6rem;
+        font-size: 1.3rem;
+        margin-top: 0.1rem;
+        color: var(--color-text-price);
+    }
+    .product-modal .product-trash,
+    .product-modal .product-purchase {
+        width: 35rem;
+        height: 4rem;
+        font-size: 2rem;
+        color: var(--color-text-button);
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+        grid-area: trash;
+        display: flex;
+        padding-bottom: 0.1rem;
+        text-align: center;
+        flex-direction: row;
+        margin: 0 auto;
+        transition: background 0.5s;
+    }
+    .product-modal .product-trash img {
+        height: 2rem;
+    }
+    .product-modal .product-purchase {
+        grid-area: purchase;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.8rem;
+        background-color: var(--color-button-secondary);
+        margin: 1rem auto;
+    }
+    .purchase-modal {
+        width: 50rem;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-details {
+        margin: 1rem 0.7rem;
+        border: 1px solid #ccc;
+        border-radius: 0.3rem;
+        padding: 1rem;
+        display: grid;
+        grid-template-rows: repeat(7, auto);
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'title img' 'value img' 'qtd img' 'freight img' 'date img' 'total img'
+    }
+    .product-details .product-title h2 {
+        font-size: 2rem;
+        margin-top: 0.3rem;
+        grid-area: title;
+    }
+    .product-details .product-price {
+        font-size: 1.8rem;
+        margin-top: 0.3rem;
+        grid-area: value;
+    }
+    .product-details .product--item--qt {
+        font-size: 2rem;
+        margin-top: 0.3rem;
+        grid-area: qtd;
+    }
+    .product-details .freight,
+    .product-details .price-total {
+        font-size: 1.8rem;
+        margin-top: 0.3rem;
+        font-family: "Roboto";
+    }
+    .product-details #freight {
+        grid-area: freight;
+    }
+    .product-details #date_freight {
+        grid-area: date;
+    }
+    .product-details .price-total {
+        grid-area: total;
+    }
+    .product-details .product-img {
+        grid-area: img;
+        object-fit: cover;
+        justify-self: center;
+        align-self: center;
+    }
+    .product-details .product-img img {
+        width: 90%;
+        height: 90%;
+        margin-left: 1.5rem;
+    }
+    form {
+        width: 45.5rem;
+    }
 }
 
 @media (min-width: 850px) {
-  .product {
-    cursor: default;
-    padding: 0.8rem 2rem;
-    width: 100%;
-    min-height: 8.5rem;
-    background-color: var(--color-text-button);
-    border: 1.5px solid var(--border-div-color);
-    border-top: none;
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .product-options .product--item--qtarea,
-  .product-options .product-item-qtavailable,
-  .product-options .product-purchase {
-    display: flex;
-  }
-  .product-options {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: repeat(2, auto);
-    grid-template-areas: "qtd btn trash ";
-  }
-  .product-options .product--item--qtarea {
-    grid-area: qtd;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--border-footer);
-    border-radius: 1rem;
-    height: 5.6rem;
-    width: 8.5rem;
-    margin-right: 2rem;
-  }
-  .product-options .product--item--qtarea button {
-    border: 0;
-    background-color: transparent;
-    font-size: 2.5rem;
-    outline: 0;
-    cursor: pointer;
-    padding: 0rem 0.8rem;
-    color: var(--color-text-button-qt);
-  }
-  .product-options .product--item--qtarea button:first-child {
-    margin-bottom: 0.5rem;
-  }
-  .product-options .product--item--qt {
-    line-height: 3rem;
-    font-size: 2rem;
-    font-weight: 600;
-    padding: 0rem 0.5rem;
-    color: #000;
-  }
-  .product-options .product-item-qtavailable {
-    margin-left: 0.8rem;
-    margin-top: 0.2rem;
-  }
-  .product-options .product-purchase {
-    grid-area: btn;
-    width: 10rem;
-    height: 5.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    border-radius: 0.8rem;
-    background-color: var(--color-button-secondary);
-    color: var(--color-text-button);
-    font-size: 1.8rem;
-    letter-spacing: 0.1rem;
-    cursor: pointer;
-    transition: background 0.5s;
-  }
-  .product-options .product-purchase:hover {
-    background-color: var(--color-button-secondary-hover);
-  }
-  .product-trash {
-    grid-area: trash;
-  }
+    .product {
+        cursor: default;
+        padding: 0.8rem 2rem;
+        width: 100%;
+        min-height: 8.5rem;
+        background-color: var(--color-text-button);
+        border: 1.5px solid var(--border-div-color);
+        border-top: none;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .product-options .product--item--qtarea,
+    .product-options .product-item-qtavailable,
+    .product-options .product-purchase {
+        display: flex;
+    }
+    .product-options {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas: "qtd btn trash ";
+    }
+    .product-options .product--item--qtarea {
+        grid-area: qtd;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--border-footer);
+        border-radius: 1rem;
+        height: 5.6rem;
+        width: 8.5rem;
+        margin-right: 2rem;
+    }
+    .product-options .product--item--qtarea button {
+        border: 0;
+        background-color: transparent;
+        font-size: 2.5rem;
+        outline: 0;
+        cursor: pointer;
+        padding: 0rem 0.8rem;
+        color: var(--color-text-button-qt);
+    }
+    .product-options .product--item--qtarea button:first-child {
+        margin-bottom: 0.5rem;
+    }
+    .product-options .product--item--qt {
+        line-height: 3rem;
+        font-size: 2rem;
+        font-weight: 600;
+        padding: 0rem 0.5rem;
+        color: #000;
+    }
+    .product-options .product-item-qtavailable {
+        margin-left: 0.8rem;
+        margin-top: 0.2rem;
+    }
+    .product-options .product-purchase {
+        grid-area: btn;
+        width: 10rem;
+        height: 5.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 0.8rem;
+        background-color: var(--color-button-secondary);
+        color: var(--color-text-button);
+        font-size: 1.8rem;
+        letter-spacing: 0.1rem;
+        cursor: pointer;
+        transition: background 0.5s;
+    }
+    .product-options .product-purchase:hover {
+        background-color: var(--color-button-secondary-hover);
+    }
+    .product-trash {
+        grid-area: trash;
+    }
 }
 
 @media (min-width: 1000px) {
-  .product-options .product--item--qtarea {
-    height: 5.6rem;
-    width: 10rem;
-    margin-right: 2rem;
-  }
-  .product-options .product-item-qtavailable {
-    font-size: 1.3rem;
-  }
+    .product-options .product--item--qtarea {
+        height: 5.6rem;
+        width: 10rem;
+        margin-right: 2rem;
+    }
+    .product-options .product-item-qtavailable {
+        font-size: 1.3rem;
+    }
 }

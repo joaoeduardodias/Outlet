@@ -1,0 +1,149 @@
+h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    width: 46rem;
+}
+
+.btn-search {
+    width: 3.8rem;
+    height: 4rem;
+    border: none;
+    border-radius: 0.4rem;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    cursor: pointer;
+    margin: 0;
+    background-color: var(--color-primary);
+    transition-duration: 0.5s;
+}
+
+.btn-search:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.btn-search img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.product-attribute {
+    width: 50rem;
+}
+
+.product-attribute p {
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 1rem 0;
+}
+
+.list-attribute {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.list-attribute .attribute {
+    width: 20rem;
+    height: 4rem;
+    background-color: #b6b6b6;
+    border-radius: 0.4rem;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .5s;
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+}
+
+.list-attribute .attribute:hover {
+    background-color: #636060;
+    color: var(--color-text-button);
+}
+
+.list-attribute .attribute.selected {
+    background-color: #636060;
+    color: var(--color-text-button);
+}
+
+.update-attribute {
+    display: none;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'p p' 'option-one option-two' 'option-three option-for' 'button button';
+}
+
+.options p {
+    grid-area: p;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.option-one,
+.option-two,
+.option-three,
+.option-for {
+    display: flex;
+    flex-direction: column;
+    margin: 0.8rem 0;
+}
+
+.option-one label,
+.option-two label,
+.option-three label,
+.option-for label {
+    color: #929090;
+    font-size: 1.6rem;
+    margin-left: 0.4rem;
+    margin-bottom: 0.1rem;
+}
+
+.option-one input,
+.option-two input,
+.option-three input,
+.option-for input {
+    width: 23rem;
+    height: 4rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--border-div-color);
+    padding: 1rem;
+}
+
+.option-one input,
+.option-three input {
+    margin-right: 3.5rem;
+}
+
+button {
+    width: 20rem;
+    height: 3.5rem;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--color-text-button);
+    font-size: 1.7rem;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    transition-duration: 0.5s;
+    grid-area: button;
+    margin: 1rem auto;
+}
+
+button:hover {
+    background-color: var(--color-primary-hover);
+}

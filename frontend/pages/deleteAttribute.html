@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/global.css" />
     <link rel="stylesheet" href="../style/dashboard.css" />
-    <link rel="stylesheet" href="../style/deleteUser.css" />
+    <link rel="stylesheet" href="../style/deleteAttribute.css" />
     <title>Dashboard || Outlet Multimarcas</title>
 </head>
 
@@ -32,33 +32,37 @@
         <a href="./createUserAdm.html">Administradores</a>
         <a href="./deleteUserADM.html">Deletar Usuário</a>
     </aside>
-    <main>
+    <section>
         <div class="container">
+            <div class="delete-attributes">
+                <h3>Deletar Atributos</h3>
 
-            <form method="post">
-                <h3>Deletar Usuário</h3>
                 <div class="input-container">
-                    <label for="name">Email</label>
+                    <label for="cod-product">Código do produto</label>
                     <div class="search">
-                        <input required id="email" name="name" type="email" placeholder="Digite o email do usuário " />
-                        <button id="Usersearch">
-                  <img src="../assets/icon/search.svg" alt="Pesquisar" />
-                </button>
-                    </div>
-                </div>
-                <div class="hiddem">
-                    <div class="dataUser">
-                        <div id="name" class="name">User teste de ADM</div>
+                        <input type="text" id="cod-product" placeholder="Digite o Código do Produto">
+                        <button class="btn-search" id="btn-search-delete">
+                        <img src="../assets/icon/search.svg" alt="Pesquisar" />
+                        </button>
                     </div>
 
-
-                    <button id="DeleteUser">Deletar Usuário</button>
                 </div>
-            </form>
 
+                <div class="product-attribute">
+                    <p>Clique no atributo que deseja deletar</p>
+                    <div class="list-attribute">
+                        <div class="attribute"><img src="../assets/icon/trash.svg" alt="Deletar"><span>Cor</span></div>
+                        <div class="attribute"><img src="../assets/icon/trash.svg" alt="Deletar"> <span>Tamanho</span></div>
+                    </div>
+                </div>
+                <div class="alert"><img src="../assets/icon/alert.svg" alt="Atenção"><span>Clique na lixeira para excluir o atributo</span></div>
+
+            </div>
         </div>
-    </main>
-    <script src="../js/deleteUserADM.js"></script>
+
+    </section>
+
+    <script src="../js/deleteAttribute.js"></script>
 </body>
 
 </html>

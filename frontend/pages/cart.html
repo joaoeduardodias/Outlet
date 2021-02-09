@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/global.css" />
     <link rel="stylesheet" href="../style/cart.css" />
-    <script src="https://js.stripe.com/v3/"></script>
     <title>Meu Carrinho | Outlet</title>
 </head>
 
@@ -99,33 +98,20 @@
 
 
                 </div>
+                <form>
 
-                <!-- STRIPE STRIPE STRIPE STRIPE STRIPE STRIPE -->
+                    <button id="pay">Pagar</button>
 
-
-
-
-                <form id="payment-form">
-                    <input type="text" id="email" placeholder="Insira seu e-mail" />
-                    <div id="card-element">
-                        <!--Stripe.js injects the Card Element-->
-                    </div>
-                    <p id="card-error" role="alert"></p>
-                    <p class="result-message hidden">
-                        Pagamento bem-sucedido, Atualize a página para pagar novamente.
-                        <a href="/">Voltar para página inicial.</a>
-                    </p>
-                    <button id="submit">
-              <div class="spinner hidden" id="spinner"></div>
-              <span id="button-text">Pagar</span>
-            </button>
                 </form>
+
 
 
             </div>
         </div>
     </section>
-    <!-- <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script> -->
+
+
+
     <script src="../js/cart.js"></script>
     <script src="../js/Payment.js"></script>
 

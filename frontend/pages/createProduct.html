@@ -25,6 +25,9 @@
         <a href="./createProduct.html">Cadastrar Produto</a>
         <a href="./updateProduct.html">Atualizar Produto</a>
         <a href="./deleteProduct.html">Deletar Produto</a>
+        <a href="./addAtribute.html">Adicionar Atributo</a>
+        <a href="./updateAttribute.html">Atualizar Atributo</a>
+        <a href="./deleteAttribute.html">Deletar Atributo</a>
         <a href="./createUserAdm.html">Administradores</a>
         <a href="./deleteUserADM.html">Deletar Usuário</a>
     </aside>
@@ -78,16 +81,36 @@
                 </label>
                     </div>
             </div>
+            <div class="attributes">
+                <h3>Atributos</h3>
+                <label class="type-attribute" for="type-attribute">Tipo de Atributo</label>
+                <input type="text" id="type-attribute">
+                <p>Digite as opções disponíveis</p>
+                <div class="option-one">
+                    <label for="option-one">Opção 1</label>
+                    <input type="text" id="option-one">
+                </div>
+                <div class="option-two">
+                    <label for="option-two">Opção 2</label>
+                    <input type="text" id="option-two">
+                </div>
+
+                <div class="option-three">
+                    <label for="option-three">Opção 3</label>
+                    <input type="text" id="option-three">
+                </div>
+                <div class="option-for">
+                    <label for="option-for">Opção 4</label>
+                    <input type="text" id="option-for">
+                </div>
+
+            </div>
             <div class="freight">
                 <span>Para o cálculo correto do valor de envio, informe o peso e as medidas (dimensões) do produto embalado</span>
                 <div class="input-container" id="divweight">
-                    <label for="weight">Peso</label>
+                    <label for="weight">Peso (Kg)</label>
                     <div class="inputselect">
                         <input id="weight" name="weight" type="number">
-                        <select name="type_weight" id="type_weight">
-                        <option value="Kg">Kg</option>
-
-                      </select>
                     </div>
 
                 </div>
