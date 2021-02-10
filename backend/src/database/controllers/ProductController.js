@@ -187,11 +187,7 @@ module.exports = {
                 width,
                 height,
                 available,
-                type_attribute,
-                option_one,
-                option_two,
-                option_three,
-                option_for,
+
             } = req.body;
             await Connection("Products")
                 .update({
