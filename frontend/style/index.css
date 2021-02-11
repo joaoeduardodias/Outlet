@@ -30,7 +30,7 @@ header {
 .one,
 .two,
 .three {
-    background-color: var(--color-primary);
+    background-color: var(--color-text-header);
     height: 0.3rem;
     width: 100%;
     margin: 0.6rem auto;
@@ -110,7 +110,7 @@ header {
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    color: var(--color-text-button);
+    color: var(--color-text-header);
     font-size: 2.5rem;
     letter-spacing: 0.5rem;
 }
@@ -317,6 +317,18 @@ header {
 .product-img>.arrowright img {
     width: 3rem;
     height: 3.3rem;
+}
+
+
+/* .product-attribute {
+    width: 100%;
+    border: 1px solid red;
+} */
+
+.product-attribute select {
+    width: 100%;
+    height: 2.5rem;
+    margin-top: 0.5rem;
 }
 
 .product-title>h2 {

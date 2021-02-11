@@ -12,6 +12,12 @@ let height;
 let indeximg = 0;
 let images = [];
 let idImages = [];
+let typeAtributes = [];
+let optionOne = [];
+let optionTwo = [];
+let optionThree = [];
+let optionFor = [];
+
 const baseurl = "https://ecomerceoutlet.herokuapp.com";
 
 //  LIST PRODUCTS
@@ -44,10 +50,13 @@ async function index() {
                 images = item.urls.split(",");
 
                 idImages = item.ids.split(",");
+
+
                 ProductItem.querySelector(".product img").src = images[0];
                 ProductItem.querySelector(".product img").id = idImages[0];
                 ProductItem.querySelector(".product-title").innerHTML = item.name;
                 ProductItem.querySelector(".product-price").innerHTML = `R$: ${item.price.toFixed(2)}`;
+
                 c(".products").append(ProductItem);
 
                 ProductItem.addEventListener("click", () => {
@@ -58,6 +67,11 @@ async function index() {
                     images = item.urls.split(",");
                     idImages = item.ids.split(",");
                     indeximg = 0
+                    typeAtributes = item.type_attribute.split(',')
+                    optionOne = item.option_one.split(',')
+                    optionTwo = item.option_two.split(',')
+                    optionThree = item.option_three.split(',')
+                    optionFor = item.option_for.split(',')
                     c(".windowdetails").style.opacity = 0;
                     c(".windowdetails").style.display = "flex";
                     setTimeout(() => {
@@ -67,12 +81,26 @@ async function index() {
                         c(".product-img #img").src = images[indeximg]
 
                         c(".product-title h2").innerHTML = item.name;
-                        c(
-                            ".windowdetails .product-price"
-                        ).innerHTML = `R$: ${item.price.toFixed(2)}`;
+                        c(".windowdetails .product-price").innerHTML = `R$: ${item.price.toFixed(2)}`;
                         c(".product-amount").innerHTML = ` ${item.amount}  Disponíveis`;
                         c(".product-description").innerHTML = item.description;
                         c(".product-id").innerHTML = `Código do Produto:     ${item.id}`;
+                        if (typeAtributes.length <= 1) {
+                            c('.product-attribute').style.display = 'none'
+                        }
+                        // adicionar o select referente ao atributo
+                        // const select = c('.product-attribute')
+
+                        typeAtributes.map(item => {
+                            var select = document.createElement('select')
+                            var el = document.createElement('option')
+                            el.textContent = `Selecione qual ${item} deseja`
+                            el.value = item
+                            select.appendChild(el)
+                            console.log(select)
+                            c('.product-attribute').appendChild(select)
+                        })
+
                     }, 200);
                 });
             }

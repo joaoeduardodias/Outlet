@@ -52,20 +52,29 @@ async function create() {
         const price = document.getElementById("price").value
         const amount = document.getElementById("amount").value
         const weight = document.getElementById('weight').value
-        const typeWeight = document.getElementById('type_weight').value
         const lenght = document.getElementById('length').value
         const width = document.getElementById('width').value
         const height = document.getElementById('height').value
+        const type_attribute = document.getElementById('type-attribute').value
+        const option_one = document.getElementById('option-one').value
+        const option_two = document.getElementById('option-two').value
+        const option_three = document.getElementById('option-three').value
+        const option_for = document.getElementById('option-for').value
+
         const product = {
             name,
             description,
             price,
             amount,
             weight,
-            typeWeight,
             lenght,
             width,
-            height
+            height,
+            type_attribute,
+            option_one,
+            option_two,
+            option_three,
+            option_for
 
         };
         const data = await fetch(baseurl + "/product", {
