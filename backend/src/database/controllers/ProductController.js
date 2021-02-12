@@ -147,43 +147,29 @@ module.exports = {
                                     id_product: id
                                 })
                         })
-                        .then(async function(response) {
-                            
-                            return  req.files.map(async (file , index) => {
-                                const idImage = crypto.randomBytes(3).toString("HEX");
-                                console.log(idImage);
+                        .then(function(response) {
+                            req.files.map(async file => {
+                                const id = crypto.randomBytes(3).toString("HEX");
                                 let { originalname: name, size, key, location: url = "" } = file
                                 if (url === "") {
                                     url = `${process.env.APP_URL}/files/${key}`
                                 }
-                                if(index < 3){
-                                    await Connection("Images")
-                                .insert({
-                                    id_image: idImage,
+                                await Connection("Images").insert({
+                                    id_image: id,
                                     name,
                                     size,
                                     key,
                                     url,
-                                    id_product: id
+                                    id_product: idProduct,
                                 });
-                                }
-                                else {
-                                    await Connection("Images")
-                                    .transacting(t)
-                                     .insert({
-                                    id_image: idImage,
-                                    name,
-                                    size,
-                                    key,
-                                    url,
-                                    id_product: id
-                                });
-                                }
-                               
                             })
+                
+                            return res.send()
                         })
                         .then(t.commit)
                         .catch(t.rollback)
+                           
+                       
                 })
                 .then(function() {
                     return res.status(201).json({ message: 'create', id });
