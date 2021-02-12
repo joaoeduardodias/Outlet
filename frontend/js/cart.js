@@ -6,6 +6,8 @@ let qtd = 1;
 let idProduct;
 let price;
 let priceTotal;
+let attribute_one;
+let attribute_two;
 let screenWidth = screen.width;
 let cart = JSON.parse(localStorage.getItem("cart"));
 cart.map((item, index) => {
@@ -73,6 +75,8 @@ cart.map((item, index) => {
         async() => {
             Index = index;
             idProduct = item.id;
+            attribute_one = item.attributes.value01
+            attribute_two = item.attributes.value02
             setPriceFreight();
 
             cc(".windowpurchase").style.opacity = 0;
@@ -84,12 +88,11 @@ cart.map((item, index) => {
                 cc(".purchase-modal .product-title h2").innerHTML = item.title;
                 price = item.price;
                 priceTotal = price * qtd;
-                cc(
-                    ".purchase-modal .product-price"
-                ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
-                cc(
-                    ".purchase-modal .product--item--qt"
-                ).innerHTML = `Quantidade: ${qtd}`;
+                cc(".purchase-modal .product-price").innerHTML = `R$: ${priceTotal.toFixed(2)}`;
+                cc(".purchase-modal .product--item--qt").innerHTML = `Quantidade: ${qtd}`;
+                cc(".purchase-modal .product-attributes .value01").innerHTML = `Tamanho: ${item.attributes.value01}`
+                cc(".purchase-modal .product-attributes .value02").innerHTML = `Cor: ${item.attributes.value02}`
+
                 cc(".product-details .product-img img").src = item.images;
             }, 200);
             // close modal
@@ -121,9 +124,8 @@ cart.map((item, index) => {
 
                 cc(".product-modal .product-img #img").src = item.images;
                 cc(".product-modal .product-title h2").innerHTML = item.title;
-                cc(
-                    ".product-modal .product-price"
-                ).innerHTML = `R$: ${item.price.toFixed(2)}`;
+
+                cc(".product-modal .product-price").innerHTML = `R$: ${ item.price.toFixed(2) }`;
             }, 200);
             cc(".product-modal .product--item-qtmenos").addEventListener(
                 "click",
@@ -135,7 +137,9 @@ cart.map((item, index) => {
                         priceTotal = price * qtd;
                         cc(
                             ".product-modal .product-price"
-                        ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
+                        ).innerHTML = `
+                                    R$: $ { priceTotal.toFixed(2) }
+                                    `;
                     }
                 }
             );
@@ -149,7 +153,9 @@ cart.map((item, index) => {
                         priceTotal = price * qtd;
                         cc(
                             ".product-modal .product-price"
-                        ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
+                        ).innerHTML = `
+                                    R$: $ { priceTotal.toFixed(2) }
+                                    `;
                     }
                 }
             );
@@ -157,6 +163,7 @@ cart.map((item, index) => {
             cc(".product-modal .product-purchase").addEventListener("click", () => {
                 Index = index;
                 idProduct = item.id;
+
 
                 setPriceFreight();
 
@@ -167,14 +174,13 @@ cart.map((item, index) => {
                     cc(".windowdetails").style.display = "none";
                     cc(".windowpurchase").style.opacity = 1;
                     cc(".purchase-modal .product-title h2").innerHTML = item.title;
+                    cc(".purchase-modal .product-attributes .value01").innerHTML = `Tamanho: ${item.attributes.value01}`
+                    cc(".purchase-modal .product-attributes .value02").innerHTML = `Cor: ${item.attributes.value02}`
+
                     price = item.price;
                     priceTotal = price * qtd;
-                    cc(
-                        ".purchase-modal .product-price"
-                    ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
-                    cc(
-                        ".purchase-modal .product--item--qt"
-                    ).innerHTML = `Quantidade: ${qtd}`;
+                    cc(".purchase-modal .product-price").innerHTML = `R$: ${ priceTotal.toFixed(2) }`;
+                    cc(".purchase-modal .product--item--qt").innerHTML = `Quantidade: ${ qtd }`;
                     cc(".product-details .product-img img").src = item.images;
                 }, 200);
                 // close modal

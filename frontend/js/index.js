@@ -85,21 +85,64 @@ async function index() {
                         c(".product-amount").innerHTML = ` ${item.amount}  Disponíveis`;
                         c(".product-description").innerHTML = item.description;
                         c(".product-id").innerHTML = `Código do Produto:     ${item.id}`;
-                        if (typeAtributes.length <= 1) {
-                            c('.product-attribute').style.display = 'none'
-                        }
-                        // adicionar o select referente ao atributo
-                        // const select = c('.product-attribute')
+                        const div = c('.product-attribute')
 
-                        typeAtributes.map(item => {
-                            var select = document.createElement('select')
-                            var el = document.createElement('option')
-                            el.textContent = `Selecione qual ${item} deseja`
-                            el.value = item
-                            select.appendChild(el)
-                            console.log(select)
-                            c('.product-attribute').appendChild(select)
-                        })
+                        if (typeAtributes.length < 1) {
+
+                            div.style.display = 'none'
+                        } else {
+                            // adicionar o select referente ao atributo
+                            div.style.display = 'initial'
+                                // verificar se ja existe algum select na tela
+                            if (!div.querySelector('select')) {
+                                typeAtributes.map((item, index) => {
+                                    var select = document.createElement('select')
+                                    select.id = index
+                                    var el = document.createElement('option')
+                                    el.textContent = `Selecione qual ${item} deseja`
+                                    el.value = item
+                                    select.appendChild(el)
+
+                                    div.insertBefore(select, div.firstChild)
+
+                                })
+
+                                optionOne.map((item, index) => {
+                                    const select = document.getElementById(index)
+                                    var el = document.createElement('option')
+
+                                    el.textContent = item
+                                    el.value = item
+                                    select.appendChild(el)
+                                })
+                                optionTwo.map((item, index) => {
+                                    const select = document.getElementById(index)
+                                    var el = document.createElement('option')
+
+                                    el.textContent = item
+                                    el.value = item
+                                    select.appendChild(el)
+                                })
+                                optionThree.map((item, index) => {
+                                    const select = document.getElementById(index)
+                                    var el = document.createElement('option')
+
+                                    el.textContent = item
+                                    el.value = item
+                                    select.appendChild(el)
+                                })
+                                optionFor.map((item, index) => {
+                                    const select = document.getElementById(index)
+                                    var el = document.createElement('option')
+
+                                    el.textContent = item
+                                    el.value = item
+                                    select.appendChild(el)
+                                })
+
+
+                            }
+                        }
 
                     }, 200);
                 });
@@ -205,6 +248,19 @@ c(".add-cart").addEventListener("click", () => {
         localStorage.setItem("cart", JSON.stringify(cart));
         cart = JSON.parse(localStorage.getItem("cart"));
     } else {
+        // pegar os atributos selecionados do select
+        let value01
+        let value02
+        if (document.getElementById('0')) {
+            const select01 = document.getElementById('0')
+            value01 = select01.options[select01.selectedIndex].value
+        }
+        if (document.getElementById('1')) {
+            const select02 = document.getElementById('1')
+            value02 = select02.options[select02.selectedIndex].value
+        }
+
+
         cart.push({
             id: key,
             images: image,
@@ -216,6 +272,10 @@ c(".add-cart").addEventListener("click", () => {
             lenght,
             width,
             height,
+            attributes: {
+                value01,
+                value02
+            }
         });
         localStorage.setItem("cart", JSON.stringify(cart));
         cart = JSON.parse(localStorage.getItem("cart"));

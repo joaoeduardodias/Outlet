@@ -55,7 +55,10 @@ async function setPriceFreight() {
         items: {
             id: idProduct,
             price: valueTotal,
-            amount_sold: qtd
+            amount_sold: qtd,
+            attribute_one,
+            attribute_two,
+
         },
     };
 
@@ -65,17 +68,21 @@ async function setPriceFreight() {
 }
 cc(".purchase-modal #pay").addEventListener('click', async(e) => {
     e.preventDefault()
-    const resp = await fetch(`${baseurl}/buy`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-        },
-        mode: "cors",
-        body: JSON.stringify(purchase)
-    })
+    console.log(purchase)
+        // const resp = await fetch(`${baseurl}/buy`, {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Accept": "application/json",
+        //     },
+        //     mode: "cors",
+        //     body: JSON.stringify(purchase)
+        // })
 
-    const resJson = await resp.json()
-    console.log(resJson)
+    // const resJson = await resp.json()
+    // console.log(resJson)
 
 })
+
+
+// ASSIM QUE O GATEWAY DE PAGAMENTO AUTORIZAR A COMPRA, CHAMAR A API QUE GISTRA A VENDA DO PRODUTO
