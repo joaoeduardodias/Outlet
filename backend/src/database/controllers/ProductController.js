@@ -150,6 +150,25 @@ module.exports = {
                             //     })
                                 
                         })
+                        .then(function(response){
+                          return  req.files.map(async file => {
+                                const idImage = crypto.randomBytes(3).toString("HEX");
+                                let { originalname: name, size, key, location: url = "" } = file
+                                if (url === "") {
+                                    url = `${process.env.APP_URL}/files/${key}`
+                                }
+                                await Connection("Images")
+                                .transacting(t)
+                                .insert({
+                                    id_image: idImage,
+                                    name,
+                                    size,
+                                    key,
+                                    url,
+                                    id_product: id,
+                                });
+                            })
+                        })
                       
                         .then(t.commit)
                         .catch(t.rollback)
@@ -159,21 +178,7 @@ module.exports = {
                 .then(function() {
 
                     try {
-                        req.files.map(async file => {
-                            const idImage = crypto.randomBytes(3).toString("HEX");
-                            let { originalname: name, size, key, location: url = "" } = file
-                            if (url === "") {
-                                url = `${process.env.APP_URL}/files/${key}`
-                            }
-                            await Connection("Images").insert({
-                                id_image: idImage,
-                                name,
-                                size,
-                                key,
-                                url,
-                                id_product: id,
-                            });
-                        })
+                        
                         return res.status(201).json({ message: 'create', id });
                     } catch (error) {
                         return res.status(500).json({ message: 'error', error });
