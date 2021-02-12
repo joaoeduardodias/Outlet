@@ -12,6 +12,8 @@ module.exports = {
                     "id_user",
                     "amount_sold",
                     "value_total",
+                    'attribute_one',
+                    'attribute_two',
                     "tracking",
                     "Products.name"
                 );
@@ -80,7 +82,7 @@ module.exports = {
             jwt.verify(token, process.env.SECRET, function(err, decoded) {
                 return (id_user = decoded.id);
             });
-            const { amount_sold, value_total } = req.body;
+            const { amount_sold, value_total, attribute_one, attribute_two } = req.body;
 
             const { amount } = await Connection("Products")
                 .select("amount")
@@ -114,6 +116,8 @@ module.exports = {
                 id_user,
                 amount_sold,
                 value_total,
+                attribute_one,
+                attribute_two
             });
 
             await Connection("Products")
