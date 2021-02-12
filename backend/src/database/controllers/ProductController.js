@@ -155,7 +155,9 @@ module.exports = {
                                 if (url === "") {
                                     url = `${process.env.APP_URL}/files/${key}`
                                 }
-                                return Connection("Images").insert({
+                                return Connection("Images")
+                                .transacting(t)
+                                .insert({
                                     id_image: idImage,
                                     name,
                                     size,
