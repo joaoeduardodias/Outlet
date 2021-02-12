@@ -137,7 +137,7 @@ module.exports = {
                        
                         .then(function (response) {
                             console.log("aquiiiiiiiii");
-                            return  Connection('attributes')
+                             Connection('attributes')
                                 .transacting(t)
                                 .insert({
                                     id: id_attribute,
