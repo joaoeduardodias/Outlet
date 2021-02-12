@@ -136,7 +136,11 @@ module.exports = {
                         })
                        
                         .then(function (response) {
-                           return console.log("aquiiiiiiiii");
+                          const teste = Connection('Products')
+                           .transacting(t)
+                           .where('id',ac7cf6)
+
+                           return console.log(teste);
                             //  Connection('attributes')
                             //     .transacting(t)
                             //     .insert({
