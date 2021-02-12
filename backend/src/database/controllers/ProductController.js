@@ -138,7 +138,8 @@ module.exports = {
                         .then(function (response) {
                           const teste = Connection('Products')
                            .transacting(t)
-                           .where('id',ac7cf6)
+                           select('name')
+                           
 
                            return console.log(teste);
                             //  Connection('attributes')
