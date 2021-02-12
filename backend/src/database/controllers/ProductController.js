@@ -134,8 +134,8 @@ module.exports = {
                             width,
                             height
                         })
-                        .then(function(response) {
-                            return Connection('attributes')
+                        .then(function (response) {
+                            return  Connection('attributes')
                                 .transacting(t)
                                 .insert({
                                     id: id_attribute,
@@ -146,6 +146,24 @@ module.exports = {
                                     option_for,
                                     id_product: id
                                 })
+                        })
+                        .then(function(response) {
+                            
+                            req.files.map(async file => {
+                                const idImage = crypto.randomBytes(3).toString("HEX");
+                                let { originalname: name, size, key, location: url = "" } = file
+                                if (url === "") {
+                                    url = `${process.env.APP_URL}/files/${key}`
+                                }
+                                return Connection("Images").insert({
+                                    id_image: idImage,
+                                    name,
+                                    size,
+                                    key,
+                                    url,
+                                    id_product: id
+                                });
+                            })
                         })
                         .then(t.commit)
                         .catch(t.rollback)
