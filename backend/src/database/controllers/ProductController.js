@@ -147,16 +147,22 @@ module.exports = {
                                     id_product: id
                                 })
                         })
-                        .then(function(response) {
+                        .then(async function(response) {
                             
-                            return  req.files.map(async file => {
+                            return  req.files.map(async (file , index) => {
                                 const idImage = crypto.randomBytes(3).toString("HEX");
+                                console.log(idImage);
                                 let { originalname: name, size, key, location: url = "" } = file
                                 if (url === "") {
                                     url = `${process.env.APP_URL}/files/${key}`
                                 }
-                                Connection("Images")
-                                .transacting(t)
+                                if(index < 2){
+                                    console.log("é menor que 3");
+                                }
+                                else {
+                                    console.log('E maior que tres');
+                                }
+                               await Connection("Images")
                                 .insert({
                                     id_image: idImage,
                                     name,
