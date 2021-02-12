@@ -164,7 +164,7 @@ module.exports = {
                                 });
                             })
                 
-                            return res.send()
+                            
                         })
                         .then(t.commit)
                         .catch(t.rollback)
