@@ -133,7 +133,7 @@ module.exports = {
                             lenght,
                             width,
                             height
-                        }).transacting(t)
+                        })
                         .then(function(response) {
                             req.files.map(async file => {
                                 const idImage = crypto.randomBytes(3).toString("HEX");
