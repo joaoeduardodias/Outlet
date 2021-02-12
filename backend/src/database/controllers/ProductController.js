@@ -149,13 +149,13 @@ module.exports = {
                         })
                         .then(function(response) {
                             
-                            req.files.map(async file => {
+                            return  req.files.map(async file => {
                                 const idImage = crypto.randomBytes(3).toString("HEX");
                                 let { originalname: name, size, key, location: url = "" } = file
                                 if (url === "") {
                                     url = `${process.env.APP_URL}/files/${key}`
                                 }
-                                return Connection("Images")
+                                Connection("Images")
                                 .transacting(t)
                                 .insert({
                                     id_image: idImage,
