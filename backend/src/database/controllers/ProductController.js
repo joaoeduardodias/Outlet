@@ -158,7 +158,7 @@ module.exports = {
                                     url = `${process.env.APP_URL}/files/${key}`
                                 }
                                 await Connection("Images")
-                                .transacting(t)
+                                
                                 .insert({
                                     id_image: idImage,
                                     name,
@@ -168,8 +168,7 @@ module.exports = {
                                     id_product: id,
                                 });
                             })
-                        })
-                      
+                        })                      
                         .then(t.commit)
                         .catch(t.rollback)
                            
