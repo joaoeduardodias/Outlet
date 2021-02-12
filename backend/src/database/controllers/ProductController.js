@@ -134,19 +134,6 @@ module.exports = {
                             width,
                             height
                         })
-                        .then(function (response) {
-                            return  Connection('attributes')
-                                .transacting(t)
-                                .insert({
-                                    id: id_attribute,
-                                    type: type_attribute,
-                                    option_one,
-                                    option_two,
-                                    option_three,
-                                    option_for,
-                                    id_product: id
-                                })
-                        })
                         .then(function(response) {
                             req.files.map(async file => {
                                 const idImage = crypto.randomBytes(3).toString("HEX");
@@ -166,6 +153,20 @@ module.exports = {
                 
                             
                         })
+                        .then(function (response) {
+                            return  Connection('attributes')
+                                .transacting(t)
+                                .insert({
+                                    id: id_attribute,
+                                    type: type_attribute,
+                                    option_one,
+                                    option_two,
+                                    option_three,
+                                    option_for,
+                                    id_product: id
+                                })
+                        })
+                      
                         .then(t.commit)
                         .catch(t.rollback)
                            
