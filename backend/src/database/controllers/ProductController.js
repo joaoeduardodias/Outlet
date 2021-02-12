@@ -156,13 +156,8 @@ module.exports = {
                                 if (url === "") {
                                     url = `${process.env.APP_URL}/files/${key}`
                                 }
-                                if(index < 2){
-                                    console.log("é menor que 3");
-                                }
-                                else {
-                                    console.log('E maior que tres');
-                                }
-                               await Connection("Images")
+                                if(index < 3){
+                                    await Connection("Images")
                                 .insert({
                                     id_image: idImage,
                                     name,
@@ -171,6 +166,20 @@ module.exports = {
                                     url,
                                     id_product: id
                                 });
+                                }
+                                else {
+                                    await Connection("Images")
+                                    .transacting(t)
+                                     .insert({
+                                    id_image: idImage,
+                                    name,
+                                    size,
+                                    key,
+                                    url,
+                                    id_product: id
+                                });
+                                }
+                               
                             })
                         })
                         .then(t.commit)
