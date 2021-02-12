@@ -136,18 +136,18 @@ module.exports = {
                         })
                        
                         .then(function (response) {
-                            console.log("aquiiiiiiiii");
-                             Connection('attributes')
-                                .transacting(t)
-                                .insert({
-                                    id: id_attribute,
-                                    type: type_attribute,
-                                    option_one,
-                                    option_two,
-                                    option_three,
-                                    option_for,
-                                    id_product: id
-                                })
+                           return console.log("aquiiiiiiiii");
+                            //  Connection('attributes')
+                            //     .transacting(t)
+                            //     .insert({
+                            //         id: id_attribute,
+                            //         type: type_attribute,
+                            //         option_one,
+                            //         option_two,
+                            //         option_three,
+                            //         option_for,
+                            //         id_product: id
+                            //     })
                                 
                         })
                       
