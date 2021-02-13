@@ -25,7 +25,7 @@ module.exports = {
           // Connection.raw(`group_concat(Images.id) as ids`),
           Connection.raw(`array_to_json(array_agg(type)) type_attribute`),
 
-          // Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
+          Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
           // Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
           
         )
