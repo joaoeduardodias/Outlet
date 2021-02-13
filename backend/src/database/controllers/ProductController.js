@@ -57,11 +57,11 @@ module.exports = {
             return Connection('attributes')
             .transacting(trx)
             .select(
-              type,
-              option_one,
-              option_two,
-              option_three,
-              option_for
+              "type",
+              "option_one",
+              "option_two",
+              "option_three",
+              "option_for"
             )
             .where('id_product',"Products.id")
           })
@@ -69,8 +69,8 @@ module.exports = {
             return Connection('Images')
             .transacting(trx)
             .select(
-              url,
-              id
+              "url",
+              "id"
             )
             .where('id_product',"Products.id")
           })
