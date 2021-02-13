@@ -141,7 +141,7 @@ module.exports = {
 
                            
                         return   Connection('attributes')
-                                .transacting(t)
+                                
                                 .insert({
                                     id: id_attribute,
                                     type: type_attribute,
