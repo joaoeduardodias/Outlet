@@ -59,9 +59,9 @@ routes.put('/product/:id', midellwareauth, ProductController.update)
 routes.delete('/product/:id', midellwareauth, ProductController.delete)
 
 // Attributes
-routes.post('/attribute/:id_product', midellwareauth, AttributeController.create)
-routes.put('/attribute/:id', midellwareauth, AttributeController.create)
-routes.delete('/attribute/:id', midellwareauth, AttributeController.create)
+// routes.post('/attribute/:id_product', midellwareauth, AttributeController.create)
+// routes.put('/attribute/:id', midellwareauth, AttributeController.create)
+// routes.delete('/attribute/:id', midellwareauth, AttributeController.create)
 
 //  Products_Sold
 
