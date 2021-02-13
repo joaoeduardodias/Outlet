@@ -31,10 +31,10 @@ module.exports = {
         )
         // corrigir estes leftjoin para possivelmente o innerjoin
         .join("attributes", "Products.id", "=", "attributes.id_product")
-        .groupBy("Products.id")
+        
 
         .join("Images", "Products.id", "=", "Images.id_product")
-        .groupBy("Products.id")
+        
         .orderBy("Products.created_at", "desc");
 
       return res.json(data);
