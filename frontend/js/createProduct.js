@@ -89,6 +89,7 @@ async function create() {
         });
 
         const value = await data.json();
+        console.log(value);
 
         const form = new FormData();
         const images = Array.from(c("input[type=file]").files);
