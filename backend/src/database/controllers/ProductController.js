@@ -9,7 +9,38 @@ const { promisify } = require("util");
 module.exports = {
   async index(next, res) {
     try {
-      const data = await Connection("Products")
+      // const data = await Connection("Products")
+      //   .select(
+      //     "Products.id",
+      //     "Products.name",
+      //     "description",
+      //     "price",
+      //     "amount",
+      //     "available",
+      //     "weight",
+      //     "lenght",
+      //     "width",
+      //     "height",
+      //     // Connection.raw(`group_concat(Images.url) as urls`),
+      //     // Connection.raw(`group_concat(Images.id) as ids`),
+      //     // Connection.raw(`array_to_json(array_agg(type)) type_attribute`),
+
+      //     Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
+      //     // Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
+          
+      //   )
+      //   // corrigir estes leftjoin para possivelmente o innerjoin
+      //   // .join("attributes", "Products.id", "=", "attributes.id_product")
+      //   .join("Images", "Products.id", "=", "Images.id_product")
+      //   .groupBy("Products.id")
+      //   .orderBy("Products.created_at", "desc");
+
+      // return res.json(data);
+
+      
+    const data =  Connection.transaction(function(trx) {
+        Connection('Products')
+        .transacting(trx)
         .select(
           "Products.id",
           "Products.name",
@@ -21,21 +52,46 @@ module.exports = {
           "lenght",
           "width",
           "height",
-          // Connection.raw(`group_concat(Images.url) as urls`),
-          // Connection.raw(`group_concat(Images.id) as ids`),
-          Connection.raw(`array_to_json(array_agg(type)) type_attribute`),
-
-          Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
-          // Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
-          
         )
-        // corrigir estes leftjoin para possivelmente o innerjoin
-        .join("attributes", "Products.id", "=", "attributes.id_product")
-        .join("Images", "Products.id", "=", "Images.id_product")
-        .groupBy("Products.id")
-        .orderBy("Products.created_at", "desc");
+          .then(function(resp) {
+            return Connection('attributes')
+            .transacting(trx)
+            .select(
+              type,
+              option_one,
+              option_two,
+              option_three,
+              option_for
+            )
+            .where('id_product',"Products.id")
+          })
+          .then(function(response) {
+            return Connection('Images')
+            .transacting(trx)
+            .select(
+              url,
+              id
+            )
+            .where('id_product',"Products.id")
+          })
 
-      return res.json(data);
+          .then(trx.commit)
+          .catch(trx.rollback);
+      })
+      .then(function(resp) {
+        return res.json(data)
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+
+
+
+
+
+
+
+
     } catch (error) {
       // next(error);
       console.log(error);
