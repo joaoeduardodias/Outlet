@@ -169,15 +169,15 @@ module.exports = {
         width,
         height,
       });
-      await Connection("attributes").insert({
-        id: id_attribute,
-        type: type_attribute,
-        option_one,
-        option_two,
-        option_three,
-        option_for,
-        id_product: id,
-      });
+      // await Connection("attributes").insert({
+      //   id: id_attribute,
+      //   type: type_attribute,
+      //   option_one,
+      //   option_two,
+      //   option_three,
+      //   option_for,
+      //   id_product: id,
+      // });
 
       return res.status(201).json({ message: "create", id });
     }
