@@ -54,7 +54,7 @@ routes.post('/reset/:token', AuthController.verifyToken)
 
 routes.get('/', ProductController.index)
 routes.get('/Productshow/:id', ProductController.show)
-routes.post('/product',multer(multerConfig).array('image[]'), midellwareauth, ProductController.create)
+routes.post('/product', midellwareauth, ProductController.create)
 routes.put('/product/:id', midellwareauth, ProductController.update)
 routes.delete('/product/:id', midellwareauth, ProductController.delete)
 
