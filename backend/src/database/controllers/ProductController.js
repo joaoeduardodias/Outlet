@@ -70,7 +70,7 @@ module.exports = {
             .transacting(trx)
             .select(
               "url",
-              "id"
+              "id_image"
             )
             .where('id_product',"Products.id")
           })
