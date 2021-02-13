@@ -21,19 +21,21 @@ module.exports = {
           "lenght",
           "width",
           "height",
+          'attr.type',
+          
          
-          Connection.raw(`array_to_json(array_agg(type)) type_attribute`),
-          Connection.raw(`array_to_json(array_agg(option_one)) option_one`),
-          Connection.raw(`array_to_json(array_agg(option_two)) option_two`),
-          Connection.raw(`array_to_json(array_agg(option_three)) option_three`),
-          Connection.raw(`array_to_json(array_agg(option_for)) option_for`),
+          // Connection.raw(`array_to_json(array_agg(type)) type_attribute`),
+          // Connection.raw(`array_to_json(array_agg(option_one)) option_one`),
+          // Connection.raw(`array_to_json(array_agg(option_two)) option_two`),
+          // Connection.raw(`array_to_json(array_agg(option_three)) option_three`),
+          // Connection.raw(`array_to_json(array_agg(option_for)) option_for`),
 
           // Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
           // Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
           
         )
         
-        .join("attributes", "Products.id", "=", "attributes.id_product") // precisa ser independente do propximo join
+        .join("attributes as attr", "Products.id", "attr.id_product") // precisa ser independente do propximo join
         // .join("Images", "Products.id", "=", "Images.id_product") // precisa retornar 3 
         .groupBy("Products.id")
         .orderBy("Products.created_at", "desc");
