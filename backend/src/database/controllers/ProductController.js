@@ -104,18 +104,62 @@ module.exports = {
     }
   },
   async create(req, res, next) {
-    
-      let adm = false;
-      const [, token] = req.headers.authorization.split(" ");
-      jwt.verify(token, process.env.SECRET, function (err, decoded) {
-        if (decoded.administrador != 0) {
-          return (adm = true);
-        }
-      });
-      if (adm === false) {
-        return res.status(401).json({ message: "User is not adm" });
+    let adm = false;
+    const [, token] = req.headers.authorization.split(" ");
+    jwt.verify(token, process.env.SECRET, function (err, decoded) {
+      if (decoded.administrador != 0) {
+        return (adm = true);
       }
-      const {
+    });
+    if (adm === false) {
+      return res.status(401).json({ message: "User is not adm" });
+    }
+    const {
+      name,
+      price,
+      amount,
+      description,
+      weight,
+      lenght,
+      width,
+      height,
+      type_attribute,
+      option_one,
+      option_two,
+      option_three,
+      option_for,
+    } = req.body;
+    if (
+      !name ||
+      !price ||
+      !amount ||
+      !description ||
+      !weight ||
+      !lenght ||
+      !width ||
+      !height ||
+      !type_attribute ||
+      !option_one ||
+      !option_two ||
+      !option_three ||
+      !option_for
+    ) {
+      res.json({ message: "value missing body" });
+    } else {
+      const verifyName = await Connection("Products")
+        .select("name")
+        .where({ name })
+        .first();
+      if (verifyName)
+        return res.json({
+          message: "There is already a product with that name",
+        });
+
+      const id = crypto.randomBytes(3).toString("HEX");
+      const id_attribute = crypto.randomBytes(3).toString("HEX");
+
+      await Connection("Products").insert({
+        id,
         name,
         price,
         amount,
@@ -124,83 +168,19 @@ module.exports = {
         lenght,
         width,
         height,
-        type_attribute,
+      });
+      await Connection("attributes").insert({
+        id: id_attribute,
+        type: type_attribute,
         option_one,
         option_two,
         option_three,
         option_for,
-      } = req.body;
-      if (
-        !name ||
-        !price ||
-        !amount ||
-        !description ||
-        !weight ||
-        !lenght ||
-        !width ||
-        !height ||
-        !type_attribute ||
-        !option_one ||
-        !option_two ||
-        !option_three ||
-        !option_for
-      ) {
-        res.json({ message: "value missing body" });
-      } else {
-        const verifyName = await Connection("Products")
-          .select("name")
-          .where({ name })
-          .first();
-        if (verifyName)
-          return res.json({
-            message: "There is already a product with that name",
-          });
+        id_product: id,
+      });
 
-        const id = crypto.randomBytes(3).toString("HEX");
-        const id_attribute = crypto.randomBytes(3).toString("HEX");
-
-        return Connection.transaction(function (t) {
-          return Connection("Products")
-            .transacting(t)
-            .insert({
-              id,
-              name,
-              price,
-              amount,
-              description,
-              weight,
-              lenght,
-              width,
-              height,
-            })
-
-            .then(function (response) {
-              return Connection("attributes").transacting(t).insert({
-                id: id_attribute,
-                type: type_attribute,
-                option_one,
-                option_two,
-                option_three,
-                option_for,
-                id_product: id,
-              });
-            })
-
-            .then(t.commit)
-            .catch(t.rollback);
-        })
-          .then(function () {
-            try {
-              return res.status(201).json({ message: "create", id });
-            } catch (error) {
-              return res.status(500).json({ message: "error", error });
-            }
-          })
-          .catch(function (error) {
-            return res.status(500).json({ message: "error", error });
-          });
-      }
-   
+      return res.status(201).json({ message: "create", id });
+    }
   },
   async update(req, res, next) {
     try {
