@@ -30,9 +30,9 @@ module.exports = {
           
         )
         .leftJoin("attributes", "Products.id", "=", "attributes.id_product")
-        // .groupBy("Products.id")
-        .leftJoin("Images", "Products.id", "=", "Images.id_product")
         .groupBy("Products.id")
+        // .leftJoin("Images", "Products.id", "=", "Images.id_product")
+        // .groupBy("Products.id")
         .orderBy("Products.created_at", "desc");
 
       return res.json(data);
