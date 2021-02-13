@@ -170,6 +170,24 @@ module.exports = {
         height,
       });
       console.log("passei por aqui");
+      
+     
+
+      req.files.map(async file => {
+          const idImage = crypto.randomBytes(3).toString("HEX");
+          let { originalname: name, size, key, location: url = "" } = file
+          if (url === "") {
+              url = `${process.env.APP_URL}/files/${key}`
+          }
+          await Connection("Images").insert({
+              id_image: idImage,
+              name,
+              size,
+              key,
+              url,
+              id_product: id,
+          });
+      })
       // await Connection("attributes").insert({
       //   id: id_attribute,
       //   type: type_attribute,
