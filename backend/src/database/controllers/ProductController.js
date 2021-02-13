@@ -29,7 +29,8 @@ module.exports = {
           // Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
           
         )
-        .leftJoin("attributes", "Products.id", "=", "attributes.id_product")
+        // corrigir estes leftjoin para possivelmente o innerjoin
+        .Join("attributes", "Products.id", "=", "attributes.id_product")
         .groupBy("Products.id")
         // .leftJoin("Images", "Products.id", "=", "Images.id_product")
         // .groupBy("Products.id")
