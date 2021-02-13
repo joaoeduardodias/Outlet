@@ -29,9 +29,9 @@ module.exports = {
           // Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
           
         )
-        .leftJoin("Images", "Products.id", "=", "Images.id_product")
-        .groupBy("Products.id")
         .leftJoin("attributes", "Products.id", "=", "attributes.id_product")
+        // .groupBy("Products.id")
+        .leftJoin("Images", "Products.id", "=", "Images.id_product")
         .groupBy("Products.id")
         .orderBy("Products.created_at", "desc");
 
