@@ -30,14 +30,15 @@ module.exports = {
           Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
           
         )
-        
-        
         .join("Images",'Images.id_product','Products.id') 
         .groupBy('Products.id')
         .orderBy("Products.created_at", "desc");
-        
-
-      return res.json(data);
+      const attr =  await Connection('attributes').where('id_product',data.id)
+          const product = {
+            data,
+            attr
+          }
+      return res.json(product);
 
   
 
