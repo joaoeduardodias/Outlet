@@ -27,11 +27,11 @@ module.exports = {
             const { id_product } = req.params
 
 
-            const id = crypto.randomBytes(3).toString("HEX");
+            const idAttribute = crypto.randomBytes(3).toString("HEX");
 
 
             await Connection('attributes').insert({
-                id,
+                id:idAttribute,
                 type: type_attribute,
                 option_one,
                 option_two,

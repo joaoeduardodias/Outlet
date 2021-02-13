@@ -21,13 +21,13 @@ module.exports = {
             const { idProduct } = req.params
 
             req.files.map(async file => {
-                const id = crypto.randomBytes(3).toString("HEX");
+                const idImage = crypto.randomBytes(3).toString("HEX");
                 let { originalname: name, size, key, location: url = "" } = file
                 if (url === "") {
                     url = `${process.env.APP_URL}/files/${key}`
                 }
                 await Connection("Images").insert({
-                    id_image: id,
+                    id_image: idImage,
                     name,
                     size,
                     key,
@@ -36,7 +36,7 @@ module.exports = {
                 });
             })
 
-            return res.send()
+            return res.status(201).send()
         } catch (error) {
             next(error)
         }
