@@ -23,7 +23,7 @@ module.exports = {
           "height",
           // Connection.raw(`group_concat(Images.url) as urls`),
           // Connection.raw(`group_concat(Images.id) as ids`),
-          Connection.raw(`array_to_json( (type) as type_attribute' )`),
+          Connection.raw(`array_to_json(type) as type_attribute' `),
 
           Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
           Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
