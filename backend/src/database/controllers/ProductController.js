@@ -36,6 +36,7 @@ module.exports = {
         )
         
         .join("attributes as attr", "Products.id", "attr.id_product") // precisa ser independente do propximo join
+        .groupBy('attr.id_product')
         .orderBy("Products.created_at", "desc");
         // .join("Images", "Products.id", "=", "Images.id_product") // precisa retornar 3 
         
