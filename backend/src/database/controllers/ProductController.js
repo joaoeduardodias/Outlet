@@ -140,8 +140,8 @@ module.exports = {
                            
 
                            
-                        return   Connection('attributes')
-                                
+                        return Connection('attributes')
+                        .transacting(t)
                                 .insert({
                                     id: id_attribute,
                                     type: type_attribute,
@@ -161,7 +161,7 @@ module.exports = {
                                     url = `${process.env.APP_URL}/files/${key}`
                                 }
                                 await Connection("Images")
-                                
+                                .transacting(t)
                                 .insert({
                                     id_image: idImage,
                                     name,
