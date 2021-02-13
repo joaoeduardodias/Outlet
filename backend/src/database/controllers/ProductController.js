@@ -169,6 +169,7 @@ module.exports = {
         width,
         height,
       });
+      console.log("passei por aqui");
       // await Connection("attributes").insert({
       //   id: id_attribute,
       //   type: type_attribute,
