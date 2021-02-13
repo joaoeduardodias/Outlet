@@ -34,7 +34,7 @@ module.exports = {
         
         .join("attributes as attr", "Products.id", "attr.id_product") 
         .groupBy('Products.id')
-        .join("Images") 
+        .join("Images",'Images.id','Products.id') 
         .orderBy("Products.created_at", "desc");
         
 
