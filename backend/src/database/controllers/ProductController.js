@@ -21,20 +21,19 @@ module.exports = {
           "lenght",
           "width",
           "height",
-          Connection.raw(`array_agg(attr.type) as type_attribute`),
           // Connection.raw(`array_to_json(array_agg(option_one)) option_one`),
           // Connection.raw(`array_to_json(array_agg(option_two)) option_two`),
           // Connection.raw(`array_to_json(array_agg(option_three)) option_three`),
           // Connection.raw(`array_to_json(array_agg(option_for)) option_for`),
 
-          // Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
-          // Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
+          Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
+          Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
           
         )
         
-        .join("attributes as attr", "Products.id", "attr.id_product") 
-        .groupBy('Products.id')
+        
         .join("Images",'Images.id_product','Products.id') 
+        .groupBy('Products.id')
         .orderBy("Products.created_at", "desc");
         
 
