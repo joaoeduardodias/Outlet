@@ -169,7 +169,7 @@ module.exports = {
         width,
         height,
       });
-      console.log("passei por aqui");
+      console.log("adicionou o produto");
          await Connection("attributes").insert({
         id: id_attribute,
         type: type_attribute,
@@ -179,6 +179,7 @@ module.exports = {
         option_for,
         id_product: id,
       });
+      console.log("adicionou os atributos");
      
 
       req.files.map(async file => {
@@ -195,6 +196,8 @@ module.exports = {
               url,
               id_product: id,
           });
+      console.log("adicionou as imagens");
+
       })
    
 
