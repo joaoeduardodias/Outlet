@@ -22,7 +22,7 @@ module.exports = {
           "width",
           "height",
           'attr.type',
-          
+
          
           // Connection.raw(`array_to_json(array_agg(type)) type_attribute`),
           // Connection.raw(`array_to_json(array_agg(option_one)) option_one`),
@@ -36,9 +36,9 @@ module.exports = {
         )
         
         .join("attributes as attr", "Products.id", "attr.id_product") // precisa ser independente do propximo join
-        // .join("Images", "Products.id", "=", "Images.id_product") // precisa retornar 3 
-        .groupBy("Products.id")
         .orderBy("Products.created_at", "desc");
+        // .join("Images", "Products.id", "=", "Images.id_product") // precisa retornar 3 
+        
 
       return res.json(data);
 
