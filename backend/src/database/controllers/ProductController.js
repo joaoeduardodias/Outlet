@@ -138,7 +138,7 @@ module.exports = {
                         .then(function (response) {
                           const teste = Connection('Products')
                            .transacting(t)
-                           select('name')
+                           .select('name')
                            
 
                            return console.log(teste);
