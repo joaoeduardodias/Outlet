@@ -21,10 +21,10 @@ module.exports = {
           "lenght",
           "width",
           "height",
-          'attr.type',
+          
 
          
-          // Connection.raw(`array_to_json(array_agg(type)) type_attribute`),
+          Connection.raw(`array_agg(attr.type) as type_attribute`),
           // Connection.raw(`array_to_json(array_agg(option_one)) option_one`),
           // Connection.raw(`array_to_json(array_agg(option_two)) option_two`),
           // Connection.raw(`array_to_json(array_agg(option_three)) option_three`),
