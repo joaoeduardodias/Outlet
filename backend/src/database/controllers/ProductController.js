@@ -9,38 +9,7 @@ const { promisify } = require("util");
 module.exports = {
   async index(next, res) {
     try {
-      // const data = await Connection("Products")
-      //   .select(
-      //     "Products.id",
-      //     "Products.name",
-      //     "description",
-      //     "price",
-      //     "amount",
-      //     "available",
-      //     "weight",
-      //     "lenght",
-      //     "width",
-      //     "height",
-      //     // Connection.raw(`group_concat(Images.url) as urls`),
-      //     // Connection.raw(`group_concat(Images.id) as ids`),
-      //     // Connection.raw(`array_to_json(array_agg(type)) type_attribute`),
-
-      //     Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
-      //     // Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
-          
-      //   )
-      //   // corrigir estes leftjoin para possivelmente o innerjoin
-      //   // .join("attributes", "Products.id", "=", "attributes.id_product")
-      //   .join("Images", "Products.id", "=", "Images.id_product")
-      //   .groupBy("Products.id")
-      //   .orderBy("Products.created_at", "desc");
-
-      // return res.json(data);
-
-      
-    const data =  Connection.transaction(function(trx) {
-        Connection('Products')
-        .transacting(trx)
+      const data = await Connection("Products")
         .select(
           "Products.id",
           "Products.name",
@@ -52,39 +21,26 @@ module.exports = {
           "lenght",
           "width",
           "height",
+         
+          Connection.raw(`array_to_json(array_agg(type)) type_attribute`),
+          Connection.raw(`array_to_json(array_agg(option_one)) option_one`),
+          Connection.raw(`array_to_json(array_agg(option_two)) option_two`),
+          Connection.raw(`array_to_json(array_agg(option_three)) option_three`),
+          Connection.raw(`array_to_json(array_agg(option_for)) option_for`),
+
+          // Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
+          // Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
+          
         )
-          .then(function(resp) {
-            return Connection('attributes')
-            .transacting(trx)
-            .select(
-              "type",
-              "option_one",
-              "option_two",
-              "option_three",
-              "option_for"
-            )
-            .where('id_product',"Products.id")
-          })
-          .then(function(response) {
-            return Connection('Images')
-            .transacting(trx)
-            .select(
-              "url",
-              "id_image"
-            )
-            .where('id_product',"Products.id")
-          })
+        
+        .join("attributes", "Products.id", "=", "attributes.id_product") // precisa ser independente do propximo join
+        // .join("Images", "Products.id", "=", "Images.id_product") // precisa retornar 3 
+        .groupBy("Products.id")
+        .orderBy("Products.created_at", "desc");
 
-          .then(trx.commit)
-          .catch(trx.rollback);
-      })
-      .then(function(resp) {
-        return res.json(data)
-      })
-      .catch(function(err) {
-        console.error(err);
-      });
+      return res.json(data);
 
+  
 
 
 
@@ -117,18 +73,10 @@ module.exports = {
           Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
           Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
           Connection.raw(`array_to_string(ARRAY_AGG(type), ',') type_attribute`),
-          Connection.raw(
-            `array_to_string(ARRAY_AGG(option_one), ',') option_one`
-          ),
-          Connection.raw(
-            `array_to_string(ARRAY_AGG(option_two), ',') option_two`
-          ),
-          Connection.raw(
-            `array_to_string(ARRAY_AGG(option_three), ',') option_three`
-          ),
-          Connection.raw(
-            `array_to_string(ARRAY_AGG(option_for), ',') option_for`
-          )
+          Connection.raw(`array_to_string(ARRAY_AGG(option_one), ',') option_one`),
+          Connection.raw(`array_to_string(ARRAY_AGG(option_two), ',') option_two`),
+          Connection.raw(`array_to_string(ARRAY_AGG(option_three), ',') option_three`),
+          Connection.raw(`array_to_string(ARRAY_AGG(option_for), ',') option_for`)
         )
         .leftJoin("Images", "Products.id", "=", "Images.id_product")
         .groupBy("Products.id")
