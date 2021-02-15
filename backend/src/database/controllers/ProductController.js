@@ -28,26 +28,15 @@ module.exports = {
           // Connection.raw(`array_to_json(array_agg(option_for)) option_for`),
 
           // Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
-          Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
-          
+          Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`)
         )
-        
+
         .join("attributes as attr", "Products.id", "attr.id_product") // precisa ser independente do propximo join
-        .leftJoin("Images", "Products.id","Images.id_product") // precisa retornar 3 
-        .groupBy('Products.id')
+        .leftJoin("Images", "Products.id", "Images.id_product") // precisa retornar 3
+        .groupBy("Products.id")
         .orderBy("Products.created_at", "desc");
-        
 
       return res.json(data);
-
-  
-
-
-
-
-
-
-
     } catch (error) {
       // next(error);
       console.log(error);
@@ -72,11 +61,21 @@ module.exports = {
           // Connection.raw(`group_concat(Images.id) as ids`),
           Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
           Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
-          Connection.raw(`array_to_string(ARRAY_AGG(type), ',') type_attribute`),
-          Connection.raw(`array_to_string(ARRAY_AGG(option_one), ',') option_one`),
-          Connection.raw(`array_to_string(ARRAY_AGG(option_two), ',') option_two`),
-          Connection.raw(`array_to_string(ARRAY_AGG(option_three), ',') option_three`),
-          Connection.raw(`array_to_string(ARRAY_AGG(option_for), ',') option_for`)
+          Connection.raw(
+            `array_to_string(ARRAY_AGG(type), ',') type_attribute`
+          ),
+          Connection.raw(
+            `array_to_string(ARRAY_AGG(option_one), ',') option_one`
+          ),
+          Connection.raw(
+            `array_to_string(ARRAY_AGG(option_two), ',') option_two`
+          ),
+          Connection.raw(
+            `array_to_string(ARRAY_AGG(option_three), ',') option_three`
+          ),
+          Connection.raw(
+            `array_to_string(ARRAY_AGG(option_for), ',') option_for`
+          )
         )
         .leftJoin("Images", "Products.id", "=", "Images.id_product")
         .groupBy("Products.id")
@@ -160,7 +159,7 @@ module.exports = {
         height,
       });
       console.log("adicionou o produto");
-         await Connection("attributes").insert({
+      await Connection("attributes").insert({
         id: id_attribute,
         type: type_attribute,
         option_one,
@@ -170,26 +169,23 @@ module.exports = {
         id_product: id,
       });
       console.log("adicionou os atributos");
-     
 
-      req.files.map(async file => {
-          const idImage = crypto.randomBytes(3).toString("HEX");
-          let { originalname: name, size, key, location: url = "" } = file
-          if (url === "") {
-              url = `${process.env.APP_URL}/files/${key}`
-          }
-          await Connection("Images").insert({
-              id_image: idImage,
-              name,
-              size,
-              key,
-              url,
-              id_product: id,
-          });
-      console.log("adicionou as imagens");
-
-      })
-   
+      req.files.map(async (file) => {
+        const idImage = crypto.randomBytes(3).toString("HEX");
+        let { originalname: name, size, key, location: url = "" } = file;
+        if (url === "") {
+          url = `${process.env.APP_URL}/files/${key}`;
+        }
+        await Connection("Images").insert({
+          id_image: idImage,
+          name,
+          size,
+          key,
+          url,
+          id_product: id,
+        });
+        console.log("adicionou as imagens");
+      });
 
       return res.status(201).json({ message: "create", id });
     }
