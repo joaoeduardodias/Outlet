@@ -183,7 +183,7 @@ module.exports = {
                     url,
                     id_product: id,
                 });
-                console.log("adicionou as imagens");
+
             });
 
             return res.status(201).json({ message: "create", id });
