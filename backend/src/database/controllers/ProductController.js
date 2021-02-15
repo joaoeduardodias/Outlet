@@ -120,6 +120,7 @@ module.exports = {
             option_three,
             option_for,
         } = req.body;
+
         if (!name ||
             !price ||
             !amount ||
@@ -133,17 +134,14 @@ module.exports = {
             !option_two ||
             !option_three ||
             !option_for
-        ) {
+        )
+         {
             res.json({ message: "value missing body" });
-        } else {
-            const verifyName = await Connection("Products")
-                .select("name")
-                .where({ name })
-                .first();
+         } 
+        else {
+            const verifyName = await Connection("Products").select("name").where({ name }).first();
             if (verifyName)
-                return res.json({
-                    message: "There is already a product with that name",
-                });
+                return res.json({message: "There is already a product with that name"});
 
             const id = crypto.randomBytes(3).toString("HEX");
             const id_attribute = crypto.randomBytes(3).toString("HEX");
@@ -163,7 +161,7 @@ module.exports = {
                 width,
                 height,
               })
-                .then(function() {
+               .then(function() {
                     return Connection('attributes')
                             .transacting(trx)
                             .insert({
