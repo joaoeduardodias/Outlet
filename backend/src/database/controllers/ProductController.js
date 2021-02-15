@@ -120,6 +120,19 @@ module.exports = {
             option_three,
             option_for,
         } = req.body;
+        console.log( name,
+            price,
+            amount,
+            description,
+            weight,
+            lenght,
+            width,
+            height,
+            type_attribute,
+            option_one,
+            option_two,
+            option_three,
+            option_for,);
 
         if (!name ||
             !price ||
