@@ -47,36 +47,36 @@ images.addEventListener("change", function() {
 async function create() {
     try {
         const token = localStorage.getItem("Authorization");
-        const name = document.getElementById("name").value
-        const description = document.getElementById("description").value
-        const price = document.getElementById("price").value
-        const amount = document.getElementById("amount").value
-        const weight = document.getElementById('weight').value
-        const lenght = document.getElementById('length').value
-        const width = document.getElementById('width').value
-        const height = document.getElementById('height').value
-        const type_attribute = document.getElementById('type-attribute').value
-        const option_one = document.getElementById('option-one').value
-        const option_two = document.getElementById('option-two').value
-        const option_three = document.getElementById('option-three').value
-        const option_for = document.getElementById('option-for').value
+        // const name = document.getElementById("name").value
+        // const description = document.getElementById("description").value
+        // const price = document.getElementById("price").value
+        // const amount = document.getElementById("amount").value
+        // const weight = document.getElementById('weight').value
+        // const lenght = document.getElementById('length').value
+        // const width = document.getElementById('width').value
+        // const height = document.getElementById('height').value
+        // const type_attribute = document.getElementById('type-attribute').value
+        // const option_one = document.getElementById('option-one').value
+        // const option_two = document.getElementById('option-two').value
+        // const option_three = document.getElementById('option-three').value
+        // const option_for = document.getElementById('option-for').value
 
-        const product = {
-            name,
-            description,
-            price,
-            amount,
-            weight,
-            lenght,
-            width,
-            height,
-            type_attribute,
-            option_one,
-            option_two,
-            option_three,
-            option_for
+        // const product = {
+        //     name,
+        //     description,
+        //     price,
+        //     amount,
+        //     weight,
+        //     lenght,
+        //     width,
+        //     height,
+        //     type_attribute,
+        //     option_one,
+        //     option_two,
+        //     option_three,
+        //     option_for
 
-        };
+        // };
         const data = await fetch(baseurl + "/product", {
             method: "Post",
             headers: {
@@ -89,19 +89,20 @@ async function create() {
         });
 
         const value = await data.json();
-        console.log(value);
 
-        const form = new FormData();
-        const images = Array.from(c("input[type=file]").files);
-        images.forEach((image) => {
-            form.append("image[]", image);
-        });
 
-        await fetch(`${baseurl}/upload/${value.id}`, {
-            method: "Post",
-            mode: "cors",
-            body: form,
-        });
+
+        // const form = new FormData();
+        // const images = Array.from(c("input[type=file]").files);
+        // images.forEach((image) => {
+        //     form.append("image[]", image);
+        // });
+
+        // await fetch(`${baseurl}/upload/${value.id}`, {
+        //     method: "Post",
+        //     mode: "cors",
+        //     body: form,
+        // });
 
         if (value.message == `Token invalid.`) {
             location.href = "./login.html";
