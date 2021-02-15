@@ -67,11 +67,11 @@ async function index() {
                     images = item.urls.split(",");
                     idImages = item.ids.split(",");
                     indeximg = 0
-                    typeAtributes = item.type_attribute.split(',')
-                    optionOne = item.option_one.split(',')
-                    optionTwo = item.option_two.split(',')
-                    optionThree = item.option_three.split(',')
-                    optionFor = item.option_for.split(',')
+                        // typeAtributes = item.type_attribute.split(',')
+                        // optionOne = item.option_one.split(',')
+                        // optionTwo = item.option_two.split(',')
+                        // optionThree = item.option_three.split(',')
+                        // optionFor = item.option_for.split(',')
                     c(".windowdetails").style.opacity = 0;
                     c(".windowdetails").style.display = "flex";
                     setTimeout(() => {

@@ -4,6 +4,7 @@ const cs = (el) => document.querySelectorAll(el);
 const images = document.getElementById("image[]");
 const btnAdd = c(".images-container label img");
 
+
 // preview images
 images.addEventListener("change", function() {
     files = c("input[type=file]").files;
@@ -43,9 +44,15 @@ images.addEventListener("change", function() {
         [].forEach.call(files, readAndPreview);
     }
 });
-
+const form = document.querySelector("#formdata");
+form.onsubmit = function(e) {
+    e.preventDefault();
+    create()
+};
+const formData = new FormData(form)
 async function create() {
     try {
+
         const token = localStorage.getItem("Authorization");
         // const name = document.getElementById("name").value
         // const description = document.getElementById("description").value
@@ -85,7 +92,7 @@ async function create() {
                 "Authorization": "Bearer " + token,
             },
             mode: "cors",
-            body: JSON.stringify(product),
+            body: formData,
         });
 
         const value = await data.json();
@@ -127,7 +134,7 @@ async function create() {
         console.log(error);
     }
 }
-c(".btn-create button").addEventListener("click", (e) => {
-    e.preventDefault();
-    create();
-});
+// c(".btn-create button").addEventListener("click", (e) => {
+//     e.preventDefault();
+//     create();
+// });
