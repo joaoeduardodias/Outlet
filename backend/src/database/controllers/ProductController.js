@@ -120,20 +120,7 @@ module.exports = {
             option_three,
             option_for,
         } = req.body;
-        console.log( 
-           "Name"+ name,
-          "price"+  price,
-           "amount"+ amount,
-           "description"+ description,
-          "weight" +  weight,
-          "lenght" + lenght,
-         "width"  + width,
-          "height" + height,
-          "type_attribute" + type_attribute,
-          "option_one" + option_one,
-          "option_two" + option_two,
-         "option_three"  + option_three,
-          "option_for" + option_for,);
+       
 
         if (!name ||
             !price ||
@@ -189,6 +176,7 @@ module.exports = {
                               })
                 })
                 .then(function(){
+                    console.log(req.files);
                     return req.files.map(async (file) => {
                         const idImage = crypto.randomBytes(3).toString("HEX");
                         let { originalname: name, size, key, location: url = "" } = file;
