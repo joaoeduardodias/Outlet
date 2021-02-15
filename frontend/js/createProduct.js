@@ -4,6 +4,7 @@ const cs = (el) => document.querySelectorAll(el);
 const images = document.getElementById("image[]");
 const btnAdd = c(".images-container label img");
 
+
 // preview images
 images.addEventListener("change", function() {
     files = c("input[type=file]").files;
@@ -43,40 +44,46 @@ images.addEventListener("change", function() {
         [].forEach.call(files, readAndPreview);
     }
 });
-
+const form = document.querySelector("#formdata");
+form.onsubmit = function(e) {
+    e.preventDefault();
+    create()
+};
+const formData = new FormData(form)
 async function create() {
     try {
+
         const token = localStorage.getItem("Authorization");
-        const name = document.getElementById("name").value
-        const description = document.getElementById("description").value
-        const price = document.getElementById("price").value
-        const amount = document.getElementById("amount").value
-        const weight = document.getElementById('weight').value
-        const lenght = document.getElementById('length').value
-        const width = document.getElementById('width').value
-        const height = document.getElementById('height').value
-        const type_attribute = document.getElementById('type-attribute').value
-        const option_one = document.getElementById('option-one').value
-        const option_two = document.getElementById('option-two').value
-        const option_three = document.getElementById('option-three').value
-        const option_for = document.getElementById('option-for').value
+        // const name = document.getElementById("name").value
+        // const description = document.getElementById("description").value
+        // const price = document.getElementById("price").value
+        // const amount = document.getElementById("amount").value
+        // const weight = document.getElementById('weight').value
+        // const lenght = document.getElementById('length').value
+        // const width = document.getElementById('width').value
+        // const height = document.getElementById('height').value
+        // const type_attribute = document.getElementById('type-attribute').value
+        // const option_one = document.getElementById('option-one').value
+        // const option_two = document.getElementById('option-two').value
+        // const option_three = document.getElementById('option-three').value
+        // const option_for = document.getElementById('option-for').value
 
-        const product = {
-            name,
-            description,
-            price,
-            amount,
-            weight,
-            lenght,
-            width,
-            height,
-            type_attribute,
-            option_one,
-            option_two,
-            option_three,
-            option_for
+        // const product = {
+        //     name,
+        //     description,
+        //     price,
+        //     amount,
+        //     weight,
+        //     lenght,
+        //     width,
+        //     height,
+        //     type_attribute,
+        //     option_one,
+        //     option_two,
+        //     option_three,
+        //     option_for
 
-        };
+        // };
         const data = await fetch(baseurl + "/product", {
             method: "Post",
             headers: {
@@ -85,7 +92,7 @@ async function create() {
                 "Authorization": "Bearer " + token,
             },
             mode: "cors",
-            body: JSON.stringify(product),
+            body: formData,
         });
 
         const value = await data.json();
@@ -126,7 +133,7 @@ async function create() {
         console.log(error);
     }
 }
-c(".btn-create button").addEventListener("click", (e) => {
-    e.preventDefault();
-    create();
-});
+// c(".btn-create button").addEventListener("click", (e) => {
+//     e.preventDefault();
+//     create();
+// });
