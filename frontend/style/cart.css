@@ -33,7 +33,7 @@ header {
 
 .product {
     width: 100%;
-    min-height: 8.5rem;
+    min-height: 11.5rem;
     background-color: var(--color-text-button);
     border: 1.5px solid var(--border-div-color);
     border-top: none;
@@ -74,6 +74,7 @@ header {
 .product-title {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    width: 19rem;
 }
 
 .product-price {
@@ -420,6 +421,7 @@ input[type="number"]::-webkit-outer-spin-button {
     }
     .product {
         padding: 0.8rem 2rem;
+        min-height: 8.5;
     }
     .mycart {
         height: 2.2rem;
@@ -526,6 +528,9 @@ input[type="number"]::-webkit-outer-spin-button {
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "title img" "value img" "qtd img" "attribute01 img " "attribute02 img" "freight img" "date img" "total img";
     }
+    .product-title {
+        width: 29rem;
+    }
     .product-details .product-title h2 {
         font-size: 2rem;
         margin-top: 0.3rem;
@@ -545,11 +550,13 @@ input[type="number"]::-webkit-outer-spin-button {
         font-size: 2rem;
         margin-top: 0.3rem;
         grid-area: attribute01;
+        display: none;
     }
     .product-details .value02 {
         font-size: 2rem;
         margin-top: 0.3rem;
         grid-area: attribute02;
+        display: none;
     }
     .product-details .freight,
     .product-details .price-total {
@@ -662,6 +669,9 @@ input[type="number"]::-webkit-outer-spin-button {
     }
     .product-trash {
         grid-area: trash;
+    }
+    .product-title {
+        width: 29rem;
     }
 }
 

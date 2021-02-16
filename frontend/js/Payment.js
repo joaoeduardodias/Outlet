@@ -45,8 +45,7 @@ async function setPriceFreight() {
     const valorFreight = DataFreightJson.Valor.replace(",", ".");
     const valorFreightFormat = parseFloat(valorFreight);
     document.getElementById("price_freight").innerText = `Frete: ${valorFreight}`;
-    document.getElementById("date_freight")
-        .innerText = `Prazo de entrega de ${DataFreightJson.PrazoEntrega} dias`;
+    document.getElementById("date_freight").innerText = `Prazo de entrega de ${DataFreightJson.PrazoEntrega} dias`;
     const priceTotalFormat = parseFloat(priceTotal);
     valueTotal = priceTotalFormat + valorFreightFormat;
 

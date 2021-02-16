@@ -101,9 +101,9 @@ cart.map((item, index) => {
                 if (!modal.contains(e.target)) {
                     cc(".windowpurchase").style.opacity = 0;
                     qtd = 1;
-                    ProductItem.querySelector(
-                        ".product--item--qtarea .product--item--qt"
-                    ).innerHTML = qtd;
+                    ProductItem.querySelector(".product--item--qtarea .product--item--qt").innerHTML = qtd;
+                    document.getElementById("price_freight").innerText = `Frete: 00`;
+                    document.getElementById("date_freight").innerText = `Prazo de entrega de 0 dias`;
                     setTimeout(() => {
                         cc(".windowpurchase").style.display = "none";
                     }, 200);
