@@ -7,6 +7,19 @@ const path = require("path");
 const { promisify } = require("util");
 
 module.exports = {
+
+    async indexAllProductsUnavailable(next, res) {
+        try {
+            const data = await Connection('Products')
+                .select("id", "name")
+                .where('available', false)
+            return res.json(data)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+
     async index(next, res) {
         try {
             const data = await Connection("Products")
@@ -130,11 +143,7 @@ module.exports = {
             !lenght ||
             !width ||
             !height ||
-            !type_attribute ||
-            !option_one ||
-            !option_two ||
-            !option_three ||
-            !option_for
+
         ) {
             res.json({ message: "value missing body" });
         } else {

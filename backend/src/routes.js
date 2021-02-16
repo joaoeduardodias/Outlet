@@ -53,6 +53,7 @@ routes.post('/reset/:token', AuthController.verifyToken)
 // CRUD of Products
 
 routes.get('/', ProductController.index)
+routes.get('/products', ProductController.indexAllProductsUnavailable)
 routes.get('/Productshow/:id', ProductController.show)
 routes.post('/product', multer(multerConfig).array('image[]'), midellwareauth, ProductController.create)
 routes.put('/product/:id', midellwareauth, ProductController.update)
