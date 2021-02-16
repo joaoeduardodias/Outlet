@@ -30,6 +30,10 @@
     width: 86%;
 }
 
+.product-list-unavailable+.product-list-unavailable .group-info {
+    border-top: 0;
+}
+
 .id-product {
     text-align: center;
     padding: 0.4rem;
@@ -45,7 +49,11 @@
     height: 100%;
 }
 
-.model .id-product,
-.model .product-name {
+.product-list-unavailable .id-product,
+.product-list-unavailable .product-name {
     padding-top: 1.5rem;
+}
+
+.model {
+    display: none;
 }
