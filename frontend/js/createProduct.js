@@ -7,8 +7,7 @@ const formCreate = c("#form-data");
 formCreate.onsubmit = function(e) {
     e.preventDefault();
 
-    create()
-
+    create();
 };
 
 // preview images
@@ -20,11 +19,9 @@ images.addEventListener("change", function() {
         if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
             var reader = new FileReader();
 
-
             if (file.size > 3145728) {
                 // 3145728 = 3mb
-                alert("imagem maior que o tamanho permitido")
-
+                alert("imagem maior que o tamanho permitido");
             } else {
                 reader.addEventListener(
                     "load",
@@ -41,8 +38,6 @@ images.addEventListener("change", function() {
 
                 reader.readAsDataURL(file);
             }
-
-
         }
     }
 
@@ -51,56 +46,40 @@ images.addEventListener("change", function() {
     }
 });
 
-
 async function create() {
     try {
         const token = localStorage.getItem("Authorization");
 
-      const formData = new FormData(formCreate)
-      const images = Array.from(c("input[type=file]").files);
-      images.forEach((image) => {
-          formCreate.append("image[]", image);
+        const formData = new FormData(formCreate);
+        const images = Array.from(c("input[type=file]").files);
+        images.forEach((image) => {
+            formData.append("image[]", image);
         });
         const data = await fetch(baseurl + "/product", {
             method: "Post",
             headers: {
-
-                "Accept": "application/json",
-                "Authorization": "Bearer " + token,
+                Accept: "application/json",
+                Authorization: "Bearer " + token,
             },
             mode: "cors",
             body: formData,
         });
 
         const value = await data.json();
-        console.log(value);
-
-
-
-        // const form = new FormData();
-        // const images = Array.from(c("input[type=file]").files);
-        // images.forEach((image) => {
-        //     form.append("image[]", image);
-        // });
-
-        // await fetch(`${baseurl}/upload/${value.id}`, {
-        //     method: "Post",
-        //     mode: "cors",
-        //     body: form,
-        // });
 
 
         if (value.message == `Token invalid.`) {
             location.href = "./login.html";
         }
-        if(value.message == "value missing body") {
-          alert("Erro encontrado, por favor verifique se todos os campos estão corretos")
+        if (value.message == "value missing body") {
+            alert(
+                "Erro encontrado, por favor verifique se todos os campos estão corretos"
+            );
         }
         if (value.message == `There is already a product with that name`) {
             alert("Já existe um produto com esse nome !");
         }
         if (value.message == "create") {
-
             const btn = c(".btn-create button");
             setTimeout(() => {
                 btn.style.backgroundColor = "#1cca0c";
@@ -116,7 +95,3 @@ async function create() {
         console.log(error);
     }
 }
-// c(".btn-create button").addEventListener("click", (e) => {
-//     e.preventDefault();
-//     create();
-// });
