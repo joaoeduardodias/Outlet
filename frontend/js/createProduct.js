@@ -73,7 +73,7 @@ async function create() {
         }
         if (value.message == "value missing body") {
             alert(
-                "Erro encontrado, por favor verifique se todos os campos estão corretos"
+                "Erro encontrado, por favor verifique se todos os campos estão corretos, ou entre em contato com o suporte"
             );
         }
         if (value.message == `There is already a product with that name`) {
@@ -87,7 +87,7 @@ async function create() {
                 setTimeout(() => {
                     btn.style.backgroundColor = "#f67600";
                     btn.innerText = "Cadastrar Produto";
-                    // location.reload();
+                    location.reload();
                 }, 1500);
             }, 400);
         }
