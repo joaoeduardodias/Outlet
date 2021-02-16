@@ -20,6 +20,7 @@
         </div>
     </header>
     <aside>
+        <a href="./productUnavailable.html">Produtos Indisponiveis</a>
         <a href="./dashboard.html">Pedidos para Enviar</a>
         <a href="./orderFinish.html">Pedidos Enviados</a>
         <a href="./createProduct.html">Cadastrar Produto</a>
@@ -46,7 +47,7 @@
                     </div>
                     <div class="input-container">
                         <label for="price">Preço <span>(*somente números*)</span> </label>
-                        <input required id="price" name="price" type="number" placeholder="R$: 00,00" />
+                        <input required id="price" name="price" type="number" step="0.01" placeholder="R$: 00,00" />
                     </div>
                     <div class="input-container">
                         <label for="amount">Quantidade <span>(*somente números*)</span></label>
@@ -91,7 +92,7 @@
                         <span>Para o cálculo correto do valor de envio, informe o peso e as medidas (dimensões) do produto embalado</span>
                         <div class="input-container" id="divweight">
                             <label for="weight">Peso (Kg)</label>
-                            <input required id="weight" name="weight" type="number" />
+                            <input required id="weight" name="weight" step="0.001" type="number" />
                         </div>
 
                         <div class="input-container" id="divlenght">
