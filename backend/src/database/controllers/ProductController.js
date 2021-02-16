@@ -120,7 +120,7 @@ module.exports = {
             option_three,
             option_for,
         } = req.body;
-       
+
 
         if (!name ||
             !price ||
@@ -135,76 +135,74 @@ module.exports = {
             !option_two ||
             !option_three ||
             !option_for
-        )
-         {
+        ) {
             res.json({ message: "value missing body" });
-         } 
-        else {
+        } else {
             const verifyName = await Connection("Products").select("name").where({ name }).first();
             if (verifyName)
-                return res.json({message: "There is already a product with that name"});
+                return res.json({ message: "There is already a product with that name" });
 
             const id = crypto.randomBytes(3).toString("HEX");
             const id_attribute = crypto.randomBytes(3).toString("HEX");
 
-            
-            Connection.transaction(function(trx) {
-            Connection('Products')
-            .transacting(trx)
-            .insert({
-                id,
-                name,
-                price,
-                amount,
-                description,
-                weight,
-                lenght,
-                width,
-                height,
-              })
-               .then(function() {
-                    return Connection('attributes')
-                            .transacting(trx)
-                            .insert({
-                                id: id_attribute,
-                                type: type_attribute,
-                                option_one,
-                                option_two,
-                                option_three,
-                                option_for,
-                                id_product: id,
-                              })
-                })
-                .then(function(){
-                    console.log(req.files);
-                    return req.files.map(async (file) => {
-                        const idImage = crypto.randomBytes(3).toString("HEX");
-                        let { originalname: name, size, key, location: url = "" } = file;
-                        if (url === "") {
-                          url = `${process.env.APP_URL}/files/${key}`;
-                        }
-                        await Connection("Images").insert({
-                            id_image: idImage,
-                            name,
-                            size,
-                            key,
-                            url,
-                            id_product: id,
-                          });
-                         
-                        });
 
+            Connection.transaction(function(trx) {
+                    Connection('Products')
+                        .transacting(trx)
+                        .insert({
+                            id,
+                            name,
+                            price,
+                            amount,
+                            description,
+                            weight,
+                            lenght,
+                            width,
+                            height,
+                        })
+                        .then(function() {
+                            return Connection('attributes')
+                                .transacting(trx)
+                                .insert({
+                                    id: id_attribute,
+                                    type: type_attribute,
+                                    option_one,
+                                    option_two,
+                                    option_three,
+                                    option_for,
+                                    id_product: id,
+                                })
+                        })
+                        .then(function() {
+
+                            return req.files.map(async(file) => {
+                                const idImage = crypto.randomBytes(3).toString("HEX");
+                                let { originalname: name, size, key, location: url = "" } = file;
+                                if (url === "") {
+                                    url = `${process.env.APP_URL}/files/${key}`;
+                                }
+                                await Connection("Images").insert({
+                                    id_image: idImage,
+                                    name,
+                                    size,
+                                    key,
+                                    url,
+                                    id_product: id,
+                                });
+
+                            });
+
+                        })
+                        .then(trx.commit)
+                        .catch(trx.rollback);
                 })
-                .then(trx.commit)
-                .catch(trx.rollback);
-            })
-            .then(function() {
-                return res.status(201).json({ message: "create", id });
-            })
-            .catch(function(err) {
-            console.error(err);
-            });
-  
+                .then(function() {
+                    return res.status(201).json({ message: "create", id });
+                })
+                .catch(function(err) {
+                    console.error(err);
+                });
+
         }
     },
     async update(req, res, next) {
