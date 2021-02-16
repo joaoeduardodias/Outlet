@@ -14,7 +14,7 @@
         <div class="logo">
             <a href="/">
                 <h1>
-                    OUTLET <br /> MULTIMARCAS
+                    ARTESANATOS <br /> OUTLET
                 </h1>
             </a>
         </div>
@@ -42,81 +42,81 @@
                     </div>
                     <div class="textarea-container">
                         <label for="description">Descrição <span> (*máximo de 220 caracteres*)</span></label>
-              <textarea required id="description" name="description" maxlength="220" placeholder="Digite a descrição do Produto"></textarea>
-            </div>
-            <div class="input-container">
-              <label for="price">Preço <span>(*somente números*)</span> </label>
+                        <textarea required id="description" name="description" maxlength="220" placeholder="Digite a descrição do Produto"></textarea>
+                    </div>
+                    <div class="input-container">
+                        <label for="price">Preço <span>(*somente números*)</span> </label>
                         <input required id="price" name="price" type="number" placeholder="R$: 00,00" />
                     </div>
                     <div class="input-container">
                         <label for="amount">Quantidade <span>(*somente números*)</span></label>
-              <input required id="amount" name="amount" type="number"  placeholder="Digite a Quantidade em estoque"/>
-            </div>
-            <div class="file-container">
-              <label id="images" for="images">Fotos <span>(*selecione três imagens*)</span></label>
-              <div class="images-container">
-                <label for="image[]" class="btn-add">
+                        <input required id="amount" name="amount" type="number" placeholder="Digite a Quantidade em estoque" />
+                    </div>
+                    <div class="file-container">
+                        <label id="images" for="images">Fotos <span>(*selecione três imagens*)</span></label>
+                        <div class="images-container">
+                            <label for="image[]" class="btn-add">
                   <img class="img" src="../assets/icon/add-img.svg" alt="Nova Imagem"/>
 
                 </label>
 
-              </div>
+                        </div>
+
+                    </div>
+                    <div class="attributes">
+                        <h3>Atributos</h3>
+                        <label class="type-attribute" for="type_attribute">Tipo de Atributo</label>
+                        <input type="text" name="type_attribute" id="type-attribute" />
+                        <p>Digite as opções disponíveis</p>
+                        <div class="option-one">
+                            <label for="option_one">Opção 1</label>
+                            <input id="option-one" name="option_one" type="text" />
+                        </div>
+                        <div class="option-two">
+                            <label for="option_two">Opção 2</label>
+                            <input id="option-two" name="option_two" type="text" />
+                        </div>
+
+                        <div class="option-three">
+                            <label for="option_three">Opção 3</label>
+                            <input id="option-three" name="option_three" type="text" />
+                        </div>
+                        <div class="option-for">
+                            <label for="option_for">Opção 4</label>
+                            <input id="option-for" name="option_for" type="text" />
+                        </div>
+
+                    </div>
+                    <div class="freight">
+                        <span>Para o cálculo correto do valor de envio, informe o peso e as medidas (dimensões) do produto embalado</span>
+                        <div class="input-container" id="divweight">
+                            <label for="weight">Peso (Kg)</label>
+                            <input required id="weight" name="weight" type="number" />
+                        </div>
+
+                        <div class="input-container" id="divlenght">
+                            <label for="lenght">Comprimento (cm)</label>
+                            <input required id="lenght" name="lenght" type="number" />
+                        </div>
+                        <div class="input-container" id="divheight">
+                            <label for="height">Altura (cm)</label>
+                            <input required id="height" name="height" type="number" />
+                        </div>
+                        <div class="input-container" id="divwidth">
+                            <label for="width">Largura (cm)</label>
+                            <input required id="width" name="width" type="number" />
+                        </div>
+                        <img src="../assets/imagens/freight.JPG" alt="Regras de envio">
+                    </div>
+                    <div class="btn-create">
+                        <button type="submit">Cadastrar Produto</button>
+                    </div>
+                    <div class="image">
+                        <input multiple id="image[]" type="file" />
+                    </div>
+                </form>
 
             </div>
-            <div class="attributes">
-                <h3>Atributos</h3>
-                <label class="type-attribute" for="type_attribute">Tipo de Atributo</label>
-                <input type="text" name="type_attribute" id="type-attribute" />
-                <p>Digite as opções disponíveis</p>
-                <div class="option-one">
-                    <label for="option_one">Opção 1</label>
-                    <input id="option-one" name="option_one" type="text"  />
-                </div>
-                <div class="option-two">
-                    <label for="option_two">Opção 2</label>
-                    <input id="option-two" name="option_two" type="text"  />
-                </div>
-
-                <div class="option-three">
-                    <label for="option_three">Opção 3</label>
-                    <input id="option-three" name="option_three" type="text"  />
-                </div>
-                <div class="option-for">
-                    <label for="option_for">Opção 4</label>
-                    <input id="option-for" name="option_for" type="text"  />
-                </div>
-
-            </div>
-            <div class="freight">
-                <span>Para o cálculo correto do valor de envio, informe o peso e as medidas (dimensões) do produto embalado</span>
-                <div class="input-container" id="divweight">
-                    <label for="weight">Peso (Kg)</label>
-                    <input required id="weight" name="weight" type="number" />
-                </div>
-
-                <div class="input-container" id="divlenght">
-                    <label for="lenght">Comprimento (cm)</label>
-                    <input required id="lenght" name="lenght" type="number" />
-                </div>
-                <div class="input-container" id="divheight">
-                    <label for="height">Altura (cm)</label>
-                    <input required id="height" name="height" type="number" />
-                </div>
-                <div class="input-container" id="divwidth">
-                    <label for="width">Largura (cm)</label>
-                    <input required id="width" name="width" type="number" />
-                </div>
-                <img src="../assets/imagens/freight.JPG" alt="Regras de envio">
-            </div>
-            <div class="btn-create">
-                <button type="submit" >Cadastrar Produto</button>
-            </div>
-            <div class="image">
-              <input multiple id="image[]" type="file" />
-              </div>
-            </form>
-
-        </div>
         </div>
     </main>
     <script src="../js/createProduct.js"></script>

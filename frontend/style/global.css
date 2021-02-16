@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 :root {
     --color-background: #ecf1f8;
     --color-header-background: #e9d927;
@@ -42,6 +43,7 @@ body {
     width: 100%;
     -webkit-font-smoothing: antialiased !important;
     background-color: var(--color-background);
+    position: relative;
 }
 
 body.modal {
@@ -94,13 +96,95 @@ header {
 
 footer {
     width: 100%;
-    height: 4rem;
-    /* display: flex; */
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    /* display: none; */
+    justify-content: center;
+    align-items: center;
+    word-break: break-all;
+    padding: 0.4rem;
+    background-color: #020202;
+    font-family: 'Open Sans', sans-serif;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-button);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.contact .email {
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: #bfbfbf;
-    border-top: 1px solid var(--border-footer);
+    width: 26rem;
+    margin-bottom: .5rem;
+    margin-left: 1rem;
+}
+
+.contact .phone {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .5rem;
+    margin-left: 1rem;
+}
+
+.contact .email img {
+    width: 3rem;
+    height: 3rem;
+}
+
+.contact .email img,
+.contact .phone img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1rem;
+}
+
+.contact .facebook a,
+.contact .whatsapp a {
+    display: flex;
+    flex-direction: row;
+    width: 13rem;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--color-text-button);
+    margin-bottom: .5rem;
+}
+
+.contact .facebook,
+.contact .whatsapp {
+    width: 14rem;
+    height: 3rem;
+    background-color: #3B5998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .4rem;
+    font-weight: 400;
+    margin-bottom: .5rem;
+}
+
+.contact .whatsapp {
+    background-color: #4CAF50;
+}
+
+.contact .facebook a img,
+.contact .whatsapp a img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1rem;
+    display: none;
 }
 
 @media (min-width: 375px) {

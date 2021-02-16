@@ -66,7 +66,7 @@ async function create() {
         });
 
         const value = await data.json();
-
+        console.log(value)
 
         if (value.message == `Token invalid.`) {
             location.href = "./login.html";
