@@ -142,7 +142,7 @@ module.exports = {
             !weight ||
             !lenght ||
             !width ||
-            !height ||
+            !height
 
         ) {
             res.json({ message: "value missing body" });
