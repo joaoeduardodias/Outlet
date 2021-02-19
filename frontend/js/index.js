@@ -13,6 +13,8 @@ let cm3;
 let indeximg = 0;
 let images = [];
 let idImages = [];
+let allImages = [];
+let allIdImages = [];
 let typeAtributes = [];
 let optionOne = [];
 let optionTwo = [];
@@ -99,6 +101,7 @@ async function index() {
 
                 c(".products").append(ProductItem);
                 ProductItem.addEventListener("click", async() => {
+                    // show product
                     const Product = await fetch(`${baseurl}/Productshow/${item.id}`, {
                         method: 'GET',
                         headers: {
@@ -108,26 +111,32 @@ async function index() {
                         mode: 'cors'
                     })
                     const productJson = await Product.json()
-                    console.log(productJson)
 
-                    // c(".windowdetails").style.opacity = 0;
-                    // c(".windowdetails").style.display = "flex";
-                    // setTimeout(() => {
-                    //     c(".windowdetails").style.opacity = 1;
-                    //     c("#body-modal").style.overflow = "hidden";
+                    // preencher as imagens
+                    allImages = productJson.images
+                    allIdImages = productJson.idsImages
+                        // preencher as variaveis para o carrinho
+                    key = productJson.id
+                    title = productJson.name
+                    price = productJson.price
+                    amount = productJson.amount
+                    weight = productJson.weight
+                    lenght = productJson.lenght
+                    width = productJson.width
+                    height = productJson.height
 
-                    //     c(".product-img #img").src =
-
-                    //         c(".product-title h2").innerHTML =
-                    //         c(".windowdetails .product-price").innerHTML = `R$: ${.toFixed(2)}`;
-                    //     c(".product-amount").innerHTML = ` ${}  Disponíveis`;
-                    //     c(".product-description").innerHTML =
-                    //         c(".product-id").innerHTML = `Código do Produto:     ${}`;
-
-
-
-
-                    // }, 200);
+                    c(".windowdetails").style.opacity = 0;
+                    c(".windowdetails").style.display = "flex";
+                    setTimeout(() => {
+                        c(".windowdetails").style.opacity = 1;
+                        c("#body-modal").style.overflow = "hidden";
+                        c(".product-img #img").src = productJson.images[indeximg]
+                        c(".product-title h2").innerHTML = productJson.name
+                        c(".windowdetails .product-price").innerHTML = `R$: ${productJson.price.toFixed(2)}`;
+                        c(".product-amount").innerHTML = ` ${productJson.amount}  Disponíveis`;
+                        c(".product-description").innerHTML = productJson.description
+                        c(".product-id").innerHTML = `Código do Produto:     ${productJson.id}`;
+                    }, 200);
                 });
             }
         }); // end map
@@ -135,14 +144,14 @@ async function index() {
         c(".product-img .arrowleft").addEventListener("click", () => {
             if (indeximg > 0) {
                 indeximg--;
-                c(".product-img #img").src = images[indeximg];
+                c(".product-img #img").src = allImages[indeximg];
             }
         });
         c(".product-img .arrowright").addEventListener("click", () => {
             if (indeximg < 2) {
                 // tem que ter 3 fotos
                 indeximg++;
-                c(".product-img #img").src = images[indeximg];
+                c(".product-img #img").src = allImages[indeximg];
             }
         });
 
@@ -165,13 +174,13 @@ async function index() {
 }
 index();
 
-// adiciona product of cart
+// add product of cart
 c(".add-cart").addEventListener("click", () => {
     if (JSON.parse(localStorage.getItem("cart")))
         cart = JSON.parse(localStorage.getItem("cart"));
-    let image = c(".product-img #img").getAttribute("src");
+    const image = c(".product-img #img").getAttribute("src");
 
-    let verifyCart = cart.find((item) => item.id === key);
+    const verifyCart = cart.find((item) => item.id === key);
     if (verifyCart) {
         c(".windowdetails").style.opacity = 0;
 
@@ -183,21 +192,10 @@ c(".add-cart").addEventListener("click", () => {
         localStorage.setItem("cart", JSON.stringify(cart));
         cart = JSON.parse(localStorage.getItem("cart"));
     } else {
-        // pegar os atributos selecionados do select
-        let value01
-        let value02
-        if (document.getElementById('0')) {
-            const select01 = document.getElementById('0')
-            value01 = select01.options[select01.selectedIndex].value
-        }
-        if (document.getElementById('1')) {
-            const select02 = document.getElementById('1')
-            value02 = select02.options[select02.selectedIndex].value
-        }
+
 
         // CALCULA A CUBAGEM PARA O FRETE
         cm3 = (lenght * width * height) / 6000
-
         cart.push({
             id: key,
             images: image,
@@ -209,10 +207,7 @@ c(".add-cart").addEventListener("click", () => {
             width,
             height,
             cm3,
-            attributes: {
-                value01,
-                value02
-            }
+            attributes: {}
         });
         localStorage.setItem("cart", JSON.stringify(cart));
         cart = JSON.parse(localStorage.getItem("cart"));

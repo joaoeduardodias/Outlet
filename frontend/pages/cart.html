@@ -27,16 +27,20 @@
 
         <div class="models">
             <div class="product">
-
                 <div class="product-info-img">
                     <div class="product-img"><img src="" /></div>
                     <div class="product-info">
                         <div class="product-title">
                             <h2>--</h2>
                         </div>
-                        <div class="product-id">--</div>
-
-                        <div class="product-price">--</div>
+                        <div class="align-price-qtd">
+                            <div id="price-mobile" class="product-price">--</div>
+                            <div class="product--item--qtarea">
+                                <button class="product--item-qtmenos">-</button>
+                                <div class="product--item--qt">1</div>
+                                <button class="product--item-qtmais">+</button>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -47,21 +51,16 @@
                         <button class="product--item-qtmais">+</button>
                     </div>
                     <div class="product-item-qtavailable">-- Disponíveis</div>
-                    <div class="product-purchase">Comprar</div>
                     <div class="product-trash"><img src="../assets/icon/trash.svg"></div>
                 </div>
             </div>
-
-
         </div>
 
 
 
         <div class="windowdetails">
             <div class="product-modal">
-
                 <div class="product-img"><img id="img" src="" /></div>
-
                 <div class="product-title">
                     <h2>--</h2>
                 </div>
@@ -72,56 +71,30 @@
                     <div class="product--item--qt">1</div>
                     <button class="product--item-qtmais">+</button>
                 </div>
-
                 <div class="product-item-qtavailable">-- Disponíveis</div>
-                <div class="product-purchase">Comprar</div>
                 <div id="btn-trash" class="product-trash">Excluir Produto<img src="../assets/icon/trash.svg"></div>
             </div>
         </div>
-        </div>
+
+        <!-- modal de pagamentos  -->
         <div class="windowpurchase">
             <div class="purchase-modal">
-
-
-
                 <div class="product-details">
-                    <div class="product-title">
-                        <h2> -- </h2>
-                    </div>
-                    <div class="product-price"> Valor total dos produtos R$: --</div>
-                    <div class="product--item--qt"> <span>Quantidade:</span> 1</div>
-                    <div class="product-attributes">
-                        <div class="value01">--</div>
-                        <div class="value02">--</div>
-                    </div>
-                    <div class="freight" id="price_freight"><span>Valor do Frete: </span>R$ -- </div>
+                    <div class="subtotal"> Subtotal: R$: --</div>
+                    <div class="freight" id="price_freight"><span>Frete de todos os produtos: </span>R$ -- </div>
                     <div class="freight" id="date_freight"><span>Prazo de entrega de</span> -- dias </div>
-                    <div class="price-total"><span>Total: </span>R$ -- </div>
+                    <div class="total"><span>Total: </span>R$ -- </div>
 
-                    <div class="product-img"><img id="img" src="" /></div>
-
-
+                    <!-- formulario de pagamento aqui -->
                 </div>
-                <form>
-
-                    <button id="pay">Pagar</button>
-
-                </form>
-
-
 
             </div>
         </div>
 
     </section>
 
-
-
-
-
     <div class="div-purchase-pay">
-        <button id="purchase-pay">Comprar Tudo</button>
-
+        <button id="purchase-pay">Comprar</button>
     </div>
 
     <script src="../js/cart.js"></script>

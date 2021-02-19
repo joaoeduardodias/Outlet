@@ -67,10 +67,6 @@ header {
     height: 6.5rem;
 }
 
-.product-info-img .product-id {
-    display: none;
-}
-
 .product-title {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
@@ -80,6 +76,47 @@ header {
 .product-price {
     font-size: 1.8rem;
     font-family: "Roboto";
+}
+
+.align-price-qtd {
+    display: flex;
+    align-items: center;
+    width: 18rem;
+    padding: .5rem;
+    justify-content: space-between;
+}
+
+.align-price-qtd .product--item--qtarea {
+    display: inline-flex;
+    justify-content: center;
+    background-color: var(--border-footer);
+    border-radius: 0.7rem;
+    height: 2.8rem;
+    width: 6rem;
+    margin-left: 1rem;
+}
+
+.align-price-qtd .product--item--qtarea button:first-child {
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
+}
+
+.align-price-qtd .product--item--qtarea button {
+    border: 0;
+    background-color: transparent;
+    font-size: 1.9rem;
+    outline: 0;
+    cursor: pointer;
+    padding: 0rem 0.6rem;
+    color: var(--color-text-button-qt);
+}
+
+.align-price-qtd .product--item--qt {
+    line-height: 3rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 0rem 0.5rem;
+    color: #000;
 }
 
 .product-trash {
@@ -157,46 +194,11 @@ header {
     margin-left: 0.7rem;
 }
 
-.product-modal .product--item--qtarea {
-    display: inline-flex;
-    justify-content: center;
-    background-color: var(--border-footer);
-    border-radius: 1rem;
-    height: 2.8rem;
-    width: 9rem;
-    grid-area: qtd;
-    margin-left: 1rem;
-}
-
-.product-modal .product--item--qtarea button:first-child {
-    font-size: 2.3rem;
-    margin-bottom: 2rem;
-}
-
-.product-modal .product--item--qtarea button {
-    border: 0;
-    background-color: transparent;
-    font-size: 1.9rem;
-    outline: 0;
-    cursor: pointer;
-    padding: 0rem 0.8rem;
-    color: var(--color-text-button-qt);
-}
-
-.product-modal .product--item--qt {
-    line-height: 3rem;
-    font-size: 1.6rem;
-    font-weight: bold;
-    padding: 0rem 0.5rem;
-    color: #000;
-}
-
 .product-modal .product-item-qtavailable {
     display: none;
 }
 
-.product-modal .product-trash,
-.product-modal .product-purchase {
+.product-modal .product-trash {
     width: 20rem;
     height: 3.3rem;
     font-size: 1.5rem;
@@ -212,33 +214,21 @@ header {
     transition: background 0.5s;
 }
 
-.product-modal .product-trash img {
-    height: 2rem;
+.product-modal .product-trash {
+    margin-top: 1rem;
 }
 
-.product-modal .product-purchase {
-    grid-area: purchase;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 0.8rem;
-    background-color: var(--color-button-secondary);
-    margin: 1rem auto;
-}
-
-.product-modal .product-purchase:hover {
-    background-color: var(--color-button-secondary-hover);
-}
-
-.product-modal .product-trash:hover {
-    background-color: var(--color-trash-hover);
+.product-trash img {
+    height: 1.8rem;
 }
 
 .product-options .product--item--qtarea,
-.product-options .product-item-qtavailable,
-.product-options .product-purchase {
+.product-options .product-item-qtavailable {
     display: none;
 }
+
+
+/* div comprar */
 
 .purchase-modal {
     width: 28rem;
@@ -248,127 +238,30 @@ header {
     box-shadow: 0px 0px 15px #999;
 }
 
-.product-details {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    border-bottom: 1px solid #4d4c4c;
-    margin: 0 auto;
-    margin-bottom: 0.5rem;
-}
-
-.product-details .product-title {
-    font-size: 1.5rem;
-    margin: 0.3rem 0;
-}
-
-.product-details .product-price,
-.product-details .product--item--qt,
-.product-details #price_freight,
-.product-details #date_freight,
-.product-details .value01,
-.product-details .value02 {
+.purchase-modal .subtotal,
+.purchase-modal .freight,
+.purchase-modal .total {
+    color: #464646;
     font-size: 1.8rem;
-    margin: 0.3rem 0;
-    font-weight: 600;
+    font-family: 'Roboto';
+    font-style: italic;
+    padding: 0.5rem;
 }
 
-.product-details .price-total {
+.purchase-modal .total {
+    color: #000;
     font-size: 2rem;
-    font-family: "Roboto";
-    margin: 0.3rem 0;
-    font-weight: 800;
-}
-
-form {
-    width: 27.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 2rem;
-}
-
-input#email {
-    border-radius: 6px;
-    margin-bottom: 6px;
-    padding: 12px;
-    border: 1px solid #32325d1a;
-    height: 44px;
-    font-size: 16px;
-    width: 100%;
-    background: white;
-}
-
-
-/* #card-element {
-  border-radius: 4px 4px 0 0;
-  padding: 12px 6px;
-  border: 1px solid #32325d1a;
-  height: 44px;
-  width: 100%;
-  background: white;
-}
-#card-error {
-  width: 100%;
-  color: #13171f;
-  text-align: left;
-  font-size: 13px;
-  line-height: 17px;
-  background-color: #e28888;
-  border-radius: 0 0 4px 4px;
-  text-align: center;
-  margin-bottom: 1rem;
-} */
-
-#pay {
-    width: 20rem;
-    height: 3.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    background-color: var(--color-primary);
-    font-size: 2rem;
-    color: var(--color-text-button);
-    font-weight: 600;
-    letter-spacing: 0.2rem;
-    font-family: "Roboto";
-    margin: 1rem 0;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-#submit:hover {
-    background-color: var(--color-primary-hover);
-}
-
-.result-message {
-    line-height: 22px;
-    font-size: 16px;
-}
-
-.result-message a {
-    color: #596fd6;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.hidden {
-    display: none;
-}
-
-#payment-request-button {
-    margin-bottom: 32px;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
 .div-purchase-pay {
     display: flex;
     justify-content: center;
 }
+
+
+/* btn comprar */
 
 #purchase-pay {
     width: 20rem;
@@ -526,37 +419,12 @@ input[type="number"]::-webkit-outer-spin-button {
         display: grid;
         grid-template-rows: repeat(7, auto);
         grid-template-columns: 1fr 1fr;
-        grid-template-areas: "title img" "value img" "qtd img" "attribute01 img " "attribute02 img" "freight img" "date img" "total img";
-    }
-    .product-title {
-        width: 29rem;
-    }
-    .product-details .product-title h2 {
-        font-size: 2rem;
-        margin-top: 0.3rem;
-        grid-area: title;
+        grid-template-areas: "freight" "date" "total";
     }
     .product-details .product-price {
         font-size: 1.8rem;
         margin-top: 0.3rem;
         grid-area: value;
-    }
-    .product-details .product--item--qt {
-        font-size: 2rem;
-        margin-top: 0.3rem;
-        grid-area: qtd;
-    }
-    .product-details .value01 {
-        font-size: 2rem;
-        margin-top: 0.3rem;
-        grid-area: attribute01;
-        display: none;
-    }
-    .product-details .value02 {
-        font-size: 2rem;
-        margin-top: 0.3rem;
-        grid-area: attribute02;
-        display: none;
     }
     .product-details .freight,
     .product-details .price-total {
@@ -572,20 +440,6 @@ input[type="number"]::-webkit-outer-spin-button {
     }
     .product-details .price-total {
         grid-area: total;
-    }
-    .product-details .product-img {
-        grid-area: img;
-        object-fit: cover;
-        justify-self: center;
-        align-self: center;
-    }
-    .product-details .product-img img {
-        width: 90%;
-        height: 90%;
-        margin-left: 1.5rem;
-    }
-    form {
-        width: 45.5rem;
     }
 }
 
