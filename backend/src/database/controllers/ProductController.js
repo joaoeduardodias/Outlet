@@ -78,8 +78,8 @@ module.exports = {
                     // Connection.raw(`array_to_json(array_agg(option_for)) option_for`),
 
 
-                    Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
-                    Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`)
+                    Connection.raw(`ARRAY_AGG(url) as urls`),
+                    Connection.raw(`ARRAY_AGG(id_image) as ids`)
                 )
 
             // .join("attributes as attr", "Products.id", "attr.id_product") // precisa ser independente do propximo join

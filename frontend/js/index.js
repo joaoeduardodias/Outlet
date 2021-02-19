@@ -20,170 +20,6 @@ let optionThree = [];
 let optionFor = [];
 
 const baseurl = "https://ecomerceoutlet.herokuapp.com";
-
-//  LIST PRODUCTS
-async function index() {
-    try {
-        const data = await fetch(baseurl + "/", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-            },
-            mode: "cors",
-        });
-        const Products = await data.json();
-        Products.map((item) => {
-
-
-
-            // clonar a div produto
-            let ProductItem = c(".models .product").cloneNode(true);
-            // preenche os dados
-            if (item.available != true) {
-                ProductItem.style.display = "none";
-            } else {
-                weight = item.weight;
-                typeWeight = item.typeWeight;
-                lenght = item.lenght;
-                width = item.width;
-                height = item.height;
-
-
-
-                images = item.urls.split(",");
-                idImages = item.ids.split(",");
-
-
-                ProductItem.querySelector(".product img").src = images[0];
-                ProductItem.querySelector(".product img").id = idImages[0];
-                ProductItem.querySelector(".product-title").innerHTML = item.name;
-                ProductItem.querySelector(".product-price").innerHTML = `R$: ${item.price.toFixed(2)}`;
-
-                c(".products").append(ProductItem);
-
-                ProductItem.addEventListener("click", () => {
-                    key = item.id;
-                    title = item.name;
-                    price = item.price;
-                    amount = item.amount;
-                    images = item.urls.split(",");
-                    idImages = item.ids.split(",");
-                    indeximg = 0
-                        // typeAtributes = item.type_attribute.split(',')
-                        // optionOne = item.option_one.split(',')
-                        // optionTwo = item.option_two.split(',')
-                        // optionThree = item.option_three.split(',')
-                        // optionFor = item.option_for.split(',')
-                    c(".windowdetails").style.opacity = 0;
-                    c(".windowdetails").style.display = "flex";
-                    setTimeout(() => {
-                        c(".windowdetails").style.opacity = 1;
-                        c("#body-modal").style.overflow = "hidden";
-
-                        c(".product-img #img").src = images[indeximg]
-
-                        c(".product-title h2").innerHTML = item.name;
-                        c(".windowdetails .product-price").innerHTML = `R$: ${item.price.toFixed(2)}`;
-                        c(".product-amount").innerHTML = ` ${item.amount}  Disponíveis`;
-                        c(".product-description").innerHTML = item.description;
-                        c(".product-id").innerHTML = `Código do Produto:     ${item.id}`;
-                        const div = c('.product-attribute')
-
-                        if (typeAtributes.length < 1) {
-
-                            div.style.display = 'none'
-                        } else {
-                            // adicionar o select referente ao atributo
-                            div.style.display = 'initial'
-                                // verificar se ja existe algum select na tela
-                            if (!div.querySelector('select')) {
-                                typeAtributes.map((item, index) => {
-                                    var select = document.createElement('select')
-                                    select.id = index
-                                    var el = document.createElement('option')
-                                    el.textContent = `Selecione qual ${item} deseja`
-                                    el.value = item
-                                    select.appendChild(el)
-
-                                    div.insertBefore(select, div.firstChild)
-
-                                })
-
-                                optionOne.map((item, index) => {
-                                    const select = document.getElementById(index)
-                                    var el = document.createElement('option')
-
-                                    el.textContent = item
-                                    el.value = item
-                                    select.appendChild(el)
-                                })
-                                optionTwo.map((item, index) => {
-                                    const select = document.getElementById(index)
-                                    var el = document.createElement('option')
-
-                                    el.textContent = item
-                                    el.value = item
-                                    select.appendChild(el)
-                                })
-                                optionThree.map((item, index) => {
-                                    const select = document.getElementById(index)
-                                    var el = document.createElement('option')
-
-                                    el.textContent = item
-                                    el.value = item
-                                    select.appendChild(el)
-                                })
-                                optionFor.map((item, index) => {
-                                    const select = document.getElementById(index)
-                                    var el = document.createElement('option')
-
-                                    el.textContent = item
-                                    el.value = item
-                                    select.appendChild(el)
-                                })
-
-
-                            }
-                        }
-
-                    }, 200);
-                });
-            }
-        });
-
-        c(".product-img .arrowleft").addEventListener("click", () => {
-            if (indeximg > 0) {
-                indeximg--;
-                c(".product-img #img").src = images[indeximg];
-            }
-        });
-        c(".product-img .arrowright").addEventListener("click", () => {
-            if (indeximg < 2) {
-                // tem que ter 3 fotos
-                indeximg++;
-                c(".product-img #img").src = images[indeximg];
-            }
-        });
-
-        // close modal
-        const modal = c(".product-modal");
-        c(".windowdetails").addEventListener("click", function(e) {
-            if (!modal.contains(e.target)) {
-                c(".windowdetails").style.opacity = 0;
-                indeximg = 0;
-
-                setTimeout(() => {
-                    c(".windowdetails").style.display = "none";
-                    c("#body-modal").style.overflow = "initial";
-                }, 200);
-            }
-        });
-    } catch (error) {
-        console.log(error);
-    }
-}
-index();
 const c = (el) => document.querySelector(el);
 const cs = (el) => document.querySelectorAll(el);
 
@@ -232,6 +68,102 @@ const dataUser = JSON.parse(atob(tokenUser.split(".")[1])); // decodificando o t
 if (dataUser.administrador === 1) {
     c(".product-id").style.display = "flex";
 }
+
+
+//  LIST PRODUCTS
+async function index() {
+    try {
+        const data = await fetch(baseurl + "/", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
+            mode: "cors",
+        });
+        const Products = await data.json();
+        Products.map((item) => {
+
+            // clonar a div produto
+            let ProductItem = c(".models .product").cloneNode(true);
+            // preenche os dados
+            if (item.available != true) {
+                ProductItem.style.display = "none";
+            } else {
+                images = item.urls.split(",");
+                idImages = item.ids.split(",");
+                ProductItem.querySelector(".product img").src = images[0];
+                ProductItem.querySelector(".product img").id = idImages[0];
+                ProductItem.querySelector(".product-title").innerHTML = item.name;
+                ProductItem.querySelector(".product-price").innerHTML = `R$: ${item.price.toFixed(2)}`;
+
+                c(".products").append(ProductItem);
+                ProductItem.addEventListener("click", async() => {
+                    const Product = await fetch(`${baseurl}/Productshow/${item.id}`, {
+                        method: 'GET',
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json",
+                        },
+                        mode: 'cors'
+                    })
+                    const productJson = await Product.json()
+                    console.log(productJson)
+
+                    // c(".windowdetails").style.opacity = 0;
+                    // c(".windowdetails").style.display = "flex";
+                    // setTimeout(() => {
+                    //     c(".windowdetails").style.opacity = 1;
+                    //     c("#body-modal").style.overflow = "hidden";
+
+                    //     c(".product-img #img").src =
+
+                    //         c(".product-title h2").innerHTML =
+                    //         c(".windowdetails .product-price").innerHTML = `R$: ${.toFixed(2)}`;
+                    //     c(".product-amount").innerHTML = ` ${}  Disponíveis`;
+                    //     c(".product-description").innerHTML =
+                    //         c(".product-id").innerHTML = `Código do Produto:     ${}`;
+
+
+
+
+                    // }, 200);
+                });
+            }
+        }); // end map
+
+        c(".product-img .arrowleft").addEventListener("click", () => {
+            if (indeximg > 0) {
+                indeximg--;
+                c(".product-img #img").src = images[indeximg];
+            }
+        });
+        c(".product-img .arrowright").addEventListener("click", () => {
+            if (indeximg < 2) {
+                // tem que ter 3 fotos
+                indeximg++;
+                c(".product-img #img").src = images[indeximg];
+            }
+        });
+
+        // close modal
+        const modal = c(".product-modal");
+        c(".windowdetails").addEventListener("click", function(e) {
+            if (!modal.contains(e.target)) {
+                c(".windowdetails").style.opacity = 0;
+                indeximg = 0;
+
+                setTimeout(() => {
+                    c(".windowdetails").style.display = "none";
+                    c("#body-modal").style.overflow = "initial";
+                }, 200);
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+index();
 
 // adiciona product of cart
 c(".add-cart").addEventListener("click", () => {
