@@ -6,6 +6,12 @@ let qtd = 1;
 let idProduct;
 let price;
 let priceTotal;
+let qtdAvailable;
+let valueTotal;
+let totalWeight;
+let totalWidth;
+let totalHeight;
+let totalLength;
 let attribute_one;
 let attribute_two;
 let screenWidth = screen.width;
@@ -13,41 +19,25 @@ let cart = JSON.parse(localStorage.getItem("cart"));
 cart.map((item, index) => {
     let ProductItem = cc(".models .product").cloneNode(true);
 
-    ProductItem.querySelector(".product-info-img .product-img img").src =
-        item.images;
-    ProductItem.querySelector(".product-info-img .product-title h2").innerHTML =
-        item.title;
-    ProductItem.querySelector(".product-info-img .product-id").innerHTML =
-        item.id;
+    ProductItem.querySelector(".product-info-img .product-img img").src = item.images;
+    ProductItem.querySelector(".product-info-img .product-title h2").innerHTML = item.title;
+    ProductItem.querySelector(".product-info-img .product-id").innerHTML = item.id;
+    ProductItem.querySelector(".product-info-img .product-price").innerHTML = `R$: ${item.price.toFixed(2)}`;
 
-    ProductItem.querySelector(
-        ".product-info-img .product-price"
-    ).innerHTML = `R$: ${item.price.toFixed(2)}`;
-    ProductItem.querySelector(
-        ".product--item--qtarea .product--item--qt"
-    ).innerHTML = qtd;
-    ProductItem.querySelector(
-        ".product-options .product-item-qtavailable"
-    ).innerHTML = `${item.amount} Disponíveis`;
-    ProductItem.querySelector(
-        ".product--item--qtarea .product--item-qtmenos"
-    ).addEventListener("click", () => {
+    ProductItem.querySelector(".product--item--qtarea .product--item--qt").innerHTML = qtd;
+    ProductItem.querySelector(".product-options .product-item-qtavailable").innerHTML = `${item.amount} Disponíveis`;
+    ProductItem.querySelector(".product--item--qtarea .product--item-qtmenos").addEventListener("click", () => {
+
         if (qtd > 1) {
             qtd--;
-            ProductItem.querySelector(
-                ".product--item--qtarea .product--item--qt"
-            ).innerHTML = qtd;
+            ProductItem.querySelector(".product--item--qtarea .product--item--qt").innerHTML = qtd;
             price = item.price;
             priceTotal = price * qtd;
-            ProductItem.querySelector(
-                ".product-info-img .product-price"
-            ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
+            ProductItem.querySelector(".product-info-img .product-price").innerHTML = `R$: ${priceTotal.toFixed(2)}`;
         }
     });
 
-    ProductItem.querySelector(
-        ".product--item--qtarea .product--item-qtmais"
-    ).addEventListener("click", () => {
+    ProductItem.querySelector(".product--item--qtarea .product--item-qtmais").addEventListener("click", () => {
         if (qtd < item.amount) {
             qtd++;
             ProductItem.querySelector(
@@ -116,49 +106,20 @@ cart.map((item, index) => {
 
     if (screenWidth < 850) {
         ProductItem.addEventListener("click", () => {
+            qtd = 1;
             cc(".windowdetails").style.opacity = 0;
             cc(".windowdetails").style.display = "flex";
             setTimeout(() => {
                 cc(".windowdetails").style.opacity = 1;
                 cc("#body-modal").style.overflow = "hidden";
-
+                cc(".product-modal .product-item-qtavailable").innerHTML = item.amount
                 cc(".product-modal .product-img #img").src = item.images;
                 cc(".product-modal .product-title h2").innerHTML = item.title;
+                cc(".product-modal .product--item--qt").innerHTML = qtd;
 
                 cc(".product-modal .product-price").innerHTML = `R$: ${ item.price.toFixed(2) }`;
             }, 200);
-            cc(".product-modal .product--item-qtmenos").addEventListener(
-                "click",
-                () => {
-                    if (qtd > 1) {
-                        qtd--;
-                        cc(".product-modal .product--item--qt").innerHTML = qtd;
-                        price = item.price;
-                        priceTotal = price * qtd;
-                        cc(
-                            ".product-modal .product-price"
-                        ).innerHTML = `
-                                    R$: $ { priceTotal.toFixed(2) }
-                                    `;
-                    }
-                }
-            );
-            cc(".product-modal .product--item-qtmais").addEventListener(
-                "click",
-                () => {
-                    if (qtd < item.amount) {
-                        qtd++;
-                        cc(".product-modal .product--item--qt").innerHTML = qtd;
-                        price = item.price;
-                        priceTotal = price * qtd;
-                        cc(
-                            ".product-modal .product-price"
-                        ).innerHTML = `
-                                    R$: $ { priceTotal.toFixed(2) }
-                                    `;
-                    }
-                }
-            );
+
             // comprar
             cc(".product-modal .product-purchase").addEventListener("click", () => {
                 Index = index;
@@ -174,8 +135,6 @@ cart.map((item, index) => {
                     cc(".windowdetails").style.display = "none";
                     cc(".windowpurchase").style.opacity = 1;
                     cc(".purchase-modal .product-title h2").innerHTML = item.title;
-                    cc(".purchase-modal .product-attributes .value01").innerHTML = `Tamanho: ${item.attributes.value01}`
-                    cc(".purchase-modal .product-attributes .value02").innerHTML = `Cor: ${item.attributes.value02}`
 
                     price = item.price;
                     priceTotal = price * qtd;
@@ -187,8 +146,12 @@ cart.map((item, index) => {
                 const modal = cc(".purchase-modal");
                 cc(".windowpurchase").addEventListener("click", function(e) {
                     if (!modal.contains(e.target)) {
+
+
                         cc(".windowpurchase").style.opacity = 0;
                         qtd = 1;
+
+
                         cc(".product-modal .product--item--qt").innerHTML = qtd;
                         setTimeout(() => {
                             cc(".windowpurchase").style.display = "none";
@@ -197,22 +160,11 @@ cart.map((item, index) => {
                 });
             });
 
-            // close modal
-            const modal = cc(".product-modal");
-            cc(".windowdetails").addEventListener("click", function(e) {
-                if (!modal.contains(e.target)) {
-                    cc(".windowdetails").style.opacity = 0;
-                    setTimeout(() => {
-                        cc(".windowdetails").style.display = "none";
-                        cc("#body-modal").style.overflow = "initial";
-                        qtd = 1;
-                        cc(".product-modal .product--item--qt").innerHTML = qtd;
-                    }, 200);
-                }
-            });
+
             // excluir product do carrinho
             cc(".product-modal .product-trash").addEventListener("click", () => {
                 cc(".product").style.opacity = 1;
+
                 setTimeout(() => {
                     cc(".product").style.opacity = 0;
                     cc(".product").style.display = "none";
@@ -222,6 +174,49 @@ cart.map((item, index) => {
                 location.reload();
             });
         });
+    }
+});
+
+
+qtdAvailable = cc(".product-item-qtavailable").innerText
+console.log(qtdAvailable)
+
+// altera quantidade MOBILE
+cc(".product-modal .product--item-qtmenos").addEventListener("click", () => {
+    if (qtd > 1) {
+        qtd--;
+        cc(".product-modal .product--item--qt").innerHTML = qtd;
+        price = item.price;
+        priceTotal = price * qtd;
+        cc(".product-modal .product-price").innerHTML = `R$: ${priceTotal.toFixed(2)}`;
+        console.log(qtd)
+
+    }
+});
+cc(".product-modal .product--item-qtmais").addEventListener("click", () => {
+    if (qtd < qtdAvailable) {
+        qtd++;
+        cc(".product-modal .product--item--qt").innerHTML = qtd;
+        price = item.price;
+        priceTotal = price * qtd;
+        cc(".product-modal .product-price").innerHTML = `R$: ${priceTotal.toFixed(2)}`;
+        console.log(qtd)
+    }
+});
+// close modal
+const modal = cc(".product-modal");
+cc(".windowdetails").addEventListener("click", function(e) {
+    if (!modal.contains(e.target)) {
+        cc(".windowdetails").style.opacity = 0;
+        qtd = 1;
+
+        console.log(qtd)
+        setTimeout(() => {
+            cc(".windowdetails").style.display = "none";
+            cc("#body-modal").style.overflow = "initial";
+
+            cc(".product-modal .product--item--qt").innerHTML = qtd;
+        }, 200);
     }
 });
 

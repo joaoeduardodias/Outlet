@@ -9,6 +9,7 @@ let typeWeight;
 let lenght;
 let width;
 let height;
+let cm3;
 let indeximg = 0;
 let images = [];
 let idImages = [];
@@ -47,8 +48,10 @@ async function index() {
                 lenght = item.lenght;
                 width = item.width;
                 height = item.height;
-                images = item.urls.split(",");
 
+
+
+                images = item.urls.split(",");
                 idImages = item.ids.split(",");
 
 
@@ -260,6 +263,8 @@ c(".add-cart").addEventListener("click", () => {
             value02 = select02.options[select02.selectedIndex].value
         }
 
+        // CALCULA A CUBAGEM PARA O FRETE
+        cm3 = (lenght * width * height) / 6000
 
         cart.push({
             id: key,
@@ -268,10 +273,10 @@ c(".add-cart").addEventListener("click", () => {
             price,
             amount,
             weight,
-            typeWeight,
             lenght,
             width,
             height,
+            cm3,
             attributes: {
                 value01,
                 value02

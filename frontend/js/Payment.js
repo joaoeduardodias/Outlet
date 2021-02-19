@@ -1,7 +1,7 @@
 const tokenUser = localStorage.getItem("Authorization");
 const zip_code = localStorage.getItem("Zip_code");
 const dataUser = JSON.parse(atob(tokenUser.split(".")[1]));
-let valueTotal;
+
 
 var purchase = {};
 // document.getElementById("email").value = dataUser.email;
@@ -19,9 +19,10 @@ async function setPriceFreight() {
         mode: "cors",
     })
     const resProduct = await product.json()
+    let Weight = resProduct.weight * qtd
 
     let Freight = {
-        weight: resProduct.weight,
+        weight: Weight,
         zip_code,
         lenght: resProduct.lenght,
         width: resProduct.width,

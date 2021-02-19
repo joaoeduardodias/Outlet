@@ -71,29 +71,19 @@ module.exports = {
                     "lenght",
                     "width",
                     "height",
-                    // Connection.raw(`group_concat(Images.url) as urls`),
-                    // Connection.raw(`group_concat(Images.id) as ids`),
+                    // Connection.raw(`array_agg(attr.type) as type_attribute`),
+                    // Connection.raw(`array_to_json(array_agg(option_one)) option_one`),
+                    // Connection.raw(`array_to_json(array_agg(option_two)) option_two`),
+                    // Connection.raw(`array_to_json(array_agg(option_three)) option_three`),
+                    // Connection.raw(`array_to_json(array_agg(option_for)) option_for`),
+
+
                     Connection.raw(`array_to_string(ARRAY_AGG(url), ',') urls`),
-                    Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`),
-                    Connection.raw(
-                        `array_to_string(ARRAY_AGG(type), ',') type_attribute`
-                    ),
-                    Connection.raw(
-                        `array_to_string(ARRAY_AGG(option_one), ',') option_one`
-                    ),
-                    Connection.raw(
-                        `array_to_string(ARRAY_AGG(option_two), ',') option_two`
-                    ),
-                    Connection.raw(
-                        `array_to_string(ARRAY_AGG(option_three), ',') option_three`
-                    ),
-                    Connection.raw(
-                        `array_to_string(ARRAY_AGG(option_for), ',') option_for`
-                    )
+                    Connection.raw(`array_to_string(ARRAY_AGG(id_image), ',') ids`)
                 )
-                .leftJoin("Images", "Products.id", "=", "Images.id_product")
-                .groupBy("Products.id")
-                .leftJoin("attributes", "Products.id", "=", "attributes.id_product")
+
+            // .join("attributes as attr", "Products.id", "attr.id_product") // precisa ser independente do propximo join
+            .leftJoin("Images", "Products.id", "Images.id_product") // precisa retornar 3
                 .groupBy("Products.id")
                 .where("Products.id", id)
                 .first();
