@@ -220,17 +220,7 @@ module.exports = {
         height,
         available,
       } = req.body;
-      console.log(
-        name,
-        price,
-        amount,
-        description,
-        weight,
-        lenght,
-        width,
-        height,
-        available
-      );
+
       if (
         !name ||
         !price ||
