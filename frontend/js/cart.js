@@ -80,7 +80,7 @@ function removeCart(index) {
   location.reload();
 }
 
-// altera quantidade MOBILE (falta mexer ainda)
+// altera quantidade MOBILE
 
 cc(".product-modal .product--item-qtmenos").addEventListener("click", () => {
   if (qtd > 1) {
