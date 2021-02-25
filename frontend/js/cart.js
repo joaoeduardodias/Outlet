@@ -21,9 +21,16 @@ cart.map((item, index) => {
   ProductItem.querySelector(
     ".product--item--qtarea .product--item--qt"
   ).innerHTML = qtd;
-  ProductItem.querySelector(
-    ".product-options .product-item-qtavailable"
-  ).innerHTML = `${item.amount} Disponíveis`;
+  if (item.amount == 1) {
+    ProductItem.querySelector(
+      ".product-options .product-item-qtavailable"
+    ).innerHTML = `${item.amount} Disponível`;
+  } else {
+    ProductItem.querySelector(
+      ".product-options .product-item-qtavailable"
+    ).innerHTML = `${item.amount} Disponíveis`;
+  }
+
   ProductItem.querySelector(
     ".product-options > .product--item--qtarea > .product--item-qtmenos"
   ).addEventListener("click", () => {
@@ -79,48 +86,6 @@ function removeCart(index) {
   localStorage.setItem("cart", JSON.stringify(cart));
   location.reload();
 }
-
-// altera quantidade MOBILE
-
-cc(".product-modal .product--item-qtmenos").addEventListener("click", () => {
-  if (qtd > 1) {
-    qtd--;
-    cc(".product-modal .product--item--qt").innerHTML = qtd;
-    priceTotal = price * qtd;
-    cc(".product-modal .product-price").innerHTML = `R$: ${priceTotal.toFixed(
-      2
-    )}`;
-    cc(".product-info-img .align-price-qtd .qtd").innerHTML = `QTD: ${qtd}`;
-  }
-});
-cc(".product-modal .product--item-qtmais").addEventListener("click", () => {
-  const amount = cc(".product-modal .product-item-qtavailable").innerText;
-  if (qtd < amount) {
-    qtd++;
-    cc(".product-modal .product--item--qt").innerHTML = qtd;
-    priceTotal = price * qtd;
-    cc(".product-modal .product-price").innerHTML = `R$: ${priceTotal.toFixed(
-      2
-    )}`;
-    cc(".align-price-qtd .qtd").innerHTML = `QTD: ${qtd}`;
-  }
-});
-
-// close modal product cart
-const modal = cc(".product-modal");
-cc(".windowdetails").addEventListener("click", function (e) {
-  if (!modal.contains(e.target)) {
-    cc(".windowdetails").style.opacity = 0;
-    qtd = 1;
-
-    setTimeout(() => {
-      cc(".windowdetails").style.display = "none";
-      cc("#body-modal").style.overflow = "initial";
-
-      cc(".product-modal .product--item--qt").innerHTML = qtd;
-    }, 200);
-  }
-});
 
 // comprar
 cc("#purchase-pay").addEventListener("click", () => {

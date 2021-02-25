@@ -62,7 +62,7 @@ header {
 
 .product-info {
   margin-left: 0.6rem;
-  width: 16rem;
+  width: 13.3rem;
   height: 6.5rem;
 }
 
@@ -75,47 +75,6 @@ header {
 .product-price {
   font-size: 1.8rem;
   font-family: "Roboto";
-}
-
-.align-price-qtd {
-  display: flex;
-  align-items: center;
-  width: 18rem;
-  padding: 0.5rem;
-  justify-content: space-between;
-}
-
-.align-price-qtd .product--item--qtarea {
-  display: inline-flex;
-  justify-content: center;
-  background-color: var(--border-footer);
-  border-radius: 0.7rem;
-  height: 2.8rem;
-  width: 6rem;
-  margin-left: 1rem;
-}
-
-.align-price-qtd .product--item--qtarea button:first-child {
-  font-size: 2.3rem;
-  margin-bottom: 2rem;
-}
-
-.align-price-qtd .product--item--qtarea button {
-  border: 0;
-  background-color: transparent;
-  font-size: 1.9rem;
-  outline: 0;
-  cursor: pointer;
-  padding: 0rem 0.6rem;
-  color: var(--color-text-button-qt);
-}
-
-.align-price-qtd .product--item--qt {
-  line-height: 3rem;
-  font-size: 1.4rem;
-  font-weight: bold;
-  padding: 0rem 0.5rem;
-  color: #000;
 }
 
 .product-trash {
@@ -139,8 +98,6 @@ header {
   width: 3rem;
   height: 4.5rem;
 }
-
-.windowdetails,
 .windowpurchase {
   background-color: #d6d2d280;
   position: fixed;
@@ -157,73 +114,54 @@ header {
   z-index: 11;
 }
 
-.product-modal {
-  width: 25rem;
-  background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 0px 0px 15px #999;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(auto-fit, auto);
-  grid-template-areas: "img img" "title title" "price qtd" "qtdavailable qtdavailable" "purchase purchase" "trash trash";
-  padding: 1rem;
-}
-
-.product-modal .product-img {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-  grid-area: img;
-}
-
-.product-modal .product-img img {
-  width: 20rem;
-  height: 14rem;
-  object-fit: cover;
-}
-
-.product-modal .product-title {
-  grid-area: title;
-  margin-left: 0.5rem;
-}
-
-.product-modal .product-price {
-  grid-area: price;
-  margin-top: 0.5rem;
-  margin-left: 0.7rem;
-}
-
-.product-modal .product-item-qtavailable {
-  display: none;
-}
-
-.product-modal .product-trash {
-  width: 20rem;
-  height: 3.3rem;
-  font-size: 1.5rem;
-  color: var(--color-text-button);
-  font-weight: 600;
-  letter-spacing: 0.1rem;
-  grid-area: trash;
-  display: flex;
-  padding-bottom: 0.1rem;
-  text-align: center;
-  flex-direction: row;
-  margin: 0 auto;
-  transition: background 0.5s;
-}
-
-.product-modal .product-trash {
-  margin-top: 1rem;
-}
-
 .product-trash img {
   height: 1.8rem;
 }
-
-.product-options .product--item--qtarea,
+.product-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "qtd trash"
+    "avlb avlb";
+}
+.product-options .product--item--qtarea {
+  grid-area: qtd;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--border-footer);
+  border-radius: 1rem;
+  height: 4.6rem;
+  width: 5.5rem;
+}
+.product-options .product--item--qtarea button {
+  border: 0;
+  background-color: transparent;
+  font-size: 2rem;
+  outline: 0;
+  cursor: pointer;
+  padding: 0rem 0.5rem;
+  color: var(--color-text-button-qt);
+}
+.product-options .product--item--qtarea button:first-child {
+  margin-bottom: 0.4rem;
+}
+.product-options .product--item--qt {
+  line-height: 3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 0rem 0.5rem;
+  color: #000;
+}
 .product-options .product-item-qtavailable {
-  display: none;
+  grid-area: avlb;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.product-options .product-trash {
+  grid-area: trash;
 }
 
 /* div comprar */
@@ -307,36 +245,52 @@ header {
   .section-cart {
     height: calc(100% - 5rem);
   }
+  .product-info {
+    width: 14.5rem;
+  }
+  .product-options .product--item--qtarea {
+    grid-area: qtd;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--border-footer);
+    border-radius: 1rem;
+    height: 5.6rem;
+    width: 6.4rem;
+  }
+  .product-options .product--item--qtarea button {
+    border: 0;
+    background-color: transparent;
+    font-size: 2rem;
+    outline: 0;
+    cursor: pointer;
+    padding: 0rem 0.5rem;
+    color: var(--color-text-button-qt);
+  }
+  .product-options .product--item--qtarea button:first-child {
+    margin-bottom: 0.4rem;
+  }
+  .product-options .product--item--qt {
+    line-height: 3rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 0rem 0.5rem;
+    color: #000;
+  }
+  .product-options .product-item-qtavailable {
+    grid-area: avlb;
+    margin-top: 0.2rem;
+  }
   .product-trash {
     display: flex;
   }
-  .product-modal .product-trash {
-    display: none;
-  }
-  .product-modal .product-purchase {
-    margin-top: 2rem;
-    font-size: 1.6rem;
-  }
+
   .purchase-modal {
     width: 30rem;
   }
   #clear-cart {
     display: none;
   }
-  .align-price-qtd {
-    width: 21rem;
-  }
-  .align-price-qtd .product--item--qtarea {
-    height: 3.4rem;
-  }
-  .align-price-qtd .product--item--qtarea button:first-child {
-    margin-bottom: 0.4rem;
-  }
-  .align-price-qtd .product--item--qt {
-    line-height: 3.4rem;
-    font-size: 1.5rem;
-  }
-  /* comprar tudo */
 }
 
 @media (min-height: 550px) {
@@ -366,82 +320,7 @@ header {
   .section-cart {
     padding-top: 12.5rem;
   }
-  .product-modal {
-    width: 40rem;
-    min-height: 35rem;
-    padding: 1rem;
-  }
-  .product-modal .product-img {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-    grid-area: img;
-  }
-  .product-modal .product-img img {
-    width: 35rem;
-    height: 20rem;
-    object-fit: cover;
-  }
-  .product-modal .product-title {
-    margin-left: 0.5rem;
-    font-size: 1.8rem;
-  }
-  .product-modal .product-price {
-    grid-area: price;
-    margin-top: 0.4rem;
-    margin-left: 1.5rem;
-    font-size: 2rem;
-  }
-  .product-modal .product--item--qtarea {
-    height: 3.2rem;
-    margin-left: 8.5rem;
-  }
-  .product-modal .product--item--qtarea button:first-child {
-    margin-bottom: 0.3rem;
-    font-size: 2.5rem;
-  }
-  .product-modal .product--item--qtarea button {
-    font-size: 1.9rem;
-    padding: 0rem 0.8rem;
-  }
-  .product-modal .product--item--qt {
-    margin-top: 0.2rem;
-  }
-  .product-modal .product-item-qtavailable {
-    grid-area: qtdavailable;
-    display: flex;
-    margin-left: 27.6rem;
-    font-size: 1.3rem;
-    margin-top: 0.1rem;
-    color: var(--color-text-price);
-  }
-  .product-modal .product-trash,
-  .product-modal .product-purchase {
-    width: 35rem;
-    height: 4rem;
-    font-size: 2rem;
-    color: var(--color-text-button);
-    font-weight: 600;
-    letter-spacing: 0.1rem;
-    grid-area: trash;
-    display: flex;
-    padding-bottom: 0.1rem;
-    text-align: center;
-    flex-direction: row;
-    margin: 0 auto;
-    transition: background 0.5s;
-  }
-  .product-modal .product-trash img {
-    height: 2rem;
-  }
-  .product-modal .product-purchase {
-    grid-area: purchase;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.8rem;
-    background-color: var(--color-button-secondary);
-    margin: 1rem auto;
-  }
+
   .purchase-modal {
     width: 50rem;
     height: auto;
@@ -479,13 +358,7 @@ header {
   .product-details .price-total {
     grid-area: total;
   }
-  .align-price-qtd .product--item--qtarea {
-    display: none;
-  }
-  .product-options .product--item--qtarea,
-  .product-options .product-item-qtavailable {
-    display: flex;
-  }
+
   .product-options {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -496,11 +369,7 @@ header {
   }
   .product-options .product--item--qtarea {
     grid-area: qtd;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--border-footer);
-    border-radius: 1rem;
+
     height: 5.6rem;
     width: 8.5rem;
     margin-right: 2rem;
