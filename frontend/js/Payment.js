@@ -1,12 +1,6 @@
-// const tokenUser = localStorage.getItem("Authorization");
-// const zip_code = localStorage.getItem("Zip_code");
-// const dataUser = JSON.parse(atob(tokenUser.split(".")[1]));
+const dataUser = JSON.parse(atob(tokenUser.split(".")[1]));
 
-
-// var purchase = {};
 // // document.getElementById("email").value = dataUser.email;
-
-
 
 // async function setPriceFreight() {
 
@@ -29,7 +23,6 @@
 //         height: resProduct.height,
 //         methodFreight: "PAC",
 //     };
-
 
 //     const DataFreight = await fetch(`${baseurl}/freight`, {
 //         method: "POST",
@@ -62,7 +55,6 @@
 //         },
 //     };
 
-
 //     cc(".purchase-modal .price-total").innerHTML = `Total R$: ${valueTotal.toFixed(2)}`;
 
 // }
@@ -83,6 +75,5 @@
 //     // console.log(resJson)
 
 // })
-
 
 // // ASSIM QUE O GATEWAY DE PAGAMENTO AUTORIZAR A COMPRA, CHAMAR A API QUE GISTRA A VENDA DO PRODUTO
