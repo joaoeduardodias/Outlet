@@ -20,10 +20,13 @@ cart.map((item, index) => {
     item.images;
   ProductItem.querySelector(".product-info-img .product-title h2").innerHTML =
     item.title;
-
+  const priceTotalQuantity = item.price * item.quantity;
+  const formatReal = priceTotalQuantity.toLocaleString("pt-br", {
+    minimumFractionDigits: 2,
+  });
   ProductItem.querySelector(
     ".product-info-img .product-price"
-  ).innerHTML = `R$: ${item.price * item.quantity}`;
+  ).innerHTML = `R$: ${formatReal}`;
   ProductItem.querySelector(
     ".product--item--qtarea .product--item--qt"
   ).innerHTML = item.quantity;
@@ -43,6 +46,7 @@ cart.map((item, index) => {
     quantity = ProductItem.querySelector(
       ".product-options > .product--item--qtarea > .product--item--qt"
     ).innerHTML;
+
     if (quantity > 1) {
       quantity--;
       ProductItem.querySelector(
@@ -50,18 +54,85 @@ cart.map((item, index) => {
       ).innerHTML = quantity;
       price = item.price;
       priceTotal = price * quantity;
+      const formatReal = priceTotal.toLocaleString("pt-br", {
+        minimumFractionDigits: 2,
+      });
       ProductItem.querySelector(
         ".product-info-img .product-price"
-      ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
+      ).innerHTML = `R$: ${formatReal}`;
 
       // update quantity of purchase
 
       const ProductCart = cart.find((el) => {
-        if (el.id == item.id) {
+        if (el.id === item.id) {
           IndexUpdate = cart.indexOf(item);
-          return el;
-        } else return;
+
+          return item;
+        } else {
+          return null;
+        }
       });
+
+      if (ProductCart) {
+        ProductCart.quantity = quantity;
+
+        cart.splice(IndexUpdate, 1);
+
+        cart.push({
+          id: ProductCart.id,
+          images: ProductCart.images,
+          title: ProductCart.title,
+          price: ProductCart.price,
+          amount: ProductCart.amount,
+          weight: ProductCart.weight,
+          lenght: ProductCart.lenght,
+          width: ProductCart.width,
+          height: ProductCart.height,
+          cm3: ProductCart.cm3,
+          quantity: ProductCart.quantity,
+          attributes: ProductCart.attributes,
+        });
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        subtotal -= price;
+      }
+    }
+  });
+
+  ProductItem.querySelector(
+    ".product-options > .product--item--qtarea > .product--item-qtmais"
+  ).addEventListener("click", () => {
+    quantity = ProductItem.querySelector(
+      ".product-options > .product--item--qtarea > .product--item--qt"
+    ).innerHTML;
+
+    if (quantity < item.amount) {
+      quantity++;
+      ProductItem.querySelector(
+        ".product-options > .product--item--qtarea > .product--item--qt"
+      ).innerHTML = quantity;
+      price = item.price;
+      priceTotal = price * quantity;
+      const formatReal = priceTotal.toLocaleString("pt-br", {
+        minimumFractionDigits: 2,
+      });
+      ProductItem.querySelector(
+        ".product-info-img .product-price"
+      ).innerHTML = `R$: ${formatReal}`;
+    }
+    // update quantity of purchase
+
+    const ProductCart = cart.find((el) => {
+      if (el.id === item.id) {
+        IndexUpdate = cart.indexOf(item);
+
+        return item;
+      } else {
+        return null;
+      }
+    });
+
+    if (ProductCart) {
       ProductCart.quantity = quantity;
 
       cart.splice(IndexUpdate, 1);
@@ -82,56 +153,8 @@ cart.map((item, index) => {
       });
       localStorage.setItem("cart", JSON.stringify(cart));
 
-      subtotal -= price;
+      subtotal += price;
     }
-  });
-
-  ProductItem.querySelector(
-    ".product-options > .product--item--qtarea > .product--item-qtmais"
-  ).addEventListener("click", () => {
-    quantity = ProductItem.querySelector(
-      ".product-options > .product--item--qtarea > .product--item--qt"
-    ).innerHTML;
-    if (quantity < item.amount) {
-      quantity++;
-      ProductItem.querySelector(
-        ".product-options > .product--item--qtarea > .product--item--qt"
-      ).innerHTML = quantity;
-      price = item.price;
-      priceTotal = price * quantity;
-      ProductItem.querySelector(
-        ".product-info-img .product-price"
-      ).innerHTML = `R$: ${priceTotal.toFixed(2)}`;
-    }
-    // update quantity of purchase
-
-    const ProductCart = cart.find((el) => {
-      if (el.id == item.id) {
-        IndexUpdate = cart.indexOf(item);
-        return el;
-      } else return;
-    });
-    ProductCart.quantity = quantity;
-
-    cart.splice(IndexUpdate, 1);
-
-    cart.push({
-      id: ProductCart.id,
-      images: ProductCart.images,
-      title: ProductCart.title,
-      price: ProductCart.price,
-      amount: ProductCart.amount,
-      weight: ProductCart.weight,
-      lenght: ProductCart.lenght,
-      width: ProductCart.width,
-      height: ProductCart.height,
-      cm3: ProductCart.cm3,
-      quantity: ProductCart.quantity,
-      attributes: ProductCart.attributes,
-    });
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    subtotal += price;
   });
 
   // excluir product do carrinho
@@ -157,9 +180,10 @@ cc("#purchase-pay").addEventListener("click", () => {
   cc(".windowpurchase").style.opacity = 0;
   cc(".windowpurchase").style.display = "flex";
   // preenche os dados
-  document.getElementById(
-    "subtotal"
-  ).innerText = `Subtotal: R$: ${subtotal.toFixed(2)}`;
+  const formatReal = subtotal.toLocaleString("pt-br", {
+    minimumFractionDigits: 2,
+  });
+  document.getElementById("subtotal").innerText = `Subtotal: R$: ${formatReal}`;
   // PEGAR TODOS OS PRODUTOS E A QUANTIDADE DE CADA PRODUTO
 
   const productsPurchase = JSON.parse(localStorage.getItem("cart"));
@@ -178,23 +202,21 @@ cc("#purchase-pay").addEventListener("click", () => {
     weightFreight += weightProduct;
   });
 
-  // verifica se existe mais de um produto no carrinho, se existir faca a raiz cubica do peso e obtenha as dimensoes
+  // verifica se existe mais de um produto no carrinho
   if (productsPurchase.length > 1) {
-    // const dimensoes = Math.cbrt(weightFreight);
-    console.log("peso  " + weightFreight);
-
     // http://sooho.com.br/2017/03/27/calcular-as-dimensoes-de-caixas-dos-correios-sedexpac/
     let width = 0;
     let height = 0;
     let length = 0;
     let newLength = 0;
     let newWidth = 0;
+    let newHeight = 0;
     productsPurchase.map((item) => {
       if (width < item.width) width = item.width;
-      if (height < item.height) height = item.height;
+      if (height < totalHeight) height = totalHeight;
       if (length < item.lenght) length = item.lenght;
     });
-    console.log(width, height, length);
+
     // a maior dimensão se torna comprimento
     if (width > height && width > length) {
       newLength = width;
@@ -203,7 +225,7 @@ cc("#purchase-pay").addEventListener("click", () => {
     } else if (length > width && length > height) {
       newLength = length;
     }
-
+    // a menor se torna largura
     if (width < height && width < length) {
       newWidth = width;
     } else if (height < width && height < length) {
@@ -211,52 +233,43 @@ cc("#purchase-pay").addEventListener("click", () => {
     } else if (length < height && length < width) {
       newWidth = length;
     }
-    if (width > height || width < length) {
+    // a dimensão intermediaria se torna altura
+    if (
+      (width > height && width < length) ||
+      (width < height && width > length)
+    ) {
+      newHeight = width;
+    } else if (
+      (height < width && height > length) ||
+      (height > width && height < length)
+    ) {
+      newHeight = height;
+    } else if (
+      (length < height && length > width) ||
+      (length > height && length < width)
+    ) {
+      newHeight = length;
     }
-    console.log("A maior dimensão é  " + newLength);
-    console.log("A menor dimensão é  " + newWidth);
-    console.log("A intermediaria é  " + newWidth);
 
-    // console.log(dimensoes.toFixed(2));
-    // const data = CalcFreight(
-    //   weightFreight,
+    newHeight = newHeight < 1 ? 1 : newHeight;
+    newWidth = newWidth < 10 ? 10 : newWidth;
+    newLength = newLength < 15 ? 15 : newLength;
 
-    //   zip_code
-    // );
-    // data.then((v) => {
-    //   document.getElementById("PriceFreight").innerHTML = `R$: ${v.Valor}`;
-    //   document.getElementById(
-    //     "DateFreight"
-    //   ).innerHTML = `R$: ${v.PrazoEntrega} dias`;
-    //   const value = parseFloat(v.Valor);
-    //   const total = value + subtotal;
-    //   const formatReal = total.toLocaleString("pt-br", {
-    //     minimumFractionDigits: 2,
-    //   });
-    //   cc(".total").innerHTML = `<span>Total: </span>R$ ${formatReal}`;
-    // });
-
-    console.log("tem mais de um");
+    CalcFreight(
+      weightFreight.toFixed(2),
+      newWidth,
+      newHeight,
+      newLength,
+      zip_code
+    );
   } else {
-    const data = CalcFreight(
+    CalcFreight(
       weightFreight,
       productsPurchase[0].width,
       totalHeight,
       productsPurchase[0].lenght,
       zip_code
     );
-    data.then((v) => {
-      document.getElementById("PriceFreight").innerHTML = `R$: ${v.Valor}`;
-      document.getElementById(
-        "DateFreight"
-      ).innerHTML = `R$: ${v.PrazoEntrega} dias`;
-      const value = parseFloat(v.Valor);
-      const total = value + subtotal;
-      const formatReal = total.toLocaleString("pt-br", {
-        minimumFractionDigits: 2,
-      });
-      cc(".total").innerHTML = `<span>Total: </span>R$ ${formatReal}`;
-    });
   }
 
   setTimeout(() => {
@@ -285,9 +298,26 @@ async function CalcFreight(weight, width, height, lenght, zip_code) {
     mode: "cors",
     body: JSON.stringify(Freight),
   });
-
   const DataFreightJson = await DataFreight.json();
-  return DataFreightJson;
+  if (DataFreightJson.Valor == "0,00") {
+    console.log(DataFreightJson.MsgErro);
+    alert(
+      "erro encontrado, por favor entre em contato com a loja pelo telefone (67) 98104-4548, para outras opções de frete"
+    );
+  } else {
+    document.getElementById(
+      "price_freight"
+    ).innerHTML = `Frete de todos os produtos R$: ${DataFreightJson.Valor}`;
+    document.getElementById(
+      "date_freight"
+    ).innerHTML = `Prazo de entrega de ${DataFreightJson.PrazoEntrega} dias`;
+    const value = parseFloat(DataFreightJson.Valor);
+    const total = value + subtotal;
+    const formatReal = total.toLocaleString("pt-br", {
+      minimumFractionDigits: 2,
+    });
+    cc(".total").innerHTML = `<span>Total: </span>R$ ${formatReal}`;
+  }
 }
 
 //close modal comprar
