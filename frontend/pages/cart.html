@@ -65,9 +65,34 @@
               <span id="DateFreight">-- dias</span>
             </div>
             <div class="total"><span>Total: </span>R$ --</div>
-
-            <!-- formulario de pagamento aqui -->
           </div>
+          <!-- formulario de pagamento aqui -->
+          <form action="" id="payment_form">
+            <div class="form-title">Dados de Pagamento</div>
+            <input
+              type="number"
+              id="card_number"
+              placeholder="Número do cartão"
+            />
+            <input
+              type="text"
+              id="card_holder_name"
+              placeholder="Nome (como escrito no cartão)"
+            />
+            <div class="card-date">
+              <input type="text" id="validate" placeholder="Validade" />
+              <input type="number" id="card_cvv" placeholder="CVV" />
+            </div>
+            <select name="installments" id="installments">
+              <option value="1">1 X 500,00</option>
+              <option value="2">2 X 250,00</option>
+              <option value="3">3 X 167,00</option>
+            </select>
+
+            <div id="field_errors"></div>
+            <br />
+            <button id="payer">Pagar</button>
+          </form>
         </div>
       </div>
     </section>
@@ -78,6 +103,9 @@
     <div class="div-clear-cart">
       <button id="clear-cart">Limpar Carrinho</button>
     </div>
+    <!-- <script src="https://assets.pagar.me/pagarme-js/4.5/pagarme.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
 
     <script src="../js/cart.js"></script>
     <script src="../js/Payment.js"></script>

@@ -32,7 +32,7 @@ const AuthController = require("./database/controllers/AuthController");
 const ProductController = require("./database/controllers/ProductController");
 const User_Product = require("./database/controllers/User_Product");
 const AddressController = require("./database/controllers/AddressController");
-const PaymenController = require("./database/controllers/PaymentController");
+const PaymentController = require("./database/controllers/PaymentController");
 const FreightController = require("./database/controllers/FreightController");
 const AttributeController = require("./database/controllers/AttributeController");
 const UploadController = require("./database/controllers/UploadController");
@@ -116,7 +116,7 @@ routes.get("/address/:id", AddressController.show);
 routes.delete("/address/:id", AddressController.delete);
 
 // payment
-routes.post("/buy", PaymenController.create);
+routes.post("/purchase", PaymentController.create);
 // freight
 routes.post("/freight", FreightController.create);
 

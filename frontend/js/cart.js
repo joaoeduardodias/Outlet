@@ -5,6 +5,7 @@ const tokenUser = localStorage.getItem("Authorization");
 const zip_code = localStorage.getItem("Zip_code");
 let Index;
 let quantity = 1;
+let prazoEntrega = 0;
 let priceItem = 0;
 let price = 0;
 let IndexUpdate;
@@ -307,10 +308,11 @@ async function CalcFreight(weight, width, height, lenght, zip_code) {
   } else {
     document.getElementById(
       "price_freight"
-    ).innerHTML = `Frete de todos os produtos R$: ${DataFreightJson.Valor}`;
+    ).innerHTML = `Frete dos produtos: R$: ${DataFreightJson.Valor}`;
     document.getElementById(
       "date_freight"
     ).innerHTML = `Prazo de entrega de ${DataFreightJson.PrazoEntrega} dias`;
+    prazoEntrega = DataFreightJson.PrazoEntrega;
     const value = parseFloat(DataFreightJson.Valor);
     const total = value + subtotal;
     const formatReal = total.toLocaleString("pt-br", {
