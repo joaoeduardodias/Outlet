@@ -17,7 +17,6 @@ module.exports = {
     client: "pg",
     connection: process.env.DB_URL_SSL,
     ssl: {
-      sslmode: "require",
       rejectUnauthorized: false,
     },
 
