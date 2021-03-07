@@ -15,12 +15,15 @@ module.exports = {
   production: {
     client: "pg",
     connection: process.env.DATABASE_URL,
+    ssl: {
+      sslmode: "require",
+      rejectUnauthorized: false,
+    },
 
     migrations: {
       directory: `${__dirname}/src/database/migrations`,
     },
 
-    ssl: { rejectUnauthorized: false },
     useNullAsDefault: true,
 
     pool: {
