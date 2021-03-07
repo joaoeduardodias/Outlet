@@ -116,7 +116,7 @@ routes.get("/address/:id", AddressController.show);
 routes.delete("/address/:id", AddressController.delete);
 
 // payment
-routes.post("/purchase", PaymentController.create);
+// routes.post("/purchase", PaymentController.create);
 // freight
 routes.post("/freight", FreightController.create);
 
