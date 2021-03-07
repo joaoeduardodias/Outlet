@@ -2,7 +2,7 @@ const axios = require("axios");
 const api = axios.create({
   baseURL: "https://api.pagar.me/1",
 });
-const api_key = process.env.API_KEY;
+const api_key = process.env.API_KEY_PAGARME;
 
 module.exports = {
   createSplitTransaction: async (data) => {
