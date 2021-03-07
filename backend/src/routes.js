@@ -120,4 +120,4 @@ routes.post("/purchase", PaymentController.create);
 // freight
 routes.post("/freight", FreightController.create);
 
-module.exports = routees;
+module.exports = routes;
