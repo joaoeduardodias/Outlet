@@ -20,9 +20,9 @@ module.exports = {
       directory: `${__dirname}/src/database/migrations`,
     },
 
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    // ssl: {
+    //   rejectUnauthorized: false,
+    // },
     useNullAsDefault: true,
 
     pool: {
