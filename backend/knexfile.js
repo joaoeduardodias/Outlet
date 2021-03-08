@@ -1,6 +1,3 @@
-// Update with your config settings.
-console.log(process.env.DB_URL_SSL);
-
 module.exports = {
   development: {
     client: "sqlite3",
