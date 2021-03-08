@@ -103,13 +103,15 @@ module.exports = {
       const { id } = req.params;
       const data = await Connection("Address")
         .join("City", "Address.id_city", "=", "City.id")
+        .join("State", "State.id", "=", "City.id_State")
         .select(
           "Address.id",
           "Address.street",
           "Address.neighborhood",
           "Address.number",
           "Address.zip_code",
-          "City.nameCity"
+          "City.nameCity",
+          "State.uf"
         )
         .where("id_users", id);
       return res.json(data);
@@ -117,6 +119,7 @@ module.exports = {
       next(error);
     }
   },
+
   async delete(req, res, next) {
     try {
       const { id } = req.params;
