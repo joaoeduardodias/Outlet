@@ -1,69 +1,107 @@
-// ASSIM QUE O GATEWAY DE PAGAMENTO AUTORIZAR A COMPRA, CHAMAR A API QUE REGISTRA A VENDA DO PRODUTO
-// enviar de alguma outra forma
-// "api_key": "ak_test_G32g3eJiRTZO7IhtJ61wySsGNFnU2e"
-// coisas para enviar para a api
-function purchase() {
+const dataUser = JSON.parse(atob(tokenUser.split(".")[1]));
+
+document.getElementById("payer").addEventListener("click", (e) => {
+  e.preventDefault();
+  purchase();
+});
+
+async function purchase() {
+  let dataAddress = await fetch(`${baseurl}/address/${dataUser.id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    mode: "cors",
+  });
+  dataAddress = await dataAddress.json();
+  console.log(dataAddress[0]);
+
+  // let card = {};
+  // card.card_holder_name = "Morpheus Fishburne";
+  // card.card_expiration_date = "0922";
+  // cpf = "00000000000"
+  // card.card_number = "4111111111111111";
+  // card.card_cvv = "123";
+
+  let validity = document.getElementById("validate").value;
+  validity = validity.replace(/[^0-9]/g, "");
+  let cpf = document.getElementById("cpf").value;
+  cpf = cpf.replace(/[^0-9]/g, "");
+  let phone = `+55${dataUser.whatsapp.toString()}`;
+  PricetotalPagarme = parseInt(PricetotalPagarme * 100);
+  console.log(parseInt(PricetotalPagarme));
+
   const data = {
-    amount: total,
-    payment_method: "boleto",
+    api_key: "ak_test_G32g3eJiRTZO7IhtJ61wySsGNFnU2e",
+    amount: PricetotalPagarme,
+    card_number: document.getElementById("card_number").value,
+    card_cvv: document.getElementById("card_cvv").value,
+    card_expiration_date: "0922",
+    card_holder_name: document.getElementById("card_holder_name").value,
+
     customer: {
+      external_id: dataUser.id,
+      name: dataUser.name,
       type: "individual",
       country: "br",
-      name: "Joao Dias",
-      email: "contato@outletmultimarcas.com",
-      phone_numbers: ["+5511999999999", "+5511888888888"],
+      email: dataUser.email,
       documents: [
         {
           type: "cpf",
-          number: "00000000000",
+          number: cpf,
         },
       ],
+      phone_numbers: [phone],
+    },
+    billing: {
+      name: "Outlet Multimarcas",
+      address: {
+        country: "br",
+        state: "ms",
+        city: "Aparecida do Taboado",
+        neighborhood: "Vilas Boas",
+        street: "Av. Presidente Vargas",
+        street_number: "5374",
+        zipcode: "79570000",
+      },
     },
     shipping: {
-      name: "Outlet Multimarcas",
-      fee: 1000,
+      name: dataUser.name,
+      fee: parseInt(value * 100),
+
       delivery_date: dayjs().add(prazoEntrega, "days").format("YYYY-MM-DD"),
       expedited: true,
       address: {
         country: "br",
-        state: "MS",
-        city: "Aparecida do Taboado",
-        neighborhood: "Vilas Boas",
-        street: "Av. Presidente Vargas",
-        // adicionar o endereço da empresa e terminar a configuração
-        street_number: "999",
-        zipcode: "03424030",
+        state: dataAddress[0].uf.toLowerCase(),
+        city: dataAddress[0].nameCity,
+        neighborhood: dataAddress[0].neighborhood,
+        street: dataAddress[0].street,
+        street_number: dataAddress[0].number.toString(),
+        zipcode: dataAddress[0].zip_code.toString(),
       },
     },
-    items: [
-      {
-        id: "a123",
-        title: "Trono de Ferro",
-        unit_price: 120000,
-        quantity: 1,
-        tangible: true,
-      },
-      {
-        id: "b123",
-        title: "Capa Negra de Inverno",
-        unit_price: 30000,
-        quantity: 1,
-        tangible: true,
-      },
-    ],
+    items: cart.map((product) => ({
+      id: product.id,
+      title: product.title,
+      unit_price: product.price * 100,
+      quantity: product.quantity,
+      tangible: true,
+    })),
   };
-}
 
-// esse billing fica fixo
-// "billing": {
-//   "name": "Joao Dias",
-//   "address": {
-//     "country": "br",
-//     "state": "SP",
-//     "city": "São Paulo",
-//     "neighborhood": "Vila Carrao",
-//     "street": "Rua Lobo",
-//     "street_number": "999",
-//     "zipcode": "03424030"
-//   }
-// }
+  let response = await fetch(`${baseurl}/purchase`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    mode: "cors",
+    body: JSON.stringify(data),
+  });
+  response = await response.json();
+  // enviar uma notificacao de tudo certo
+  // conversar com a andreia sobre a forma de parcelamento
+  console.log(response);
+}

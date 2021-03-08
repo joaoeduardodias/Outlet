@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/global.css" />
     <link rel="stylesheet" href="../style/cart.css" />
+
+    <script src="https://assets.pagar.me/pagarme-js/4.5/pagarme.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <title>Meu Carrinho | Outlet</title>
   </head>
 
@@ -68,6 +72,14 @@
           </div>
           <!-- formulario de pagamento aqui -->
           <form action="" id="payment_form">
+            <div class="form-title">Dados do Comprador</div>
+            <input
+              type="number"
+              name="cpf"
+              id="cpf"
+              placeholder="Digite seu CPF"
+            />
+
             <div class="form-title">Dados de Pagamento</div>
             <input
               type="number"

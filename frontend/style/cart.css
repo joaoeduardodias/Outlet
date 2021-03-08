@@ -219,9 +219,39 @@ header {
   display: flex;
   flex: 2;
 }
+.purchase-modal .address {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 100%;
+}
+.address .address-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.address .address-radio label {
+  font-size: 1.6rem;
+  width: 23rem;
+  max-width: 41rem;
+  overflow: hidden;
+  text-overflow: "... (continuar lendo)";
+  white-space: nowrap;
+  justify-content: center;
+}
+.address .address-radio label:hover {
+  text-overflow: clip;
+  max-width: none;
+}
+.address .address-radio input {
+  width: 2rem;
+  margin-right: 1rem;
+}
+
 .card-date #validate {
   margin-right: 0.8rem;
 }
+
 #payer {
   width: 100%;
   height: 3.5rem;

@@ -8,10 +8,11 @@ let quantity = 1;
 let prazoEntrega = 0;
 let priceItem = 0;
 let price = 0;
+let PricetotalPagarme = 0;
 let IndexUpdate;
 let priceTotal = 0;
 let subtotal = 0;
-
+let value;
 let screenWidth = screen.width;
 let cart = JSON.parse(localStorage.getItem("cart"));
 cart.map((item, index) => {
@@ -313,9 +314,9 @@ async function CalcFreight(weight, width, height, lenght, zip_code) {
       "date_freight"
     ).innerHTML = `Prazo de entrega de ${DataFreightJson.PrazoEntrega} dias`;
     prazoEntrega = DataFreightJson.PrazoEntrega;
-    const value = parseFloat(DataFreightJson.Valor);
-    const total = value + subtotal;
-    const formatReal = total.toLocaleString("pt-br", {
+    value = parseFloat(DataFreightJson.Valor);
+    PricetotalPagarme = value + subtotal;
+    const formatReal = PricetotalPagarme.toLocaleString("pt-br", {
       minimumFractionDigits: 2,
     });
     cc(".total").innerHTML = `<span>Total: </span>R$ ${formatReal}`;
