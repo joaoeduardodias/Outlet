@@ -87,7 +87,7 @@ routes.get(
   User_Product.sumBetween
 );
 
-routes.post("/product_sold/:id", midellwareauth, User_Product.create); // id do produto
+routes.post("/product_sold", midellwareauth, User_Product.create);
 routes.put("/product_sold/:id", midellwareauth, User_Product.update); // id da venda
 
 // Upload
