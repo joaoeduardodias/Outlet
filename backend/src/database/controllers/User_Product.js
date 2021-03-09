@@ -127,7 +127,7 @@ module.exports = {
       //   })
       //   .where("id", id_product);
 
-      return res.status(201).send();
+      return res.json(products);
     } catch (error) {
       next(error);
     }
