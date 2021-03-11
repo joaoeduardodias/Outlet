@@ -79,6 +79,8 @@ routes.delete("/product/:id", midellwareauth, ProductController.delete);
 
 // list all sales- lista todas as vendas
 routes.get("/product_sold", midellwareauth, User_Product.index);
+// lista os pedidos
+routes.get("/orders", midellwareauth, User_Product.orders);
 // list all sales between- lista todas as vendas entre
 routes.get("/product_sold_between", midellwareauth, User_Product.indexBetween);
 routes.get(
