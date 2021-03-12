@@ -12,12 +12,12 @@ module.exports = {
   async create(req, res, next) {
     try {
       const id_order = crypto.randomBytes(3).toString("HEX");
-      const id_client = req.params;
+      const { id } = req.params;
 
       const { ...products } = req.body;
       await Connection("Orders").insert({
         id_order,
-        id_client,
+        id_client: id,
 
         products,
       });
