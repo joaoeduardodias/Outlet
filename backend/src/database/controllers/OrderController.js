@@ -1,6 +1,5 @@
 const Connection = require("../../database");
-const { index } = require("./UploadController");
-
+const crypto = require("crypto");
 module.exports = {
   async index(req, res) {
     const data = await Connection("Orders");
@@ -8,9 +7,11 @@ module.exports = {
   },
   async create(req, res, next) {
     try {
+      const id_order = crypto.randomBytes(3).toString("HEX");
+
       const { ...idsSold } = req.body;
       const ids = JSON.stringify(idsSold);
-      await Connection("Orders").insert({ ids_sold: ids });
+      await Connection("Orders").insert({ id_order, ids_sold: ids });
 
       return res.json(idsSold);
     } catch (error) {
