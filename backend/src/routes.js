@@ -124,6 +124,6 @@ routes.post("/freight", FreightController.create);
 
 // CRUD OF ORDERS
 routes.get("/orders", midellwareauth, OrderController.index);
-routes.post("/order", midellwareauth, OrderController.create);
+routes.post("/order/:id", midellwareauth, OrderController.create);
 
 module.exports = routes;
