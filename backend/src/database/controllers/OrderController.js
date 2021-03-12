@@ -1,9 +1,14 @@
 const Connection = require("../../database");
+const { index } = require("./UploadController");
 
 module.exports = {
+  async index(req, res) {
+    const data = await Connection("Orders");
+    return res.json(data);
+  },
   async create(req, res, next) {
     try {
-      const { idsSold } = req.body;
+      const { ...idsSold } = req.body;
       console.log("id Venda  " + idsSold);
     } catch (error) {
       // next(error)

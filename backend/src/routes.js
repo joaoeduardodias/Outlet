@@ -36,6 +36,7 @@ const PaymentController = require("./database/controllers/PaymentController");
 const FreightController = require("./database/controllers/FreightController");
 const AttributeController = require("./database/controllers/AttributeController");
 const UploadController = require("./database/controllers/UploadController");
+const OrderController = require("./database/controllers/OrderController");
 
 //  CRUD de usuários
 routes.get("/users", midellwareauth, UserController.index);
@@ -79,8 +80,7 @@ routes.delete("/product/:id", midellwareauth, ProductController.delete);
 
 // list all sales- lista todas as vendas
 routes.get("/product_sold", midellwareauth, User_Product.index);
-// lista os pedidos
-routes.get("/orders", midellwareauth, User_Product.orders);
+
 // list all sales between- lista todas as vendas entre
 routes.get("/product_sold_between", midellwareauth, User_Product.indexBetween);
 routes.get(
@@ -121,5 +121,9 @@ routes.delete("/address/:id", AddressController.delete);
 routes.post("/purchase", PaymentController.create);
 // freight
 routes.post("/freight", FreightController.create);
+
+// CRUD OF ORDERS
+routes.get("/orders", midellwareauth, OrderController.index);
+routes.post("/order", midellwareauth, OrderController.create);
 
 module.exports = routes;
