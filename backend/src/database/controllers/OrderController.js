@@ -5,7 +5,9 @@ module.exports = {
     const data = await Connection("Orders").select(
       "id_order",
       "id_client",
-      "products"
+      "products",
+      "send",
+      "tracking"
     );
     return res.json(data);
   },
