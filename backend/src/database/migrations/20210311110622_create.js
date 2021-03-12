@@ -1,7 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable("Orders", (table) => {
     table.string("id_order").primary().notNullable();
-    table.string("id_user").notNullable();
     table.jsonb("ids_sold");
     table
       .foreign("id_user")
