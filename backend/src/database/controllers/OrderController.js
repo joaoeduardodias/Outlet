@@ -2,17 +2,17 @@ const Connection = require("../../database");
 const crypto = require("crypto");
 module.exports = {
   async index(req, res) {
-    const data = await Connection("Orders").select("id_order", "");
+    const data = await Connection("Orders").select("id_order");
     return res.json(data);
   },
   async create(req, res, next) {
     try {
       const id_order = crypto.randomBytes(3).toString("HEX");
       const { ...idsSold } = req.body;
-      // const ids = JSON.stringify(idsSold);
+      const ids = JSON.stringify(idsSold);
       await Connection("Orders").insert({
         id_order,
-        ids_sold: idsSold,
+        ids_sold: ids,
       });
       return res.json({ message: "created" });
     } catch (error) {
