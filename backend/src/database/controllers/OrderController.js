@@ -1,6 +1,14 @@
 const Connection = require("../../database");
 const crypto = require("crypto");
 module.exports = {
+  async index_send(req, res) {
+    const data = await Connection("Orders").select(
+      "id_order",
+      "id_client",
+      "products"
+    );
+    return res.json(data);
+  },
   async index(req, res) {
     const data = await Connection("Orders")
       .select("id_order", "id_client", "products")
