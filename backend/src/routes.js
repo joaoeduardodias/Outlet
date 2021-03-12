@@ -124,6 +124,8 @@ routes.post("/freight", FreightController.create);
 
 // CRUD OF ORDERS
 routes.get("/orders", midellwareauth, OrderController.index);
-routes.post("/order/:id", midellwareauth, OrderController.create);
+routes.post("/order/:id", midellwareauth, OrderController.create); // id_client
+routes.put("/order/:id", midellwareauth, OrderController.update); // id_order
+routes.delete("/order/:id", midellwareauth, OrderController.delete); // id_order
 
 module.exports = routes;
