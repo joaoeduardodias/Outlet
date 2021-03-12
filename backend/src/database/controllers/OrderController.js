@@ -1,10 +1,10 @@
 const Connection = require("../../database");
 const crypto = require("crypto");
 module.exports = {
-  //   async index(req, res) {
-  //     const data = await Connection("Orders");
-  //     return res.json(data);
-  //   },
+  async index(req, res) {
+    const data = await Connection("Orders");
+    return res.json(data);
+  },
   async create(req, res, next) {
     try {
       const id_order = crypto.randomBytes(3).toString("HEX");
