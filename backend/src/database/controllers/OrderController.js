@@ -9,7 +9,8 @@ module.exports = {
   async create(req, res, next) {
     try {
       const { ...idsSold } = req.body;
-      console.log("id Venda  " + idsSold);
+
+      return res.json(idsSold);
     } catch (error) {
       // next(error)
       console.log(error);
