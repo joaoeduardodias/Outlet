@@ -72,9 +72,7 @@ module.exports = {
       console.log(error);
     }
   },
-  async orders(req,res) {
-    
-  },
+  async orders(req, res) {},
   async create(req, res, next) {
     try {
       // id of User
@@ -125,7 +123,7 @@ module.exports = {
           .where("id", item.id);
       });
 
-      return res.status(201).send();
+      return res.status(201).json(id_sold).send();
     } catch (error) {
       next(error);
     }

@@ -9,6 +9,7 @@ module.exports = {
   async create(req, res, next) {
     try {
       const { ...idsSold } = req.body;
+      await Connection("Orders").insert({ ids_sold: idsSold });
 
       return res.json(idsSold);
     } catch (error) {
