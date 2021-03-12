@@ -9,7 +9,8 @@ module.exports = {
   async create(req, res, next) {
     try {
       const { ...idsSold } = req.body;
-      await Connection("Orders").insert({ ids_sold: idsSold });
+      const ids = JSON.stringify(idsSold);
+      await Connection("Orders").insert({ ids_sold: ids });
 
       return res.json(idsSold);
     } catch (error) {
