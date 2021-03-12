@@ -14,7 +14,7 @@ module.exports = {
         id_order,
         ids_sold: ids,
       });
-      return res.json({ message: created });
+      return res.json({ message: "created" });
     } catch (error) {
       // next(error)
       console.log(error);
