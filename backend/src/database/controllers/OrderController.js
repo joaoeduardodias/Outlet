@@ -2,7 +2,11 @@ const Connection = require("../../database");
 const crypto = require("crypto");
 module.exports = {
   async index(req, res) {
-    const data = await Connection("Orders").select("id_order", "ids_sold");
+    const data = await Connection("Orders").select(
+      "id_order",
+      "id_client",
+      "products"
+    );
     return res.json(data);
   },
   async create(req, res, next) {
