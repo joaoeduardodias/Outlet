@@ -2,7 +2,7 @@ const Connection = require("../../database");
 const crypto = require("crypto");
 module.exports = {
   async index(req, res) {
-    const data = await Connection("Orders").select("id_order");
+    const data = await Connection("Orders");
     return res.json(data);
   },
   async create(req, res, next) {
@@ -12,7 +12,7 @@ module.exports = {
       const ids = JSON.stringify(idsSold);
       await Connection("Orders").insert({
         id_order,
-        ids_sold: ids,
+        ids_sold: idsSold,
       });
       return res.json({ message: "created" });
     } catch (error) {
