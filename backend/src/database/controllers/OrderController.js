@@ -32,8 +32,8 @@ module.exports = {
         "products"
       )
       // .leftJoin("City", "City.id", "Address.id_city")
-      .leftJoin("Address", "Address.id_users", "Users.id")
-      .leftJoin("Users", "Users.id", "Orders.id_client")
+      .join("Address", "Address.id_users", "Users.id")
+      .join("Users", "Users.id", "Orders.id_client")
       .where("send", false);
     return res.json(data);
   },
