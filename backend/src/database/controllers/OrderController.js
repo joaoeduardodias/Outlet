@@ -61,36 +61,38 @@ module.exports = {
   async update(req, res, next) {
     try {
       const { id } = req.params;
-      const email = await Connection("Orders")
-        .select("Users.email")
+      const { email, name } = await Connection("Orders")
+        .select("Users.email", "Users.name")
         .leftJoin("Users", "Users.id", "Orders.id_client")
         .where("id_order", id)
         .first();
-      console.log(email);
-      // const { send, tracking } = req.body;
-      // await Connection("Orders")
-      //   .update({
-      //     send,
-      //     tracking,
-      //   })
-      //   .where("id_order", id);
 
-      //   // enviar email contendo o código de rastreio
-      //   transport.sendMail(
-      //     {
-      //       to: email,
-      //       from: "contato@Outlet.com.br",
-      //       template: "sendOrder",
-      //       subject: "Outlet - Código de rastreio",
-      //       context: { email, tracking },
-      //     },
-      //     (error) => {
-      //       if (error) {
-      //         console.log(error);
-      //         return res
-      //           .status(400)
-      //           .json({ message: "Cannot send forgot password, try again" });
-      //       }
+      const { send, tracking } = req.body;
+      await Connection("Orders")
+        .update({
+          send,
+          tracking,
+        })
+        .where("id_order", id);
+
+      // enviar email contendo o código de rastreio
+      transport.sendMail(
+        {
+          to: email,
+          from: "contato@Outlet.com.br",
+          template: "sendOrder.html",
+          subject: "Outlet - Código de rastreio",
+          context: { email, tracking, name },
+        },
+        (error) => {
+          if (error) {
+            console.log(error);
+            return res
+              .status(400)
+              .json({ message: "Cannot send code tracking, try again" });
+          }
+        }
+      );
 
       return res.json({ message: "updated" });
     } catch (error) {

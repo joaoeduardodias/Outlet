@@ -1,0 +1,43 @@
+<mjml>
+
+    <mj-head>
+
+        <mj-attributes>
+            <mj-text font-size="18px" color="#333"></mj-text>
+        </mj-attributes>
+
+    </mj-head>
+
+    <mj-body>
+        <mj-include path="./header.mjml"></mj-include>
+
+        <mj-section background-color="#fff">
+            <mj-column>
+                <mj-text>
+                    <h2>Olá, {{name}}</h2>
+                    <p>
+                        Seu pedido foi enviado, para acompanhar a localização,
+                        te enviamos o código de rastreio do Correios.
+                    </p>
+                </mj-text>
+                 
+                <mj-text >
+                    <h3>Seu código é: {{tracking}}</h3>
+                </mj-text>
+                <mj-divider padding="0px 25px" border-width="1px" border-color="#ddd"></mj-divider>
+                <mj-text>
+                    
+                    <p>
+                       Agradecemos pela preferência, se tiver dúvidas, entre em contato conosco pelos nossos meios de comunicação
+                    </p>
+                   
+                </mj-text>
+              
+            </mj-column>
+
+        </mj-section>
+
+        <mj-include path="./footer.mjml"></mj-include>
+
+    </mj-body>
+</mjml>
