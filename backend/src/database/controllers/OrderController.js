@@ -21,7 +21,6 @@ module.exports = {
         "id_order",
         "id_client",
         "Users.name",
-        "Users.id",
         "Users.email",
         "Users.whatsapp",
         "Address.street",
@@ -29,7 +28,6 @@ module.exports = {
         "Address.number",
         "Address.zip_code",
         "Address.id_city",
-        "Address.id",
         "City.nameCity",
         "value",
         "products"
