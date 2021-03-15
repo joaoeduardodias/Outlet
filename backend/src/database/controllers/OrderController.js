@@ -79,6 +79,7 @@ module.exports = {
       //   .where("id_order", id);
 
       // enviar email contendo o código de rastreio
+      const viewPath = resolve(__dirname, "../../", "resources", "mail");
 
       transport.use(
         "compile",
