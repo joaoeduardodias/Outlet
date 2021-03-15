@@ -29,6 +29,7 @@ module.exports = {
         "Address.number",
         "Address.zip_code",
         "Address.id_city",
+        "Address.id",
         "City.nameCity",
         "value",
         "products"
