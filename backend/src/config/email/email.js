@@ -11,19 +11,5 @@ const transport = nodemailer.createTransport({
     pass: process.env.MAIL_PASS,
   },
 });
-const viewPath = resolve(__dirname, "../../", "resources", "mail");
-transport.use(
-  "compile",
-  hbs({
-    viewEngine: exphbs.create({
-      layoutsDir: viewPath,
-      //   defaultLayout: "forgotpassword",
-
-      extname: ".html",
-    }),
-    viewPath,
-    extName: ".html",
-  })
-);
 
 module.exports = transport;

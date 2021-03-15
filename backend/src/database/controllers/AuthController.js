@@ -3,7 +3,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const transport = require("../../config/email/email");
-
+const exphbs = require("express-handlebars");
+const hbs = require("nodemailer-express-handlebars");
 module.exports = {
   async create(req, res, next) {
     try {
@@ -104,6 +105,22 @@ module.exports = {
       // 3- Gerar Link para o reset de senha com o token
 
       const resetLink = `${process.env.FRONT_URL}/reset/?token=${token}`;
+
+      const viewPath = resolve(__dirname, "../../", "resources", "mail");
+      transport.use(
+        "compile",
+        hbs({
+          viewEngine: exphbs.create({
+            layoutsDir: viewPath,
+            defaultLayout: "forgotpassword",
+
+            extname: ".html",
+          }),
+          viewPath,
+          extName: ".html",
+        })
+      );
+
       transport.sendMail(
         {
           to: email,
