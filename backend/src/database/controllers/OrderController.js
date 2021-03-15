@@ -63,7 +63,8 @@ module.exports = {
       const { id } = req.params;
       const email = await Connection("Orders")
         .select("Users.email")
-        .leftJoin("Users", "Users.id", "Orders.id_client");
+        .leftJoin("Users", "Users.id", "Orders.id_client")
+        .where({ id });
       console.log(email);
       // const { send, tracking } = req.body;
       // await Connection("Orders")
