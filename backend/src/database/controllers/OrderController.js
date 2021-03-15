@@ -23,12 +23,12 @@ module.exports = {
       const id_order = crypto.randomBytes(3).toString("HEX");
       const { id } = req.params;
 
-      const { ...products, value } = req.body;
+      const { value, ...products } = req.body;
       await Connection("Orders").insert({
         id_order,
         id_client: id,
         products,
-        value
+        value,
       });
       return res.status(201).json({ message: "created" });
     } catch (error) {
