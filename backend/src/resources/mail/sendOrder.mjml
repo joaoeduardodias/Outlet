@@ -23,6 +23,7 @@
                  
                 <mj-text >
                     <h3>Seu código é: {{tracking}}</h3>
+                    <p>Para rastrear sua encomenda, <a href="https://www2.correios.com.br/sistemas/rastreamento/default.cfm" >Clique aqui</a></p>
                 </mj-text>
                 <mj-divider padding="0px 25px" border-width="1px" border-color="#ddd"></mj-divider>
                 <mj-text>
