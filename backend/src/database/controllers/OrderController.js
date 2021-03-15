@@ -17,7 +17,22 @@ module.exports = {
   },
   async index(req, res) {
     const data = await Connection("Orders")
-      .select("id_order", "id_client", "Users.name", "value", "products")
+      .select(
+        "id_order",
+        "id_client",
+        "Users.name",
+        "Users.email",
+        "Users.whatsapp",
+        "Address.street",
+        "Address.neighborhood",
+        "Address.number",
+        "Address.zip_code",
+        "City.nameCity",
+        "value",
+        "products"
+      )
+      .leftJoin("City", "City.id", "Address.id_city")
+      .leftJoin("Address", "Address.id_users", "Users.id")
       .leftJoin("Users", "Users.id", "Orders.id_client")
       .where("send", false);
     return res.json(data);
