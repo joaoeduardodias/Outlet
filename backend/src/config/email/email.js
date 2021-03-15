@@ -17,7 +17,7 @@ transport.use(
   hbs({
     viewEngine: exphbs.create({
       layoutsDir: viewPath,
-      defaultLayout: "./auth/forgotpassword",
+      defaultLayout: "forgotpassword",
 
       extname: ".html",
     }),
