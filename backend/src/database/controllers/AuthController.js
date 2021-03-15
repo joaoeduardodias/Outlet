@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const transport = require("../../config/email/email");
+const { resolve } = require("path");
 const exphbs = require("express-handlebars");
 const hbs = require("nodemailer-express-handlebars");
 module.exports = {
