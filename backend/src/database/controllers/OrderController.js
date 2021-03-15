@@ -30,13 +30,13 @@ module.exports = {
         "Address.zip_code",
         "Address.id_city",
         "Address.id",
-        // "City.nameCity",
+        "City.nameCity",
         "value",
         "products"
       )
-      // .join("City", "City.id", "Address.id_city")
       .join("Users", "Users.id", "Orders.id_client")
       .join("Address", "Address.id_users", "Users.id")
+      .join("City", "City.id", "Address.id_city")
       .where("send", false);
     return res.json(data);
   },
