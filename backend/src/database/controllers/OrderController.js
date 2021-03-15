@@ -13,7 +13,8 @@ module.exports = {
   },
   async index(req, res) {
     const data = await Connection("Orders")
-      .select("id_order", "id_client", "products")
+      .select("id_order", "id_client", "Users.name", "products")
+      .leftJoin("Users", "Users.id", "Orders.id_client")
       .where("send", false);
     return res.json(data);
   },
