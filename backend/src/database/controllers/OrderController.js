@@ -93,10 +93,9 @@ module.exports = {
               .status(400)
               .json({ message: "Cannot send code tracking, try again" });
           }
+          return res.json({ message: "updated" });
         }
       );
-
-      return res.json({ message: "updated" });
     } catch (error) {
       next(error);
     }
