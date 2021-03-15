@@ -28,13 +28,14 @@ module.exports = {
         "Address.neighborhood",
         "Address.number",
         "Address.zip_code",
-        // "City.nameCity",
+        "Address.id_city",
+        "City.nameCity",
         "value",
         "products"
       )
-      // .leftJoin("City", "City.id", "Address.id_city")
-      .join("Users", "Users.id", "Orders.id_client")
-      .join("Address", "Address.id_users", "Users.id")
+      .leftJoin("City", "City.id", "Address.id_city")
+      .leftJoin("Users", "Users.id", "Orders.id_client")
+      .leftJoin("Address", "Address.id_users", "Users.id")
       .where("send", false);
     return res.json(data);
   },
