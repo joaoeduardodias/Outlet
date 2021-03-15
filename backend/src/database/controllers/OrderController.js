@@ -12,7 +12,8 @@ module.exports = {
         "value",
         "tracking"
       )
-      .leftJoin("Users", "Users.id", "Orders.id_client");
+      .leftJoin("Users", "Users.id", "Orders.id_client")
+      .where("send", true);
     return res.json(data);
   },
   async index(req, res) {
