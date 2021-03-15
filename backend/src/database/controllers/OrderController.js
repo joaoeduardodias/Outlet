@@ -27,11 +27,11 @@ module.exports = {
         "Address.neighborhood",
         "Address.number",
         "Address.zip_code",
-        "City.nameCity",
+        // "City.nameCity",
         "value",
         "products"
       )
-      .leftJoin("City", "City.id", "Address.id_city")
+      // .leftJoin("City", "City.id", "Address.id_city")
       .leftJoin("Address", "Address.id_users", "Users.id")
       .leftJoin("Users", "Users.id", "Orders.id_client")
       .where("send", false);
