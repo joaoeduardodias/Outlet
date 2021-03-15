@@ -21,6 +21,7 @@ module.exports = {
         "id_order",
         "id_client",
         "Users.name",
+        "Users.id",
         "Users.email",
         "Users.whatsapp",
         "Address.street",
@@ -32,8 +33,8 @@ module.exports = {
         "products"
       )
       // .leftJoin("City", "City.id", "Address.id_city")
-      .join("Address", "Address.id_users", "Users.id")
       .join("Users", "Users.id", "Orders.id_client")
+      .join("Address", "Address.id_users", "Users.id")
       .where("send", false);
     return res.json(data);
   },
