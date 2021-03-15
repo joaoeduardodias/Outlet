@@ -16,7 +16,7 @@
                 <mj-text>
                     <h2>Olá, {{name}}</h2>
                     <p>
-                        Seu pedido foi enviado, para acompanhar a localização,
+                        Sua encomenda foi enviada, para acompanhar a localização,
                         te enviamos o código de rastreio do Correios.
                     </p>
                 </mj-text>

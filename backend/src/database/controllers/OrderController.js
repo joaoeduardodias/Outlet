@@ -72,12 +72,12 @@ module.exports = {
         .first();
 
       const { send, tracking } = req.body;
-      // await Connection("Orders")
-      //   .update({
-      //     send,
-      //     tracking,
-      //   })
-      //   .where("id_order", id);
+      await Connection("Orders")
+        .update({
+          send,
+          tracking,
+        })
+        .where("id_order", id);
 
       // enviar email contendo o código de rastreio
       const viewPath = resolve(__dirname, "../../", "resources", "mail");
