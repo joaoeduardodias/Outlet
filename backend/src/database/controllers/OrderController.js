@@ -1,5 +1,7 @@
 const Connection = require("../../database");
 const crypto = require("crypto");
+const transport = require("../../config/email/email");
+
 module.exports = {
   async index_send(req, res) {
     const data = await Connection("Orders")
