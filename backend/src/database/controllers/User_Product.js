@@ -119,7 +119,8 @@ module.exports = {
 
       return res.status(201).json(id_sold).send();
     } catch (error) {
-      next(error);
+      // next(error);
+      console.log(error);
     }
   },
 
