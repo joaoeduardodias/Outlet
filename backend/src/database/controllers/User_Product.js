@@ -84,7 +84,7 @@ module.exports = {
       if (!Arraycart)
         return res.json({ error: true, message: "Error missing body" });
       else {
-        Arraycart.map(async (item) => {
+        Arraycart.forEach(async (item) => {
           const { amount } = await Connection("Products")
             .select("amount")
             .where("id", item.id)
