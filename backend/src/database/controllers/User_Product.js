@@ -80,7 +80,7 @@ module.exports = {
         return (id_user = decoded.id);
       });
       const { cart: products } = req.body;
-      console.log(cart);
+      console.log(products);
       if (!products)
         return res.json({ error: true, message: "Error missing body" });
       else {
