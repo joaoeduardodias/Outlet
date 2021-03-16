@@ -77,47 +77,51 @@ module.exports = {
       jwt.verify(token, process.env.SECRET, function (err, decoded) {
         return (id_user = decoded.id);
       });
-      const { products } = req.body;
+      const { cart: products } = req.body;
       console.log(products);
-      products.map(async (item) => {
-        const { amount } = await Connection("Products")
-          .select("amount")
-          .where("id", item.id)
-          .first(); // estoque
+      if (!products)
+        return res.json({ error: true, message: "Error missing body" });
+      else {
+        products.map(async (item) => {
+          const { amount } = await Connection("Products")
+            .select("amount")
+            .where("id", item.id)
+            .first(); // estoque
 
-        if (amount <= 0) {
-          const available = 0;
+          if (amount <= 0) {
+            const available = 0;
+            await Connection("Products")
+              .update({ available })
+              .where("id", item.id);
+            return res.json({ message: "Product unavailable" }); // produto indisponivel
+          }
+          let newAmount = amount - item.quantity;
+          if (newAmount < 0) {
+            return res.json({ message: "Quantity unavailable" });
+          }
+          if (newAmount == 0) {
+            const available = false;
+            await Connection("Products")
+              .update({ available })
+              .where("id", item.id);
+            return res.send();
+          }
+          const id_sold = crypto.randomBytes(3).toString("HEX");
+          await Connection("User_Product").insert({
+            id_sold,
+            id_product: item.id,
+            id_user,
+            amount_sold: item.quantity,
+          });
           await Connection("Products")
-            .update({ available })
+            .update({
+              amount: newAmount,
+            })
             .where("id", item.id);
-          return res.json({ message: "Product unavailable" }); // produto indisponivel
-        }
-        let newAmount = amount - item.quantity;
-        if (newAmount < 0) {
-          return res.json({ message: "Quantity unavailable" });
-        }
-        if (newAmount == 0) {
-          const available = false;
-          await Connection("Products")
-            .update({ available })
-            .where("id", item.id);
-          return res.send();
-        }
-        const id_sold = crypto.randomBytes(3).toString("HEX");
-        await Connection("User_Product").insert({
-          id_sold,
-          id_product: item.id,
-          id_user,
-          amount_sold: item.quantity,
         });
-        await Connection("Products")
-          .update({
-            amount: newAmount,
-          })
-          .where("id", item.id);
-      });
 
-      return res.status(201).json(id_sold).send();
+        return res.status(201).json(id_sold).send();
+      }
     } catch (error) {
       // next(error);
       console.log(error);
