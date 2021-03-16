@@ -125,7 +125,7 @@ module.exports = {
       transport.sendMail(
         {
           to: email,
-          from: "suporte@Outlet.com.br",
+          from: "contato@Outlet.com.br",
           template: "forgotpassword",
           subject: "Outlet - Recuperação de Senha",
           context: { email, nameUser, resetLink },

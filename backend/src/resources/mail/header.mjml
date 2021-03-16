@@ -1,6 +1,6 @@
-<mj-section background-color="#010101">
+<mj-section background-color="#e9d927">
     <mj-column >
-    <mj-text color="#f67600" align="center" font-size="22px" >
+    <mj-text color="#000" align="center" font-size="22px" >
        <h2>ARTESANATOS <br/> OUTLET</h2>
     </mj-text>
     </mj-column>
