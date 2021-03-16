@@ -79,6 +79,7 @@ module.exports = {
         return (id_user = decoded.id);
       });
       const { products } = req.body;
+      console.log(products);
       products.map(async (item) => {
         const { amount } = await Connection("Products")
           .select("amount")
