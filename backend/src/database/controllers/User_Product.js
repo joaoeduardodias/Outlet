@@ -107,6 +107,7 @@ module.exports = {
             return res.send();
           }
           const id_sold = crypto.randomBytes(3).toString("HEX");
+          console.log(id_sold);
           await Connection("User_Product").insert({
             id_sold,
             id_product: item.id,
