@@ -5,7 +5,6 @@ module.exports = {
   async index(next, res) {
     try {
       const data = await Connection("User_Product")
-        .where("send", false)
         .join("Products", "id_product", "=", "Products.id")
         .select(
           "id_sold",
