@@ -79,7 +79,7 @@ module.exports = {
       jwt.verify(token, process.env.SECRET, function (err, decoded) {
         return (id_user = decoded.id);
       });
-      const { value, ...products } = req.body;
+      const { products } = req.body;
       console.log(products);
       if (!products)
         return res.json({ error: true, message: "Error missing body" });
