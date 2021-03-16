@@ -11,12 +11,20 @@ module.exports = {
         "id_order",
         "id_client",
         "Users.name",
-        "products",
-        "send",
+        "Users.email",
+        "Users.whatsapp",
+        "Address.street",
+        "Address.neighborhood",
+        "Address.number",
+        "Address.zip_code",
+        "Address.id_city",
+        "City.nameCity",
         "value",
-        "tracking"
+        "products"
       )
-      .leftJoin("Users", "Users.id", "Orders.id_client")
+      .join("Users", "Users.id", "Orders.id_client")
+      .join("Address", "Address.id_users", "Users.id")
+      .join("City", "City.id", "Address.id_city")
       .where("send", true);
     return res.json(data);
   },
