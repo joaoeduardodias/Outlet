@@ -16,7 +16,7 @@
                 <mj-text>
                     <h2>Olá, {{name}}</h2>
                     <p>
-                        Sua compra foi aprovada com Sucesso, em brve você receberá um email, com o código de rastreio de sua encomenda
+                        Sua compra foi aprovada com Sucesso, em breve você receberá um email, com o código de rastreio de sua encomenda
                     </p>
                 </mj-text>
                  
