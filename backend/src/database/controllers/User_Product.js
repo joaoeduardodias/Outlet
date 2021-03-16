@@ -11,10 +11,7 @@ module.exports = {
           "id_sold",
           "id_user",
           "amount_sold",
-          "value_total",
-          "attribute_one",
-          "attribute_two",
-          "tracking",
+
           "Products.name"
         );
 
@@ -72,7 +69,7 @@ module.exports = {
       console.log(error);
     }
   },
-  async orders(req, res) {},
+
   async create(req, res, next) {
     try {
       // id of User
@@ -112,9 +109,6 @@ module.exports = {
           id_product: item.id,
           id_user,
           amount_sold: item.quantity,
-          value_total: item.price * item.quantity,
-          attribute_one: null,
-          attribute_two: null,
         });
         await Connection("Products")
           .update({
@@ -128,22 +122,7 @@ module.exports = {
       next(error);
     }
   },
-  async update(req, res, next) {
-    try {
-      const { id } = req.params;
-      const { tracking, send } = req.body;
 
-      await Connection("User_Product")
-        .update({
-          send,
-          tracking,
-        })
-        .where("id_sold", id);
-      return res.status(201).send();
-    } catch (error) {
-      next(error);
-    }
-  },
   async delete(req, res, next) {
     try {
       const { id } = req.params;
