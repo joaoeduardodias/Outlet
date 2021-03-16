@@ -1,3 +1,4 @@
+const token = localStorage.getItem("Authorization");
 const dataUser = JSON.parse(atob(tokenUser.split(".")[1]));
 
 document.getElementById("payer").addEventListener("click", (e) => {
@@ -15,8 +16,14 @@ async function purchase() {
     mode: "cors",
   });
   dataAddress = await dataAddress.json();
-  console.log(dataAddress[0]);
 
+  const installments = document.getElementById("installments").value;
+
+  let validity = document.getElementById("validate").value;
+  validity = validity.replace(/[^0-9]/g, "");
+  let cpf = document.getElementById("cpf").value;
+  cpf = cpf.replace(/[^0-9]/g, "");
+  let phone = `+55${dataUser.whatsapp.toString()}`;
   // let card = {};
   // card.card_holder_name = "Morpheus Fishburne";
   // card.card_expiration_date = "0922";
@@ -24,22 +31,16 @@ async function purchase() {
   // card.card_number = "4111111111111111";
   // card.card_cvv = "123";
 
-  let validity = document.getElementById("validate").value;
-  validity = validity.replace(/[^0-9]/g, "");
-  let cpf = document.getElementById("cpf").value;
-  cpf = cpf.replace(/[^0-9]/g, "");
-  let phone = `+55${dataUser.whatsapp.toString()}`;
   PricetotalPagarme = parseInt(PricetotalPagarme * 100);
-  console.log(parseInt(PricetotalPagarme));
 
   const data = {
     api_key: "ak_test_G32g3eJiRTZO7IhtJ61wySsGNFnU2e",
     amount: PricetotalPagarme,
     card_number: document.getElementById("card_number").value,
     card_cvv: document.getElementById("card_cvv").value,
-    card_expiration_date: "0922",
+    card_expiration_date: validity,
     card_holder_name: document.getElementById("card_holder_name").value,
-
+    installments,
     customer: {
       external_id: dataUser.id,
       name: dataUser.name,
@@ -91,17 +92,104 @@ async function purchase() {
     })),
   };
 
+  let validate = await fetch(`${baseurl}/product_sold`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: "Bearer " + token,
+    },
+    mode: "cors",
+    body: JSON.stringify({ products: cart }),
+  });
+  validate = await validate.json();
+
+  if (validate.message == "Product unavailable") {
+    swal({
+      type: "error",
+      title: "Produto indisponível",
+      text: "Por favor, entre em contato conosco",
+    });
+    return false;
+  }
+  if (validate.message == "Quantity unavailable") {
+    swal({
+      type: "error",
+      title: "Quantidade indisponível no estoque",
+      text: "Por favor, entre em contato conosco",
+    });
+    return false;
+  }
+
   let response = await fetch(`${baseurl}/purchase`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
+      Authorization: "Bearer " + token,
     },
     mode: "cors",
     body: JSON.stringify(data),
   });
   response = await response.json();
-  // enviar uma notificacao de tudo certo
-  // conversar com a andreia sobre a forma de parcelamento
-  console.log(response);
+
+  if (response.error) {
+    swal({
+      type: "error",
+      title: "Oopss...",
+      text: "Erro Encontrado, por favor verifique se os dados estão corretos",
+    });
+    return false;
+  }
+  if (response.data.refuse_reason == "acquirer") {
+    swal({
+      type: "error",
+      title: "Pagamento não autorizado",
+      text: "Por favor, verifique se os dados estão corretos",
+    });
+    return false;
+  }
+  if (response.data.status !== "paid") {
+    swal({
+      type: "error",
+      title: "Pagamento não autorizado",
+      text: response.data.refuse_reason,
+    });
+    return false;
+  }
+  let purchase = { products: cart, value: PricetotalPagarme };
+  // api para debitar no sistema
+  let res = await fetch(`${baseurl}/order/${dataUser.id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: "Bearer " + token,
+    },
+    mode: "cors",
+    body: JSON.stringify(purchase),
+  });
+  res = await res.json();
+  if (res.message == "Error") {
+    swal({
+      type: "error",
+      title: "Ooopss...",
+      text:
+        "Aconteceu um erro, por favor tente novamente ou entre em contato conosco!",
+    });
+    return false;
+  }
+  swal(
+    {
+      type: "success",
+      title: "Pagamento Realizado",
+      text:
+        "Sua Compra foi finalizada com sucesso! Te enviaremos em breve um e-mail com as demais informações",
+    }
+    // card.card_number = "4111111111111111";
+  );
+  cc(".swal2-confirm").addEventListener("click", function () {
+    localStorage.removeItem("cart");
+    location.href = "/";
+  });
 }

@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/global.css" />
     <link rel="stylesheet" href="../style/cart.css" />
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/sweetalert2@7.12.15/dist/sweetalert2.min.css"
+    />
 
+    <!-- pagar.me -->
     <script src="https://assets.pagar.me/pagarme-js/4.5/pagarme.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -95,11 +102,7 @@
               <input type="text" id="validate" placeholder="Validade" />
               <input type="number" id="card_cvv" placeholder="CVV" />
             </div>
-            <select name="installments" id="installments">
-              <option value="1">1 X 500,00</option>
-              <option value="2">2 X 250,00</option>
-              <option value="3">3 X 167,00</option>
-            </select>
+            <select name="installments" id="installments"></select>
 
             <div id="field_errors"></div>
             <br />
@@ -115,8 +118,7 @@
     <div class="div-clear-cart">
       <button id="clear-cart">Limpar Carrinho</button>
     </div>
-    <!-- <script src="https://assets.pagar.me/pagarme-js/4.5/pagarme.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
 
     <script src="../js/cart.js"></script>

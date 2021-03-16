@@ -320,14 +320,44 @@ async function CalcFreight(weight, width, height, lenght, zip_code) {
       minimumFractionDigits: 2,
     });
     cc(".total").innerHTML = `<span>Total: </span>R$ ${formatReal}`;
+    const SelectInstallments = document.getElementById("installments");
+    // parcelamento
+
+    for (let index = 1; index <= 6; index++) {
+      let price = PricetotalPagarme;
+      price = (price / index).toFixed(2);
+      var el = document.createElement("option");
+
+      el.textContent = `${index} x de ${price}`;
+      el.value = index;
+      SelectInstallments.appendChild(el);
+    }
+    if (PricetotalPagarme >= 50.0) {
+      for (let index = 7; index <= 12; index++) {
+        // colocar juros
+        let price = PricetotalPagarme;
+        price = (price / index).toFixed(2);
+        var el = document.createElement("option");
+        el.textContent = `${index} x de ${price}`;
+        el.value = index;
+        SelectInstallments.appendChild(el);
+      }
+    }
   }
 }
 
 //close modal comprar
 const purchaseModal = cc(".purchase-modal");
+const SelectInstallments = document.getElementById("installments");
+
 cc(".windowpurchase").addEventListener("click", function (e) {
   if (!purchaseModal.contains(e.target)) {
     cc(".windowpurchase").style.opacity = 0;
+    var i,
+      L = SelectInstallments.options.length - 1;
+    for (i = L; i >= 0; i--) {
+      SelectInstallments.remove(i);
+    }
     document.getElementById(
       "price_freight"
     ).innerText = `Frete de todos os produtos: 00`;
