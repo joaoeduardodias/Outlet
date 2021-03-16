@@ -106,7 +106,7 @@ module.exports = {
             await Connection("Products")
               .update({ available })
               .where("id", item.id);
-            return res.send();
+            return res.json({ message: "success" }).send();
           }
 
           await Connection("User_Product").insert({
@@ -122,7 +122,7 @@ module.exports = {
             .where("id", item.id);
         });
 
-        return res.status(201).send();
+        return res.json({ message: "success" }).status(201).send();
       }
     } catch (error) {
       // next(error);
