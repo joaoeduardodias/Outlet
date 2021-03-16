@@ -14,7 +14,7 @@ module.exports = {
       const viewPath = resolve(__dirname, "../../", "resources", "mail");
       const email = data.customer.email;
       const name = data.customer.name;
-      console.log(name, email);
+
       transport.use(
         "compile",
         hbs({
