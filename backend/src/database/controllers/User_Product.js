@@ -79,12 +79,12 @@ module.exports = {
       jwt.verify(token, process.env.SECRET, function (err, decoded) {
         return (id_user = decoded.id);
       });
-      const { ...Arraycart } = req.body;
-      console.log(Arraycart);
-      if (!Arraycart)
+      const { value, ...products } = req.body;
+      console.log(products);
+      if (!products)
         return res.json({ error: true, message: "Error missing body" });
       else {
-        Arraycart.forEach(async (item) => {
+        products.map(async (item) => {
           const { amount } = await Connection("Products")
             .select("amount")
             .where("id", item.id)
