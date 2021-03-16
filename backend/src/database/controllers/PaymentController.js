@@ -1,6 +1,7 @@
 const { resolve } = require("path");
 const exphbs = require("express-handlebars");
 const hbs = require("nodemailer-express-handlebars");
+const transport = require("../../config/email/email");
 
 const createSplitTransaction = require("../../services/pagarme")
   .createSplitTransaction;
