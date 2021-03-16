@@ -73,6 +73,8 @@ module.exports = {
     try {
       // id of User
       let id_user = "";
+      const id_sold = crypto.randomBytes(3).toString("HEX");
+
       const [, token] = req.headers.authorization.split(" ");
       jwt.verify(token, process.env.SECRET, function (err, decoded) {
         return (id_user = decoded.id);
@@ -106,7 +108,6 @@ module.exports = {
               .where("id", item.id);
             return res.send();
           }
-          const id_sold = crypto.randomBytes(3).toString("HEX");
           console.log(id_sold);
           await Connection("User_Product").insert({
             id_sold,
@@ -121,7 +122,7 @@ module.exports = {
             .where("id", item.id);
         });
 
-        return res.status(201).json(id_sold).send();
+        return res.status(201).send();
       }
     } catch (error) {
       // next(error);
