@@ -79,12 +79,12 @@ module.exports = {
       jwt.verify(token, process.env.SECRET, function (err, decoded) {
         return (id_user = decoded.id);
       });
-      const { Arraycart: products } = req.body;
-      console.log(products);
-      if (!products)
+      const { ...Arraycart } = req.body;
+      console.log(Arraycart);
+      if (!Arraycart)
         return res.json({ error: true, message: "Error missing body" });
       else {
-        products.map(async (item) => {
+        Arraycart.map(async (item) => {
           const { amount } = await Connection("Products")
             .select("amount")
             .where("id", item.id)
@@ -108,7 +108,7 @@ module.exports = {
               .where("id", item.id);
             return res.send();
           }
-          console.log(id_sold);
+
           await Connection("User_Product").insert({
             id_sold,
             id_product: item.id,
