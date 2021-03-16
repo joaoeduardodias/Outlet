@@ -90,7 +90,6 @@ routes.get(
 );
 
 routes.post("/product_sold", midellwareauth, User_Product.create);
-routes.put("/product_sold/:id", midellwareauth, User_Product.update); // id da venda
 
 // Upload
 routes.post(
