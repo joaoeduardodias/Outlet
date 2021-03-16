@@ -1,119 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Outlet Multimarcas | Tudo em Artesanatos</title>
 
-    <link rel="stylesheet" href="./style/global.css">
-    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/global.css" />
+    <link rel="stylesheet" href="./style/index.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-</head>
+  </head>
 
-<body id="body-modal">
-
+  <body id="body-modal">
     <header>
-        <div class="logo">
+      <div class="logo">
+        <h1>
+          ARTESANATOS <br />
+          OUTLET
+        </h1>
 
-            <h1>
-                ARTESANATOS <br /> OUTLET
-            </h1>
-
-
-            <div class="menu-section ">
-                <div class="menu-toggle">
-                    <div class="one"></div>
-                    <div class="two"></div>
-                    <div class="three"></div>
-                </div>
-                <nav>
-                    <input type="text" name="search" id="search" placeholder="Pesquisar">
-                    <a href="./pages/login.html">
-                        <div class="btn-login">
-                            <p>Login</p>
-                            <img src="./assets/icon/sign-in.svg" alt="Login">
-                        </div>
-                    </a>
-                    <a href="./pages/Register.html">
-                        <div class="btn-Register">
-                            <p>Cadastrar-me</p>
-                            <img src="./assets/icon/Register.svg" alt="Cadastrar-me">
-                        </div>
-                    </a>
-                    <a href="/">
-                        <div class="btn-logout">
-                            <p>Sair</p>
-                            <img src="./assets/icon/sign-out.svg" alt="Sair">
-                        </div>
-                    </a>
-                    <a href="./pages/cart.html">
-                        <div class="btn-cart">
-                            <p>Meu Carrinho</p>
-                            <img src="./assets/icon/cart.svg" alt="Meu Carrinho">
-                        </div>
-                    </a>
-                    <a href="./pages/dashboard.html">
-                        <div class="btn-dash">
-                            <p>Dashboard</p>
-                            <img src="./assets/icon/chart-line.svg" alt="Dashboard">
-                        </div>
-                    </a>
-                </nav>
-
-            </div>
+        <div class="menu-section">
+          <div class="menu-toggle">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+          </div>
+          <nav>
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Pesquisar"
+            />
+            <a href="./pages/login.html">
+              <div class="btn-login">
+                <p>Login</p>
+                <img src="./assets/icon/sign-in.svg" alt="Login" />
+              </div>
+            </a>
+            <a href="./pages/Register.html">
+              <div class="btn-Register">
+                <p>Cadastrar-me</p>
+                <img src="./assets/icon/Register.svg" alt="Cadastrar-me" />
+              </div>
+            </a>
+            <a href="/">
+              <div class="btn-logout">
+                <p>Sair</p>
+                <img src="./assets/icon/sign-out.svg" alt="Sair" />
+              </div>
+            </a>
+            <a href="./pages/cart.html">
+              <div class="btn-cart">
+                <p>Meu Carrinho</p>
+                <img src="./assets/icon/cart.svg" alt="Meu Carrinho" />
+              </div>
+            </a>
+            <a href="./pages/dashboard.html">
+              <div class="btn-dash">
+                <p>Dashboard</p>
+                <img src="./assets/icon/chart-line.svg" alt="Dashboard" />
+              </div>
+            </a>
+          </nav>
         </div>
-
+      </div>
     </header>
 
     <section class="products">
-        <div class="models">
-            <div class="product">
-                <img src="" alt="title ">
-                <div class="row"></div>
-                <div class="product-title">
-                    <p> -- </p>
-                </div>
-                <div class="product-price">R$: -- </div>
-
-
-            </div>
-
-
+      <div class="models">
+        <div class="product">
+          <img src="" alt="title " />
+          <div class="row"></div>
+          <div class="product-title">
+            <p>--</p>
+          </div>
+          <div class="product-price">R$: --</div>
         </div>
-        <div class="windowdetails">
-            <div class="product-modal">
-                <div class="product-img">
-                    <div class="arrowleft"><img src="./assets/icon/arrow-left.svg"></div>
-                    <div class="arrowright"><img src="./assets/icon/arrow-right.svg"></div>
-                    <img id="img" src="">
-                </div>
-                <div class="product-title">
-                    <h2>--</h2>
-                </div>
-                <div class="product-price">R$: -- </div>
-                <div class="product-amount">Temos -- Disponíveis </div>
-                <div class="product-description"> -- </div>
-                <div class="product-id"> -- </div>
-                <div class="product-attribute">
-                    <!-- aqui o js cria os selects -->
-                </div>
-                <button class="add-cart">Adicionar ao Carrinho</button>
-
-
+      </div>
+      <div class="windowdetails">
+        <div class="product-modal">
+          <div class="product-img">
+            <div class="arrowleft">
+              <img src="./assets/icon/arrow-left.svg" />
             </div>
+            <div class="arrowright">
+              <img src="./assets/icon/arrow-right.svg" />
+            </div>
+            <img id="img" src="" />
+          </div>
+          <div class="product-title">
+            <h2>--</h2>
+          </div>
+          <div class="product-price">R$: --</div>
+          <div class="product-amount">Temos -- Disponíveis</div>
+          <div class="product-description">--</div>
+          <div class="simulator-freight">
+            <span>Simulador de frete</span>
+            <div class="flex">
+              <input type="text" placeholder="Cep" />
+              <button type="button" id="simulator">Simular</button>
+            </div>
+            <div class="result">
+              <span>Prazo de entrega de 8 dias</span>
+              <span>Valor: R$:19,50 </span>
+            </div>
+          </div>
+          <div class="product-id">--</div>
+          <div class="product-attribute">
+            <!-- aqui o js cria os selects -->
+          </div>
+          <button class="add-cart">Adicionar ao Carrinho</button>
         </div>
-
-
-
+      </div>
     </section>
 
-
     <footer>
-        <!-- <div class="paginated">
+      <!-- <div class="paginated">
             <p>
                 <div class="arrowleft">&lt;</div>
                 <strong>1</strong>
@@ -121,25 +125,36 @@
             </p>
         </div> -->
 
-        <div class="contact">
-            <div class="facebook">
-                <a href="https://www.facebook.com/outletmultimarcasapt/?hc_ref=ARQiNQ9kgBNaN_fZ8AyweARg-yxs7wFlfVafwq7eHsSjd0_oxqa1c1jJfV7VIxbSk0g&ref=nf_target&__tn__=kC-R" target="_blank"> <img src="./assets/icon/facebook.svg" alt=""> facebook</a>
-            </div>
-            <div class="whatsapp">
-                <a href="https://api.whatsapp.com/send?phone=5567981044548" target="_blank"> <img src="./assets/icon/whatsapp.svg" alt=""> Whatsapp</a>
-            </div>
-
-
-            <div class="email"><img src="./assets/icon/email.svg">contato@artesanatosoutletmultimarcas.com</div>
-            <div class="phone"><img src="./assets/icon/phone.svg">(67) 98104-4548</div>
-
+      <div class="contact">
+        <div class="facebook">
+          <a
+            href="https://www.facebook.com/outletmultimarcasapt/?hc_ref=ARQiNQ9kgBNaN_fZ8AyweARg-yxs7wFlfVafwq7eHsSjd0_oxqa1c1jJfV7VIxbSk0g&ref=nf_target&__tn__=kC-R"
+            target="_blank"
+          >
+            <img src="./assets/icon/facebook.svg" alt="" /> facebook</a
+          >
+        </div>
+        <div class="whatsapp">
+          <a
+            href="https://api.whatsapp.com/send?phone=5567981044548"
+            target="_blank"
+          >
+            <img src="./assets/icon/whatsapp.svg" alt="" /> Whatsapp</a
+          >
         </div>
 
-
+        <div class="email">
+          <img
+            src="./assets/icon/email.svg"
+          />contato@artesanatosoutletmultimarcas.com
+        </div>
+        <div class="phone">
+          <img src="./assets/icon/phone.svg" />(67) 98104-4548
+        </div>
+      </div>
     </footer>
 
     <script src="./js/index.js"></script>
     <script src="./js/search.js"></script>
-</body>
-
+  </body>
 </html>

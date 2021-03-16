@@ -1,0 +1,222 @@
+.products-send {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 94rem;
+  height: auto;
+  margin: 3rem auto 0;
+}
+
+.header-order-send {
+  width: 85%;
+  height: 3rem;
+  background-color: var(--color-text-button);
+  border: 1px solid #e6e6e6;
+}
+
+.order-send {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--color-text-button);
+  border: 1px solid #e6e6e6;
+  border-top: none;
+}
+.models {
+display: none;
+}
+.header-order-send .group-info,
+.group-info {
+  height: 3rem;
+  display: flex;
+  flex: 1;
+  align-items: center;
+
+}
+
+.group-info {
+  height: 5rem;
+  position: relative;
+  border-bottom: 1px solid #CCC;
+}
+
+.id-order {
+  text-align: center;
+  padding: 0.4rem;
+  width: 13rem;
+  height: 100%;
+  border-right: 1px solid #CCC;
+}
+
+.product-name {
+  text-align: center;
+  padding: 0.4rem;
+  width: 49rem;
+  height: 100%;
+  border-right: 1px solid #CCC;
+}
+
+.amount-sold {
+  text-align: center;
+  padding: 0.4rem;
+  width: 12.5rem;
+  height: 100%;
+  border-right: 1px solid #CCC;
+}
+
+.price {
+  text-align: center;
+  padding: 0.4rem;
+  width: 12rem;
+  height: 100%;
+  border-right: 1px solid #CCC;
+}
+
+.btn-down {
+display: flex;
+justify-content: center;
+align-items: center;
+min-width: 4rem;
+width: 5rem;
+cursor: pointer;
+transition: 0.3s;
+
+}
+
+.btn-down img {
+  width: 1.5rem;
+}
+.btn-up {
+display: none;
+justify-content: center;
+align-items: center;
+min-width: 4rem;
+width: 5rem;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.btn-up img {
+width: 1.5rem;
+}
+
+.details {
+  display: none;
+  width: 100%;
+  height: 0rem;
+  position: absolute;
+  top: 5.1rem;
+  left: 0;
+  z-index: 10;
+  background-color: var(--color-text-button);
+  border: 1px solid #CCC;
+  border-top: none;
+  font-weight: 600;
+  animation: dow 700ms linear forwards;
+}
+.details.up{
+animation: up 700ms linear forwards;
+}
+.details .grid {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'data-prod data-prod'
+  'list-prod list-prod'  'data-client data-client' 'name-client email' 'zip_code neighborhood' 'tel city' 'street number''send-order send-order' ;
+row-gap: 1rem;
+
+  justify-items: center;
+  height: 23rem;
+  margin: 0 auto;
+font-size: 1.8rem;
+
+}
+.details .data-prod {
+grid-area: data-prod;
+font-size: 2rem;
+margin: 0 auto;
+padding-top: 1rem;
+}
+.details .data-client{
+  padding-top: 1rem;
+  margin: 0 auto;
+  grid-area: data-client;
+  font-size: 2rem;
+}
+.details .list-prod{
+grid-area: list-prod;
+display: grid;
+row-gap: 0.5rem;
+
+grid-template-columns: 1fr 1fr;
+width: 80%;
+margin: 0 auto;
+justify-items: center;
+}
+
+.details .client-name {
+grid-area: name-client;
+}
+.details .client-email{
+grid-area: email;
+}
+.send-order {
+  grid-area: send-order;
+  margin-left: 45%;
+}
+
+.send-order button {
+  width: 15rem;
+  height: 3rem;
+  font-weight: 600;
+  background-color: var(--color-button-secondary);
+  border-radius: 0.2rem;
+  border: none;
+  transition: .5s;
+  cursor: pointer;
+  /* color: var(--color-text-button) */
+}
+
+
+.send-order button:hover {
+  background-color: var(--color-button-secondary-hover);
+}
+.send-order input {
+width: 15rem;
+height: 3rem;
+padding: 0.3rem;
+margin-right:1rem;
+}
+
+.order-send .id-order,
+.order-send .product-name,
+.order-send .amount-sold,
+.order-send .price {
+  padding: 1.5rem;
+}
+
+/* @media(min-width: 1000px){
+.products-to-send{
+
+}
+} */
+
+/* animação de dow para descricao */
+
+@keyframes up {
+  from {
+      height: 34rem;
+  }
+  to {
+      height: 0
+  }
+}
+
+@keyframes dow {
+  from {
+      height: 0rem;
+  }
+  to {
+      height: 34rem
+  }
+}

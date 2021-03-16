@@ -96,9 +96,12 @@ async function index() {
         ProductItem.querySelector(".product img").src = images[0];
         ProductItem.querySelector(".product img").id = idImages[0];
         ProductItem.querySelector(".product-title").innerHTML = item.name;
+        const formatReal = item.price.toLocaleString("pt-br", {
+          minimumFractionDigits: 2,
+        });
         ProductItem.querySelector(
           ".product-price"
-        ).innerHTML = `R$: ${item.price.toFixed(2)}`;
+        ).innerHTML = `R$: ${formatReal}`;
 
         c(".products").append(ProductItem);
         ProductItem.addEventListener("click", async () => {
@@ -133,9 +136,10 @@ async function index() {
             c("#body-modal").style.overflow = "hidden";
             c(".product-img #img").src = productJson.images[indeximg];
             c(".product-title h2").innerHTML = productJson.name;
-            c(
-              ".windowdetails .product-price"
-            ).innerHTML = `R$: ${productJson.price.toFixed(2)}`;
+            const formatReal = productJson.price.toLocaleString("pt-br", {
+              minimumFractionDigits: 2,
+            });
+            c(".windowdetails .product-price").innerHTML = `R$: ${formatReal}`;
             c(
               ".product-amount"
             ).innerHTML = ` ${productJson.amount}  Disponíveis`;

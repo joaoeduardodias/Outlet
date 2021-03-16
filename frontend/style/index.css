@@ -372,6 +372,49 @@ button {
     margin: 1rem auto;
     transition: .4s;
 }
+.simulator-freight{
+  width: 100%;
+  margin: .5rem 0;
+}
+.simulator-freight .flex {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.simulator-freight span {
+
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  margin-bottom: .5rem;
+}
+.simulator-freight input {
+  width: 16.5rem;
+  height: 4rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+border: 1px solid var(--border-div-color);
+  border-radius: 0.4rem;
+  margin: 0;
+}
+.simulator-freight button {
+  width: 9rem;
+  margin: 0;
+
+}
+.simulator-freight .result {
+  display: flex;
+  flex-direction: column;
+}
+.product-id {
+  border: 1px solid var(--border-div-color);
+  margin-top: 0.5rem;
+  font-size: 1.6rem;
+  background-color: #4444;
+  height: 3rem;
+  display: none;
+  align-items: center;
+  padding: 0.5rem;
+}
 
 button:hover {
     background-color: var(--color-primary-hover);

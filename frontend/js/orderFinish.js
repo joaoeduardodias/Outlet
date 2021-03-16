@@ -3,8 +3,10 @@ const token = localStorage.getItem("Authorization");
 const c = (el) => document.querySelector(el);
 const cs = (el) => document.querySelectorAll(el);
 
+// api
+
 async function list() {
-  let data = await fetch(`${baseurl}/orders`, {
+  let data = await fetch(`${baseurl}/orders_send`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +21,6 @@ async function list() {
     let list = c(".models .group-info").cloneNode(true);
     list.querySelector(".id-order").innerHTML = item.id_order;
     list.querySelector(".product-name").innerHTML = item.name;
-
     let convertPrice = item.value / 100;
     if (convertPrice) {
       const formatReal = convertPrice.toLocaleString("pt-br", {
@@ -69,41 +70,6 @@ async function list() {
     });
 
     c(".order-send").append(list);
-    const btnSend = list.querySelector(".send-order button#send");
-
-    btnSend.addEventListener("click", async () => {
-      const tracking = list.querySelector(".send-order input").value;
-
-      const send = {
-        send: true,
-        tracking,
-      };
-      let res = await fetch(`${baseurl}/order/${item.id_order}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: "Bearer " + token,
-        },
-        mode: "cors",
-        body: JSON.stringify(send),
-      });
-      res = await res.json();
-
-      if (res.message == `Token invalid.`) {
-        location.href = "./login.html";
-      }
-      if (res.message === "updated") {
-        swal({
-          type: "success",
-          title: "Pedido enviado",
-          text: "Um email com o código de rastreio foi enviado para o cliente",
-        });
-        c(".swal2-confirm").addEventListener("click", function () {
-          location.reload();
-        });
-      }
-    });
 
     const dow = list.querySelector(".btn-down");
     const up = list.querySelector(".btn-up");

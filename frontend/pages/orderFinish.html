@@ -1,39 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style/global.css" />
     <link rel="stylesheet" href="../style/dashboard.css" />
+    <link rel="stylesheet" href="../style/orderFinish.css" />
     <title>Dashboard || Outlet Multimarcas</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="logo">
-            <a href="/">
-                <h1>
-                    ARTESANATOS <br /> OUTLET
-                </h1>
-            </a>
-        </div>
+      <div class="logo">
+        <a href="/">
+          <h1>
+            ARTESANATOS <br />
+            OUTLET
+          </h1>
+        </a>
+      </div>
     </header>
     <aside>
-        <a href="./productUnavailable.html">Produtos Indisponiveis</a>
-        <a href="./dashboard.html">Pedidos para Enviar</a>
-        <a href="./orderFinish.html">Pedidos Enviados</a>
-        <a href="./createProduct.html">Cadastrar Produto</a>
-        <a href="./updateProduct.html">Atualizar Produto</a>
-        <a href="./deleteProduct.html">Deletar Produto</a>
-        <a href="./addAtribute.html">Adicionar Atributo</a>
-        <a href="./updateAttribute.html">Atualizar Atributo</a>
-        <a href="./deleteAttribute.html">Deletar Atributo</a>
-        <a href="./createUserAdm.html">Administradores</a>
-        <a href="./deleteUserADM.html">Deletar Usuário</a>
+      <a href="./productUnavailable.html">Produtos Indisponiveis</a>
+      <a href="./dashboard.html">Pedidos para Enviar</a>
+      <a href="./orderFinish.html">Pedidos Enviados</a>
+      <a href="./createProduct.html">Cadastrar Produto</a>
+      <a href="./updateProduct.html">Atualizar Produto</a>
+      <a href="./deleteProduct.html">Deletar Produto</a>
+      <a href="./addAtribute.html">Adicionar Atributo</a>
+      <a href="./updateAttribute.html">Atualizar Atributo</a>
+      <a href="./deleteAttribute.html">Deletar Atributo</a>
+      <a href="./createUserAdm.html">Administradores</a>
+      <a href="./deleteUserADM.html">Deletar Usuário</a>
     </aside>
     <main>
+      <section class="products-send">
+        <!-- HEADER -->
 
-</body>
+        <div class="header-order-send">
+          <div class="group-info">
+            <div class="id-order">Código Pedido</div>
+            <div class="product-name">Nome Cliente</div>
+            <div class="price">Valor Total</div>
+          </div>
+        </div>
 
+        <div class="order-send">
+          <div class="models">
+            <div class="group-info">
+              <div class="id-order"></div>
+              <div class="product-name"></div>
+
+              <div class="price"></div>
+              <div class="btn-down">
+                <img src="../assets/icon/angle-down.svg" alt="Detalhes" />
+              </div>
+              <div class="btn-up">
+                <img src="../assets/icon/angle-up.svg" alt="Detalhes" />
+              </div>
+
+              <div class="details">
+                <div class="grid">
+                  <h4 class="data-prod">Produtos</h4>
+                  <div class="list-prod">
+                    <div class="name-prod"></div>
+                    <div class="product-attributes">
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="name-prod"></div>
+                    <div class="product-attributes">
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="name-prod"></div>
+                    <div class="product-attributes">
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+
+                  <h4 class="data-client">Dados do Cliente</h4>
+                  <div class="client-name">Nome:</div>
+                  <div class="client-email">Email:</div>
+                  <div class="client-telephone">Telefone:</div>
+                  <div class="city-name">Cidade:</div>
+                  <div class="zip-code">Cep:</div>
+                  <div class="neighborhood">Bairro:</div>
+                  <div class="street">Rua:</div>
+                  <div class="number">Nº:</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../js/orderFinish.js"></script>
+  </body>
 </html>

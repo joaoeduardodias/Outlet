@@ -91,8 +91,10 @@ async function purchase() {
       tangible: true,
     })),
   };
+  let solds = { products: cart };
+  // card.card_number = "4111111111111111";
 
-  let validate = await fetch(`${baseurl}/product_sold`, {
+  let dataaa = await fetch(`${baseurl}/product_sold`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -100,9 +102,10 @@ async function purchase() {
       Authorization: "Bearer " + token,
     },
     mode: "cors",
-    body: JSON.stringify({ products: cart }),
+    body: JSON.stringify(solds),
   });
-  validate = await validate.json();
+  let validate = await dataaa.json();
+  console.log(validate);
 
   if (validate.message == "Product unavailable") {
     swal({
