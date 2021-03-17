@@ -107,11 +107,7 @@ module.exports = {
       lenght,
       width,
       height,
-      type_attribute,
-      option_one,
-      option_two,
-      option_three,
-      option_for,
+      attributes,
     } = req.body;
 
     if (
@@ -136,7 +132,6 @@ module.exports = {
         });
 
       const id = crypto.randomBytes(3).toString("HEX");
-      const id_attribute = crypto.randomBytes(3).toString("HEX");
 
       Connection.transaction(function (trx) {
         Connection("Products")
@@ -151,18 +146,9 @@ module.exports = {
             lenght,
             width,
             height,
+            attributes,
           })
-          .then(function () {
-            return Connection("attributes").transacting(trx).insert({
-              id: id_attribute,
-              type: type_attribute,
-              option_one,
-              option_two,
-              option_three,
-              option_for,
-              id_product: id,
-            });
-          })
+
           .then(function () {
             return req.files.map(async (file) => {
               const idImage = crypto.randomBytes(3).toString("HEX");
@@ -214,6 +200,7 @@ module.exports = {
         width,
         height,
         available,
+        attributes,
       } = req.body;
 
       if (
@@ -242,6 +229,7 @@ module.exports = {
               lenght,
               width,
               height,
+              attributes,
             })
             .where({ id })
             .then(function () {
@@ -318,7 +306,6 @@ module.exports = {
         }
       });
       await Connection("Images").where("id_product", id).del();
-      await Connection("attributes").where("id_product", id).del();
 
       await Connection("Products").where({ id }).del();
       return res.json({ message: "success" }).send();
