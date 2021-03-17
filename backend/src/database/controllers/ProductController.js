@@ -51,81 +51,38 @@ module.exports = {
     try {
       const { id } = req.params;
 
-      Connection.transaction(function (trx) {
-        return (product = Connection("Products")
-          .transacting(trx)
-          .select(
-            "Products.id",
-            "Products.name",
-            "description",
-            "price",
-            "amount",
-            "available",
-            "weight",
-            "lenght",
-            "width",
-            "height",
-            Connection.raw(`ARRAY_AGG(url) as images`),
-            Connection.raw(`ARRAY_AGG(id_image) as idsImages`)
-              .leftJoin("Images", "Products.id", "Images.id_product")
-              .groupBy("Products.id")
-              .where("Products.id", id)
-              .first()
-          )
-          .then(function () {
-            return Connection("attributes")
-              .transacting(trx)
-              .select(
-                "type",
-                "option_one",
-                "option_two",
-                "option_three",
-                "option_for",
-                "id_product"
-              )
-              .where("id_product", "Products.id");
-          })
+      const product = await Connection("Products")
+        .select(
+          "Products.id",
+          "Products.name",
+          "description",
+          "price",
+          "amount",
+          "available",
+          "weight",
+          "lenght",
+          "width",
+          "height",
+          "attributes",
+          // Connection.raw(`array_agg(attr.type) as type_attribute`),
+          // Connection.raw(`array_to_json(array_agg(option_one)) option_one`),
+          // Connection.raw(`array_to_json(array_agg(option_two)) option_two`),
+          // Connection.raw(`array_to_json(array_agg(option_three)) option_three`),
+          // Connection.raw(`array_to_json(array_agg(option_for)) option_for`),
+          Connection.raw(`ARRAY_AGG(url) as images`),
+          Connection.raw(`ARRAY_AGG(id_image) as idsImages`)
+        )
 
-          .then(trx.commit)
-          .catch(trx.rollback));
-      })
-        .then(function () {
-          if (!product) {
-            return res.json({ message: "Not existe is product" });
-          }
+        // .join("attributes as attr", "Products.id", "attr.id_product") // precisa ser independente do propximo join
+        .leftJoin("Images", "Products.id", "Images.id_product") // precisa retornar 3
+        .groupBy("Products.id")
+        .where("Products.id", id)
+        .first();
+      if (!product) {
+        return res.json({ message: "Not existe is product" });
+      }
 
-          return res.json(product);
-        })
-        .catch(function (err) {
-          console.error(err);
-        });
-
-      // const product = await Connection("Products")
-      //   .select(
-      //     "Products.id",
-      //     "Products.name",
-      //     "description",
-      //     "price",
-      //     "amount",
-      //     "available",
-      //     "weight",
-      //     "lenght",
-      //     "width",
-      //     "height",
-      //     // Connection.raw(`array_agg(attr.type) as type_attribute`),
-      //     // Connection.raw(`array_to_json(array_agg(option_one)) option_one`),
-      //     // Connection.raw(`array_to_json(array_agg(option_two)) option_two`),
-      //     // Connection.raw(`array_to_json(array_agg(option_three)) option_three`),
-      //     // Connection.raw(`array_to_json(array_agg(option_for)) option_for`),
-      //     Connection.raw(`ARRAY_AGG(url) as images`),
-      //     Connection.raw(`ARRAY_AGG(id_image) as idsImages`)
-      //   )
-
-      //   // .join("attributes as attr", "Products.id", "attr.id_product") // precisa ser independente do propximo join
-      //   .leftJoin("Images", "Products.id", "Images.id_product") // precisa retornar 3
-      //   .groupBy("Products.id")
-      //   .where("Products.id", id)
-      //   .first();
+      return res.json(product);
     } catch (error) {
       next(error);
     }
