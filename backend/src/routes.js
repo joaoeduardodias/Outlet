@@ -70,6 +70,8 @@ routes.put(
   ProductController.update
 );
 routes.delete("/product/:id", midellwareauth, ProductController.delete);
+// add attributes
+routes.put("/attribute/:id", midellwareauth, ProductController.addAttributes);
 
 // Attributes
 // routes.post('/attribute/:id_product', midellwareauth, AttributeController.create)

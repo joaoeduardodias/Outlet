@@ -107,7 +107,6 @@ module.exports = {
       lenght,
       width,
       height,
-      attributes,
     } = req.body;
 
     if (
@@ -146,7 +145,6 @@ module.exports = {
             lenght,
             width,
             height,
-            attributes,
           })
 
           .then(function () {
@@ -200,7 +198,6 @@ module.exports = {
         width,
         height,
         available,
-        attributes,
       } = req.body;
 
       if (
@@ -229,7 +226,6 @@ module.exports = {
               lenght,
               width,
               height,
-              attributes,
             })
             .where({ id })
             .then(function () {
@@ -309,6 +305,20 @@ module.exports = {
 
       await Connection("Products").where({ id }).del();
       return res.json({ message: "success" }).send();
+    } catch (error) {
+      next(error);
+    }
+  },
+  async addAttributes(req, res, next) {
+    try {
+      const { id } = req.params;
+      const { ...attributes } = req.body;
+      await Connection("Products")
+        .update({
+          attributes,
+        })
+        .where({ id });
+      return res.status(201).json({ message: "success" });
     } catch (error) {
       next(error);
     }
