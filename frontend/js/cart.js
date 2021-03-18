@@ -290,6 +290,7 @@ async function CalcFreight(weight, width, height, lenght, zip_code) {
     height,
     methodFreight: "PAC",
   };
+  console.log(Freight);
 
   const DataFreight = await fetch(`${baseurl}/freight`, {
     method: "POST",

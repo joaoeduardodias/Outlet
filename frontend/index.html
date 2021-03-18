@@ -97,14 +97,18 @@
           <div class="product-amount">Temos -- Disponíveis</div>
           <div class="product-description">--</div>
           <div class="simulator-freight">
-            <span>Simulador de frete</span>
+            <div class="span">
+              <img src="./assets/icon/freight.svg" alt="frete" />
+              <span> Simulador de frete </span>
+            </div>
+
             <div class="flex">
-              <input type="text" placeholder="Cep" />
+              <input id="txtTracking" type="text" placeholder="Cep" />
               <button type="button" id="simulator">Simular</button>
             </div>
             <div class="result">
-              <span>Prazo de entrega de 8 dias</span>
-              <span>Valor: R$:19,50 </span>
+              <span id="days"></span>
+              <span id="value"></span>
             </div>
           </div>
           <div class="product-id">--</div>

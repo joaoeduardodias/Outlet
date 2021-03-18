@@ -115,7 +115,45 @@ async function index() {
             mode: "cors",
           });
           const productJson = await Product.json();
+          if (productJson.attributes) {
+            productJson.attributes.atributes.map((item) => {
+              const div = c(".product-attribute");
+              const select = document.createElement("select");
 
+              select.name = item.type_attribute;
+              select.id = item.type_attribute;
+              var message = document.createElement("option");
+              message.textContent = `Selecione qual ${item.type_attribute} deseja`;
+              select.appendChild(message);
+
+              if (item.option_one) {
+                var el01 = document.createElement("option");
+                el01.textContent = item.option_one;
+                el01.value = item.option_one;
+                select.appendChild(el01);
+              }
+              if (item.option_two) {
+                var el02 = document.createElement("option");
+                el02.textContent = item.option_two;
+                el02.value = item.option_two;
+                select.appendChild(el02);
+              }
+              if (item.option_three) {
+                var el03 = document.createElement("option");
+                el03.textContent = item.option_three;
+                el03.value = item.option_three;
+                select.appendChild(el03);
+              }
+              if (item.option_for) {
+                var el04 = document.createElement("option");
+                el04.textContent = item.option_for;
+                el04.value = item.option_for;
+                select.appendChild(el04);
+              }
+
+              div.appendChild(select);
+            });
+          }
           // preencher as imagens
           allImages = productJson.images;
           allIdImages = productJson.idsImages;
@@ -172,6 +210,9 @@ async function index() {
       if (!modal.contains(e.target)) {
         c(".windowdetails").style.opacity = 0;
         indeximg = 0;
+        c(".result").style.display = "none";
+        c(".result").style.opacity = 0;
+        document.getElementById("txtTracking").value = "";
 
         setTimeout(() => {
           c(".windowdetails").style.display = "none";
@@ -234,3 +275,82 @@ c(".add-cart").addEventListener("click", () => {
     }, 200);
   }
 });
+
+// simulator of freight
+const btnSimulator = c("#simulator");
+btnSimulator.addEventListener("click", async () => {
+  btnSimulator.style.backgroundColor = "#FFF";
+  btnSimulator.style.color = "#f67600";
+  btnSimulator.style.border = "1px solid #f67600";
+  btnSimulator.style.cursor = "no-drop";
+
+  const zipCode = document.getElementById("txtTracking").value;
+  let Freight = {
+    weight,
+    zip_code: zipCode,
+    lenght,
+    width,
+    height,
+    methodFreight: "PAC",
+  };
+
+  const DataFreight = await fetch(`${baseurl}/freight`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    mode: "cors",
+    body: JSON.stringify(Freight),
+  });
+  const DataFreightJson = await DataFreight.json();
+  if (DataFreightJson.MsgErro == "CEP de destino invalido.") {
+    alert("Cep inválido, verifique o cep digitado");
+    btnSimulator.style.backgroundColor = "#f67600";
+    btnSimulator.style.color = "#FFF";
+    btnSimulator.style.border = "1px solid #f67600";
+    btnSimulator.style.cursor = "pointer";
+
+    return false;
+  }
+  if (DataFreightJson.Valor == "0,00") {
+    console.log(DataFreightJson.MsgErro);
+    alert(
+      "erro encontrado, por favor entre em contato com a loja para outras opções de frete"
+    );
+    btnSimulator.style.backgroundColor = "#f67600";
+    btnSimulator.style.color = "#FFF";
+    btnSimulator.style.border = "1px solid #f67600";
+    btnSimulator.style.cursor = "pointer";
+
+    return false;
+  } else {
+    document.getElementById(
+      "days"
+    ).innerHTML = `Prazo de entrega de ${DataFreightJson.PrazoEntrega} dias`;
+    document.getElementById(
+      "value"
+    ).innerHTML = `Valor: R$:${DataFreightJson.Valor}`;
+    c(".result").style.display = "flex";
+
+    c(".result").style.opacity = 0;
+    setTimeout(() => {
+      c(".result").style.opacity = 1;
+      btnSimulator.style.backgroundColor = "#f67600";
+      btnSimulator.style.color = "#FFF";
+      btnSimulator.style.border = "1px solid #f67600";
+      btnSimulator.style.cursor = "pointer";
+    }, 200);
+  }
+});
+
+// async function  simulatorFreight(){
+//   CalcFreight(
+//     weightFreight.toFixed(2),
+//     newWidth,
+//     newHeight,
+//     newLength,
+//     zip_code
+//   );
+
+// }
