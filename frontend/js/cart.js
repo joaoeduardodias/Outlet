@@ -41,6 +41,12 @@ cart.map((item, index) => {
       ".product-options .product-item-qtavailable"
     ).innerHTML = `${item.amount} Disponíveis`;
   }
+  const div = ProductItem.querySelector(".attributes");
+  item.attributes.map((item) => {
+    const span = document.createElement("span");
+    span.innerHTML = `${item.type}: ${item.attribute}`;
+    div.appendChild(span);
+  });
 
   ProductItem.querySelector(
     ".product-options > .product--item--qtarea > .product--item-qtmenos"

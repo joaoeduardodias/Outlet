@@ -115,7 +115,7 @@ async function index() {
             mode: "cors",
           });
           const productJson = await Product.json();
-          if (productJson.attributes) {
+          if (productJson.attributes !== null) {
             productJson.attributes.atributes.map((item) => {
               const div = c(".product-attribute");
               const select = document.createElement("select");
@@ -213,6 +213,10 @@ async function index() {
         c(".result").style.display = "none";
         c(".result").style.opacity = 0;
         document.getElementById("txtTracking").value = "";
+        const div = c(".product-attribute");
+        while (div.hasChildNodes()) {
+          div.removeChild(div.firstChild);
+        }
 
         setTimeout(() => {
           c(".windowdetails").style.display = "none";
@@ -250,6 +254,16 @@ c(".add-cart").addEventListener("click", () => {
     if (cm3 < weight || cm3 < 10) {
       cm3 = weight;
     }
+    let attributes = [];
+    // pegar os atributos
+    const div = cs(".product-attribute select");
+    div.forEach((item) => {
+      const attribute = item.options[item.selectedIndex].value;
+      attributes.push({
+        type: item.id,
+        attribute,
+      });
+    });
 
     cart.push({
       id: key,
@@ -263,7 +277,7 @@ c(".add-cart").addEventListener("click", () => {
       height,
       cm3,
       quantity: 1,
-      attributes: {},
+      attributes,
     });
     localStorage.setItem("cart", JSON.stringify(cart));
     cart = JSON.parse(localStorage.getItem("cart"));
@@ -343,14 +357,3 @@ btnSimulator.addEventListener("click", async () => {
     }, 200);
   }
 });
-
-// async function  simulatorFreight(){
-//   CalcFreight(
-//     weightFreight.toFixed(2),
-//     newWidth,
-//     newHeight,
-//     newLength,
-//     zip_code
-//   );
-
-// }
