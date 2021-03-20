@@ -113,7 +113,6 @@ module.exports = {
         "compile",
         hbs({
           viewEngine: exphbs,
-          extname: ".html",
           viewPath,
         })
       );
