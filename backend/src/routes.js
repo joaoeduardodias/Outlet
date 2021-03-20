@@ -73,13 +73,6 @@ routes.delete("/product/:id", midellwareauth, ProductController.delete);
 // add attributes
 routes.put("/attribute/:id", midellwareauth, ProductController.addAttributes);
 
-// Attributes
-// routes.post('/attribute/:id_product', midellwareauth, AttributeController.create)
-// routes.put('/attribute/:id', midellwareauth, AttributeController.create)
-// routes.delete('/attribute/:id', midellwareauth, AttributeController.create)
-
-//  Products_Sold
-
 // list all sales- lista todas as vendas
 routes.get("/product_sold", midellwareauth, User_Product.index);
 
