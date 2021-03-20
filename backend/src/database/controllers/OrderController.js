@@ -108,7 +108,7 @@ module.exports = {
         {
           to: email,
           from: "contato@Outlet.com.br",
-          template: "sendOrder.html",
+          template: "sendOrder",
           subject: "Outlet - Código de rastreio",
           context: { email, tracking, name },
         },
