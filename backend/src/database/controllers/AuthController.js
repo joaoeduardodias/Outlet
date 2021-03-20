@@ -108,19 +108,6 @@ module.exports = {
       const resetLink = `${process.env.FRONT_URL}/reset/?token=${token}`;
 
       const viewPath = resolve(__dirname, "../../", "resources", "mail");
-      // transport.use(
-      //   "compile",
-      //   hbs({
-      //     viewEngine: exphbs.create({
-      //       layoutsDir: viewPath,
-      //       defaultLayout: "forgotpassword",
-
-      //       extname: ".html",
-      //     }),
-      //     viewPath,
-      //     extName: ".html",
-      //   })
-      // );
 
       transport.use(
         "compile",

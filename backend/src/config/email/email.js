@@ -9,4 +9,16 @@ const transport = nodemailer.createTransport({
   },
 });
 
+transport.use(
+  "compile",
+  hbs({
+    viewEngine: exphbs.create({
+      layoutsDir: viewPath,
+
+      extname: ".html",
+    }),
+    viewPath,
+    extName: ".html",
+  })
+);
 module.exports = transport;
