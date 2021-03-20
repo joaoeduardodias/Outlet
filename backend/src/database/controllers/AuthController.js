@@ -109,14 +109,6 @@ module.exports = {
 
       const viewPath = resolve(__dirname, "../../", "resources", "mail");
 
-      transport.use(
-        "compile",
-        hbs({
-          viewEngine: exphbs,
-          viewPath,
-        })
-      );
-
       transport.sendMail(
         {
           to: email,
