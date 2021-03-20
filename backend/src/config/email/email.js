@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 const viewPath = resolve(__dirname, "../../", "resources", "mail");
 const exphbs = require("express-handlebars");
 const hbs = require("nodemailer-express-handlebars");
+const { resolve } = require("path");
 const transport = nodemailer.createTransport({
   host: process.env.MAIL_HOST,
   port: process.env.MAIL_PORT,
