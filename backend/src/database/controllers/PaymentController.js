@@ -15,17 +15,26 @@ module.exports = {
       const email = data.customer.email;
       const name = data.customer.name;
 
+      // transport.use(
+      //   "compile",
+      //   hbs({
+      //     viewEngine: exphbs.create({
+      //       layoutsDir: viewPath,
+      //       defaultLayout: "purchaseFinish",
+
+      //       extname: ".html",
+      //     }),
+      //     viewPath,
+      //     extName: ".html",
+      //   })
+      // );
+
       transport.use(
         "compile",
         hbs({
-          viewEngine: exphbs.create({
-            layoutsDir: viewPath,
-            defaultLayout: "purchaseFinish",
-
-            extname: ".html",
-          }),
+          viewEngine: exphbs,
+          extname: ".html",
           viewPath,
-          extName: ".html",
         })
       );
 

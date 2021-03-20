@@ -1,7 +1,7 @@
 const Connection = require("../../database");
 const crypto = require("crypto");
 const transport = require("../../config/email/email");
-const { resolve } = require("path");
+const { resolve, extname } = require("path");
 const exphbs = require("express-handlebars");
 const hbs = require("nodemailer-express-handlebars");
 module.exports = {
@@ -90,20 +90,27 @@ module.exports = {
       // enviar email contendo o código de rastreio
       const viewPath = resolve(__dirname, "../../", "resources", "mail");
 
+      // transport.use(
+      //   "compile",
+      //   hbs({
+      //     viewEngine: exphbs.create({
+      //       layoutsDir: viewPath,
+      //       defaultLayout: "sendOrder",
+
+      //       extname: ".html",
+      //     }),
+      //     viewPath,
+      //     extName: ".html",
+      //   })
+      // );
       transport.use(
         "compile",
         hbs({
-          viewEngine: exphbs.create({
-            layoutsDir: viewPath,
-            defaultLayout: "sendOrder",
-
-            extname: ".html",
-          }),
+          viewEngine: exphbs,
+          extname: ".html",
           viewPath,
-          extName: ".html",
         })
       );
-
       transport.sendMail(
         {
           to: email,
