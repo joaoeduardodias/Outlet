@@ -149,8 +149,7 @@ module.exports = {
         return res.status(401).json({ message: "Token expired" });
       }
 
-      const [, hash] = req.headers.authorization.split(" ");
-      const [, pwd] = Buffer.from(hash, "base64").toString().split(":");
+      const { pwd } = req.body;
       const password = await bcrypt.hash(pwd, 5);
       await Connection("Users")
         .update({
