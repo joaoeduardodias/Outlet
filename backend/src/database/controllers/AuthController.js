@@ -103,7 +103,7 @@ module.exports = {
       });
       // 3- Gerar Link para o reset de senha com o token
 
-      const resetLink = `${process.env.FRONT_URL}/reset/?token=${token}`;
+      const resetLink = `${process.env.FRONT_URL}/pages/resetPassword/?token=${token}`;
 
       transport.sendMail(
         {
