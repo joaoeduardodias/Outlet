@@ -1,6 +1,3 @@
-const { resolve } = require("path");
-const exphbs = require("express-handlebars");
-const hbs = require("nodemailer-express-handlebars");
 const transport = require("../../config/email/email");
 
 const createSplitTransaction = require("../../services/pagarme")
@@ -11,33 +8,8 @@ module.exports = {
     try {
       const data = req.body;
       const transaction = await createSplitTransaction(data);
-      const viewPath = resolve(__dirname, "../../", "resources", "mail");
       const email = data.customer.email;
       const name = data.customer.name;
-
-      // transport.use(
-      //   "compile",
-      //   hbs({
-      //     viewEngine: exphbs.create({
-      //       layoutsDir: viewPath,
-      //       defaultLayout: "purchaseFinish",
-
-      //       extname: ".html",
-      //     }),
-      //     viewPath,
-      //     extName: ".html",
-      //   })
-      // );
-
-      transport.use(
-        "compile",
-        hbs({
-          viewEngine: exphbs,
-          extname: ".html",
-          viewPath,
-          template: "purchaseFinish",
-        })
-      );
 
       transport.sendMail(
         {
