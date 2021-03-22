@@ -33,9 +33,9 @@ module.exports = {
         "compile",
         hbs({
           viewEngine: exphbs,
-          layout: "purchaseFinish",
           extname: ".html",
           viewPath,
+          template: "purchaseFinish",
         })
       );
 
