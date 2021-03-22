@@ -156,7 +156,7 @@ module.exports = {
           password,
         })
         .where("id", verifyUser.id);
-      return res.status(200).send();
+      return res.json({ message: "success" }).status(200);
     } catch (error) {
       next(error);
     }
